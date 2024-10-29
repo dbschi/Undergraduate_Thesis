@@ -18,32 +18,81 @@ The zeta function converges absolutely on $\Re(s)>1$ by comparing to the integra
 	Write $s=\sigma+it$. For each $p$,\[
 		\left(1-\frac{1}{p^s}\right)^{-1} = \left(\frac{1}{p^s}+\frac{1}{p^{2s}}+\frac{1}{p^{3s}}+...\right)
 	\]
-	converges absolutely for $\Re(s)>1$ and uniformly across all $p$. We thus take \begin{align*}
-		\prod_{p\leq N}\left(1-\frac{1}{p^s}\right)^{-1}  &= \prod_{p\leq N}\left(\sum_{k=1}^{m} \frac{1}{p^{ks}}+O(\epsilon)\right)\\
-		&=\sum_{n=1}^{N}\frac{1}{n^s} + O(\epsilon)\\
-		&=\zeta(s) + O(\sum_{n=N+1}^{\infty} \frac{1}{n^\sigma}) + O(\epsilon)
+	converges absolutely for $\Re(s)>1$ and uniformly across all $p$. We thus take for $m>N$ \begin{align*}
+		\prod_{p\leq N}\left(1-\frac{1}{p^s}\right)^{-1}  &= \prod_{p\leq N}\left(\sum_{k=1}^{m} \frac{1}{p^{ks}}+O(2^{-m\sigma})\right)\\
+		&\stackeq{(*)}\sum_{n=1}^{N}\frac{1}{n^s}+O_1(\sum_{n=N+1}^{\infty} \frac{1}{n^\sigma}) + O(2^{-m\sigma})\\
+		&=\zeta(s) + O_1(\sum_{n=N+1}^{\infty} \frac{1}{n^\sigma}) + O(2^{-m\sigma})
 	\end{align*}
-	As $m\to\infty$, $epsilon \to 0$. Then we take $N\to\infty$, the tail of the infinite sum converges to zero too.
+	Where we apply to Fundemental Theorem of Number Theory in (*) to show that each term $n^{-s}$ has coefficient $1$ determined by the unique prime factorization.
+	As $m\to\infty$, $2^{-m\sigma} \to 0$. Then we take $N\to\infty$, the tail of the infinite sum converges to zero too.
 \end{proof}
 
 Proposition \ref{eulerproduct} shows an inherent connection of the zeta function with primes.
 To further see this connection, we need to extend the zeta function.
 \begin{theorem}
 	$\zeta$ extends to a meromorphic function on $\complex$ with a simple pole at $s=1$. By abuse of notation, we identify the extension of the zeta function with $\zeta$ too.
+	Moreover, $\xi(s)\defeq \pi^{-s/2}\Gamma(s/2)\zeta(s)$ satisfies \begin{equation}\label{symmetryeq}
+		\xi(s) = \xi(1-s).
+	\end{equation}
 \end{theorem}
-\begin{proof}[Riemann's Extension of $\zeta$ (Adapted)]
+\begin{proof}
 	Using \begin{align*}
 		\Gamma(s)=\int_{0}^{\infty} e^{-x}x^{s-1}dx,
 	\end{align*}
-	We make the substitution $x=ny$ to get \begin{align*}
-		\Gamma(s)&= \int_{0}^{\infty} e^{-ny} (ny)^{s-1} n dy\\
-		\implies \frac{\Gamma(s)}{n^s} &= \int_{0}^{\infty} e^{-ny} y^{s-1} dy
+	We make the substitution $x=\pi n^2y$ to get \begin{align*}
+		\Gamma(s)&= \int_{0}^{\infty} e^{-\pi n^2 y} (\pi n^2 y)^{s-1} \pi n^2 dy\\
+		\implies \frac{\Gamma(s)}{\pi^s n^{2s}} &= \int_{0}^{\infty} e^{-\pi n^2 y} y^{s-1} dy
 	\end{align*}
 	So that by the Monotone Convergence Theorem,\begin{align*}
-		\Gamma(s)\zeta(s) &= \sum_{n=1}^{\infty}\frac{\Gamma(s)}{n^s}\\
-		&= \sum_{n=1}^{\infty} \int_{0}^{\infty} e^{-ny} y^{s-1} dy\\
-		&=  \int_{0}^{\infty}\sum_{n=1}^{\infty}\left(e^{-ny}\right)  y^{s-1} dy\\
-		&= \int_{0}^{\infty}\left(\frac{e^{-y}}{1-e^{-y}}\right)  y^{s-1} dy\\
-		&= \int_{0}^{\infty}\frac{y^{s-1}}{e^{y}-1}  dy\\
+		\pi^{-s/2}\Gamma(s/2)\zeta(s) &= \sum_{n=1}^{\infty}\frac{\Gamma(s/2)}{\pi^{s/2} n^s}\\
+		&= \sum_{n=1}^{\infty} \int_{0}^{\infty} e^{-\pi n^2x} x^{s/2-1} dx\\
+		&=  \int_{0}^{\infty}\sum_{n=1}^{\infty}\left(e^{-\pi n^2 x}\right)  x^{s/2-1} dx.
 	\end{align*}
+	We now let \[
+		\omega(x) = \sum_{n=1}^{\infty} e^{-\pi n^2 x}, \quad \theta(x) = \sum_{n=-\infty}^{\infty} e^{-\pi n^2 x} = 2\omega(x)+1.
+	\]
+	We apply Poisson Summation to \begin{align*}
+		\theta(x) &= \sum_{n=-\infty}^{\infty} e^{-\pi n^2 x}\\
+		&= \sum_{k=-\infty}^{\infty} \int_{-\infty}^{\infty} e^{-\pi y^2 x} e^{-2\pi i k y} dy\\
+		&= \sum_{k=-\infty}^{\infty} \int_{-\infty}^{\infty} e^{-\pi y^2 x} e^{-2\pi i k y} dy\\
+		&= \sum_{k=-\infty}^{\infty} \frac{1}{\sqrt{x}} \int_{-\infty}^{\infty} e^{-\pi u^2} e^{-2\pi i k u /\sqrt{x}} du\\
+		&= \sum_{k=-\infty}^{\infty} \frac{1}{\sqrt{x}} e^{-\pi k^2  / x}\\
+		&= \frac{1}{\sqrt{x}} \theta \left(\frac{1}{x}\right)
+	\end{align*}
+	using the substitution $y\sqrt{x}=u$. Replacing with $\omega$, \[
+	\sqrt{x}(2\omega(x)+1) = 2\omega\left(\frac{1}{x}\right)+1
+	\implies \omega\left(\frac{1}{x}\right)=\sqrt{x}\omega(x) +\frac{\sqrt{x}}{2} - \frac{1}{2}
+	\]
+	We thus write, using $y=1/x$, \begin{align*}
+		\xi(s) &= \int_{0}^{1}\omega(x) x^{s/2-1} dx +
+		\int_{1}^{\infty}\omega(x)  x^{s/2-1} dx\\
+		&=\int_{1}^{\infty}\omega(1/y) y^{-s/2-1} dy +
+		\int_{1}^{\infty}\omega(x)  x^{s/2-1} dx\\
+		&=\int_{1}^{\infty}\left(
+		\sqrt{y}\omega(y) +\frac{\sqrt{y}}{2} - \frac{1}{2}
+		\right) y^{-s/2-1} dy +
+		\int_{1}^{\infty}\omega(x)  x^{s/2-1} dx\\
+		&= \int_{1}^{\infty}\left(
+			\frac{\sqrt{y}}{2} - \frac{1}{2}
+			\right) y^{-s/2-1} dy+ \int_{1}^{\infty}\omega(x)  \left(x^{s/2-1} + x^{-s/2-1/2}\right)dx\\
+		&= -\frac{1}{1-s}+ \frac{1}{s}+ 
+			\int_{1}^{\infty}\left(
+				\frac{\sqrt{y}}{2} - \frac{1}{2}
+				\right) y^{-s/2-1} dy+ \int_{1}^{\infty}\omega(x)  \left(x^{s/2-1} + x^{-s/2-1/2}\right)dx\\
+		&= \frac{1}{s(1-s)}+
+			\int_{1}^{\infty}\left(
+				\frac{\sqrt{y}}{2} - \frac{1}{2}
+				\right) y^{-s/2-1} dy+ \int_{1}^{\infty}\omega(x)  \left(x^{s/2-1} + x^{-s/2-1/2}\right)dx
+	\end{align*}
+	$\omega$ decays exponentially in $x$, so the integral converges and the last is well defined on $\complex$ except when $s=1$ or $s=0$.
+	Finally, notice that the last expression is symmetric when $s$ is replaced with $(1-s)$, so shows equation \ref{symmetryeq}.
 \end{proof}
+\begin{corollary}
+	$\forall n\in\naturals, \zeta(-2n)=0.$
+\end{corollary}
+\begin{proof}
+	$\Gamma$ has a simple pole at $-n$.
+\end{proof}
+\begin{corollary}
+	
+\end{corollary}

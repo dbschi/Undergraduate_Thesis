@@ -1,7 +1,49 @@
 \section{Introduction to the Riemann Zeta Function}
 
 \begin{definition}[Zeta Function]
-	Let $s\in\complex$ with $\Re(s)>1$. Then \[
-	\zeta(s)=\sum_{n=1}^{\infty}\frac{1}{n^s}
-	\]
+	Let $s\in\complex$ with $\Re(s)>1$. Then \begin{equation}
+	\zeta(s)=\sum_{n=1}^{\infty}\frac{1}{n^s}.
+	\end{equation}
 \end{definition}
+The zeta function converges absolutely on $\Re(s)>1$ by comparing to the integral $\int x^{-\Re(s)} dx$.
+\begin{proposition}\label{eulerproduct}
+	On $\Re(s)>1$, \begin{equation}
+		\zeta(s) = \prod_{p\in\mathbb{N}}\left(1-\frac{1}{p^s}\right)^{-1}.	
+	\end{equation}
+\end{proposition}
+\begin{remark}
+	This expresion also converges absolutely for $\Re(s)>1$.
+\end{remark}
+\begin{proof}[Sketch of proof]
+	Write $s=\sigma+it$. For each $p$,\[
+		\left(1-\frac{1}{p^s}\right)^{-1} = \left(\frac{1}{p^s}+\frac{1}{p^{2s}}+\frac{1}{p^{3s}}+...\right)
+	\]
+	converges absolutely for $\Re(s)>1$ and uniformly across all $p$. We thus take \begin{align*}
+		\prod_{p\leq N}\left(1-\frac{1}{p^s}\right)^{-1}  &= \prod_{p\leq N}\left(\sum_{k=1}^{m} \frac{1}{p^{ks}}+O(\epsilon)\right)\\
+		&=\sum_{n=1}^{N}\frac{1}{n^s} + O(\epsilon)\\
+		&=\zeta(s) + O(\sum_{n=N+1}^{\infty} \frac{1}{n^\sigma}) + O(\epsilon)
+	\end{align*}
+	As $m\to\infty$, $epsilon \to 0$. Then we take $N\to\infty$, the tail of the infinite sum converges to zero too.
+\end{proof}
+
+Proposition \ref{eulerproduct} shows an inherent connection of the zeta function with primes.
+To further see this connection, we need to extend the zeta function.
+\begin{theorem}
+	$\zeta$ extends to a meromorphic function on $\complex$ with a simple pole at $s=1$. By abuse of notation, we identify the extension of the zeta function with $\zeta$ too.
+\end{theorem}
+\begin{proof}[Riemann's Extension of $\zeta$ (Adapted)]
+	Using \begin{align*}
+		\Gamma(s)=\int_{0}^{\infty} e^{-x}x^{s-1}dx,
+	\end{align*}
+	We make the substitution $x=ny$ to get \begin{align*}
+		\Gamma(s)&= \int_{0}^{\infty} e^{-ny} (ny)^{s-1} n dy\\
+		\implies \frac{\Gamma(s)}{n^s} &= \int_{0}^{\infty} e^{-ny} y^{s-1} dy
+	\end{align*}
+	So that by the Monotone Convergence Theorem,\begin{align*}
+		\Gamma(s)\zeta(s) &= \sum_{n=1}^{\infty}\frac{\Gamma(s)}{n^s}\\
+		&= \sum_{n=1}^{\infty} \int_{0}^{\infty} e^{-ny} y^{s-1} dy\\
+		&=  \int_{0}^{\infty}\sum_{n=1}^{\infty}\left(e^{-ny}\right)  y^{s-1} dy\\
+		&= \int_{0}^{\infty}\left(\frac{e^{-y}}{1-e^{-y}}\right)  y^{s-1} dy\\
+		&= \int_{0}^{\infty}\frac{y^{s-1}}{e^{y}-1}  dy\\
+	\end{align*}
+\end{proof}

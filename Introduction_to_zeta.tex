@@ -12,7 +12,10 @@ The zeta function converges absolutely on $\Re(s)>1$ by comparing to the integra
 	\end{equation}
 \end{proposition}
 \begin{remark}
-	This expresion also converges absolutely for $\Re(s)>1$.
+	This expresion also converges absolutely for $\Re(s)>1$. Since \[
+		\left(1-\frac{1}{p^s}\right)^{-1} = \frac{p^s}{p^s-1} = 1 + \frac{1}{p^s-1}
+	\]
+	and $\sum(p^s-1)^{-1}$ converges absolutely by comparison to the zeta function Dirichlet series.
 \end{remark}
 \begin{proof}[Sketch of proof]
 	Write $s=\sigma+it$. For each $p$,\[
@@ -23,10 +26,9 @@ The zeta function converges absolutely on $\Re(s)>1$ by comparing to the integra
 		&\stackeq{(*)}\sum_{n=1}^{N}\frac{1}{n^s}+O_1(\sum_{n=N+1}^{\infty} \frac{1}{n^\sigma}) + O(2^{-m\sigma})\\
 		&=\zeta(s) + O_1(\sum_{n=N+1}^{\infty} \frac{1}{n^\sigma}) + O(2^{-m\sigma})
 	\end{align*}
-	Where we apply to Fundemental Theorem of Number Theory in (*) to show that each term $n^{-s}$ has coefficient $1$ determined by the unique prime factorization.
+	Where we apply to Fundemental Theorem of Arithmetic in (*) to show that each term $n^{-s}$ has coefficient $1$ determined by the unique prime factorization.
 	As $m\to\infty$, $2^{-m\sigma} \to 0$. Then we take $N\to\infty$, the tail of the infinite sum converges to zero too.
 \end{proof}
-
 Proposition \ref{eulerproduct} shows an inherent connection of the zeta function with primes.
 To further see this connection, we need to extend the zeta function.
 \begin{theorem}
@@ -39,7 +41,7 @@ To further see this connection, we need to extend the zeta function.
 	Using \begin{align*}
 		\Gamma(s)=\int_{0}^{\infty} e^{-x}x^{s-1}dx,
 	\end{align*}
-	We make the substitution $x=\pi n^2y$ to get \begin{align*}
+	we make the substitution $x=\pi n^2y$ to get \begin{align*}
 		\Gamma(s)&= \int_{0}^{\infty} e^{-\pi n^2 y} (\pi n^2 y)^{s-1} \pi n^2 dy\\
 		\implies \frac{\Gamma(s)}{\pi^s n^{2s}} &= \int_{0}^{\infty} e^{-\pi n^2 y} y^{s-1} dy
 	\end{align*}
@@ -49,9 +51,9 @@ To further see this connection, we need to extend the zeta function.
 		&=  \int_{0}^{\infty}\sum_{n=1}^{\infty}\left(e^{-\pi n^2 x}\right)  x^{s/2-1} dx.
 	\end{align*}
 	We now let \[
-		\omega(x) = \sum_{n=1}^{\infty} e^{-\pi n^2 x}, \quad \theta(x) = \sum_{n=-\infty}^{\infty} e^{-\pi n^2 x} = 2\omega(x)+1.
+		\omega(x) = \sum_{n=1}^{\infty} e^{-\pi n^2 x}, \quad \theta(x) = \sum_{n=-\infty}^{\infty} e^{-\pi n^2 x} = 2\omega(x)+1,
 	\]
-	We apply Poisson Summation to \begin{align*}
+	and apply Poisson Summation to \begin{align*}
 		\theta(x) &= \sum_{n=-\infty}^{\infty} e^{-\pi n^2 x}\\
 		&= \sum_{k=-\infty}^{\infty} \int_{-\infty}^{\infty} e^{-\pi y^2 x} e^{-2\pi i k y} dy\\
 		&= \sum_{k=-\infty}^{\infty} \int_{-\infty}^{\infty} e^{-\pi y^2 x} e^{-2\pi i k y} dy\\
@@ -61,7 +63,7 @@ To further see this connection, we need to extend the zeta function.
 	\end{align*}
 	using the substitution $y\sqrt{x}=u$. Replacing with $\omega$, \[
 	\sqrt{x}(2\omega(x)+1) = 2\omega\left(\frac{1}{x}\right)+1
-	\implies \omega\left(\frac{1}{x}\right)=\sqrt{x}\omega(x) +\frac{\sqrt{x}}{2} - \frac{1}{2}
+	\implies \omega\left(\frac{1}{x}\right)=\sqrt{x}\omega(x) +\frac{\sqrt{x}}{2} - \frac{1}{2}.
 	\]
 	We thus write, using $y=1/x$, \begin{align*}
 		\xi(s) &= \int_{0}^{1}\omega(x) x^{s/2-1} dx +
@@ -75,24 +77,45 @@ To further see this connection, we need to extend the zeta function.
 		&= \int_{1}^{\infty}\left(
 			\frac{\sqrt{y}}{2} - \frac{1}{2}
 			\right) y^{-s/2-1} dy+ \int_{1}^{\infty}\omega(x)  \left(x^{s/2-1} + x^{-s/2-1/2}\right)dx\\
-		&= -\frac{1}{1-s}+ \frac{1}{s}+ 
-			\int_{1}^{\infty}\left(
-				\frac{\sqrt{y}}{2} - \frac{1}{2}
-				\right) y^{-s/2-1} dy+ \int_{1}^{\infty}\omega(x)  \left(x^{s/2-1} + x^{-s/2-1/2}\right)dx\\
-		&= \frac{1}{s(1-s)}+
-			\int_{1}^{\infty}\left(
-				\frac{\sqrt{y}}{2} - \frac{1}{2}
-				\right) y^{-s/2-1} dy+ \int_{1}^{\infty}\omega(x)  \left(x^{s/2-1} + x^{-s/2-1/2}\right)dx
+		&= \frac{1}{1-s} + \frac{1}{s}+  \int_{1}^{\infty}\omega(x)  \left(x^{s/2-1} + x^{-s/2-1/2}\right)dx\\
+		&= \frac{1}{s(1-s)}+ \int_{1}^{\infty}\omega(x)  \left(x^{s/2-1} + x^{-s/2-1/2}\right)dx.
 	\end{align*}
-	$\omega$ decays exponentially in $x$, so the integral converges and the last is well defined on $\complex$ except when $s=1$ or $s=0$.
-	Finally, notice that the last expression is symmetric when $s$ is replaced with $(1-s)$, so shows equation \ref{symmetryeq}.
+	$\omega$ decays exponentially in $x$, so the integral converges and the last expression is well defined on $\complex$ except when $s=1$ or $s=0$.
+	Finally, notice that the last expression is symmetric when $s$ is replaced with $(1-s)$, so proves equation \ref{symmetryeq}.
 \end{proof}
 \begin{corollary}
-	$\forall n\in\naturals, \zeta(-2n)=0.$
+	On $\Re(s)>1$ or $\Re(s)<0$, $\zeta(s)\neq 0$, except $\forall n\in\naturals, \zeta(-2n)=0.$
 \end{corollary}
 \begin{proof}
-	$\Gamma$ has a simple pole at $-n$.
+	Using the product representation of $\zeta$ where it converges, none of $(1-p^{-s})^-1 =0$, so $\zeta(s)\neq 0$ on $\Re(s)>1$.
+	$\Gamma$ has no zeros and has a simple pole at $-n$ for all $n\in\naturals$, so by equation \ref{symmetryeq} we get the zeros for $\Re(s)>0$ are exactly at the negative even integers.
 \end{proof}
 \begin{corollary}
-	
+	If $\zeta(s)=0$, $\zeta(\overline{s})=\zeta(1-s)=\zeta(1-\overline{s})=0.$
 \end{corollary}
+\begin{proof}
+	This follows from equation \ref{symmetryeq}, and $\zeta(\overline{s})=\overline{\zeta(s)}$ holds where the Dirichlet series converges, thus holds everywhere.
+\end{proof}
+\begin{definition}[Critical Strip and Critical Line]
+	We denote the region $0\leq \Re(s) \leq 1$ as the \textbf{critical strip}. We denote the line $\Re(s) = 1/2$ as the \textbf{critical line}.
+\end{definition}
+
+We now introduce some hypotheses regarding the zeta function, these statements have not been proved, but are supported by a great amount of heuristic evidence.
+\begin{definition}[Riemann Hypothesis]
+	The \textbf{Riemann Hypothesis} (RH) asserts that on the critical strip, \[
+		\zeta(s) = 0 \implies \Re(s) = \frac{1}{2}. 
+	\]
+\end{definition}
+
+\begin{definition}[Lindel\"of Hypothesis]
+	Let $\epsilon>0$. The \textbf{Lindel\"of Hypothesis} (LH) asserts that on the critical line, \[
+		\zeta\left(\frac{1}{2}+it\right) = O(t^\epsilon).
+	\]
+\end{definition}
+
+
+\begin{definition}[Lindel\"of Hypothesis]
+	Let $\epsilon>0$. The \textbf{Lindel\"of Hypothesis} asserts that on the critical line, \[
+	\zeta\left(\frac{1}{2}+it\right) = O(t^\epsilon).
+	\]
+\end{definition}

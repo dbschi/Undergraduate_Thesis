@@ -31,9 +31,11 @@ The zeta function converges absolutely on $\Re(s)>1$ by comparing to the integra
 \end{proof}
 Proposition \ref{eulerproduct} shows an inherent connection of the zeta function with primes.
 To further see this connection, we need to extend the zeta function.
-\begin{theorem}
+\begin{theorem} \label{analyticcontinuation}
 	$\zeta$ extends to a meromorphic function on $\complex$ with a simple pole at $s=1$. By abuse of notation, we identify the extension of the zeta function with $\zeta$ too.
-	Moreover, $\xi(s)\defeq \pi^{-s/2}\Gamma(s/2)\zeta(s)$ satisfies \begin{equation}\label{symmetryeq}
+\end{theorem}
+\begin{theorem}
+	Let $\xi(s)\defeq \pi^{-s/2}\Gamma(s/2)\zeta(s)$. Then \begin{equation}\label{symmetryeq}
 		\xi(s) = \xi(1-s).
 	\end{equation}
 \end{theorem}
@@ -83,6 +85,10 @@ To further see this connection, we need to extend the zeta function.
 	$\omega$ decays exponentially in $x$, so the integral converges and the last expression is well defined on $\complex$ except when $s=1$ or $s=0$.
 	Finally, notice that the last expression is symmetric when $s$ is replaced with $(1-s)$, so proves equation \ref{symmetryeq}.
 \end{proof}
+\begin{remark}
+	This also gives an analytic continuation of $\zeta$ in Theorem \ref{analyticcontinuation}, excluding some minor details
+	on the treatment of $\zeta(0)$ and $\zeta(1)$.
+\end{remark}
 \begin{corollary}
 	On $\Re(s)>1$ or $\Re(s)<0$, $\zeta(s)\neq 0$, except $\forall n\in\naturals, \zeta(-2n)=0.$
 \end{corollary}
@@ -90,16 +96,16 @@ To further see this connection, we need to extend the zeta function.
 	Using the product representation of $\zeta$ where it converges, none of $(1-p^{-s})^-1 =0$, so $\zeta(s)\neq 0$ on $\Re(s)>1$.
 	$\Gamma$ has no zeros and has a simple pole at $-n$ for all $n\in\naturals$, so by equation \ref{symmetryeq} we get the zeros for $\Re(s)>0$ are exactly at the negative even integers.
 \end{proof}
-\begin{corollary}
-	If $\zeta(s)=0$, $\zeta(\overline{s})=\zeta(1-s)=\zeta(1-\overline{s})=0.$
-\end{corollary}
-\begin{proof}
-	This follows from equation \ref{symmetryeq}, and $\zeta(\overline{s})=\overline{\zeta(s)}$ holds where the Dirichlet series converges, thus holds everywhere.
-\end{proof}
 \begin{definition}[Critical Strip and Critical Line]
 	We denote the region $0\leq \Re(s) \leq 1$ as the \textbf{critical strip}. We denote the line $\Re(s) = 1/2$ as the \textbf{critical line}.
 \end{definition}
 
+\begin{corollary}
+	On the critical strip, if $\zeta(s)=0$, $\zeta(\overline{s})=\zeta(1-s)=\zeta(1-\overline{s})=0.$
+\end{corollary}
+\begin{proof}
+	This follows from equation \ref{symmetryeq}, and $\zeta(\overline{s})=\overline{\zeta(s)}$ holds where the Dirichlet series converges, thus holds everywhere.
+\end{proof}
 We now introduce some hypotheses regarding the zeta function, these statements have not been proved, but are supported by a great amount of heuristic evidence.
 \begin{definition}[Riemann Hypothesis]
 	The \textbf{Riemann Hypothesis} (RH) asserts that on the critical strip, \[
@@ -110,12 +116,5 @@ We now introduce some hypotheses regarding the zeta function, these statements h
 \begin{definition}[Lindel\"of Hypothesis]
 	Let $\epsilon>0$. The \textbf{Lindel\"of Hypothesis} (LH) asserts that on the critical line, \[
 		\zeta\left(\frac{1}{2}+it\right) = O(t^\epsilon).
-	\]
-\end{definition}
-
-
-\begin{definition}[Lindel\"of Hypothesis]
-	Let $\epsilon>0$. The \textbf{Lindel\"of Hypothesis} asserts that on the critical line, \[
-	\zeta\left(\frac{1}{2}+it\right) = O(t^\epsilon).
 	\]
 \end{definition}

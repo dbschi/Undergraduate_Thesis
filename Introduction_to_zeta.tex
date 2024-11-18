@@ -1,11 +1,13 @@
 \section{Introduction to the Riemann Zeta Function}
-
+In this section, we give a quick introduction to the zeta function, including its product representation and analytic continuation,
+as well as conjectures regarding the zeta function.
 \begin{definition}[Zeta Function]
 	Let $s\in\complex$ with $\Re(s)>1$. Then \begin{equation}
 	\zeta(s)=\sum_{n=1}^{\infty}\frac{1}{n^s}.
 	\end{equation}
 \end{definition}
 The zeta function converges absolutely on $\Re(s)>1$ by comparing to the integral $\int x^{-\Re(s)} dx$.
+The properties of the zeta function as they relate to the distribution primes. In particular, the Dirichlet series can be represented as a product of primes.
 \begin{proposition}\label{eulerproduct}
 	On $\Re(s)>1$, \begin{equation}
 		\zeta(s) = \prod_{p\in\mathbb{N}}\left(1-\frac{1}{p^s}\right)^{-1}.	
@@ -29,16 +31,15 @@ The zeta function converges absolutely on $\Re(s)>1$ by comparing to the integra
 	Where we apply to Fundemental Theorem of Arithmetic in (*) to show that each term $n^{-s}$ has coefficient $1$ determined by the unique prime factorization.
 	As $m\to\infty$, $2^{-m\sigma} \to 0$. Then we take $N\to\infty$, the tail of the infinite sum converges to zero too.
 \end{proof}
-Proposition \ref{eulerproduct} shows an inherent connection of the zeta function with primes.
-To further see this connection, we need to extend the zeta function.
-\begin{theorem} \label{analyticcontinuation}
+\begin{proposition} \label{analyticcontinuation}
 	$\zeta$ extends to a meromorphic function on $\complex$ with a simple pole at $s=1$. By abuse of notation, we identify the extension of the zeta function with $\zeta$ too.
-\end{theorem}
-\begin{theorem}
+\end{proposition}
+The continuation of the zeta function is best described by its functional equation: $\zeta$ has a line of symmetry across $\Re (s)=1/2$.
+\begin{proposition}
 	Let $\xi(s)\defeq \pi^{-s/2}\Gamma(s/2)\zeta(s)$. Then \begin{equation}\label{symmetryeq}
 		\xi(s) = \xi(1-s).
 	\end{equation}
-\end{theorem}
+\end{proposition}
 \begin{proof}
 	Using \begin{align*}
 		\Gamma(s)=\int_{0}^{\infty} e^{-x}x^{s-1}dx,
@@ -89,6 +90,8 @@ To further see this connection, we need to extend the zeta function.
 	This also gives an analytic continuation of $\zeta$ in Theorem \ref{analyticcontinuation}, excluding some minor details
 	on the treatment of $\zeta(0)$ and $\zeta(1)$.
 \end{remark}
+From the functional equation, we get `trivial' zeros of the zeta function from the poles of $\Gamma$. 
+
 \begin{corollary}
 	On $\Re(s)>1$ or $\Re(s)<0$, $\zeta(s)\neq 0$, except $\forall n\in\naturals, \zeta(-2n)=0.$
 \end{corollary}
@@ -106,7 +109,16 @@ To further see this connection, we need to extend the zeta function.
 \begin{proof}
 	This follows from equation \ref{symmetryeq}, and $\zeta(\overline{s})=\overline{\zeta(s)}$ holds where the Dirichlet series converges, thus holds everywhere.
 \end{proof}
-We now introduce some hypotheses regarding the zeta function, these statements have not been proved, but are supported by a great amount of heuristic evidence.
+The number of zeros in the critical strip can be calculated using the argument principle applied to the function $\xi$ over the box with corners $-1+iT$,$-1-iT$,$2-iT$,$2+iT$.
+Applying the functional equation, we get the following result.
+
+\begin{theorem}[Number of zeros of $\zeta$]
+	The number of zeros up to height $T$\[
+	\#\{\sigma+it \ | \ \zeta(\sigma+it)=0,0 \leq \sigma\leq 1, |t|\leq T \} = \frac{T}{2\pi}\log{\frac{T}{2\pi e}} + O(\log T).
+	\]
+\end{theorem}
+
+Finally, we introduce some hypotheses regarding the zeta function, these statements have not been proved, but are supported by a great amount of heuristic evidence.
 \begin{definition}[Riemann Hypothesis]
 	The \textbf{Riemann Hypothesis} (RH) asserts that on the critical strip, \[
 		\zeta(s) = 0 \implies \Re(s) = \frac{1}{2}. 

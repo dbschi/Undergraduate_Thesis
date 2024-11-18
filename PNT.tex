@@ -1,18 +1,14 @@
 \section{The Prime Number Theorem}
 
 \begin{theorem}[Prime Number Theorem]
-    Let $\Pi(x)=\sum_{p\leq n} 1$. Then \[
-        \Pi(x) = (1+o(1))\frac{x}{\log x}.
+    Let $\Pi(N)=\sum_{p\leq N} 1$. Then \[
+        \Pi(N) = (1+o(1))\frac{N}{\log N}.
     \]
 \end{theorem}
 
-In this section we will prove the Prime Number Theorem.
-However, note that this result is a minor goal of this paper.
-The Prime Number Theorem provides an illustration of multiple ideas
-and techniques of manipulating the zeta function.
-Furthermore, this theorem serves as a starting point for
-studying primes in short intervals, and demonstrates why the proof of
-RH (or the weaker LH) is widely sought after, thus sets the stage for zero-density theorems.
+In this section we will prove the Prime Number Theorem. This result is a minor goal of this paper.
+The Prime Number theorem serves as a starting point for
+studying primes in short intervals, and sets the stage for zero-density theorems.
 \begin{definition}[Von Mangoldt Function]
     The \textbf{Von Mangoldt function} $\Lambda$ is defined as follows:
     \[
@@ -31,7 +27,23 @@ a prime counting function in the language of $\zeta$. To see why, consider the e
     &= -\sum_{p} \log p \sum_{k\in\naturals} p^{-ks}\\
     &= - \sum_{n\in\naturals} \frac{\Lambda(n)}{n^s}
 \end{align*}
-on $\Re(s)>1$ where the sum and products are absolutely convergent. We thus motivate the following technique:
+on $\Re(s)>1$ where the sum and products are absolutely convergent.
+\begin{proposition}\label{mangoldtpnt}
+    $\sum_{n\leq N} \Lambda(n) = (1+o(1))N$ implies the Prime Number Theorem.
+\end{proposition}
+\begin{proof}
+    On one hand, we have \begin{align*}
+        \sum_{n\leq N }\Lambda(n) &\leq \sum_{p \leq N }\Lambda(N)
+        \\ &\leq \Pi(x){\log x}.
+    \end{align*}
+    And for $\epsilon>0$,
+    \begin{align*}
+        \sum_{n\leq N }\Lambda(n) &\geq \sum_{N^{1-\epsilon}\leq n\leq N }\Lambda(n)
+        \\ &\geq \sum_{N^{1-\epsilon}\leq p \leq N }(1-\epsilon) \log(N)\\
+        \\&= \Pi(N)\log(N) + O(N^{1-\epsilon}log N).
+    \end{align*}
+\end{proof}
+Moreover, the sum of the Von Mangoldt function can be related to the zeros of the zeta function.
 Let $\phi$ be smooth and rapidly decaying at infinity, and $\tilde{\phi}$ be its Mellin transform. Let $N\in\naturals$ and $c\geq 2$. Then \begin{equation} \label{mellinonzeta}
     \begin{split}
     \sum_{n\in\naturals} \Lambda(n) \phi\left(\frac{n}{N}\right) &=
@@ -43,14 +55,13 @@ Let $\phi$ be smooth and rapidly decaying at infinity, and $\tilde{\phi}$ be its
     \tilde{\phi}(s) N^s \frac{\zeta'(s)}{\zeta(s)} ds \\
     \end{split}
 \end{equation}
-Now take a bump function $\phi=1$ on $[0,1]$ and $0$ outside $[0-\epsilon, 1+\epsilon]$. 
-Applying Dominated Convergence theorem on equation \ref{mellinonzeta} gives for $\epsilon \downarrow 0$,
+Morally, we can take a bump function $\phi=1$ on $[0,1]$ and supported in $[0-\epsilon, 1+\epsilon]$. 
 \begin{equation}\label{preexplicit}
     \sum_{n\leq N} \Lambda(n)=
     \frac{-1}{2\pi i}\int_{c-i\infty}^{c+i\infty}
     \frac{1}{s} N^s \frac{\zeta'(s)}{\zeta(s)} ds
 \end{equation}
-Changing the line of integration from $c$ to $-\infty$ \textbf{need to give bounds on log' zeta}, we get residue contributions from
+Temporarily ignoring issues of convergence, we change the line of integration from $c$ to $-\infty$, we get residue contributions from
 a pole at $s=1$, $s=0$, as well as all $\rho$ such that $\zeta(\rho)=0$ on the critical strip,
 and all the trivial zeros. This gives \begin{equation}
     \begin{split}
@@ -60,3 +71,36 @@ and all the trivial zeros. This gives \begin{equation}
         \frac{\zeta'(0)}{\zeta(0)} + \frac{1}{2}\log\left(1-N^{-2}\right). 
     \end{split}
 \end{equation}
+The sum over zeros $\rho$ is not absolutely convergent, and is ordered in increasing $|\Im(\rho)|$.
+This formula is in fact true.
+\begin{theorem}[Riemann-von Mangoldt explicit formula]
+    Let $N>1$ be not a prime power. Then\begin{equation}
+    \sum_{n\leq N} \Lambda(n) = N - \lim_{T\to \infty}\sum_{|\Im{(\rho)}|\leq T} \frac{N^\rho}{\rho} -
+    \frac{\zeta'(0)}{\zeta(0)} + \frac{1}{2}\log\left(1-N^{-2}\right). 
+    \end{equation}
+\end{theorem}
+In practice, we truncate the integral in \label{preexplicit} up to height $T$, \textit{is the proof needed?} to obtained a truncated version of the explicit formula.
+\begin{theorem}
+    Let $N>1$. Then\begin{equation}
+        \sum_{n\leq N} \Lambda(n) = N - \sum_{|\Im{(\rho)}|\leq T} \frac{N^\rho}{\rho} + O(\frac{N\log N \log T}{T} + \log T). 
+        \end{equation}
+\end{theorem}
+Assuming the Riemann Hypothesis, we consider the sum over the non trivial zeros \begin{align*}
+\left|\sum_{|\Im(\rho)\leq T|}\frac{N^\rho}{\rho}\right| &\leq N^{1/2} \sum_{\rho}\left|{\frac{1}{\rho}}\right|.    
+\end{align*}
+We know there are $\sim \log T$ zeros of height $[T,T+1)$, thus the integral $\sum |\rho^{-1}|$ behaves as \[
+\sum_{n\leq T} \frac{\log n}{n} = O(\log^2 T).
+\]
+Taking $N=T$ in the truncated explicit formula, we obtain \begin{equation} \label{RHPNT}
+    \sum_{n\leq N} \Lambda(n) = N + O(N^{1/2}\log^2 N).
+\end{equation}
+Which implies the prime number theorem.
+\begin{remark}
+    The prime number theorem with the error term in \label{RHPNT} can be shown to be equivalent to the Riemann Hypothesis.
+\end{remark}
+The major error term comes from $N^\rho$ in the sum, so bounding the $\Re(\rho)$ becomes the most important part in reducing the error term in the prime number theorem. 
+\begin{theorem}\label{nozerosatone}
+    Let $t\in\reals$. Then $\zeta(1+it)\neq 0$.
+\end{theorem}
+Let us assume Theorem \ref{nozerosatone} and use it to derive the prime number theorem.
+

@@ -1,0 +1,44 @@
+\section{Primes in Short Intervals}
+We would like to answer the following question about primes in short intervals. Let $y=y(x)$. What is the smallest asymptotic behavior of $y$
+such that \begin{equation}\label{shortintervalpnt}
+\sum_{x\leq n \leq x+y} \Lambda(n) \sim y
+\end{equation}
+for large enough $x$? That is, what is the shortest interval such that we have the behavior of the Prime Number Theorem? If \ref{shortintervalpnt} holds for some $y$,
+we say the Prime Number Theorem holds for intervals of $y$.
+We remark that this question can be rephrased into finding primes in short intervals, 
+\begin{proposition}
+    Assume the RH. Then the Prime Number Theorem holds in intervals of $x^{1/2+\epsilon}$.
+\end{proposition}
+\begin{proof}
+    Assume the RH, then
+    \begin{align*}
+        \sum_{x\leq n \leq x+y} \Lambda(n)=
+        y+O(x^{1/2}\log^2 x) = x^{1/2+\epsilon} + o(x^{1/2+\epsilon}),
+    \end{align*}
+    so that the sum is non-zero for large enough $x$. The argument is similar without assuming the RH.
+\end{proof}
+Recalling that the error term is related to the real part of the zeros of the Zeta function, we motivate the following definition of zero-density:
+\begin{definition}
+    Let $N(\sigma, T)$ denote the number of zeros of the zeta function with real part greater than $\sigma$ and imaginary part between $-T$ and $T$. That is,\[
+        N(\sigma,T) = \# \{\rho = \beta + i\gamma \ | \ \beta >\sigma, |\gamma|\leq T\}.
+    \]
+\end{definition}
+\begin{remark}
+    The ideal scenario is that $N(\sigma,T)=0$ for all $\sigma\geq 1/2$. 
+\end{remark}
+\begin{theorem}[Chudakov] 
+    There exists a constant $A$ such that $\zeta(\sigma+iT)\neq 0$ in the region \begin{equation*}
+        \sigma > 1 - A\frac{\log \log T}{\log T}.
+    \end{equation*}
+\end{theorem}
+\textit{add reference}
+\begin{theorem}[Hoheisel] \label{Hoheisel}
+    Let $A$ be defined as in the previous theorem.
+    Suppose that $N(\sigma, T)\ll T^{a(1-\sigma)}\log^b T$ uniformly in $1/2<\sigma<1$ and in $T$. Then for all \[
+        \theta > 1 - \frac{1}{a+b/A},
+    \] the Prime Number Theorem holds in 
+    intervals of $y=x^\theta$.
+\end{theorem}
+
+\textit{add reference}
+Theorem \ref{Hoheisel} gives the classic estimate for 

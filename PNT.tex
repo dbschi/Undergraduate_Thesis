@@ -61,7 +61,7 @@ Morally, we can take a bump function $\phi=1$ on $[0,1]$ and supported in $[0-\e
     \frac{-1}{2\pi i}\int_{c-i\infty}^{c+i\infty}
     \frac{1}{s} N^s \frac{\zeta'(s)}{\zeta(s)} ds
 \end{equation}
-Temporarily ignoring issues of convergence, we change the line of integration from $c$ to $-\infty$, we get residue contributions from
+By the rapid decay of $\tilde\phi$, we change the line of integration from $c$ to $-\infty$, we get residue contributions from
 a pole at $s=1$, $s=0$, as well as all $\rho$ such that $\zeta(\rho)=0$ on the critical strip,
 and all the trivial zeros. This gives \begin{equation}
     \begin{split}
@@ -85,6 +85,9 @@ In practice, we truncate the integral in \label{preexplicit} up to height $T$, \
         \sum_{n\leq N} \Lambda(n) = N - \sum_{|\Im{(\rho)}|\leq T} \frac{N^\rho}{\rho} + O(\frac{N\log N \log T}{T} + \log T). 
         \end{equation}
 \end{theorem}
+The term $N$ in the explicit formula is already suggestive of the Prime Number Theorem. 
+The major error term comes from $N^\rho$ in the sum, so bounding the $\Re(\rho)$ becomes the most important part in reducing the error term in the prime number theorem. 
+This in turn is equivalent to bounding $\Re({\rho})$, and the best case is when all the zeros have real part $1/2$.
 Assuming the Riemann Hypothesis, we consider the sum over the non trivial zeros \begin{align*}
 \left|\sum_{|\Im(\rho)\leq T|}\frac{N^\rho}{\rho}\right| &\leq N^{1/2} \sum_{\rho}\left|{\frac{1}{\rho}}\right|.    
 \end{align*}
@@ -98,9 +101,57 @@ Which implies the prime number theorem.
 \begin{remark}
     The prime number theorem with the error term in \label{RHPNT} can be shown to be equivalent to the Riemann Hypothesis.
 \end{remark}
-The major error term comes from $N^\rho$ in the sum, so bounding the $\Re(\rho)$ becomes the most important part in reducing the error term in the prime number theorem. 
+The prime number theorem is also true without assuming the Riemann Hypothesis. 
+It is sufficient to show that there are no zeros with real part $1$, so the terms in the sum contributes $O(N^{1-\epsilon})$
+which will be dominated by $N$.
 \begin{theorem}\label{nozerosatone}
     Let $t\in\reals$. Then $\zeta(1+it)\neq 0$.
 \end{theorem}
-Let us assume Theorem \ref{nozerosatone} and use it to derive the prime number theorem.
-
+Condition on proving Theorem \ref{nozerosatone}, we use it to derive the prime number theorem.
+Let $\phi=\phi_{N,T}$ be a bump function that equals $1$ on the interval $[2,N]$ and supported on $[3/2, N+N/T]$.
+By construction we can also make $\phi^{(j)}(x)=O_j(1)$ and $\phi^{(j)}(x)=O_j(T/x)^j$ on the intervals $[3/2, 2]$ and $[N,N+N/T]$ respectively.
+Then \begin{align*}
+    \sum_{n\leq N}\Lambda(n) &\leq \sum_{n} \Lambda(n)\phi(n)\\
+    &= \frac{-1}{2\pi i}\int_{c-i\infty}^{c+i\infty}\tilde{\phi}\frac{\zeta'(s)}{\zeta(s)}ds\\
+    &= \tilde{\phi}(1) - \sum_{\rho} \tilde{\phi}(\rho) - \sum_{n} \tilde{\phi}(-2n)\\
+\end{align*}
+The first term \begin{align*}
+    \tilde{\phi}(1) &= \int_{0}^{\infty} \phi(x) dx \\
+    &= N+ O(N/T) 
+\end{align*}
+gives the term we want from the PNT. In the third term, we rewrite by Monotone Convergence \begin{align*}
+    \sum_{n} \tilde{\phi}(-2n) &= \sum_{n} \int_{0}^{\infty} \phi(x) x^{-2n-1} dx \\
+    &=\int_{0}^{\infty} \phi(x) \sum_{n} x^{-2n-1} dx \\
+    &= \int_{0}^{\infty} \phi(x) \frac{1}{x^3-x} dx \\
+    &= O(1)
+\end{align*} 
+Finally, to bound the second term, we define a parameter $\bar{T} = \bar{T}(T)$ and split the sum into\[
+\sum_{|\Im{\rho}|\leq \bar{T}}\tilde{\phi}(\rho) + \sum_{|\Im{\rho}| > \bar{T}}\tilde{\phi}(\rho)
+\]
+In the first summation, we let $\epsilon = \epsilon_{\bar{T}}$ 
+such that there are no zeros in the region
+$\Re({s})>1-\epsilon, |\Im{(s)}|\leq \bar{T}$, then \begin{align*}
+    \sum_{|\Im{\rho}|\leq \bar{T}}\tilde{\phi}(\rho) &= \sum_{|\Im{\rho}|\leq \bar{T}} \int_{0}^{\infty}\phi(x)x^{\rho-1}dx\\
+    &= O_{T}(N^{1-\epsilon}).
+\end{align*}
+In the second summation, we apply integration by parts to show that \begin{align*}
+    |\int_{0}^{\infty}\phi(x)x^{\rho-1}dx| &= |\frac{1}{\rho(\rho+1)}\int_{0}^{\infty}\phi''(x)x^{\rho+1}dx|\\
+    &= O(\frac{1}{|\rho|^2} \frac{T^2}{N^2} \frac{N}{T} N^2)\\
+    &=O(\frac{1}{|\rho|^2} TN)
+\end{align*}
+The sum $\frac{1}{|\rho|^2}$ behaves as $\sum_n \log n n^{-2}$, so we can pick $\bar{T}$ large enough depending on $T$
+to make the contribution of $\sum_{\Im(\rho)>\bar{T}} |\rho|^{-2}$ to be $O(T^{-2})$.
+So that 
+\begin{align*}
+    \sum_{n\leq N}\Lambda(n)&\leq N +O(N/T)+ O_T(N^{1-\epsilon})\\
+    = N+O(N/T)
+\end{align*}
+for $N=N(T)$ sufficiently large.
+Similarly, repeating the same argument on $\phi=\phi_{N,T}$ equals $1$ on the interval $[2,N-N/T]$ and supported on $[3/2, N]$
+gives \[
+    \sum_{n\leq N}\Lambda(n)\geq N+O(N/T).
+\]
+Sending $T\to\infty$ gives the PNT.
+\begin{proof}[Proof of Theorem \ref{nozerosatone}]
+    
+\end{proof}

@@ -1,5 +1,5 @@
-\section*{Preliminaries}
-\subsection*{Number Theory Results}
+\section{Preliminaries}
+Here we give some supplementary definitions and statements of theorems.
 \begin{theorem}[M\"obius Inversion]
 	The M\"obius function $\mu$ is defined for $n\in\naturals$,
 	\[
@@ -9,4 +9,47 @@
 			0, \textrm {otherwise}
 		\end{cases}
 	\]
+	Suppose we have arithmetic functions $f,g$, and that\[
+		f(n) = \sum_{d|n} g(d)
+	\]
+	Then the M\"obius Inversion formula gives 
+	\[
+		g(n) = \sum_{d|n} \mu(d) f\left(\frac{n}{d}\right)
+	\]
+\end{theorem}
+\begin{example}
+	On $\Re(s)>1$, let $M_N(s) = \sum_{n\leq N} \mu(n)n^{-s}$.
+	Then setting $f(n)=1$ for all $n$, $g(1)=1$, $g(n)=0$ for $n\geq 2$, we multiply $M_N$ by $\zeta$ in Dirichlet series to get\[
+		\zeta(s)M_N(s) = \sum_{n} \frac{a_n}{n^{-s}},
+	\]
+	where $a_n=g(n)$ for all $n\leq N$.
+	Similarly, letting $M_N(s) = \sum_{n\leq N} \chi(n) \mu(n) n^{-s}$ for some Dirichlet character $\chi$,
+	we get \[
+		L(s,\chi)M_N(s) = \sum_{n} \frac{a_n\chi(n)}{n^{-s}}
+	\]
+	with the same $a_n$ as in the previous equation.
+\end{example}
+
+\begin{theorem}[Fourier Inversion]
+	In Schwartz space, the Fourier transform of $\mathcal{F}:\schwartz(\reals^d)\to\schwartz(\reals^d)$ of $f\in\mathcal{S}(\reals^d)$ is given by
+    \[
+        \hat{f}(\mathbf{\xi})\defeq\mathcal{F}f(\mathbf{\xi})\defeq \int_{\reals^d} e(- \mathbf{\xi}\cdot \mathbf{x}) f(\mathbf{x}) \ d\mathbf{x}
+    \]
+    has inverse given by 
+    \[
+       f(\mathbf{x})= \mathcal{F}^{-1}\hat{f}(\mathbf{x})\defeq \int_{\reals^d} e(\mathbf{\xi}\cdot \mathbf{x}) \hat{f}(\mathbf{\xi}) \ d\mathbf{\xi}.
+    \]
+\end{theorem}
+\begin{theorem}[Mellin Inversion]
+	The Mellin transform of a function $f:(0,\infty)\to\complex$
+	\[
+	\tilde{f}(s) \defeq \mathcal{M}f(s) \defeq \int_{0}^{\infty}f(x) x^{s-1} \ dx
+	\]
+	has inverse \[
+	\mathcal{M}^{-1} \tilde{f} (x) = \int_{c-i\infty}^{c+i\infty} \tilde{f}(s) x^{-s}ds
+	\]
+	on $a<c<b$ provided that the integral $\tilde{f}$ is absolute convergent on the strip $a<\Re(s)<b$.
+\end{theorem}
+\begin{theorem}[Poisson Summation]
+	
 \end{theorem}

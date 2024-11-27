@@ -82,9 +82,10 @@ The sum over zeros $\rho$ is not absolutely convergent, and is ordered in increa
     \end{equation}
 \end{theorem}
 In practice, we truncate the integral in \label{preexplicit} up to height $T$ to obtained a truncated version of the explicit formula.
-\begin{theorem}
+This is obtained through integration along the choice of $c=1+1/\log N$
+\begin{theorem} \label{truncateexplcit}
     Let $N>1$. Then\begin{equation}
-        \sum_{n\leq N} \Lambda(n) = N - \sum_{|\Im{(\rho)}|\leq T} \frac{N^\rho}{\rho} + O(\frac{N\log N \log T}{T} + \log T). 
+        \sum_{n\leq N} \Lambda(n) = N - \sum_{|\Im{(\rho)}|\leq T} \frac{N^\rho}{\rho} + O(\frac{N}{T}(\log NT) ^2) + O(\log N). 
         \end{equation}
 \end{theorem}
 The term $N$ in the explicit formula is already suggestive of the Prime Number Theorem. 
@@ -142,12 +143,12 @@ In the second summation, we apply integration by parts to show that \begin{align
     &= O\left(\frac{1}{|\rho|^2} \frac{T^2}{N^2} \frac{N}{T} N^2\right)\\
     &=O\left(\frac{1}{|\rho|^2} TN\right)
 \end{align*}
-The sum $\frac{1}{|\rho|^2}$ behaves as $\sum_n \log n n^{-2}$, so we can pick $\bar{T}$ large enough depending on $T$
+The sum over $|\rho|^{-2}$ behaves as $\sum_n n^{-2} \log n$, so we can pick $\bar{T}$ large enough depending on $T$
 to make the contribution of $\sum_{\Im(\rho)>\bar{T}} |\rho|^{-2}$ to be $O(T^{-2})$.
 So that 
 \begin{align*}
     \sum_{n\leq N}\Lambda(n)&\leq N +O(N/T)+ O_T(N^{1-\epsilon})\\
-    = N+O(N/T)
+   & = N+O(N/T)
 \end{align*}
 for $N=N(T)$ sufficiently large.
 Similarly, repeating the same argument on $\phi=\phi_{N,T}$ equals $1$ on the interval $[2,N-N/T]$ and supported on $[3/2, N]$

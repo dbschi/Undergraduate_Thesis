@@ -1,9 +1,9 @@
-\section{Towards a Hybrid zero density result}
+\section{Towards a Hybrid Zero Density Result}
 
 Here I will document some progress with working with
 the hybrid version of Guth-Maynard. This section will be removed when I send the draft to Prof. Wunsch.
-Let $\omega$ be a bump function supported on \textit{[placeholder]}. We denote \[
-D_N(t,\chi) = \sum_{n\sim N} b_n \chi(n) n^{it}
+Let $\omega$ be a bump function supported on \textit{[placeholder]}. Let $N=T^{[placeholder]}$. We denote \[
+D_N(t,\chi) = \sum_{n\sim N} \omega\left(\frac{n}{N}\right)b_n \chi(n) n^{it}
 \]
 and $\mathcal{S}=\{(t_j,\chi_j)\}_{j\leq |\mathcal{S}|}$ such that 
 \[
@@ -72,9 +72,35 @@ We then have \begin{align*}
 \end{align*}
 Again by the orthogonality of characters, the only way to get non-zero contribution is when $\chi_1=\chi_2$ and $\chi_2=\chi_3$. So this reduces to\begin{align*}
     I_m=\frac{N^3}{q^3}\sum_{\substack{(t_1,\chi_1),\\(t_2,\chi_2=\chi_1),\\(t_3,\chi_3=\chi_1)\in\mathcal{S}}} &\phi(q)^2 \sum_{x_3\in (\mathbb{Z}/q\mathbb{Z})^{\times}}e\left(\frac{-x_3 m_3}{q}\right)\\
-    \times \ &\hat{h}_{t_1-t_3}\left(0\right)\hat{h}_{t_2-t_1}\left(0\right)\hat{h}_{t_3-t_2}\left(\frac{Nm_3x_3}{q}\right)
+   \quad  \times \ &\hat{h}_{t_1-t_3}\left(0\right)\hat{h}_{t_2-t_1}\left(0\right)\hat{h}_{t_3-t_2}\left(\frac{Nm_3x_3}{q}\right)\\
 \end{align*}
-If $m_3>qT^{1+\epsilon}/N$, we have quick decay in the last term and these values of $m$ contribute\[
-\ll \frac{N^3}{q^3} |\mathcal{S}|^3\phi(q)^3 \sum_{m>qT^{1+\epsilon}/N} T^{-100}m^{-100}
-\]
+So we trivially bound $S_1$ by\begin{align*}
+    |S_1|&\ll  \frac{N^3}{q^3} \phi(q)^2 \sum_{m_3\neq 0}\sum_{\substack{(t_1,\chi_1),\\(t_2,\chi_2=\chi_1),\\(t_3,\chi_3=\chi_1)\in\mathcal{S}}} \sum_{x_3\in (\mathbb{Z}/q\mathbb{Z})^{\times}}
+   \left|\hat{h}_{t_1-t_3}\left(0\right)\hat{h}_{t_2-t_1}\left(0\right)\hat{h}_{t_3-t_2}\left(\frac{Nm_3x_3}{q}\right)\right|\\
+\end{align*}
+By the quick decay and boundedness of $\hat{h}_t(\xi)$ in both $\xi$ and $t$ (decays in terms of $\langle \xi \rangle^{-A}\langle t \rangle^A $ or $ \langle \xi \rangle^A\langle t \rangle^{-A} $), we can bound the terms when summed across all $|m_3|>qT^{1+\epsilon}/(Nx_3)$. For the remaining terms, $t_1\neq t_2$, $t_1\neq t_3$ can be bounded by $O(T^{-10})$.
+Finally, when $t_1=t_2=t_3$ and $|m_3|$ is small, we get decay in terms of $(N/q)^{-100}$. 
 
+The sum over terms $|m_3|>qT^{1+\epsilon}/N$,
+\begin{align*}
+   & \sum_{|m_3|>qT^{1+\epsilon}/N}\sum_{\substack{(t_1,\chi_1),\\(t_2,\chi_2=\chi_1),\\(t_3,\chi_3=\chi_1)\in\mathcal{S}}} \sum_{x_3\in (\mathbb{Z}/q\mathbb{Z})^{\times}}
+   \left|\hat{h}_{t_1-t_3}\left(0\right)\hat{h}_{t_2-t_1}\left(0\right)\hat{h}_{t_3-t_2}\left(\frac{Nm_3x_3}{q}\right)\right|\\
+    \ll_{\epsilon,A} & \sum_{|m_3|>qT^{1+\epsilon}/N}\sum_{\substack{(t_1,\chi_1),\\(t_2,\chi_2=\chi_1),\\(t_3,\chi_3=\chi_1)\in\mathcal{S}}} \sum_{x_3\in (\mathbb{Z}/q\mathbb{Z})^{\times}}
+    \left|T^{A}\left(\frac{Nm_3}{q} \right)^{-A}\right|\\
+    \ll & |\mathcal{S}|^3\phi(q) T^{-10}.
+\end{align*}
+For $|m_3|\leq qT^{1+\epsilon}/N$, we use the same bound for terms $t_1\neq t_2$ or $t_1\neq t_3$ by the $\hat{h}_t(0)$ terms. When $t_1=t_2=t_3$, we use $m_3\neq 0$
+to bound \[
+    \left|\hat{h}_{t_3-t_2}\left(\frac{Nm_3x_3}{q}\right)\right| \ll \left(\frac{q}{N}\right)^{-100}
+\]
+since $|\mathcal{S}|\ll T\phi(q)$, we can set $T\gg q$ to get the contribution of $S_1$ to be $O\epsilon(T^{-10})$.
+\subsection{$S_2$ bound}
+We write by symmetry \begin{align*}
+    S_2= 3\frac{N^3}{q^3}\sum_{m_1,m_2\neq 0}\sum_{\substack{(t_1,\chi_1),\\(t_2,\chi_2),\\(t_3,\chi_3)\in\mathcal{S}}} &\sum_{x\in (\mathbb{Z}/q\mathbb{Z})^3}\chi_1\bar{\chi}_3(x_1)\chi_2\bar{\chi}_1(x_2)\chi_3\bar{\chi}_2(x_3) e\left(\frac{-x_1m_1-x_2m_2}{q}\right)\\
+    \times \ &\hat{h}_{t_1-t_3}\left(\frac{Nm_1x_1}{q}\right)\hat{h}_{t_2-t_1}\left(\frac{Nm_2x_2}{q}\right)\hat{h}_{t_3-t_2}\left(0\right)
+\end{align*}
+Removing zero contributions from $\chi_2\neq \chi_3$ by orthogonality,
+we have \begin{align*}
+    =3\frac{N^3}{q^3} \phi(q) \sum_{m_1,m_2\neq 0}\sum_{\substack{(t_1,\chi_1),\\(t_2,\chi_2),\\(t_3,\chi_3=\chi_2)\in\mathcal{S}}} &\sum_{x_1,x_2 \in \mathbb{Z}/q\mathbb{Z}}\chi_1\bar{\chi}_3(x_1)\chi_2\bar{\chi}_1(x_2) e\left(\frac{-x_1m_1-x_2m_2}{q}\right)\\
+    \times \ &\hat{h}_{t_1-t_3}\left(\frac{Nm_1x_1}{q}\right)\hat{h}_{t_2-t_1}\left(\frac{Nm_2x_2}{q}\right)\hat{h}_{t_3-t_2}\left(0\right)
+\end{align*}

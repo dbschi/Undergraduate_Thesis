@@ -5,7 +5,9 @@ such that \begin{equation}\label{shortintervalpnt}
 \end{equation}
 for large enough $x$? That is, what is the shortest interval such that we have the behavior of the Prime Number Theorem? If \ref{shortintervalpnt} holds for some $y$,
 we say the Prime Number Theorem holds for intervals of $y$.
-We remark that this question can be rephrased into finding primes in short intervals, 
+\begin{remark}
+    This question can be rephrased into finding primes in short intervals, by including a factor of $\log x$. 
+\end{remark} 
 \begin{proposition}
     Assume the RH. Then the Prime Number Theorem holds in intervals of $x^{1/2+\epsilon}$.
 \end{proposition}
@@ -15,7 +17,7 @@ We remark that this question can be rephrased into finding primes in short inter
         \sum_{x\leq n \leq x+y} \Lambda(n)=
         y+O(x^{1/2}\log^2 x) = x^{1/2+\epsilon} + o(x^{1/2+\epsilon}),
     \end{align*}
-    so that the sum is non-zero for large enough $x$. The argument is similar without assuming the RH.
+    so that the sum is non-zero for large enough $x$.
 \end{proof}
 Recalling that the error term is related to the real part of the zeros of the Zeta function, we motivate the following definition of zero-density:
 \begin{definition}

@@ -34,13 +34,13 @@ on $\Re(s)>1$ where the sum and products are absolutely convergent.
 \begin{proof}
     On one hand, we have \begin{align*}
         \sum_{n\leq N }\Lambda(n) &\leq \sum_{p \leq N }\Lambda(N)
-        \\ &\leq \Pi(x){\log x}.
+        \\ &\leq \Pi(N){\log N}.
     \end{align*}
     And for $\epsilon>0$,
     \begin{align*}
         \sum_{n\leq N }\Lambda(n) &\geq \sum_{N^{1-\epsilon}\leq n\leq N }\Lambda(n)
         \\ &\geq \sum_{N^{1-\epsilon}\leq p \leq N }(1-\epsilon) \log(N)\\
-        \\&= \Pi(N)\log(N) + O(N^{1-\epsilon}log N).
+        \\&= (1-\epsilon) (\Pi(N)\log(N) + O(N^{1-\epsilon}\log N)).
     \end{align*}
 \end{proof}
 Moreover, the sum of the Von Mangoldt function can be related to the zeros of the zeta function.
@@ -91,7 +91,7 @@ The term $N$ in the explicit formula is already suggestive of the Prime Number T
 The major error term comes from $N^\rho$ in the sum, so bounding the $\Re(\rho)$ becomes the most important part in reducing the error term in the prime number theorem. 
 This in turn is equivalent to bounding $\Re({\rho})$, and the best case is when all the zeros have real part $1/2$.
 Assuming the Riemann Hypothesis, we consider the sum over the non trivial zeros \begin{align*}
-\left|\sum_{|\Im(\rho)\leq T|}\frac{N^\rho}{\rho}\right| &\leq N^{1/2} \sum_{\rho}\left|{\frac{1}{\rho}}\right|.    
+\left|\sum_{|\Im(\rho)|\leq T|}\frac{N^\rho}{\rho}\right| &\leq N^{1/2} \sum_{|\Im(\rho)|\leq T}\left|{\frac{1}{\rho}}\right|.    
 \end{align*}
 We know there are $\sim \log T$ zeros of height $[T,T+1)$, thus the integral $\sum |\rho^{-1}|$ behaves as \[
 \sum_{n\leq T} \frac{\log n}{n} = O(\log^2 T).
@@ -101,7 +101,7 @@ Taking $N=T$ in the truncated explicit formula, we obtain \begin{equation} \labe
 \end{equation}
 Which implies the prime number theorem.
 \begin{remark}
-    The prime number theorem with the error term in \label{RHPNT} can be shown to be equivalent to the Riemann Hypothesis.
+    The PNT stated in \ref{RHPNT} (with this error bound) can be shown to be equivalent to the Riemann Hypothesis.
 \end{remark}
 The prime number theorem is also true without assuming the strong Riemann Hypothesis. 
 To show this, it is sufficient to show that there are no zeros with real part $1$, so the terms in the sum contributes $O(N^{1-\epsilon})$
@@ -138,9 +138,9 @@ $\Re({s})>1-\epsilon, |\Im{(s)}|\leq \bar{T}$, then \begin{align*}
     &= O_{T}(N^{1-\epsilon}).
 \end{align*}
 In the second summation, we apply integration by parts to show that \begin{align*}
-    |\int_{0}^{\infty}\phi(x)x^{\rho-1}dx| &= |\frac{1}{\rho(\rho+1)}\int_{0}^{\infty}\phi''(x)x^{\rho+1}dx|\\
-    &= O(\frac{1}{|\rho|^2} \frac{T^2}{N^2} \frac{N}{T} N^2)\\
-    &=O(\frac{1}{|\rho|^2} TN)
+    \left|\int_{0}^{\infty}\phi(x)x^{\rho-1}dx\right| &= \left|\frac{1}{\rho(\rho+1)}\int_{0}^{\infty}\phi''(x)x^{\rho+1}dx\right|\\
+    &= O\left(\frac{1}{|\rho|^2} \frac{T^2}{N^2} \frac{N}{T} N^2\right)\\
+    &=O\left(\frac{1}{|\rho|^2} TN\right)
 \end{align*}
 The sum $\frac{1}{|\rho|^2}$ behaves as $\sum_n \log n n^{-2}$, so we can pick $\bar{T}$ large enough depending on $T$
 to make the contribution of $\sum_{\Im(\rho)>\bar{T}} |\rho|^{-2}$ to be $O(T^{-2})$.
@@ -167,7 +167,7 @@ Sending $T\to\infty$ gives the PNT.
     So that \begin{align*}
         \Re\left(3\frac{\zeta'}{\zeta}(\sigma)+ 4\frac{\zeta'}{\zeta}(\sigma+it) +\frac{\zeta'}{\zeta}(\sigma+2it)\right)
         &= -\sum_{n} \frac{\Lambda(n)}{n^\sigma}(3+4\cos (t\log n)+\cos (2t\log n))\\
-        &= -\sum_{n} \frac{\Lambda(n)}{n^\sigma} 2(1+\cos t\log n)^2\\
+        &= -\sum_{n} \frac{\Lambda(n)}{n^\sigma} 2(1+\cos( t\log n))^2\\
         &\leq 0.
     \end{align*}
     Now for the sake of contradiction, we let $\zeta(1+it)=0$ be a zero of order $d$, and since we know $\zeta$ has a pole of order $1$ at $s=1$, we can let $t\neq 0$. 

@@ -38,7 +38,16 @@ The properties of the zeta function as they relate to the distribution primes. I
 \begin{proposition} \label{analyticcontinuation}
 	$\zeta$ extends to a meromorphic function on $\complex$ with a simple pole at $s=1$. By abuse of notation, we identify the extension of the zeta function with $\zeta$ too.
 \end{proposition}
-The continuation of the zeta function is best described by its functional equation: $\zeta$ has a line of symmetry across $\Re (s)=1/2$.
+\begin{proof}[Extension of $\zeta$ to $\sigma>0$]
+	We apply integration by parts on Dirichlet series when $s>1$ \begin{align*}
+		\zeta(s)&=\int_{1/2}^{\infty} x^{-s} d \lfloor x \rfloor \\
+				&= s \int_{1/2}^{\infty} \lfloor x \rfloor x^{-s-1} d x\\
+				&=  s \int_{1}^{\infty}  x^{-s} - \frac{\{x\}}{x^{-s-1}} d x\\
+				&= \frac{s}{s-1} - s \int_{1}^{\infty} \frac{\{x\}}{x^{-s-1}} dx\\
+	\end{align*}
+	where in the last expression, the integral converges when $s>0$, and the pole at $s=1$ arises from the first term.
+\end{proof}
+The continuation of the zeta function to the whole complex plane is best described by its functional equation: $\zeta$ has a line of symmetry across $\Re (s)=1/2$.
 \begin{proposition}
 	Let $\xi(s)\defeq \pi^{-s/2}\Gamma(s/2)\zeta(s)$. Then \begin{equation}\label{symmetryeq}
 		\xi(s) = \xi(1-s).
@@ -87,22 +96,19 @@ The continuation of the zeta function is best described by its functional equati
 		&= \frac{1}{1-s} + \frac{1}{s}+  \int_{1}^{\infty}\omega(x)  \left(x^{s/2-1} + x^{-s/2-1/2}\right)dx\\
 		&= \frac{1}{s(1-s)}+ \int_{1}^{\infty}\omega(x)  \left(x^{s/2-1} + x^{-s/2-1/2}\right)dx.
 	\end{align*}
-	$\omega$ decays exponentially in $x$, so the integral converges and the last expression is well defined on $\complex$ except when $s=1$ or $s=0$.
+	$\omega$ decays exponentially in $x$, so the integral converges and the last expression is well defined on $\complex$ with simple poles at $s=1$ or $s=0$.
 	Finally, notice that the last expression is symmetric when $s$ is replaced with $(1-s)$, so proves equation \ref{symmetryeq}.
 \end{proof}
-\begin{remark}
-	This also gives an analytic continuation of $\zeta$ in Theorem \ref{analyticcontinuation}, excluding some minor details
-	on the treatment of $\zeta(0)$ and $\zeta(1)$.
-\end{remark}
 From the functional equation, we get `trivial' zeros of the zeta function from the poles of $\Gamma$. 
 
 \begin{corollary}
 	On $\Re(s)>1$ or $\Re(s)<0$, $\zeta(s)\neq 0$, except $\forall n\in\naturals, \zeta(-2n)=0.$
 \end{corollary}
 \begin{proof}
-	Using the product representation of $\zeta$ where it converges, none of $(1-p^{-s})^-1 =0$, so $\zeta(s)\neq 0$ on $\Re(s)>1$.
+	Using the product representation of $\zeta$ where it converges, none of $(1-p^{-s})^{-1} =0$, so $\zeta(s)\neq 0$ on $\Re(s)>1$.
 	$\Gamma$ has no zeros and has a simple pole at $-n$ for all $n\in\naturals$, so by equation \ref{symmetryeq} we get the zeros for $\Re(s)>0$ are exactly at the negative even integers.
 \end{proof}
+These zeros are known as the trivial zeros of $\zeta$. The remaining zeros lie between $0\leq \Re(s) \leq 1$.
 \begin{definition}[Critical Strip and Critical Line]
 	We denote the region $0\leq \Re(s) \leq 1$ as the \textbf{critical strip}. We denote the line $\Re(s) = 1/2$ as the \textbf{critical line}.
 \end{definition}

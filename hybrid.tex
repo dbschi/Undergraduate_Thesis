@@ -1,0 +1,80 @@
+\section{Towards a Hybrid zero density result}
+
+Here I will document some progress with working with
+the hybrid version of Guth-Maynard. This section will be removed when I send the draft to Prof. Wunsch.
+Let $\omega$ be a bump function supported on \textit{[placeholder]}. We denote \[
+D_N(t,\chi) = \sum_{n\sim N} b_n \chi(n) n^{it}
+\]
+and $\mathcal{S}=\{(t_j,\chi_j)\}_{j\leq |\mathcal{S}|}$ such that 
+\[
+    |D_N(t_j,\chi_j)|\geq V
+\]
+for all $(t_j,\chi_j)\in\mathcal{S}$.
+We also let $0\leq t_j\leq T$ to be $T^\epsilon$ separated, so if 
+$j\neq k$ and $\chi_j=\chi_k$, $|t_j-t_k|\geq T^\epsilon$. \textcolor{red}{We can also
+let $\chi_j$'s be Dirichlet characters modulo $q$ (potentially primitive if we need this hypothesis later).}
+
+Here we write $M$ a $|\mathcal{S}\times N|$ matrix with entries
+\[
+    M_{t_j,\chi_j,n} = \chi_j(n)n^{it_j}
+\]
+for $(t_j,\chi_j)\in\mathcal{S}$ and $n\sim N$.
+Thus by the same reasoning that $(M\vec{b})_j=D_N(t_j,\chi_j)$,
+we want to bound the trace of the matrix \[
+\textrm{tr}((M^*M)^3)
+\]
+which is formalized in section $4$ of Guth and Maynard's proof.
+We see that \begin{align*}
+    (MM^*)_{t_j,t_k} = \sum_{n\sim N} \omega\left(\frac{n}{N}\right)^2 n^{i(t_k-t_j)}\bar{\chi}_j\chi_k(n),
+\end{align*}
+so that \begin{align*}
+    \textrm{tr}(MM^*) = |\mathcal{S}|\sum_{n\sim N} \omega\left(\frac{n}{N}\right)^2
+\end{align*}
+and Lemmas 4.1-4.4 (Large values controlled by singular values, bound for singular values in terms of trace,
+Principle of non-stationary phase, Hilbert-Schmidt Norm estimate) can be adapted directly from the paper.
+
+For the expansion of the trace (analog to lemma 4.5), 
+\begin{align*}
+    (M^*M)_{n_1,n_2} = \sum_{(t_j,\chi_j)\in \mathcal{S}} \omega\left(\frac{n_1}{N}\right)\omega\left(\frac{n_2}{N}\right)
+    \bar{\chi}_j(n_1)\chi_j(n_2)n_1^{-it_j}n_2^{it_j}
+\end{align*}
+so that \begin{align*}
+    \textrm{tr}((M^*M)^3)=\sum_{\substack{(t_1,\chi_1),\\(t_2,\chi_2),\\(t_3,\chi_3)\in\mathcal{S}}}\sum_{n_1,n_2,n_3\sim N} & 
+    \omega\left(\frac{n_1}{N}\right)^2 \left(\frac{n}{N}\right)^{i(t_1-t_3)}\chi_1\bar{\chi}_3(n_1)\\
+    \times \ &\omega\left(\frac{n_2}{N}\right)^2 \left(\frac{n}{N}\right)^{i(t_2-t_1)}\chi_2\bar{\chi}_1(n_2)\\
+    \times \ &\omega\left(\frac{n_3}{N}\right)^2 \left(\frac{n}{N}\right)^{i(t_3-t_2)}\chi_3\bar{\chi}_2(n_3).
+\end{align*}
+Let $h_t(u)=\omega(u)u^{it}$,
+so by applying Poisson summation to the inner sum, we have \begin{align*}
+    \textrm{tr}((M^*M)^3)=\sum_{\substack{(t_1,\chi_1),\\(t_2,\chi_2),\\(t_3,\chi_3)\in\mathcal{S}}}
+    \frac{N^3}{q^3}\sum_{m\in\mathbb{Z}^3}&\sum_{x\in (\mathbb{Z}/q\mathbb{Z})^3}\chi_1\bar{\chi}_3(x_1)\chi_2\bar{\chi}_1(x_2)\chi_3\bar{\chi}_2(x_3) e\left(\frac{-x\cdot m}{q}\right)\\
+    \times \ &\hat{h}_{t_1-t_3}\left(\frac{Nm_1x_1}{q}\right)\hat{h}_{t_2-t_1}\left(\frac{Nm_2x_2}{q}\right)\hat{h}_{t_3-t_2}\left(\frac{Nm_3x_3}{q}\right) 
+\end{align*}
+Finally, we exchange the 2 outermost integrals. And split the outermost sum into four parts (same as Guth Maynard) $S_0+ S_1+S_2+S_3$,
+where $S_j$ runs over the values of $m$ with exactly $j$ non-zero entries.
+\subsection{$S_0$ bound}
+$S_0$ only has one term corresponding to $m=0$. By the principle of non-stationary phase, $\hat{h}_t(0)$ has rapid decay in $t$, so contributes $O(T^{-1000})$ except possibly when $t_1,t_2,t_3$ are not $T^\epsilon$ separated.
+Moreover, by the orthogonality of characters, all three terms $\chi_a\bar{\chi}_b$ must be principal to have non-zero contribution,
+so this fixes the sum to be across $(t_1,\chi_1)=(t_2,\chi_2)=(t_3,\chi_3)$ to give a $N^3\phi(q)^3|\mathcal{S}|\|\omega\|_{L_2}^6/q^3$ term.
+So that \begin{align*}
+    \textrm{tr}((M^*M)^3)=\frac{N^3\phi(q)^3}{q^3}|\mathcal{S}|\|\omega\|_{L_2}^6 + \sum_{m\in\mathbb{Z}^3 - \{0\}} I_m + O(T^{-100}),
+\end{align*}
+where \begin{align*}
+    I_m=\frac{N^3}{q^3}\sum_{\substack{(t_1,\chi_1),\\(t_2,\chi_2),\\(t_3,\chi_3)\in\mathcal{S}}} &\sum_{x\in (\mathbb{Z}/q\mathbb{Z})^3}\chi_1\bar{\chi}_3(x_1)\chi_2\bar{\chi}_1(x_2)\chi_3\bar{\chi}_2(x_3) e\left(\frac{-x\cdot m}{q}\right)\\
+    \times \ &\hat{h}_{t_1-t_3}\left(\frac{Nm_1x_1}{q}\right)\hat{h}_{t_2-t_1}\left(\frac{Nm_2x_2}{q}\right)\hat{h}_{t_3-t_2}\left(\frac{Nm_3x_3}{q}\right).
+\end{align*}
+which gives the analogous Lemmas 4.5 and 4.6.
+\subsection{$S_1$ bound}
+By symmetry, we sum $I_m$ across all $m=(0,0,m_3\neq 0)$ at a cost of a factor of $3$.
+We then have \begin{align*}
+    I_m=\frac{N^3}{q^3}\sum_{\substack{(t_1,\chi_1),\\(t_2,\chi_2),\\(t_3,\chi_3)\in\mathcal{S}}} &\sum_{x\in (\mathbb{Z}/q\mathbb{Z})^3}\chi_1\bar{\chi}_3(x_1)\chi_2\bar{\chi}_1(x_2)\chi_3\bar{\chi}_2(x_3) e\left(\frac{-x_3 m_3}{q}\right)\\
+    \times \ &\hat{h}_{t_1-t_3}\left(0\right)\hat{h}_{t_2-t_1}\left(0\right)\hat{h}_{t_3-t_2}\left(\frac{Nm_3x_3}{q}\right)
+\end{align*}
+Again by the orthogonality of characters, the only way to get non-zero contribution is when $\chi_1=\chi_2$ and $\chi_2=\chi_3$. So this reduces to\begin{align*}
+    I_m=\frac{N^3}{q^3}\sum_{\substack{(t_1,\chi_1),\\(t_2,\chi_2=\chi_1),\\(t_3,\chi_3=\chi_1)\in\mathcal{S}}} &\phi(q)^2 \sum_{x_3\in (\mathbb{Z}/q\mathbb{Z})^{\times}}e\left(\frac{-x_3 m_3}{q}\right)\\
+    \times \ &\hat{h}_{t_1-t_3}\left(0\right)\hat{h}_{t_2-t_1}\left(0\right)\hat{h}_{t_3-t_2}\left(\frac{Nm_3x_3}{q}\right)
+\end{align*}
+If $m_3>qT^{1+\epsilon}/N$, we have quick decay in the last term and these values of $m$ contribute\[
+\ll \frac{N^3}{q^3} |\mathcal{S}|^3\phi(q)^3 \sum_{m>qT^{1+\epsilon}/N} T^{-100}m^{-100}
+\]
+

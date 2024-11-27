@@ -26,7 +26,7 @@ Recalling that the error term is related to the real part of the zeros of the Ze
     \]
 \end{definition}
 \begin{remark}
-    The ideal scenario is that $N(\sigma,T)=0$ for all $\sigma\geq 1/2$. 
+    The ideal scenario is that $N(\sigma,T)=0$ for all $\sigma> 1/2$. 
 \end{remark}
 \begin{theorem}[Chudakov] 
     There exists a constant $A$ such that $\zeta(\sigma+iT)\neq 0$ in the region \begin{equation*}
@@ -51,6 +51,7 @@ Recalling that the error term is related to the real part of the zeros of the Ze
     \begin{align*}
         S &= 1 - \sum_{|\Im{(\rho)}|\leq T} \frac{(x+y)^\rho-x^\rho}{\rho y} + O(\frac{x}{yT}(\log xT) ^2) + O(\frac{\log x}{y}) . 
     \end{align*} 
+    We want to show that except for the constant $1$ term, the remaining parts are $o(1)$.
     We focus on the sum over the non-trivial zeros with height less than $T$, and enumerate them $\rho_j$. For each $\rho_j=\sigma_j+it_j$, we apply Mean Value
     \begin{align*}
         \left|\sum_{\rho_j} \frac{(x+y)^\rho-x^\rho}{\rho y}\right|&\leq \sum_{\rho_j}\left|\frac{(x+y)^{\rho_j}-x^{\rho_j}}{\rho_j y}\right|\\
@@ -79,21 +80,21 @@ Recalling that the error term is related to the real part of the zeros of the Ze
         k<1,\ ak<1, \ k+\theta>1, 
     \]
     so that the second, fourth and fifth terms are $o(1)$ in $x$.
-    For the second term, we can simplify \begin{align*}
+    For the third term, we can simplify \begin{align*}
         \frac{\log x \log^{b} T}{a \log T - \log x } \left[\frac{T^a}{x}-\left(\frac{T^a}{x}\right)^{A\frac{\log \log T}{\log T}}\right]
         &= \frac{k^b \log^{b}x}{ak-1}  \left[x^{ak-1}-x^{(ak-1)A\frac{\log (k \log x)}{k \log x}}\right]
         \\ &\leq \frac{k^b \log^{b}x}{1-ak} x^{ak-1}  + \frac{k^b \log^{b}x}{1-ak} \exp\left((ak-1)A\frac{\log (k \log x)}{k} \right)\\
         &\leq \frac{k^b \log^{b}x}{1-ak} x^{ak-1}  + \frac{k^b \log^{b}x}{1-ak} \exp\left((ak-1)A\frac{\log (k \log x)}{k} \right)\\
         & =O(x^{ak-1})+O\left(\left(\log  x\right)^{b+\frac{(ak-1)A}{k}}\right).
     \end{align*}
-    To have decay in the last term in $x$, we need \[
+    We require that the last term decays in $x$, and this happens when \[
         b+\frac{(ak-1)A}{k}< 0 \implies (aA+b)k<A \implies k < \frac{1}{a+\frac{b}{A}}
     \]
-    We had $a>1$, so this $k$ satisfies $k<1$ and $ak<1$.
+    We had $a\geq 2 >1$, so this $k$ satisfies $k<1$ and $ak<1$.
     Finally, for $k={1}/({a+bA^{-1}})+ \delta/2$ we let $\theta = 1-k+\delta/2$ to satisfy $\theta+k>1$,
-    so we can find any ${1}/({a+bA^{-1}})+\delta >\theta>1-{1}/({a+bA^{-1}})$, and for $y=x^\theta$, we get\[
-        \frac{1}{y}\sum_{x\leq n \leq x+y} \Lambda(n) = S = 1+o(1).
-    \]
+    so we can find any ${1}/({a+bA^{-1}})+\delta >\theta>1-{1}/({a+bA^{-1}})$, and \[
+        \frac{1}{y}\sum_{x\leq n \leq x+y} \Lambda(n) = S = 1+o(1)
+    \]for $y=x^\theta$. This completes the proof.
 
 \end{proof}
 Theorem \ref{Hoheisel} gives the classical way to relate the distribution of primes in short intervals to the density of zeros away from the real-half line.

@@ -1,8 +1,9 @@
 \section{Towards a Hybrid Zero Density Result}
 \begin{theorem}[Heath-Brown]
+    \label{heathbrown}
     Let $\mathcal{S}=\{(t_j,\chi_j)\}$ be one-separate, primitive characters of modulus $q$. Then 
     \[
-        \sum_{\substack{(t_1,\chi_1)\\(t_2,\chi_2)}}\left|\sum_{n=1}^{N} b_n n^{-i(t_1-t2)}\chi_1\bar{\chi}_2(n)\right|^2 \ll  |\mathcal{S}|N^2+ |\mathcal{S}|^2N + |\mathcal{S}|^{5/4}(qT)^{1/2}N.
+        \sum_{\substack{(t_1,\chi_1)\\(t_2,\chi_2)}}\left|\sum_{n=1}^{N} b_n n^{-i(t_1-t2)}\chi_1\bar{\chi}_2(n)\right|^2 \lesssim  |\mathcal{S}|N^2+ |\mathcal{S}|^2N + |\mathcal{S}|^{5/4}(qT)^{1/2}N.
     \]
 \end{theorem}
 \textit{Here I will document some progress with working with
@@ -362,7 +363,65 @@ The idea for bounding energy is similar, if $\chi_1\chi_2=\chi_3\chi_4$ and $|t_
     \]
 \end{lemma}
 \begin{proof}
+    (GM)
     \begin{align*}
         D_N(t,\chi)=\sum_n \omega\left(\frac{n}{N}\right) b_n n^{it} \psi\left(\frac{\log n}{2\pi}\right)
     \end{align*}
+\end{proof}
+\begin{lemma} We have \[
+    E(\mathbb{S})\lesssim N^{-2\sigma}\sum_{n_1,n_2\sim N}\left|R\left(\frac{n_1}{n_2},n_1,n_2\right) \right|^3.
+    \]
+    
+\end{lemma}
+\begin{proof}
+    We have \begin{align*}    
+    E(\mathbb{S})=& \sum_{\substack{(t_1,\chi_1),(t_2,\chi_2),\\ (t_3,\chi_3),(t_4,\chi_4)\in \mathbb{S}\\|t_1+t_2-t_3-t_4|\leq 1\\ \chi_1\chi_2=\chi_3\chi_4}} 1 
+    \leq N^{-2\sigma}\sum_{\substack{(t_1,\chi_1),(t_2,\chi_2),\\ (t_3,\chi_3),(t_4,\chi_4)\in \mathbb{S}\\ |t_1+t_2-t_3-t_4|\leq 1\\ \chi_1\chi_2=\chi_3\chi_4}} |D_N(t_4,\chi_4)|^2.
+    \end{align*}
+    Now we apply the previous lemma and Cauchy-Schwarz to get \[
+        |D_N(t_4,\chi_4)|^2\lesssim \int_{|u-t_4|\lesssim 1} |D_N(u,\chi_4)|^2du \lesssim  \int_{|u-t_1-t_2+t_3|\lesssim 1} |D_N(u,\chi_1\chi_2\bar{\chi}_3)|^2du,
+    \]
+   
+    Since $\chi_1,\chi_2,\chi_3$ fixes $\chi_4$, and the $t$'s within the same character are $T^\epsilon$ separated, there is $O(1)$ possible pairs of $(t_4,\chi_4)$ for each choice of $(t_1,\chi_1),(t_2,\chi_2),(t_3,\chi_3)$, so \begin{align*}    
+        E(\mathbb{S})\lesssim& N^{-2\sigma}\sum_{\substack{(t_1,\chi_1),(t_2,\chi_2),\\ (t_3,\chi_3),(t_4,\chi_4)\in \mathbb{S}\\ |t_1+t_2-t_3-t_4|\leq 1\\ \chi_1\chi_2=\chi_3\chi_4}} \int_{|u-t_1-t_2+t_3|\lesssim 1} |D_N(u,\chi_1\chi_2\bar{\chi}_3)|^2du\\
+        \lesssim&  N^{-2\sigma}\sum_{\substack{(t_1,\chi_1),(t_2,\chi_2),\\ (t_3,\chi_3)\in \mathbb{S}}} \int_{|u-t_1-t_2+t_3|\lesssim 1} |D_N(u,\chi_1\chi_2\bar{\chi}_3)|^2du\\
+        =& N^{-2\sigma}\sum_{\substack{(t_1,\chi_1),(t_2,\chi_2),\\ (t_3,\chi_3)\in \mathbb{S}}} \int_{|u|\lesssim 1} |D_N(t_1+t_2-t_3 + u,\chi_1\chi_2\bar{\chi}_3)|^2du\\
+        =&N^{-2\sigma}\sum_{n_1,n_2} b_{n_1}\bar{b}_{n_2} \omega\left(\frac{n_1}{N}\right)\omega\left(\frac{n_2}{N}\right)\int_{|u|\lesssim 1} \left(\frac{n_1}{n_1}\right)^{iu}R\left(\frac{n_1}{n_2},n_1,n_2\right)^2 R\left(\frac{n_2}{n_1},n_2,n_1\right)du\\
+        \lesssim & N^{-2\sigma}\sum_{n_1,n_2\sim N}\left|R\left(\frac{n_1}{n_2},n_1,n_2\right)^2 R\left(\frac{n_2}{n_1},n_2,n_1\right)\right|\\
+        \lesssim & N^{-2\sigma}\sum_{n_1,n_2\sim N}\left|R\left(\frac{n_1}{n_2},n_1,n_2\right) \right|^3.
+        \end{align*}
+\end{proof}
+
+\begin{lemma}
+    We have 
+\[
+        \sum_{n_1,n_2\sim N}\left|R\left(\frac{n_1}{n_2},n_1,n_2\right) \right|^2\lesssim |\mathcal{S}|N^2+ |\mathcal{S}|^2N + |\mathcal{S}|^{5/4}(qT)^{1/2}N.
+    \]
+\end{lemma}
+\begin{proof}
+    From the definition of $R$, \begin{align*}
+        \sum_{n_1,n_2\sim N}\left|R\left(\frac{n_1}{n_2},n_1,n_2\right) \right|^2=& \sum_{n_1,n_2\sim N}\sum_{\substack{(t_1,\chi_1),(t_2,\chi_2)\in \mathbb{S}}}
+        \chi_1(n_1)\bar{\chi}_1(n_2)\left(\frac{n_1}{n_2}\right)^{it_1}\bar{\chi}_2(n_1){\chi}_2(n_2)\left(\frac{n_1}{n_2}\right)^{-it_2}
+        \\
+        &=\sum_{\substack{(t_1,\chi_1),(t_2,\chi_2)\in \mathbb{S}}}\left|\sum_{n\sim N}
+        \chi_1(n_1)\bar{\chi}_2(n_1)n^{i(t_1-t_2)}\right|.
+    \end{align*}
+    A direct application of Heath Brown's Theorem \ref{heathbrown} gives \[
+        \sum_{n_1,n_2\sim N}\left|R\left(\frac{n_1}{n_2},n_1,n_2\right) \right|^2\lesssim |\mathcal{S}|N^2+ |\mathcal{S}|^2N + |\mathcal{S}|^{5/4}(qT)^{1/2}N.
+    \]
+\end{proof}
+The trivial bound for $R\leq |\mathbb{S}|$ gives \begin{align*}
+    E(\mathbb{S})\lesssim& N^{-2\sigma}\sum_{n_1,n_2\sim N}\left|R\left(\frac{n_1}{n_2},n_1,n_2\right) \right|^3\\
+    \lesssim &|\mathbb{S}|N^{-2\sigma}\sum_{n_1,n_2\sim N}\left|R\left(\frac{n_1}{n_2},n_1,n_2\right) \right|^2\\
+    \lesssim& |\mathcal{S}|^2N^2+ |\mathcal{S}|^3N + |\mathcal{S}|^{9/4}(qT)^{1/2}N.
+\end{align*}
+\textcolor{red}{TODO: Merge with previous part to find bound}
+
+
+\begin{lemma}
+    
+\end{lemma}
+
+\begin{proof}
+    
 \end{proof}

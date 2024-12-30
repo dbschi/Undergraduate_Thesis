@@ -1,0 +1,124 @@
+\section{Huxley's Proof of Zero Density}
+\begin{theorem}[Huxley]
+    We have  \[
+    N(\sigma,t)\lesssim T^{\frac{12}{5}(1-\sigma)}.
+    \]
+\end{theorem}
+
+Huxley's methodology for detecting zeros as follows. Let $M_x(s) \defeq \sum_{n=1}^{x} \mu(n)n^{-s}$. Since this also converges absolutely on $\Re(s)>1$, we can write the dirichlet series of $\zeta(s) M_x (s)$ as \[
+    \zeta(s) M_x (s) \defeq \sum_{n}a_n n^{-s}
+\]
+for some choice of $a_n=a_n(x)$. The zeros of its analytic continuation will contain the zeros of $\zeta$. This may look inefficient as we may have introduced extra zeros from $M_x$, but the tradeoff is that we can bound these $a_n$'s.
+\begin{proposition}
+    We have  \[\begin{cases}
+        a_1 = 1, & \\
+        a_n = 0, & \textrm{if $1<n\leq x$},\\
+        |a_n|\leq d(n), & \textrm{if $n>x$}.
+    \end{cases}\]
+\end{proposition}
+\begin{proof}
+    For all $n\leq x$, this follows from M\"obius inversion. For $n>x$, we just apply the trivial bound $|\mu(d)|\leq 1$ on \[
+    a_n  = \sum_{d|n} \mu(d) .
+    \]
+\end{proof}
+
+Let $y>x$ a parameter to be choosen later, and $y\leq T^A$ for an absolute constant $A$. We apply the Mellin transform to \begin{equation*}
+    \begin{split}
+    \sum_{n}a_n n^{-s} e^{-n/y}=&\frac{1}{2\pi i}\sum_{n}a_n n^{-s} \int_{2-i\infty}^{2+i\infty}\Gamma(w) y^w n^{-w} dw\\
+    =&\frac{1}{2\pi i}\int_{2-i\infty}^{2+i\infty}\zeta(s+w)M_x(s+w)\Gamma(w) y^w dw.
+    \end{split}
+\end{equation*}
+If we move the line of integration to $\Re(w) = 1/2 - \Re(s)$, we get simple pole residue contributions from $\zeta$ and $\Gamma$ \begin{equation}
+    \label{huxleyperron}
+    \begin{split}
+    e^{-1/y}+\sum_{n>x}a_n n^{-s} e^{-n/y}=\sum_{n}a_n n^{-s} e^{-n/y}=&\zeta(s)M_x(s) +M_x(1)\Gamma(1-s)y^{1-s}\\+&
+    \frac{1}{2\pi}\int_{-\infty}^{\infty}\zeta(\frac{1}{2}+i\Im(s)+iw)M_x(\frac{1}{2}+i\Im(s)+iw)\\ &\cdot \Gamma\left(\frac{1}{2}-\Re(s)+it\right) y^{\frac{1}{2}-\Re(s)+it} dt.
+    \end{split}
+\end{equation}
+We take $y$ large enough so that $e^{-1/y}$ is close to $1$. Since $M_x(s)$ is an approximation of $1/\zeta$, we should expect that the term $\zeta(s)M_x(s)$ is about $1$ most of the time and the other terms are small. However, if $s$ is a zero of $\zeta$, then $\zeta(s)M_x(s)=0$, so at least one of the following things need to happen \begin{enumerate}[label=(\roman{*})]
+    \item $|\sum_{n>x}a_n n^{-s} e^{-n/y}|$ is large.
+    \item The integral in $t$ is large.
+    \item $|M_x(1)\Gamma(1-s)y^{1-s}|$ is large.
+\end{enumerate}
+We thus transform the problem of detecting zeros to counting the number of occurences of extreme values. We will later see that type (iii) zeros are negligible, so we need to bound the number of type (i) and type (ii) zeros. 
+
+\begin{lemma}
+    Let $a$ be an arithmetic function, and $D_N(s)=\sum_{n\leq N}a(n)n^{s}.$
+    If $W = \{t_j\}\subseteq [0,T]$ is a one-separated set such that \[
+        |D_N(it_j)| > V \ \forall j,
+    \]
+    then \[
+        |W|\ll \frac{\log^2 T}{V^\alpha} \int_{-(\log N)^{-1}}^{(\log N)^{-1}}
+        \int_{0}^{T} |D_N(x+it)|^\alpha dt \ dx
+        \]
+    for $\alpha > 0$.
+\end{lemma}
+\begin{proof}
+    With a cost of $O(1)$ we can consider $W\subseteq [(\log N)^{-1}, T-(\log N)^{-1}]$.
+    Since $D_N$ is analytic, $|D_N|^\alpha$ is subharmonic. Let $B(t_j)$ describe a square-box of side length $(\log N)^-1$ centered at $it_j$ in the complex plane, then \begin{align*}
+        V^\alpha \sum_{j} 1 \leq \sum_{j}|D(it_j)|^\alpha \leq \log^2 N \sum_{j} \int_{B(t_j)} |D(s)|^\alpha dA \leq \log^2 T \int_{-(\log N)^{-1}}^{(\log N)^{-1}}
+        \int_{0}^{T} |D_N(x+it)|^\alpha dt \ dx.
+    \end{align*}
+\end{proof}
+
+\begin{corollary}
+   Let $W = \{t_j\}\subseteq [0,T]$ be a one-separated set such that \[
+        \left|\zeta\left(\frac{1}{2}+it_j\right)\right|>V \ \forall j,
+    \]
+    then \[
+    |W|\ll TV^{-4} \log^{O(1)}T.
+    \]
+\end{corollary}
+\begin{proof}
+    We have \[
+        \left|\zeta\left(\frac{1}{2}+it\right)\right|\ll \sum_{n\leq \sqrt{T}}n^{-1/2-it},
+    \]
+    so applying the previous lemma on $D(s)=\sum_{n\leq \sqrt{T}}n^{-s}$ with $\alpha=4$ gives \begin{align*}
+        |W|\ll \frac{\log ^2 T}{V^4} \int_{-2(\log T)^{-1}}^{2(\log T)^{-1}}
+        \int_{0}^{T} |D_N(x+it)|^4 dt \ dx
+    \end{align*}
+\end{proof}
+
+\begin{lemma}[Hal\'asz Inequality]
+    \label{halasz}
+    Let $a$ be an arithmetic function, and $D_N(s)=\sum_{n\leq N}a(n)n^{s}$, and $G=\sum_{n\leq N} |a(n)|^2.$
+    If $W = \{t_j\}\subseteq [0,T]$ is a one-separated set such that \[
+        |D_N(it_j)| > V \ \forall j,
+    \]
+    then 
+    \[
+        |W|\lesssim GNV^{-2} + G^3NTV^{-6}.
+        \]
+\end{lemma}
+\begin{proof}
+    Let $-\theta_j$ be the argument of $D(it_j)$, then we have \begin{align*}
+        V|W|\leq \sum_j |D(it_j)| = \sum_j e^{\theta_j}D(it_j ) = \sum_{n\leq N} \sum_j e^{i\theta_j} a(n) n^{-it_j}.
+    \end{align*}
+    By Cauchy-Schwarz, this summation is \[
+    \leq \left(\sum_{n\leq N} |a(n)|^2 \right)^{1/2}\left(\sum_{n\leq N} \bigg|\sum_j e^{i\theta_j} n^{-it_j}\bigg|^2 \right)^{1/2}.
+    \]
+    The first summation in this expression is $G$, so we want to bound the latter nested summation.
+    Expanding the summation gives \begin{align*}
+        \sum_{n\leq N} \bigg|\sum_j e^{i\theta_j} n^{-it_j}\bigg|^2 =& 
+        \sum_{n\leq N} \sum_{j_1,j_2} e^{i\theta_{j_1}-i\theta_{j_2}} n^{it_{j_1}-it_{j_2}}\\
+        \leq & |W|N + \sum_{j_1,j_2} \bigg|\sum_{n\leq N}  n^{it_{j_1}-it_{j_2}}\bigg|.
+    \end{align*}
+    \textcolor{red}{TODO}
+\end{proof}
+
+\begin{proof}[Proof of Huxley's Zero Density Theorem]
+    From equation \ref{huxleyperron}, we take $y>6$ so that $e^{-1/y}>5/6$. We also truncate the sum in $n>x$ to $x<n\leq y^2$ with an error of $1/6$ for large enough $y$. Finally, we truncate the integral in $t$ to the range $|t|\leq B\log T$ with an error of $1/6$. Thus, $s$ is a zero only if \begin{enumerate}[label=(\roman{*})]
+        \item $|\sum_{x<n\leq y^2}a_n n^{-s} e^{-n/y}|\geq \frac{1}{6}$, or
+        \item $\frac{1}{2\pi}|\int_{-B\log T}^{B\log T}\zeta(\frac{1}{2}+i\Im(s)+iw)M_x(\frac{1}{2}+i\Im(s)+iw) \Gamma\left(\frac{1}{2}-\Re(s)+it\right) y^{\frac{1}{2}-\Re(s)+it} dt|\geq \frac{1}{6}$, or
+        \item $|M_x(1)\Gamma(1-s)y^{1-s}|\geq \frac{1}{6}$ .
+    \end{enumerate}
+    Of the zeros $\rho = \beta+i\gamma$ of $\zeta$ in the region, at the cost of a factor of $\log T$, we take representatives such that if $\rho_1\neq \rho_2$ then $|\rho_1-\rho_2|\geq \textcolor{red}{1}$. 
+    For Class (i) zeros, we split the sum dyadically to get \begin{equation}
+    \label{class1dyadic}
+    \bigg| \sum_{n\sim U, n\leq y^2} a(n)  n^{-\rho}e^{n/y}\bigg| \geq O((\log T)^{-1}),
+    \end{equation}
+    for some $x\leq U = 2^k\leq y$. Applying Lemma \ref{halasz}, we get that the number of times that equation \ref{class1dyadic} can happen for each $U$ is \[
+    \lesssim U^{2-2\sigma} + U^{4-6\sigma}T\lesssim 
+    \]
+    (Note that the $\log$ factors are dominated by any choice of $T^\epsilon$)
+\end{proof}

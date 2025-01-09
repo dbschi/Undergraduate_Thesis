@@ -38,22 +38,25 @@ The properties of the zeta function as they relate to the distribution primes. I
 \begin{proposition} \label{analyticcontinuation}
 	$\zeta$ extends to a meromorphic function on $\complex$ with a simple pole at $s=1$. By abuse of notation, we identify the extension of the zeta function with $\zeta$ too.
 \end{proposition}
+
+We will prove Proposition \ref{analyticcontinuation} in two steps. First, we will extend $\zeta$ to $\sigma>0$. Then, we will describe the continuation of the zeta function to the whole plane using by its functional equation: $\zeta$ has a line of symmetry across $\Re (s)=1/2$.
+\begin{proposition}\label{extension}
+	Let $\xi(s)\defeq \pi^{-s/2}\Gamma(s/2)\zeta(s)$. Then \begin{equation}\label{symmetryeq}
+		\xi(s) = \xi(1-s).
+	\end{equation}
+\end{proposition}
 \begin{proof}[Extension of $\zeta$ to $\sigma>0$]
-	We apply integration by parts on Dirichlet series when $s>1$ \begin{align*}
+	We apply integration by parts on Dirichlet series when $\sigma>1$ \begin{align*}
 		\zeta(s)&=\int_{1/2}^{\infty} x^{-s} d \lfloor x \rfloor \\
 				&= s \int_{1/2}^{\infty} \lfloor x \rfloor x^{-s-1} d x\\
 				&=  s \int_{1}^{\infty}  x^{-s} - \frac{\{x\}}{x^{-s-1}} d x\\
 				&= \frac{s}{s-1} - s \int_{1}^{\infty} \frac{\{x\}}{x^{-s-1}} dx\\
 	\end{align*}
-	where in the last expression, the integral converges when $s>0$, and the pole at $s=1$ arises from the first term.
+	where in the last expression, the integral converges when $\sigma>0$, and the pole at $s=1$ arises from the first term.
 \end{proof}
-The continuation of the zeta function to the whole complex plane is best described by its functional equation: $\zeta$ has a line of symmetry across $\Re (s)=1/2$.
-\begin{proposition}
-	Let $\xi(s)\defeq \pi^{-s/2}\Gamma(s/2)\zeta(s)$. Then \begin{equation}\label{symmetryeq}
-		\xi(s) = \xi(1-s).
-	\end{equation}
-\end{proposition}
-\begin{proof}
+
+
+\begin{proof}[Proof of Proposition \ref{extension}]
 	Using \begin{align*}
 		\Gamma(s)=\int_{0}^{\infty} e^{-x}x^{s-1}dx,
 	\end{align*}
@@ -99,6 +102,8 @@ The continuation of the zeta function to the whole complex plane is best describ
 	$\omega$ decays exponentially in $x$, so the integral converges and the last expression is well defined on $\complex$ with simple poles at $s=1$ or $s=0$.
 	Finally, notice that the last expression is symmetric when $s$ is replaced with $(1-s)$, so proves equation \ref{symmetryeq}.
 \end{proof}
+Finally, we extend to $\zeta(0)$ by noticing that the poles of the functional equation from $\zeta(1)$ and $\Gamma(0)$ cancel out, so the Riemann Extension Theorem can be applied.
+
 From the functional equation, we get `trivial' zeros of the zeta function from the poles of $\Gamma$. 
 
 \begin{corollary}
@@ -128,15 +133,3 @@ Applying the functional equation, we get the following result.
 	\]
 \end{theorem}
 
-Finally, we introduce some hypotheses regarding the zeta function, these statements have not been proved, but are supported by a great amount of heuristic evidence.
-\begin{definition}[Riemann Hypothesis]
-	The \textbf{Riemann Hypothesis} (RH) asserts that on the critical strip, \[
-		\zeta(s) = 0 \implies \Re(s) = \frac{1}{2}. 
-	\]
-\end{definition}
-
-\begin{definition}[Lindel\"of Hypothesis]
-	Let $\epsilon>0$. The \textbf{Lindel\"of Hypothesis} (LH) asserts that on the critical line, \[
-		\zeta\left(\frac{1}{2}+it\right) = O(t^\epsilon).
-	\]
-\end{definition}

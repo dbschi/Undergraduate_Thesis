@@ -105,10 +105,25 @@ Theorem \ref{Hoheisel} gives the classical way to relate the distribution of pri
 \end{theorem}
 \begin{theorem}[Huxley bound for zero density]
     Let $3/4\leq \sigma\leq 1$. We have \[
-        N(\sigma,t)\lesssim T^{\frac{(5\sigma-3)(1-\sigma)}{\sigma^2+\sigma-1}}.
+        N(\sigma,t)\lesssim T^{\frac{3(1-\sigma)}{3\sigma-1}}.
         \]
 \end{theorem}
-\begin{figure}[h]
+
+Combining these two bounds, we get the following zero density theorem.
+\begin{theorem}[Ingham-Huxley bound for zero density]
+   We have \[
+    N(\sigma,t)\lesssim T^{\frac{12}{5}(1-\sigma)},
+    \]
+    uniformly for $1/2\leq \sigma\leq 1$
+\end{theorem}
+Notice that $12/5$ comes from $\sigma = 3/4$. In June 2024, Guth and Maynard published a proof that improves the Ingham-Huxley bound at $\sigma \in [7/10,8/10]$, thus improving the result of primes in short intervals (as well as many other number theoretic results). The following sections will be dedicated to Huxley's proof of zero density, as well as Guth-Maynard's ideas in the proof. Finally, adapting from Guth and Maynard, we will provide a proof of the analogous zero-density result for $L$-functions.
+\begin{theorem}[Guth-Maynard bound for zero density]
+    We have \[
+     N(\sigma,t)\lesssim T^{\frac{30}{13}(1-\sigma)},
+     \]
+     uniformly for $1/2\leq \sigma\leq 1$
+ \end{theorem}
+ \begin{figure}[h]
     \centering
     \begin{subfigure}{0.4\textwidth}
         \includegraphics[width=\textwidth]{inghamhuxley1.png}
@@ -118,12 +133,14 @@ Theorem \ref{Hoheisel} gives the classical way to relate the distribution of pri
         \includegraphics[width=\textwidth]{inghamhuxley2.png}
         \caption{$\sigma=3/4$ is also the bottleneck when written in Hoheisel's form.}
     \end{subfigure}
+
+    \centering
+    \begin{subfigure}{0.4\textwidth}
+        \includegraphics[width=\textwidth]{gm_1.png}
+        \caption{Guth-Maynard's result improves in the range at $\sigma\in[7/10,8/10].$}
+    \end{subfigure}
+    \begin{subfigure}{0.4\textwidth}
+        \includegraphics[width=\textwidth]{gm_2.png}
+        \caption{The exponent is reduced around the bottleneck region.}
+    \end{subfigure}
 \end{figure}
-Combining these two bounds, we get the following zero density theorem.
-\begin{theorem}[Ingham-Huxley bound for zero density]
-   We have \[
-    N(\sigma,t)\lesssim T^{\frac{12}{5}(1-\sigma)},
-    \]
-    uniformly for $1/2\leq \sigma\leq 1$
-\end{theorem}
-Notice that $12/5$ comes from $\sigma = 3/4$. In June 2024, Guth and Maynard published a proof that improves the Ingham-Huxley bound at $\sigma \in [7/10,8/10]$, thus improving the result of primes in short intervals (as well as many other number theoretic results). The following sections will be dedicated to Huxley's proof of zero density, as well as Guth-Maynard's ideas in the proof. Finally, adapting from Guth and Maynard, we will provide a proof of the analogous zero-density result for $L$-functions.

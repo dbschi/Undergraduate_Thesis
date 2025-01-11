@@ -27,7 +27,7 @@ The structure of the proof can be broken down as follows: We first notice that $
         \sum_{\substack{(t_1,\chi_1)\\(t_2,\chi_2)}}\left|\sum_{n=1}^{N} b_n n^{-i(t_1-t2)}\chi_1\bar{\chi}_2(n)\right|^2 \lesssim  |\mathcal{S}|N^2+ |\mathcal{S}|^2N + |\mathcal{S}|^{5/4}(qT)^{1/2}N.
     \]
 \end{theorem}
-Finally, the most tricky term, $S_3$ is a summation over a three-dimensional lattice. We will see that $S_3$ is bounded by what is known as the \textit{additive energy} of the set $W$, defined by\[
+The most tricky term, $S_3$ is a summation over a three-dimensional lattice. We will see that $S_3$ is bounded by what is known as the \textit{additive energy} of the set $W$, defined by\[
     E(W)\defeq \#\{t_1,t_2,t_3,t_4\in W : |t_1+t_2-t_3-t_4|\ll T^\epsilon\}.
 \]
 This term describes the `additive structure' of $W$.
@@ -38,7 +38,35 @@ This gives us \[
 R(v)^4=\sum_{t_1,t_2,t_3,t_4\in W}v^{i(t_1+t_2-t_3-t_4)}.
 \]
 
-The naive choice $E(W)\leq W^3$ is slightly too loose to beat the Ingham-Huxley bound. However, an orthogonal bound can be found for $E(W)$ based on Heath-Brown's theorem. We give a quick sketch below. In the next chapter, we will give a full proof of the generalized statement of the theorem that considers primitive Dirichlet characters mod $q$. The proof of Guth-Maynard can be recovered by using the special case $q=1$.
+The naive choice $E(W)\leq W^3$ is slightly too loose to beat the Ingham-Huxley bound. However, an orthogonal bound can be found for $E(W)$ based on Heath-Brown's theorem. Finally, the bound in $7$ and $8$ combined is enough to give an improvement in most cases, a further refinement of the $S_3$ bound was required. This relies on the averaging over the affine summations of $R$.
+ \[
+        \sup_{0<M_1,M_2,M_3<M} \int\Bigg( \sum_{\substack{|m_1|\sim M_1\\|m_2|\sim M_2 \\ |m_3|\ll M_3}} \left|R\left(\frac{m_1 u+m_3}{m_2}\right)\right|\Bigg)^2 \ du \lesssim M^6 \|R\|_{L_2}^4+M^4\|f\|_{L_4}^4.
+\] 
+
+We give a quick sketch of the whole proof below. In the next section, we will give a full proof of the generalized statement of the theorem that considers primitive Dirichlet characters mod $q$. The proof of Guth-Maynard can be recovered by using the special case $q=1$.
+
+\begin{figure} [t]
+    \begin{tikzpicture}
+        \begin{scope}[every node/.style={circle,thick,draw}]
+            \node [label={[align=right]left:{$|W|$ is bounded by the operator\\ norm of a matrix $M$}}](A) at (0,0) {1};
+            \node [label={[align=right]left:{$\|M\|^2$ is bounded by \\$\textrm{Tr}((M^*M)^k)^{1/k}$}}](B) at (0,-2) {2};
+            \node [label={[align=right]left:{Poisson summation on $\textrm{Tr}((M^*M)^3)$,\\split in $4$ pieces}}](C) at (0,-4) {3};
+            \node [label={[align=right] left:{$S_0$ gives main \\ term $N^2V^{-2}$}}](D) at (-6,-7) {4};
+            \node [label={[align=right] left:{$S_1$ is negligible}}](E) at (-2,-7) {5};
+            \node [label={[align=right] left:{$S_2$ reduces to\\ Heath-Brown}}](F) at (2,-7) {6};
+            \node [label={[align=right] left:{$S_3$ is bounded\\ by Energy}}](G) at (6,-7) {7};
+            \node [label={[align=right]left:{Energy bounded by \\ Heath-Brown}}](H) at (6,-10) {8};
+            \node [label={[align=right]left:{Refinement of \\ $S_3$ bound}}](I) at (4,-8.5) {9};
+        \end{scope}
+        %\draw [dotted] (a) --  (b);
+        \draw [->](A) -- (B);\draw [->](B) -- (C);
+        \path [->](C) edge [bend left =13](D); \draw [->](C) -- (E); \draw [->](C) -- (F); \path [->](C) edge[bend left =20] (G);
+        \draw[->] (G)--(H);\draw[->,red,dotted,thick] (G)--(I);\draw[dotted, red,->,thick] (I)--(H);
+        %\draw (a) -- node[midway, below left]{1}(d) -- node[midway, below right]{2}(b);
+        %\draw (a)-- node[midway, above left]{2} (c) --node[midway, above right]{1}(b);
+\end{tikzpicture}
+\caption{Graphical representation of Guth-Maynard proof outline}
+\end{figure}
 \subsubsection*{0. Setup}
 First, as in the theorem, we let $(b_n)$ be a sequence of complex numbers such that $|b_n|\leq 1$ for all $n$, \[
 D_n(t)\defeq \sum_{n\sim N}b_n n^{it},
@@ -49,31 +77,10 @@ for each $t_j\in W$. Notice that we now let the set be $T^\epsilon$ separated fo
     D_n(t_j)=\sum_{n}\omega\left(\frac{n}{N}\right)b_n n^{it_j}.
 \]
 This is added for the Poisson summation in step $3$.
-\subsection*{1. Bounding $|W|$ with operator norm}
+\subsubsection*{1. Bounding $|W|$ with operator norm}
 We view $\vec{b}=(b_n)_{n\sim N}$ as a $N$-dimensional vector, and consider the $|W|\times N$ matrix, indexed by $j$ from $1$ to $|W|$ and $n\sim N$,\[
     M_{j,n}=n^{it_j}= \omega\left(\frac{n}{N}\right)n^{i t_j}.
 \]
-\begin{figure} [t]
-    \begin{tikzpicture}
-        \begin{scope}[every node/.style={circle,thick,draw}]
-            \node [label={[align=right]left:{$|W|$ is bounded by the operator\\ norm of a matrix $M$}}](A) at (0,0) {1};
-            \node [label={[align=right]left:{$\|M\|^2$ is bounded by \\$\textrm{Tr}((M^*M)^k)^{1/k}$}}](B) at (0,-2) {2};
-            \node [label={[align=right]left:{Poisson summation on $\textrm{Tr}((M^*M)^3)$,\\split in $4$ pieces}}](C) at (0,-4) {3};
-            \node [label={[align=right] left:{$S_0$ gives main \\ term $N^2V^{-2}$}}](D) at (-6,-6) {4};
-            \node [label={[align=right] left:{$S_1$ is negligible}}](E) at (-2,-6) {5};
-            \node [label={[align=right] left:{$S_2$ reduces to\\ Heath-Brown}}](F) at (2,-6) {6};
-            \node [label={[align=right] left:{$S_3$ is bounded\\ by Energy}}](G) at (6,-6) {7};
-            \node [label={[align=right]left:{Energy bounded by \\ Heath-Brown}}](H) at (6,-8) {8};
-        \end{scope}
-        %\draw [dotted] (a) --  (b);
-        \draw [->](A) -- (B);\draw [->](B) -- (C);
-        \path [->](C) edge [bend left =13](D); \draw [->](C) -- (E); \draw [->](C) -- (F); \path [->](C) edge[bend left =20] (G);
-        \draw[->] (G)--(H);
-        %\draw (a) -- node[midway, below left]{1}(d) -- node[midway, below right]{2}(b);
-        %\draw (a)-- node[midway, above left]{2} (c) --node[midway, above right]{1}(b);
-\end{tikzpicture}
-\caption{Graphical representation of Guth-Maynard proof outline}
-\end{figure}
 Then we can view the $j$-th entry of the product $M\vec{b}$ as $D_n(t_j)$. In other words \[
 |M\vec{b}|^2\geq V^2{|W|}.
 \]
@@ -168,7 +175,7 @@ Applying Poisson summation, this equals \[
 By non-stationary phase use the rapid decay of $\hat{h}_0(\xi)$ in $\xi$ to only consider the term $m=0$ at the cost of $N^{-100}$.
 Therefore, $\rm{tr}(MM^*)=|W|N\|\omega\|_{L_2}^2+O(N^{-100})$.
 Lemma \ref{gmtrace} gives \[
-|W|\ll NV^{-2}(N+(S_0+S_1+S_2+S_3-N^3|\omega|_{L_2}^6|W|)^{1/3}) \ll N^2V^{-2}+ (S_1+S_2+S_3)^{1/3}. 
+|W|\ll NV^{-2}(N+(S_0+S_1+S_2+S_3-N^3|\omega|_{L_2}^6|W|)^{1/3}) \ll N^2V^{-2}+  NV^{-2}(S_1+S_2+S_3)^{1/3}. 
 \]
 
 
@@ -179,7 +186,7 @@ S_1 =3 N^3\sum_{m\neq 0} \sum_{t_1,t_2,t_3\in W}\hat{h}_{t_1-t_3}(0)\hat{h}_{t_2
 \] 
 This term is bounded by non-stationary phase. If $|m|>T^{1+\epsilon}/N$, then $|m|/|t_3-t_2|< T^\epsilon$, so we can truncate the sum to $|m|\leq T^{1+\epsilon}/N$ with an error of $O_\epsilon(T^{-100})$. In this range, if $t_1\neq t_3$ or $t_2\neq t_1$, then they are $T^\epsilon$ apart, then we get rapid decay in $\hat{h}_{t_1-t_3}(0)$ or $\hat{h}_{t_2-t_1}(0)$ to be $O_\epsilon{T^{-100}}$. But when $t_1=t_2=t_3$, we get decay in the last term $\hat{h}_0(mN)$. Combining all cases, this term is negligible.
 
-\subsection*{6. Bounding $S_2$}
+\subsubsection*{6. Bounding $S_2$}
 
 By symmetry again we can consider the terms where $m_1,m_2\neq 0,m_3=0$.Then \begin{align*}
     S_2=&3 N^3\sum_{m_1,m_2\neq 0} \sum_{t_1,t_2,t_3\in W}\hat{h}_{t_1-t_3}(m_1N)\hat{h}_{t_2-t_1}(m_2N)\hat{h}_{t_3-t_2}(0).
@@ -195,3 +202,17 @@ N \sum_m \hat{h}_{t_1-t_2}(mN) = \sum_n h_{t_1-t_2}\big(\frac{n}{N}\big)=\sum_{n
 \begin{remark}
     Here we have added in the terms for $m=0$. This is somewhat lossy for terms $t_1=t_2$. However, a variation of the argument (and applying Heath-Brown's result in the end) gives a tighter bound, which will be adapted for the general proof.
 \end{remark}
+
+\subsubsection*{7. Bounding $S_3$}
+$S_3$ sums over most points on the $3$-dimensional lattice. By symmetry, we can consider only the terms with $m_1\leq m_2\leq 3$ with an error factor of $6$.
+Recall that \[
+I_m=N^3\sum_{t_1,t_2,t_3\in W}\hat{h}_{t_1-t_3}(Nm_1)\hat{h}_{t_2-t_1}(Nm_2)\hat{h}_{t_3-t_2}(Nm_3).
+\]
+We expand $\hat{h}$ in integral form, so that \begin{align*}
+    I_{\vec{m}}&=N^3\sum_{t_1,t_2,t_3\in W}\int_{\reals^3} \omega(u_1)^2\omega(u_2)^2\omega(u_3)^2 u_1^{i(t_1-t_3)}u_2^{i(t_2-t_1)}u_3^{i(t_3-t_2)} e(-N\vec{m}\cdot \vec{u}) d\vec{u}\\ &=N^3\sum_{t_1,t_2,t_3\in W}\int_{\reals^3} \tilde{\omega}(\vec{u}) \Big(\frac{u_1}{u_2}\Big)^{it_1}\Big(\frac{u_2}{u_3}\Big)^{it_2}\Big(\frac{u_3}{u_1}\Big)^{it_3}e(-N\vec{m}\cdot \vec{u}) d\vec{u}
+\end{align*}
+For $\tilde{\omega}(\vec{u})=\omega(u_1)^2\omega(u_2)^2\omega(u_3)^2$. Because $\tilde{\omega}$ is supported away from $u_3=0$, we can introduce the change of variables $v_1=u_1/u_3$, $v_2=u_2/u_3$. The Jacobian is $u_3^2$, and $u_1/u_2=v_1/v_2$, so that \begin{align*}
+    I_{\vec{m}}& = N^3\sum_{t_1,t_2,t_3\in W}\int_{\reals^3} \tilde{\omega}(v_1u_3,v_2u_3,u_3) \Big(\frac{v_1}{v_2}\Big)^{it_1} v_2^{it_2}\Big(\frac{1}{v_1}\Big)^{it_3}e(-Nu_3(m_1v_1+m_2v_2+m_3)) dv_1\ dv_2 \ du_3\\ 
+    & = N^3\sum_{t_1,t_2,t_3\in W}\int_{\reals^2}\int_{\reals} \tilde{\omega}(v_1u_3,v_2u_3,u_3)e(-Nu_3(m_1v_1+m_2v_2+m_3))   du_3 \  \Big(\frac{v_1}{v_2}\Big)^{it_1} v_2^{it_2}\Big(\frac{1}{v_1}\Big)^{it_3} dv_1\ dv_2 
+\end{align*}
+The inner integral in $u_3$ places restrictions on the domain of integration. First, the support of $\tilde{\omega}$ is $[1,2]\times [1,2]\times [1,2]$. Thus, if it is non-zero, we have $v_1u_3,v_2u_3,u_3\in [1,2]\implies v_1,v_2\in [1/2,2]$.

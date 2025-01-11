@@ -123,7 +123,7 @@ Let $h_t(u)\defeq \omega(u)^2 u^{it}$, we can apply Poisson summation in the inn
 \begin{equation}\label{poissongm}
     \rm{tr}((M^*M)^3)= N^3\sum_{t_1,t_2,t_3\in W}\sum_{m_1,m_2,m_3}  \hat{h}_{t_1-t_3}(Nm_1)\hat{h}_{t_2-t_1}(Nm_2)\hat{h}_{t_3-t_2}(Nm_3).
 \end{equation}
-What we can gain here is that $\hat{h}_t{m}$ has decay in $t$ or $m$ based on the principle of non-stationary phase. Namely
+What we can gain here is that $\hat{h}_t{m}$ has decay in $t$ or $m$ based on the principle of non-stationary phase. 
 \begin{lemma}[Non-stationary phase]
     We have for any integer $A>0$\begin{align*}
         |\hat{h}_t(\xi)|\ll_A \frac{1+|t|^A}{|\xi|^A},\\
@@ -197,22 +197,125 @@ Due to decay of the last term in $|t_3-t_2|$, we can only consider the terms $t_
     &= 3 N^3\hat{h}_{0}(0)\sum_{t_1,t_2\in W}\left(\sum_{m\neq 0}\hat{h}_{t_1-t_2}(mN)\right)^2.
 \end{align*}
 Poisson summation gives \[
-N \sum_m \hat{h}_{t_1-t_2}(mN) = \sum_n h_{t_1-t_2}\big(\frac{n}{N}\big)=\sum_{n} \omega\left(\frac{n}{N}\right) n^{i(t_1-t_2)}.
+N \sum_m \hat{h}_{t_1-t_2}(mN) = \sum_n h_{t_1-t_2}\Big(\frac{n}{N}\Big)=\sum_{n} \omega\left(\frac{n}{N}\right) n^{i(t_1-t_2)}.
 \]
 \begin{remark}
     Here we have added in the terms for $m=0$. This is somewhat lossy for terms $t_1=t_2$. However, a variation of the argument (and applying Heath-Brown's result in the end) gives a tighter bound, which will be adapted for the general proof.
 \end{remark}
 
 \subsubsection*{7. Bounding $S_3$}
-$S_3$ sums over most points on the $3$-dimensional lattice. By symmetry, we can consider only the terms with $m_1\leq m_2\leq 3$ with an error factor of $6$.
+$S_3$ sums over most points on the $3$-dimensional lattice. By symmetry, we can consider only the terms with $m_1\leq m_2\leq m_3$ with an error factor of $6$.
 Recall that \[
 I_m=N^3\sum_{t_1,t_2,t_3\in W}\hat{h}_{t_1-t_3}(Nm_1)\hat{h}_{t_2-t_1}(Nm_2)\hat{h}_{t_3-t_2}(Nm_3).
 \]
+By the the principle of non-stationary phase, we can truncate the sum across $I_m$ to $|m_1|,|m_2|,|m_3|\lesssim T/N$, at the cost of $O\epsilon(T^{-100})$, as $t_j-t_k=O(T)$.
 We expand $\hat{h}$ in integral form, so that \begin{align*}
     I_{\vec{m}}&=N^3\sum_{t_1,t_2,t_3\in W}\int_{\reals^3} \omega(u_1)^2\omega(u_2)^2\omega(u_3)^2 u_1^{i(t_1-t_3)}u_2^{i(t_2-t_1)}u_3^{i(t_3-t_2)} e(-N\vec{m}\cdot \vec{u}) d\vec{u}\\ &=N^3\sum_{t_1,t_2,t_3\in W}\int_{\reals^3} \tilde{\omega}(\vec{u}) \Big(\frac{u_1}{u_2}\Big)^{it_1}\Big(\frac{u_2}{u_3}\Big)^{it_2}\Big(\frac{u_3}{u_1}\Big)^{it_3}e(-N\vec{m}\cdot \vec{u}) d\vec{u}
 \end{align*}
 For $\tilde{\omega}(\vec{u})=\omega(u_1)^2\omega(u_2)^2\omega(u_3)^2$. Because $\tilde{\omega}$ is supported away from $u_3=0$, we can introduce the change of variables $v_1=u_1/u_3$, $v_2=u_2/u_3$. The Jacobian is $u_3^2$, and $u_1/u_2=v_1/v_2$, so that \begin{align*}
-    I_{\vec{m}}& = N^3\sum_{t_1,t_2,t_3\in W}\int_{\reals^3} \tilde{\omega}(v_1u_3,v_2u_3,u_3) \Big(\frac{v_1}{v_2}\Big)^{it_1} v_2^{it_2}\Big(\frac{1}{v_1}\Big)^{it_3}e(-Nu_3(m_1v_1+m_2v_2+m_3)) dv_1\ dv_2 \ du_3\\ 
-    & = N^3\sum_{t_1,t_2,t_3\in W}\int_{\reals^2}\int_{\reals} \tilde{\omega}(v_1u_3,v_2u_3,u_3)e(-Nu_3(m_1v_1+m_2v_2+m_3))   du_3 \  \Big(\frac{v_1}{v_2}\Big)^{it_1} v_2^{it_2}\Big(\frac{1}{v_1}\Big)^{it_3} dv_1\ dv_2 
+    I_{\vec{m}}& = N^3\sum_{t_1,t_2,t_3\in W}\int_{\reals^3} u_3^2 \tilde{\omega}(v_1u_3,v_2u_3,u_3) \Big(\frac{v_1}{v_2}\Big)^{it_1} v_2^{it_2}\Big(\frac{1}{v_1}\Big)^{it_3}e(-Nu_3(m_1v_1+m_2v_2+m_3)) dv_1\ dv_2 \ du_3\\ 
+    & = N^3\sum_{t_1,t_2,t_3\in W}\int_{\reals^2}\int_{\reals} u_3^2 \tilde{\omega}(v_1u_3,v_2u_3,u_3)e(-Nu_3(m_1v_1+m_2v_2+m_3))   du_3 \  \Big(\frac{v_1}{v_2}\Big)^{it_1} v_2^{it_2}\Big(\frac{1}{v_1}\Big)^{it_3}  dv_1\ dv_2 
 \end{align*}
-The inner integral in $u_3$ places restrictions on the domain of integration. First, the support of $\tilde{\omega}$ is $[1,2]\times [1,2]\times [1,2]$. Thus, if it is non-zero, we have $v_1u_3,v_2u_3,u_3\in [1,2]\implies v_1,v_2\in [1/2,2]$.
+The inner integral in $u_3$ places restrictions on the domain of integration. First, the support of $\tilde{\omega}$ is $[1,2]\times [1,2]\times [1,2]$. Thus, if it is non-zero, we have $v_1u_3,v_2u_3,u_3\in [1,2]\implies v_1,v_2\in [1/2,2]$. Therefore, we can restrict the outer integral in $v_1$ and $v_2$ to this range. Next, since $v_1,v_2=O(1)$, the chain rule gives\[
+\left(\frac{\partial}{\partial u_3}\right)^j{\omega}(v_1u_3,v_2u_3,u_3)\ll_j 1.\]
+Therefore, we can apply the repeated integration by parts to get rapid decay of the integral in $|N(m_1v_1+m_2v_2+m_3)|$. In particular, we can truncate the integral to the range $|N(m_1v_1+m_2v_2+m_3)|\ll T^\epsilon$ at an error of $O_{\epsilon}(T^{-100})$, and use \[
+    \int_{\reals} u_3^2 \tilde{\omega}(v_1u_3,v_2u_3,u_3)e(-Nu_3(m_1v_1+m_2v_2+m_3))   du_3=O(1)
+\]
+in this range by the compact support of $\tilde{\omega}$. This gives us \begin{equation}
+    |I_{\vec{m}}|\leq \Bigg|N^3 \sum_{t_1,t_2,t_3\in W}\int\displaylimits_{\substack{
+        |v_1m_1+v_2m_2+m_3|\lesssim \frac{1}{N}\\
+        \frac{1}{2}\leq v_1,v_2\leq 2
+    }} \Big(\frac{v_1}{v_2}\Big)^{it_1} v_2^{it_2}\Big(\frac{1}{v_1}\Big)^{it_3}  dv_1\ dv_2 \Bigg|+O_{\epsilon}(T^{-100}).
+\end{equation}
+Recall that in the outline we defined\[
+R(v)\defeq\sum_{t\in W} v^{it}.
+\]
+Exchanging the summation and integral, we get the term \begin{align*}
+    &\Bigg| N^3 \int\displaylimits_{\substack{
+        |v_1m_1+v_2m_2+m_3|\lesssim \frac{1}{N}\\
+        \frac{1}{2}\leq v_1,v_2\leq 2
+    }} R\Big(\frac{v_1}{v_2}\Big) R({v_2}\Big) R\Big(\frac{1}{v_1}\Big) dv_1\ dv_2 \Bigg|\\
+    \leq & N^3 \int\displaylimits_{\substack{
+        |v_1m_1+v_2m_2+m_3|\lesssim \frac{1}{N}\\
+        \frac{1}{2}\leq v_1,v_2\leq 2
+    }} \Bigg|R\Big(\frac{v_1}{v_2}\Big) R({v_2}\Big) R\Big(\frac{1}{v_1}\Big)\Bigg| dv_1\ dv_2 \\
+    =  & N^3 \int\displaylimits_{\substack{
+        |v_1m_1+v_2m_2+m_3|\lesssim \frac{1}{N}\\
+        \frac{1}{2}\leq v_1,v_2\leq 2
+    }} \Bigg|R\Big(\frac{v_2}{v_1}\Big) R({v_2}\Big) R({v_1})\Bigg| dv_1\ dv_2,
+\end{align*}
+where the last step, we used \[
+|R(v^{-1})| = \Big|\sum_{t\in W} v^{-it}\Big| = \Big|\sum_{t\in W} v^{it}\Big| = |R(v)|.
+\]
+Now we fix $v_1$, and consider the integral in $v_2$ in the range \[
+    |v_1m_1+v_2m_2+m_3|\lesssim \frac{1}{N} \implies \Big|v_2 -\frac{v_1m_1+m_3}{-m_2}\Big|\lesssim \frac{1}{|m_2| N}.
+\]
+If we enforce the conditions $|m_1|\leq |m_2|\leq|m_3|$ and $v_2\asymp 1$, we see that the domain of integration is empty unless $|m_2|\asymp |m_3|$. Thus, we can break the sum across \[\sum_{|m_1|,|m_2|,|m_3|\lesssim T/N}\] to be \[\log T^{1+\epsilon}/N \ \rm{sup}_{U=2^j, V\leq U} \sum_{\substack{|m_1|\sim V\\  |m_2|, |m_3|\sim U}}.\]
+Moreover, we integrate in $v_2$ over a very small neighborhood of width $\lesssim 1/N$ around $v_2=({v_1m_1+m_3})/({-m_2})$. In principle, we can estimate this integral by taking the value of $R$ at this point to get \[
+    \approx  \frac{N}{|m_2|} \int\displaylimits_{\substack{
+        \frac{1}{2}\leq v_1\leq 2
+    }} \Bigg|R\Big(\frac{v_1m_1+m_3}{-v_1m_2}\Big) R(\frac{v_1m_1+m_3}{-m_2}\Big) R({v_1})\Bigg| dv_1.
+\]
+This is made precise by apply to a $(1/N|m_2|)$-smoothened version of $R$, stated in Proposition \ref{dyadics_3}. Finally, H\"older's inequality gives a bound of \begin{align*}
+    \Big\|R\Big(\frac{vm_1+m_3}{-vm_2}\Big) \Big\|_{\substack{L_4\\ v\asymp 1}}\Big\|R\Big(\frac{vm_1+m_3}{-m_2}\Big) \Big\|_{\substack{L_4\\ v_1\asymp 1}}\Big\|R(v) \Big\|_{\substack{L_2\\ v_1\asymp 1}}
+\end{align*}
+
+The second moment of $R$ is bounded by the size of $W$. Indeed, we have \begin{align*}
+    \int_{v\asymp 1} |R(v)|^2 dv =  \sum_{t_1,t_2\in W} \int_{v\asymp 1} R(v)^{i(t_1-t_2)} dv.  
+\end{align*}
+If $t_1-t_2\neq 0$, then $|t_1-t_2|>T^\epsilon$, so the oscillatory integral will be negligible by the fast decay. There are $|W|$ terms satisfying $t_1=t_2$, and each contributes $O(1)$ to the sum. Similarly, the fourth moment of $R$ is bounded by the energy, recalling its definition \[
+    E(W)\defeq \#\{t_1,t_2,t_3,t_4\in W : |t_1+t_2-t_3-t_4|\ll T^\epsilon\}.
+\]
+We get
+\begin{align*}
+    \int_{v\asymp 1} |R(v)|^2 dv =   \sum_{t_1,t_2,t_3,t_4\in W} \int_{v\asymp 1}  R(v)^{i(t_1+t_2-t_3-t_4)} dv, 
+\end{align*}
+and the terms in the summation are negligble unless $|t_1+t_2-t_3-t_4|\ll T^\epsilon$. Assembling everything together gives an initial bound of \[
+S_3\lesssim T^2E(W)^{1/2}|W|^{1/2}.
+\]
+
+
+\subsubsection*{9. Refinement of $S_3$ bound}
+
+Recall that in the previous section, we summed across 
+\[
+    \sum_{\substack{|m_1|\sim V\\ |m_2|, |m_3|\sim U}} \frac{N}{|m_2|} \int\displaylimits_{\substack{
+        \frac{1}{2}\leq v_1\leq 2
+    }} \Bigg|R\Big(\frac{v_1m_1+m_3}{-v_1m_2}\Big) R\Big(\frac{v_1m_1+m_3}{-m_2}\Big) R({v_1})\Bigg| dv_1
+\]
+By repeatedly applying Cauchy-Schwartz, we can move the summation into the integral and obtain terms that resembles the form \[
+   \int_{v_1\asymp 1} \sum_{\substack{|m_1|\sim V\\ |m_2|, |m_3|\sim U}}  \Big| R\Big(\frac{v_1m_1+m_3}{-m_2}\Big)\Big|^2 dv_1.
+\]
+The term $(v_1m_1+m_3)/(-m_2)$ describes an affine transformation in $v_1$. Therefore, averaging over all the affine transformations, we may expect that this estimates some $L^k$ norm of $R$. Indeed, we have Lemma \ref{affinetrans} that gives us this estimate. This improves the bound on $S_3$ to\[
+S_3\lesssim T^2|W|^{3/2}+TN|W|^{1/2}E(W)^{1/2}.
+\]
+This gives an improvement from the previous bound for the case $N \ll T^{1-\delta_1}$ and $E(W)\gg |W|^{3-\delta_2}$ for some small $\delta$'s.
+
+
+\subsubsection*{8. Bound on $E(W)$}
+Finally, we give an orthogonal bound on the energy of the set $W$. The is that if $|t_1+t_2-t_3-t_4|$ is small, then we can approximate \[
+D_N(t_4) \approx D_N(t_1+t_2-t_3).
+\]
+This is made precise by applying a smoothing of $D_N$ over a width of $\lesssim 1$.
+Therefore, since the choice of $t_4$ is fixed by the choice of $t_1,t_2,t_3$, we have\[
+E(W)V^2\leq \sum_{|t_1-t_2-t_3-t_4|\lesssim 1} |D_N(t_4)|^2 \approx \sum_{|t_1-t_2-t_3-t_4|\lesssim 1} |D_N(t_1+t_2-t_3)|^2 \leq \sum_{t_1,t_2,t_3\in W} |D_N(t_1+t_2-t_3)|^2.
+\]
+Now we can expand $|D_N(t_1+t_2-t_3)|^2$ to get \begin{align*}
+    \sum_{t_1,t_2,t_3\in W} |D_N(t_1+t_2-t_3)|^2=& \sum_{t_1,t_2,t_3\in W}\sum_{n_1,n_2\sim N} b_{n_1} \bar{b}_{n_2} \Big(\frac{n_1}{n_2}\Big)^{i(t_1+t_2-t_3)}\\ 
+    =&\sum_{n_1,n_2\sim N} b_{n_1} \bar{b}_{n_2}\sum_{t_1,t_2,t_3\in W}\Big(\frac{n_1}{n_2}\Big)^{i(t_1+t_2-t_3)}\\ 
+    \leq& \sum_{n_1,n_2\sim N} \Big|R\Big(\frac{n_1}{n_2}\Big)R\Big(\frac{n_1}{n_2}\Big)R\Big(\frac{n_2}{n_1}\Big)\Big|\\ 
+    \leq& \sum_{n_1,n_2\sim N} \Big|R\Big(\frac{n_1}{n_2}\Big)\Big|^3.
+\end{align*}
+Now we can apply the trivial bound $|R|\leq |W|$ to get that \[
+    E(W)\lesssim V^{-2}|W|\sum_{n_1,n_2\sim N} \Big|R\Big(\frac{n_1}{n_2}\Big)\Big|^2.
+\]
+This is in turn bounded by Heath-Brown's result as \begin{align*}
+    \sum_{n_1,n_2\sim N} \Big|R\Big(\frac{n_1}{n_2}\Big)\Big|^2 &=
+    \sum_{n_1,n_2\sim N}\sum_{t_1,t_2\in W} \Big(\frac{n_1}{n_2}\Big)^{i(t_1-t_2)}\\ 
+    &= \sum_{t_1,t_2\in W} \Big|\sum_{n\sim N} n^{i(t_1-t_2)} \Big|^2.
+\end{align*}
+This is enough to give an improvement on Ingham-Huxley's result, but can be further improved using Cauchy Schwartz on the third moment \begin{align*}
+    \sum_{n_1,n_2\sim N} \Big|R\Big(\frac{n_1}{n_2}\Big)\Big|^3 \leq 
+    \Bigg(\sum_{n_1,n_2\sim N} \Big|R\Big(\frac{n_1}{n_2}\Big)\Big|^2 \Bigg)^{1/2} \Bigg(\sum_{n_1,n_2\sim N} \Big|R\Big(\frac{n_1}{n_2}\Big)\Big|^4\Bigg)^{1/2}.
+\end{align*}
+The fourth moment can be reduced back to the second moment by taking representative classes of $\lfloor t_1-t_2 \rfloor$, thus can also be bounded using Heath-Brown's result.

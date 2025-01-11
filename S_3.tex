@@ -1,6 +1,6 @@
 
 \section{$S_3$ bound}
-\begin{proposition}
+\begin{proposition}\label{s_3bound}
     We have \[
     S_3 \lesssim \phi(q)^3 T^2 E(\mathbb{S})^{1/2} |\mathbb{S}|^{1/2}.
     \]
@@ -13,7 +13,7 @@ This bound has a refinement, which uses one of the propositions from Guth and Ma
      \]
 \end{proposition}
 The proof of Proposition \ref{refinements_3} relies on the result for summation over affine transformation by Guth and Maynard.
-\begin{lemma}
+\begin{lemma}\label{affinetrans}
     Let $M>0$. Let $f(u)\geq 0$, supported on $u\asymp 1$, and $|\hat{f}(\xi)|\lesssim_j (|\xi|/T)^j$ for all $j$. Then \[
         \sup_{0<M_1,M_2,M_3<M} \int\Bigg( \sum_{\substack{|m_1|\sim M_1\\|m_2|\sim M_2 \\ |m_3|\ll M_3}} f\left(\frac{m_1 u+m_3}{m_2}\right)\Bigg)^2 \ du \lesssim M^6 \|f\|_{L_1}^2+M^4\|f\|_{L_2}^2.
     \] 
@@ -214,7 +214,7 @@ The proposition follows from this claim.
     \end{align*}
     Lemma \ref{fourthmoment} completes the proof.
 \end{proof}
-\begin{proof}[{Proof of proposition [placeholder]}]
+\begin{proof}[{Proof of Proposition \ref{s_3bound}}]
     We first appler H\"older's inequality on the integral to get 
     \begin{align*}
         \tilde{I}_m \leq  \sum_{y_1,y_2\in (\mathbb{Z}/q\mathbb{Z})^\times}& \left(\int_{v_1\asymp 1} 

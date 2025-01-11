@@ -1,5 +1,27 @@
 \section{Preliminaries}
 Here we give some supplementary definitions and statements of theorems.
+\subsection*{Number Theory}
+\begin{definition}[Dirichlet Characters]
+	Let $q\in\naturals$. A Dirichlet character $\chi:\mathbb{N}\to\complex$ modulus $q$ is an arithmetic function satisfying \begin{itemize}
+		\item \textit{(Periodicity)} $\chi(n+q)=\chi(n)\forall n\in\naturals$.
+		\item \textit{(Complete multiplicativity)} $\chi(nm)=\chi(n)\chi(m)\forall n,m\in\naturals$.
+		\item $|\chi(n)|=\begin{cases}
+			1, & \rm{if }\gcd(n,q)=1,\\
+			0, & \rm{otherwise.}
+		\end{cases}$
+	\end{itemize}
+\end{definition}
+\begin{proposition}
+	There are $\phi(q)$ Dirichlet characters of modulus $q$.
+\end{proposition}
+\begin{proof}
+	Taking residual classes mod $q$, we see that Dirchlet characters are in one-to-one correspondence with one-dimensional representations of the multiplicative group $(\mathbb{Z}/q\mathbb{Z})^{\times}$. Since this group is abelian, all of its irreducible representations are one-dimensional. Therefore, the number of Dirichlet characters equals the number of irreducible representations of the $(\mathbb{Z}/q\mathbb{Z})^{\times}$. It is known that the sum of squares of the dimensions irreducible representations equals the order of the group, so we have \[
+		\phi(q)=|(\mathbb{Z}/q\mathbb{Z})^{\times}|=\sum_{\textrm{irreducible representations } \varphi}  (\textrm{dim } \varphi)^2 = \sum_{\textrm{irreducible representations } \varphi}  1.
+	\]
+\end{proof}
+\begin{definition}
+	A Dirichlet character $\chi$ modulus $q$ is induced by another character $\chi^*$ mod $m<q$ if they agree on all $n$ such that $\gcd(q,n)=1$. A Dirchlet character is primitive if it is not induced by another character. A Dirchlet character is principal if it is induced by the character $\chi_1(n)\defeq1(n)\equiv 1$, thus corresponds to the trivial representation.
+\end{definition}
 \begin{theorem}[M\"obius Inversion]
 	The M\"obius function $\mu$ is defined for $n\in\naturals$,
 	\[
@@ -30,6 +52,7 @@ Here we give some supplementary definitions and statements of theorems.
 	with the same $a_n$ as in the previous equation.
 \end{example}
 
+\subsection*{Harmonic Analysis}
 \begin{theorem}[Fourier Inversion]
 	In Schwartz space, the Fourier transform of $\mathcal{F}:\schwartz(\reals^d)\to\schwartz(\reals^d)$ of $f\in\mathcal{S}(\reals^d)$ is given by
     \[
@@ -51,5 +74,7 @@ Here we give some supplementary definitions and statements of theorems.
 	on $a<c<b$ provided that the integral $\tilde{f}$ is absolute convergent on the strip $a<\Re(s)<b$.
 \end{theorem}
 \begin{theorem}[Poisson Summation]
-	
+	Let $f:\reals\to\complex$ be Schwartz. Then \[
+	\sum_{n\in \mathbb{Z}} f(n) = \sum_{\xi\in\mathbb{Z}} \hat{f}(\xi).
+	\]
 \end{theorem}

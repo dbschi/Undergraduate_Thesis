@@ -1,0 +1,136 @@
+\documentclass[
+ngerman,
+toc=flat,
+toc=chapterentrywithdots,
+captions=tableabove,
+listof=entryprefix,
+listof=leveldown,
+fontsize=12pt,
+numbers=noenddot]
+{article}
+\usepackage{blindtext}
+\usepackage{xcolor}
+\usepackage{amsfonts}
+\usepackage{hyperref} 
+\usepackage{subcaption}
+\usepackage{indentfirst}
+\usepackage{graphicx}
+\usepackage[normalem]{ulem}
+\usepackage [english]{babel}
+\usepackage [autostyle, english = american]{csquotes}
+\usepackage{appendix}
+\usepackage{tabularx}
+\usepackage{bbm}
+\usepackage{amsmath,amssymb}
+\usepackage{mathtools}
+\usepackage{makecell}
+\graphicspath{ {./images/} }
+\usepackage{enumitem}
+\usepackage{soul}
+\usepackage{mathtools}
+\usepackage{wrapfig}
+\usepackage{mathrsfs}
+\usepackage{centernot}
+\usepackage{amsthm}
+%\bibliography{bibliograph}
+%\usepackage{biblatex}
+
+\allowdisplaybreaks
+
+\MakeOuterQuote{"}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{example}[theorem]{Example}
+\newenvironment{remark}[1][Remark:]{\begin{trivlist}
+		\item[\hskip \labelsep {\bfseries #1}]}{\end{trivlist}}
+
+\newcommand{\defeq}{\mathrel{\mathop:}=}
+\newcommand{\stackeq}[1]{\stackrel{\mathclap{\normalfont\mbox{\normalfont\tiny {#1}}}}{=}}
+\newcommand\reals{\mathbb{R}}
+\newcommand\field{\mathbb{F}}
+\newcommand\complex{\mathbb{C}}
+\newcommand\schwartz{\mathcal{S}}
+\renewcommand{\mod}{ \textrm{ mod }}
+\newcommand\naturals{\mathbb{N}}
+\usepackage{geometry}
+\geometry{
+	letterpaper,
+	margin=1in
+}
+\usepackage{blindtext}
+\usepackage{tikz,tcolorbox,tikz-3dplot}
+\usepackage{pgfplots}
+\usepgfplotslibrary{fillbetween}
+\usepackage{xcolor}
+\usepackage{amsfonts}
+\usepackage{hyperref} 
+\usepackage{indentfirst}
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage[normalem]{ulem}
+\usepackage [english]{babel}
+\usepackage [autostyle, english = american]{csquotes}
+\usepackage{appendix}
+
+\usepackage[ruled,linesnumbered]{algorithm2e}
+\SetKwComment{Comment}{/* }{ */}
+\DontPrintSemicolon 
+\usepackage{tabularx}
+\usepackage{amsmath,amssymb}
+\usepackage{mathtools}
+\usepackage{makecell}
+\graphicspath{ {./images/} }
+\usepackage{enumitem}
+\usepackage{soul}
+\usepackage{mathtools}
+\usepackage{wrapfig}
+\usepackage{mathrsfs}
+\usepackage{centernot}
+\usepackage{amsthm}
+\usepackage{listings}
+%\setcounter{section}{-1}
+\usepackage{titling}
+\predate{}
+\postdate{}
+\date{}
+\title{Thesis Outline}
+%\author{}
+%\date{January 2024}
+
+\begin{document}
+	\maketitle
+\section{Introduction to Topic}
+The topic of my thesis concerns a new result on the large values of Dirichlet polynomials. In June 2024, Larry Guth and James Maynard published a new bound on the number of times Dirichlet polynomials in the form \[
+	D_N(t)\defeq \sum_{n=N}^{2N} b_n n^{it}
+\]
+can obtain large absolute values, subject $0\leq t\leq T$. This new result improves the bound on the zero density of the Riemann Zeta function $\zeta$, defined by \[
+N(\sigma, T)\defeq \# \{\rho = \beta+it \ : \ \zeta(\rho)=0, \beta\geq \sigma, |t|\leq T\}.
+\]
+This improvement is the first in the past $50$ years after Huxley's zero density theorem, and has significant consequences in number theoretic results. In particular, there is the `expected' (as predicted by the Prime Number Theorem) number of primes in the interval $[x,x+x^{17/30+o(1)}]$. 
+
+Adapting the idea of Guth and Maynard's proof, I am working on a generalized result. Namely, I am improving the bound on the number of pairs $(\chi,t)$ such that \[
+D_N(\chi,t)\defeq \sum_{n=N}^{2N} b_n \chi(n) n^{it}
+\]
+attains large values, subject to $t\in [0,T]$ and $\chi$ is a primitive Dirichlet character of modulus $q$. This will be related to the zero density of $L$-functions.
+
+\section{Outline}
+My thesis can be roughly broken down into $6$ parts.
+\subsection{Introduction}
+Here, I will introduce the Riemann zeta function, as well as some of its properties such as its analytic continuation, functional equation, and the number and regions of zeros.
+\subsection{Prime Number Theorem}
+To motivate the concept of zero density, I will demonstrate the connection between zeta zeros and prime numbers by using the zeta function to prove the Prime Number theorem. I have chosen to modify Terence Tao's proof to motivate Perron's formula and the explicit formula, as these fit in the narrative for later sections.
+\subsection{Primes in Short Intervals}
+From the classical Prime Number Theorem, I will motivate the question of the asymptotic behavior of primes in short intervals. As the explicit formula suggests, this is related to how close the zeta zeros are to the half-line (closer is better). I will provide a proof of Hoheisel's theorem that links the zero density of the zeta function to primes in short intervals. This leads into the zero density proofs of Ingham-Huxley and Guth-Maynard, where I will briefly introduce.
+\subsection{Huxley's proof of Zero Density}
+Guth and Maynard's proof is `half' of Huxley's proof. In particular, the conversion from the large values of Dirichlet polynomials to the zero density result has the same structure as Huxley's proof. I will explain Huxley's proof to demonstrate the connection and motivate the large values result. 
+\subsection{Guth-Maynard's proof of Zero Density}
+Guth and Maynard's large values proof is very long. Since I will be providing a general proof (take $q=1$ to recover the special case), I will only sketch Guth-Maynard's proof, highlighting the key ideas used for its generalization.
+\subsection{Proof of Hybrid Zero Density}
+Finally, I will provide a proof for the hybrid version of the large values of Dirichlet polynomials. I am currently working on bounding the analogous $S_2$ term; this is the final term I have to bound in the result. More importantly, I am able to bound the analogous $S_3$ term, which was the most complicated key term in Guth and Maynard's proof. 
+\end{document} 

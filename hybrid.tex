@@ -1,29 +1,118 @@
 \section{Towards a Hybrid Zero Density Result}
+\iffalse
 
 \textit{Here I will document some progress with working with
 the hybrid version of Guth-Maynard. This section will be removed when I send the draft to Prof. Wunsch.}
-Let $\omega$ be a bump function supported on \textit{[placeholder]}. Let $N=T^{[placeholder]}$. We denote \[
-D_N(t,\chi) = \sum_{n\sim N} \omega\left(\frac{n}{N}\right)b_n \chi(n) n^{it}
+\fi
+We would like to generalize Guth and Maynard's result to $L$-functions. Specifically, let $\chi$ be a \hyperref[dcharacter]{Dirichlet character}. we are interested in the the zeros defined by \[
+L(s,\chi)\defeq\sum_{n} \frac{\chi(n)}{n^{-s}}
 \]
-and $\mathcal{S}=\{(t_j,\chi_j)\}_{j\leq |\mathcal{S}|}$ such that 
-\[
-    |D_N(t_j,\chi_j)|\geq V
+on $\Re(s)>1$ and its analytic continuation on the whole complex plane. The structure of the arguments for analytic continuation, its line of symmetry along $\Re(s) = 1/2$, and the locations of trivial zeros are very similar to that of the zeta function. This motivates the Generalized Riemann Hypothesis. \begin{conjecture} [Generalized Riemann Hypothesis]
+    The \text{Generalized Riemann Hypothesis} asserts that on the critical strip, \[
+    L(s,\chi)=0 \implies \Re(s)=\frac{1}{2},
+    \]
+    for any Dirichlet character.
+\end{conjecture}
+This leads to even stronger for primes in short intervals. Namely, fix an integer $q$, we have that \[
+\sum_{\substack{n\leq N\\ n\equiv a\mod q}}\Lambda(n) = \begin{cases}
+    \frac{1}{\phi(q)} N + O(x^{2+o(1)}), & \textrm{if $\gcd(a,q)=1$}\\
+    o(n),& \textrm{otherwise.}
+\end{cases}
 \]
-for all $(t_j,\chi_j)\in\mathcal{S}$.
-We also let $0\leq t_j\leq T$ to be $T^\epsilon$ separated, so if 
-$j\neq k$ and $\chi_j=\chi_k$, $|t_j-t_k|\geq T^\epsilon$. \textcolor{red}{We can also
-let $\chi_j$'s be Dirichlet characters modulo $q$ (potentially primitive if we need this hypothesis later).}
+This means that not only that the Prime Number Theorem holds in intervals of $x^{2+\epsilon}$, the distribution of primes in each of the residual classes (coprime to $q$) are uniform at this scale too. Noticing that we can modify Huxley's proof with \[
+M_{x,\chi} = \sum_{n\leq x} \chi(n) \mu(n) n^{-s},
+\]
+we have \[
+L(s,\chi)M_{x,\chi} = \sum_{n} a_n \chi(n) \mu(n) n^{-s}.
+\]
 
-Here we write $M$ a $|\mathcal{S}\times N|$ matrix with entries
+Thus, we can reproduce a similar proof on the zero density of $L$-functions. 
+\begin{definition}[Zero Density for $L$-functions]
+    Let $N(\sigma,\chi,T)$ denote the number of zeros of the $L$-function $L(-,\chi)$ with real part greater than $\sigma$ and imaginary part between $-T$ and $-T$. That is \[
+    N(\sigma,\chi,T) \defeq \#\{\rho=\beta+i\gamma \ | \ \beta\geq \sigma, |\gamma|\leq T\}.
+    \]
+    For backwards compatibility with our previous definition, we take $N(\sigma,T)\defeq N(\sigma, 1,T)$.
+\end{definition}
+The hybrid analogs of the zero density bounds of Ingham and Huxley are known.
+\begin{theorem}[Hybrid Ingham bound for zero density]
+    Let $1/2\leq \sigma\leq 3/4$. We have \[
+        \sum_{\chi^* }N(\sigma,\chi^*,t)\lesssim (qT)^{\frac{3(1-\sigma)}{2-\sigma}},
+        \]
+        where $\sum_{\chi^*}$ sums over all the primitive characters $\chi^*$ of modulus $q$.
+\end{theorem}
+\begin{theorem}[Hybrid Huxley bound for zero density]
+    Let $3/4\leq \sigma\leq 1$. We have \[
+        \sum_{\chi^* }N(\sigma,\chi^*,t)\lesssim (qT)^{\frac{3(1-\sigma)}{3\sigma-1}},
+        \]        
+        where $\sum_{\chi^*}$ sums over all the primitive characters $\chi^*$ of modulus $q$.
+\end{theorem}
+
+The method for detecting zeros is very similar to Huxley's proof above with the slight change in definition of $M_{x,\chi}$. This argument then reduces to bounding the number of times large values of Dirichlet polynomials can occur. Therefore we want a result in the form:
+\begin{quotation}  
+Let $\mathcal{S}=\{(t_j,\chi_j)\}$ be a set such that each $\chi_j$ is a primitive Dirichlet character of modulus $q$, and $|t_j-t_k|\geq 1$ if $j\neq k$ and $\chi_j=\chi_k$. (That is, the $t$'s are $1$-separated if the characters are the same.)Let $|b_n|\leq 1$ be a sequence of numbers indexed in $n$, and suppose also that \[
+\Bigg|\sum_{n\sim N} b_n\chi_j(n)n^{it_j} \Bigg|>V.
+\]
+We want to find a bound on $|\mathcal{S}|$.
+\end{quotation}
+
+
+Our result is as follows: 
+\begin{theorem}
+    To be determined \textrm{\smiley}.
+\end{theorem}
+
+The idea of the proof is very similar to Guth and Maynard's proof. We can define a $|\mathcal{S}\times N|$ matrix $M$ with entries
 \[
     M_{t_j,\chi_j,n} = \chi_j(n)n^{it_j}
+\]
+for $(t_j,\chi_j)\in\mathcal{S}$ and $n\sim N$, and bound its operator in the exact same way: taking it to the $M^*M$ to the third power and calculating its trace. The Dirichlet characters are not nice to handle when extended to a function $\reals \to \complex$, so we break the sum into $q$ summations across each residue class $\mod q$, and apply Poisson summation on each piece of the sum. This gives us \begin{align*}
+    \textrm{tr}((M^*M)^3)=\sum_{\substack{(t_1,\chi_1),\\(t_2,\chi_2),\\(t_3,\chi_3)\in\mathcal{S}}}
+    \frac{N^3}{q^3}\sum_{m\in\mathbb{Z}^3}&\sum_{x\in (\mathbb{Z}/q\mathbb{Z})^3}\chi_1\bar{\chi}_3(x_1)\chi_2\bar{\chi}_1(x_2)\chi_3\bar{\chi}_2(x_3) e\left(\frac{-x\cdot m}{q}\right)\\
+    \times \ &\hat{h}_{t_1-t_3}\left(\frac{Nm_1}{q}\right)\hat{h}_{t_2-t_1}\left(\frac{Nm_2}{q}\right)\hat{h}_{t_3-t_2}\left(\frac{Nm_3}{q}\right),
+\end{align*}
+where $h_t(x) \defeq \omega(u)^2 x^{it}$ has the same definition, thus its fourier transform has the same properties in decay. Similarly, we find that when we break the sum in $\mathbb{Z}^3$ into $S_0$ to $S_3$ in the same way, $S_0$ gives the main term, $S_1$ is negligible, and $S_2$ can be bounded by Heath-Brown's theorem. For the $S_3$ bound, we redefine \[
+R(v,n_1,n_2)\defeq \sum_{(t,\chi)\in\mathcal{S}}\chi(n_1)\bar{\chi}(n_2) v^{it}.
+\]
+This additional structure in $\chi$ may look complicated when taking the $L_2$ or $L_4$ norm of $R$ in $v\asymp 1$, but this cancels out when taking \[
+\sum_{n_1\in\mathbb{Z}/q\mathbb{Z}} R(v,n_1,n_2)^2 = \sum_{n_1\in\mathbb{Z}/q\mathbb{Z}}\sum_{\substack{(t_1,\chi_1),(t_2,\chi_2)\in\mathcal{S}}}\chi_1(n_1)\bar\chi_2(n_1)\bar\chi_1(n_2)\chi_2(n_2) v^{i(t_1-t_2)}.
+\]
+By the orthogonality of Dirichlet characters, the sum in $n_1$ vanishes except when $\chi_1=\chi_2$, in which case (assuming $\gcd(n_2,q)=1$) we can reduce \[
+    \sum_{n_1\in\mathbb{Z}/q\mathbb{Z}} R(v,n_1,n_2)^2 =\phi(q) \sum_{\substack{(t_1,\chi_1),(t_2,\chi_2)\in\mathcal{S}\\\chi_1=\chi_2}}v^{i(t_1-t_2)}.
+\]
+When $\chi_1=\chi_2$, we have $t_1=t_2$ or they are $T^\epsilon$ separated, giving us decay in the calculation of the second moment of $R$ to be $\phi(q)|\mathcal{S}|$.
+Similarly, we see the fourth power of $R$ cancels in the sum \[
+    \sum_{n_1\in\mathbb{Z}/q\mathbb{Z}} R(v,n_1,n_2)^4 = \sum_{n_1\in\mathbb{Z}/q\mathbb{Z}}\sum_{\substack{(t_1,\chi_1),(t_2,\chi_2),\\(t_3,\chi_3),(t_4,\chi_4)\\\in\mathcal{S}}}\chi_1\chi_2\bar\chi_3\bar\chi_4(n_1)\bar\chi_1\bar\chi_2\chi_3\chi_4(n_2) v^{i(t_1+t_2-t_3-t_4)}.
+\]
+Only terms where $\chi_1\chi_2=\chi_3\chi_4$ can have non-zero contribution, giving us a natural definition for the energy of the set to be \[
+E(\mathcal{S})\defeq \#\{(t_1,\chi_1),(t_2,\chi_2),(t_3,\chi_3),(t_4,\chi_4)\in \mathcal{S} \ | \ \chi_1\chi_2=\chi_3\chi_4, |t_1+t_2-t_3-t_4|\lesssim 1\}.
+\]
+This in turn can be bounded by a third moment of $R$: \[
+ E(\mathcal{S})\lesssim N^{-2\sigma}\sum_{n_1,n_2\sim N}\left|R\left(\frac{n_1}{n_2},n_1,n_2\right) \right|^3.\]
+ This expression is then bounded by Heath-Brown's theorem.
+
+
+
+ \textcolor{red}{Things beyond are slightly more disorganized.}
+\subsection{Setup and Reduction of Theorem}
+\begin{lemma}
+    Let $\mathcal{S}=\{(t_j,\chi_j)\}$ be a set such that each $\chi_j$ is a primitive Dirichlet character of modulus $q$, and $|t_j-t_k|\geq T^\epsilon$ if $j\neq k$ and $\chi_j=\chi_k$. Let $|b_n|\leq 1$ be a sequence of numbers indexed in $n$, $\omega$ be a smooth bump function that equals $1$ on $[6/5,9/5]$ and has support in $[1,2]$ (thus $\omega^{(A)}\ll_A 1$ for all $A$). Let $V=N^\sigma$, where $\sigma \in [placeholder]$, and $N=T^\alpha$, where $\alpha \in [placeholder]$ Suppose also that \[
+    |D_N(t_j,\chi_j)|\defeq\Bigg|\sum_{n\sim N} b_n\chi_j(n)n^{it_j} \Bigg|>V.
+\]
+for all $(t_j,\chi_j)\in\mathcal{S}$.
+Then \[
+|\mathcal{S}|\lesssim \smiley.
+\]
+\end{lemma}
+
+We define $M$ a $|\mathcal{S}\times N|$ matrix with entries
+\[
+    M_{t_j,\chi_j,n} = \omega\Big(\frac{n}{N}\Big)\chi_j(n)n^{it_j}
 \]
 for $(t_j,\chi_j)\in\mathcal{S}$ and $n\sim N$.
 Thus by the same reasoning that $(M\vec{b})_j=D_N(t_j,\chi_j)$,
 we want to bound the trace of the matrix \[
 \textrm{tr}((M^*M)^3)
-\]
-which is formalized in section $4$ of Guth and Maynard's proof.
+\].
 We see that \begin{align*}
     (MM^*)_{t_j,t_k} = \sum_{n\sim N} \omega\left(\frac{n}{N}\right)^2 n^{i(t_k-t_j)}\bar{\chi}_j\chi_k(n),
 \end{align*}

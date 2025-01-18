@@ -1,5 +1,5 @@
 
-\section{$S_3$ bound}
+\subsection{$S_3$ bound}
 \begin{proposition}\label{s_3bound}
     We have \[
     S_3 \lesssim \phi(q)^3 T^2 E(\mathcal{S})^{1/2} |\mathcal{S}|^{1/2}.
@@ -89,7 +89,7 @@ The second part of the proposition follows from the integral bounds $|v_1m_1+v_2
 
 \end{proof}
 
-Adapting from Guth and Maynard, when $|m_2|\asymp|m_3|$, the domain of integration can be written as\begin{align*}
+When $|m_2|\asymp|m_3|$, the domain of integration can be written as\begin{align*}
     |v_1m_1+v_2m_2+m_3|\lesssim \frac{q}{N} \implies \left|v_2 - \frac{v_1m_1+m_3}{-m_2}\right|\lesssim \frac{q}{|m_2|N} \asymp \frac{q}{|m_3|N}.
 \end{align*}
 Thus, the integration in $v_2$ is in a small neighborhood of $\frac{v_1m_1+m_3}{-m_2}$.
@@ -98,13 +98,13 @@ Let $\tilde{\phi}$ be a smooth bump function such that equals $\tilde{\phi}=1$ o
 \tilde{R}_M(v,y_1,y_2) \defeq \left( \int \frac{NM}{q}\tilde{\phi}\left(\frac{NM}{q}(v-v')\right)|R(v',y_1,y_2)|^2 dv'\right)^{1/2}.
 \]
 \begin{proposition} \label{dyadics_3}
-    There is a choice of $0<M_1\leq M \lesssim qT/N$ such that \[
-        S_3\lesssim \phi(q)\frac{N^2}{Mq^2}\sum_{|m_1|\sim M_1,|m_2|,|m_3|\sim M}\tilde{I}_m+O(T^{-100}).
-    \]
-    where \[
+    Let \[
     \tilde{I}_m\defeq \sum_{y_1,y_2\in (\mathbb{Z}/q\mathbb{Z})^\times}\ \int_{v_1\asymp 1} 
          \left|R\left(v_1,y_1\right) \tilde{R}_M\left(\frac{m_1v_1+m_3}{-m_2v_1},y_2,y_1\right)
         \tilde{R}_M\left(\frac{m_1v_1+m_3}{-m_2},y_2\right)\right| dv_1.
+    \]
+    There is a choice of $0<M_1\leq M \lesssim qT/N$ such that \[
+        S_3\lesssim \phi(q)\frac{N^2}{Mq^2}\sum_{|m_1|\sim M_1,|m_2|,|m_3|\sim M}\tilde{I}_m+O(T^{-100}).
     \]
 \end{proposition}
 

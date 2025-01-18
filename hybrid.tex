@@ -65,7 +65,7 @@ The idea of the proof is very similar to Guth and Maynard's proof. We can define
 \[
     M_{t_j,\chi_j,n} = \chi_j(n)n^{it_j}
 \]
-for $(t_j,\chi_j)\in\mathcal{S}$ and $n\sim N$, and bound its operator in the exact same way: taking it to the $M^*M$ to the third power and calculating its trace. The Dirichlet characters are not nice to handle when extended to a function $\reals \to \complex$, so we break the sum into $q$ summations across each residue class $\mod q$, and apply Poisson summation on each piece of the sum. This gives us \begin{align*}
+for $(t_j,\chi_j)\in\mathcal{S}$ and $n\sim N$, and bound its operator norm in the exact same way: taking it to the $M^*M$ to the third power and calculating its trace. The Dirichlet characters are not nice to handle when extended to a function $\reals \to \complex$, so we break the sum into $q$ summations across each residue class $\mod q$, and apply Poisson summation on each piece of the sum. This gives us \begin{align*}
     \textrm{tr}((M^*M)^3)=\sum_{\substack{(t_1,\chi_1),\\(t_2,\chi_2),\\(t_3,\chi_3)\in\mathcal{S}}}
     \frac{N^3}{q^3}\sum_{m\in\mathbb{Z}^3}&\sum_{x\in (\mathbb{Z}/q\mathbb{Z})^3}\chi_1\bar{\chi}_3(x_1)\chi_2\bar{\chi}_1(x_2)\chi_3\bar{\chi}_2(x_3) e\left(\frac{-x\cdot m}{q}\right)\\
     \times \ &\hat{h}_{t_1-t_3}\left(\frac{Nm_1}{q}\right)\hat{h}_{t_2-t_1}\left(\frac{Nm_2}{q}\right)\hat{h}_{t_3-t_2}\left(\frac{Nm_3}{q}\right),
@@ -90,55 +90,129 @@ This in turn can be bounded by a third moment of $R$: \[
  E(\mathcal{S})\lesssim N^{-2\sigma}\sum_{n_1,n_2\sim N}\left|R\left(\frac{n_1}{n_2},n_1,n_2\right) \right|^3.\]
  This expression is then bounded by Heath-Brown's theorem.
 
-
-
- \textcolor{red}{Things beyond are slightly more disorganized.}
 \subsection{Setup and Reduction of Theorem}
-\begin{lemma}
-    Let $\mathcal{S}=\{(t_j,\chi_j)\}$ be a set such that each $\chi_j$ is a primitive Dirichlet character of modulus $q$, and $|t_j-t_k|\geq T^\epsilon$ if $j\neq k$ and $\chi_j=\chi_k$. Let $|b_n|\leq 1$ be a sequence of numbers indexed in $n$, $\omega$ be a smooth bump function that equals $1$ on $[6/5,9/5]$ and has support in $[1,2]$ (thus $\omega^{(A)}\ll_A 1$ for all $A$). Let $V=N^\sigma$, where $\sigma \in [placeholder]$, and $N=T^\alpha$, where $\alpha \in [placeholder]$ Suppose also that \[
-    |D_N(t_j,\chi_j)|\defeq\Bigg|\sum_{n\sim N} b_n\chi_j(n)n^{it_j} \Bigg|>V.
+\begin{lemma}\label{reduction}
+    Let $\mathcal{S}=\{(t_j,\chi_j)\}$ be a set such that each $\chi_j$ is a primitive Dirichlet character of modulus $q$, and $|t_j-t_k|\geq T^\epsilon$ if $j\neq k$ and $\chi_j=\chi_k$. Let $|b_n|\leq 1$ be a sequence of numbers indexed in $n$, $\omega$ be a smooth bump function that equals $1$ on $[6/5,9/5]$ and has support in $[1,2]$ (thus $\omega^{(A)}\ll_A 1$ for all $A$). Let $V=N^\sigma$, where $\sigma \in [placeholder]$, and $N=qT^\alpha$, where $\alpha \in [placeholder]$ Suppose also that \[
+    |D_N(t_j,\chi_j)|\defeq\Bigg|\sum_{n\sim N} \omega\Bigg(\frac{n}{N}\Bigg)b_n\chi_j(n)n^{it_j} \Bigg|>V.
 \]
 for all $(t_j,\chi_j)\in\mathcal{S}$.
 Then \[
 |\mathcal{S}|\lesssim \smiley.
 \]
 \end{lemma}
-
+\begin{proof}[Proof of main theorem from Lemma \ref{reduction}]
+    We split \[
+        \sum_{n\sim N} b_n\chi_j(n)n^{it_j}=\sum_{N\leq n< 6N/5} b_n\chi_j(n)n^{it_j} +\sum_{6N/5 \leq n < 9N/5} b_n\chi_j(n)n^{it_j} +\sum_{9N/5 \leq n < 2N} b_n\chi_j(n)n^{it_j}.
+    \]
+    So that if \[
+        \Big|\sum{n\sim N} b_n\chi_j(n)n^{it_j}\Big|>V,
+    \]
+    then at least one of the three summations in the right has magnitude at least $V/3$.
+    But then each of these sums can be written as dirichlet sums in the form of the lemma: \begin{align*}
+        \sum_{N\leq n< 6N/5} b_n\chi_j(n)n^{it_j} &=  \sum_{N\leq n< 6N/5} \omega\Bigg(\frac{n}{11N/15}\Bigg) b_n\chi_j(n)n^{it_j}, \\
+        \sum_{6N/5 \leq n < 9N/5} b_n\chi_j(n)n^{it_j} &=  \sum_{6N/5 \leq n < 9N/5} \omega\Bigg(\frac{n}{N}\Bigg) b_n\chi_j(n)n^{it_j}, \\
+        \sum_{9N/5 \leq n < 2N}  b_n\chi_j(n)n^{it_j} &=  \sum_{9N/5 \leq n < 2N}  \omega\Bigg(\frac{n}{19N/15}\Bigg) b_n\chi_j(n)n^{it_j}. \\
+    \end{align*}
+    Applying the lemma on each of these three pieces and summing the three bounds gives the same bound for $\sum_{n\sim N} b_n\chi_j(n)n^{it_j}$ up to a constant factor.
+\end{proof}
+\subsection{The matrix $M$ and its trace expansion}
 We define $M$ a $|\mathcal{S}\times N|$ matrix with entries
 \[
-    M_{t_j,\chi_j,n} = \omega\Big(\frac{n}{N}\Big)\chi_j(n)n^{it_j}
+    M_{(t_j,\chi_j),n} = \omega\Big(\frac{n}{N}\Big)\chi_j(n)n^{it_j}
 \]
 for $(t_j,\chi_j)\in\mathcal{S}$ and $n\sim N$.
 Thus by the same reasoning that $(M\vec{b})_j=D_N(t_j,\chi_j)$,
-we want to bound the trace of the matrix \[
-\textrm{tr}((M^*M)^3)
+we want to bound the size of $\mathcal{S}$ by trace of the matrix \[
+\textrm{tr}((M^*M)^3).
 \].
-We see that \begin{align*}
-    (MM^*)_{t_j,t_k} = \sum_{n\sim N} \omega\left(\frac{n}{N}\right)^2 n^{i(t_k-t_j)}\bar{\chi}_j\chi_k(n),
-\end{align*}
-so that \begin{align*}
-    \textrm{tr}(MM^*) = |\mathcal{S}|\sum_{n\sim N} \omega\left(\frac{n}{N}\right)^2
-\end{align*}
-and Lemmas 4.1-4.4 (Large values controlled by singular values, bound for singular values in terms of trace,
-Principle of non-stationary phase, Hilbert-Schmidt Norm estimate) can be adapted directly from the paper.
 
-For the expansion of the trace (analog to lemma 4.5), 
-\begin{align*}
-    (M^*M)_{n_1,n_2} = \sum_{(t_j,\chi_j)\in \mathcal{S}} \omega\left(\frac{n_1}{N}\right)\omega\left(\frac{n_2}{N}\right)
-    \bar{\chi}_j(n_1)\chi_j(n_2)n_1^{-it_j}n_2^{it_j}
-\end{align*}
-so that \begin{align*}
-    \textrm{tr}((M^*M)^3)=\sum_{\substack{(t_1,\chi_1),\\(t_2,\chi_2),\\(t_3,\chi_3)\in\mathcal{S}}}\sum_{n_1,n_2,n_3\sim N} & 
-    \omega\left(\frac{n_1}{N}\right)^2 \left(\frac{n}{N}\right)^{i(t_1-t_3)}\chi_1\bar{\chi}_3(n_1)\\
-    \times \ &\omega\left(\frac{n_2}{N}\right)^2 \left(\frac{n}{N}\right)^{i(t_2-t_1)}\chi_2\bar{\chi}_1(n_2)\\
-    \times \ &\omega\left(\frac{n_3}{N}\right)^2 \left(\frac{n}{N}\right)^{i(t_3-t_2)}\chi_3\bar{\chi}_2(n_3).
-\end{align*}
-Let $h_t(u)=\omega(u)^2u^{it}$,
-so by applying Poisson summation to the inner sum, we have \begin{align*}
-    \textrm{tr}((M^*M)^3)=\sum_{\substack{(t_1,\chi_1),\\(t_2,\chi_2),\\(t_3,\chi_3)\in\mathcal{S}}}
-    \frac{N^3}{q^3}\sum_{m\in\mathbb{Z}^3}&\sum_{x\in (\mathbb{Z}/q\mathbb{Z})^3}\chi_1\bar{\chi}_3(x_1)\chi_2\bar{\chi}_1(x_2)\chi_3\bar{\chi}_2(x_3) e\left(\frac{-x\cdot m}{q}\right)\\
-    \times \ &\hat{h}_{t_1-t_3}\left(\frac{Nm_1}{q}\right)\hat{h}_{t_2-t_1}\left(\frac{Nm_2}{q}\right)\hat{h}_{t_3-t_2}\left(\frac{Nm_3}{q}\right) 
-\end{align*}
-Finally, we exchange the 2 outermost integrals. And split the sum over $m$ into four parts (same as Guth Maynard) $S_0+ S_1+S_2+S_3$,
+\begin{proposition} \label{setup_poisson}
+    Let  \begin{align*}
+        I_m\defeq\frac{N^3}{q^3}\sum_{\substack{(t_1,\chi_1),\\(t_2,\chi_2),\\(t_3,\chi_3)\in\mathcal{S}}} &\sum_{x\in (\mathbb{Z}/q\mathbb{Z})^3}\chi_1\bar{\chi}_3(x_1)\chi_2\bar{\chi}_1(x_2)\chi_3\bar{\chi}_2(x_3) e\left(\frac{-x\cdot m}{q}\right)\\
+        \times \ &\hat{h}_{t_1-t_3}\left(\frac{Nm_1}{q}\right)\hat{h}_{t_2-t_1}\left(\frac{Nm_2}{q}\right)\hat{h}_{t_3-t_2}\left(\frac{Nm_3}{q}\right).
+    \end{align*}
+    We have \[
+    |\mathcal{S}|\lesssim \frac{\phi}{q}N^2V^{-2}+ NV^{-2}\sum_{m\in\mathbb{Z}^3 - \{0\}} I_m
+    \]
+\end{proposition}
+\begin{lemma}[Explicit Expression of Traces]
+    Let \[
+    P(n,(t_1,\chi_1),(t_2,\chi_2))\defeq \omega\left(\frac{n}{N}\right)^2 \left(\frac{n}{N}\right)^{i(t_2-t_1)}\chi_2\bar{\chi}_1(n).
+    \]
+    We have 
+    \begin{align*}
+        \rm{tr}(M^*M) = & \ |\mathcal{S}|\sum_{n\sim N, \gcd (n,q)=1} \omega\left(\frac{n}{N}\right)^2, \\
+        \rm{tr}((M^*M)^3)=&\sum_{\substack{(t_1,\chi_1),(t_2,\chi_2),\\(t_3,\chi_3)\in\mathcal{S}}}\sum_{n_1,n_2,n_3\sim N} 
+        P(n_1,(t_1,\chi_1),(t_3,\chi_3))P(n_2,(t_2,\chi_2),(t_1,\chi_1))P(n_3,(t_3,\chi_3),(t_2,\chi_2)).
+    \end{align*}
+\end{lemma}
+\begin{proof}
+    We compute the traces of $MM^*$ and $(MM^*)^3$ instead, as this makes the calculations cleaner.
+    We see that \begin{align*}
+        (MM^*)_{(t_j,\chi_j),(t_k,\chi_k)} = \sum_{n\sim N} \omega\left(\frac{n}{N}\right)^2 n^{i(t_k-t_j)}\bar{\chi}_j\chi_k(n) = \sum_{n\sim N}P(n,(t_k,\chi_k),(t_j,\chi_j))N^{i(t_k-t_j)},
+    \end{align*}
+    so that \begin{align*}
+        \textrm{tr}(MM^*) =& \sum_{(t_j,\chi_j)} \sum_{n\sim N} P(n,(t_j,\chi_j),(t_j,\chi_j)) \\
+        =&|\mathcal{S}|\sum_{n\sim N} |\chi_j(n)|\omega\left(\frac{n}{N}\right)^2.
+    \end{align*}
+    For the third power, we have 
+    \begin{align*}
+        (MM^*)^3_{(t_j,\chi_j),(t_k,\chi_k)} = \sum_{(t_1,\chi_1),(t_2,\chi_2)\in \mathcal{S}}   (MM^*)_{(t_j,\chi_j),(t_1,\chi_1)} (MM^*)_{(t_1,\chi_1),(t_2,\chi_2)} (MM^*)_{(t_2,\chi_2),(t_k,\chi_k)},
+    \end{align*}
+    so that the trace is given by \begin{align*}
+        &\sum_{\substack{(t_1,\chi_1),(t_2,\chi_2),\\(t_3,\chi_3)\in\mathcal{S}}} (MM^*)_{(t_3,\chi_3),(t_1,\chi_1)} (MM^*)_{(t_1,\chi_1),(t_2,\chi_2)} (MM^*)_{(t_2,\chi_2),(t_3,\chi_3)}\\
+        =&\sum_{\substack{(t_1,\chi_1),(t_2,\chi_2),\\(t_3,\chi_3)\in\mathcal{S}}} \sum_{n_1,n_2,n_3\sim N} 
+        P(n_1,(t_1,\chi_1),(t_3,\chi_3))P(n_2,(t_2,\chi_2),(t_1,\chi_1))P(n_3,(t_3,\chi_3),(t_2,\chi_2)).
+    \end{align*}
+\end{proof}
+We would like to apply Poisson summation directly to $P$ in $n_1$, $n_2$, $n_3$, respectively. However, we do not have a good way to express the Dirichlet character $\chi_j\bar\chi_k$ as a $C^\infty$ function. To get around this, we just split the sum in $n$ into $q$ pieces. 
+\begin{lemma}[Poisson Summation with Periodic Arithmetic Function]
+    Let $f:\reals \to \complex$ be Schwartz, and $g:\naturals\to\complex$ be an arithmetic with period $q$. Then \[
+    \sum_n g(n)f(n) = \frac{1}{q}\sum_{\xi} \sum_{x \mod q} g(x) e\bigg(\frac{-x\xi}{q}\bigg)\hat{f}\bigg(\frac{\xi}{q}\bigg). 
+    \]
+\end{lemma}
+\begin{proof}
+    By absolute convergence, we have \begin{align*}
+        \sum_n g(n)f(n) = \sum_n \sum_{x\mod q} g(qn+x)f(qn+x)=  \sum_{x\mod q} g(x)\sum_n f(qn+x).
+    \end{align*}
+    Applying Poisson summation to the last expression in $n$ gives \[
+        \frac{1}{q} \sum_{x\mod q} g(x) \sum_{\xi} e\bigg(\frac{-x\xi}{q}\bigg)\hat{f}\bigg(\frac{\xi}{q}\bigg).
+    \]
+\end{proof}
+\begin{corollary}[Poisson summation of Trace]
+    Let $h_t(u)\defeq\omega(u)^2u^{it}$,
+    Then \begin{align*}
+        \rm{tr}(M^*M) &= |\mathcal{S}|\frac{N}{q}\sum_{m}\sum_{x\in \mathbb{Z}/q\mathbb{Z}}e\left(\frac{-xm}{q}\right)\hat{h}_0\left(\frac{Nm}{q}\right)\\
+        \rm{tr}((M^*M)^3)&=\sum_{\substack{(t_1,\chi_1),\\(t_2,\chi_2),\\(t_3,\chi_3)\in\mathcal{S}}}
+        \frac{N^3}{q^3}\sum_{m\in\mathbb{Z}^3}\sum_{x\in (\mathbb{Z}/q\mathbb{Z})^3}\chi_1\bar{\chi}_3(x_1)\chi_2\bar{\chi}_1(x_2)\chi_3\bar{\chi}_2(x_3) e\left(\frac{-x\cdot m}{q}\right)\\
+        & \quad \quad \quad \times \ \hat{h}_{t_1-t_3}\left(\frac{Nm_1}{q}\right)\hat{h}_{t_2-t_1}\left(\frac{Nm_2}{q}\right)\hat{h}_{t_3-t_2}\left(\frac{Nm_3}{q}\right).
+    \end{align*}
+\end{corollary}
+In the trace of $(M^*M)^3$, we split the sum in $m\defeq (m_1,m_2,m_3)$ according to the number of non-zero entries into four parts (same as Guth Maynard Sketch above) $S_0+ S_1+S_2+S_3$,
 where $S_j$ runs over the values of $m$ with exactly $j$ non-zero entries.
 
+\begin{lemma}[Isolation of main term]
+    We have \begin{align*}
+        \rm{tr}(M^*M) &= \frac{|\mathcal{S}|N\phi(q)}{q}\|\omega\|_{L_2}^2 + O(T^{-100}),\\
+        S_0 &= \frac{|\mathcal{S}|N^3\phi(q)^3}{q^3}\|\omega\|_{L_2}^6+O(T^{-100}).
+    \end{align*}
+\end{lemma}
+\begin{proof}
+    By \hyperref[nonstationary]{Non-Stationary Phase}, we have rapid decay of $h_0(\xi)$, so we can only consider the terms with $m=0$ in the sum for $\rm{tr}(M^*M)$ at a cost of $O(T^{-100})$.
+    This $m=0$ term evaluates to \[
+        \frac{|\mathcal{S}|N}{q}\sum_{x\in \mathbb{Z}/q\mathbb{Z}}e\left(0\right)\hat{h}_0\left(0\right)=\frac{|\mathcal{S}|N\phi(q)}{q}\|\omega\|_{L_2}^2.
+    \]
+    For $S_0$, we have\[
+    S_0 = \sum_{\substack{(t_1,\chi_1),\\(t_2,\chi_2),\\(t_3,\chi_3)\in\mathcal{S}}}
+    \frac{N^3}{q^3}\sum_{x\in (\mathbb{Z}/q\mathbb{Z})^3}\chi_1\bar{\chi}_3(x_1)\chi_2\bar{\chi}_1(x_2)\chi_3\bar{\chi}_2(x_3)  \hat{h}_{t_1-t_3}\left(0\right)\hat{h}_{t_2-t_1}\left(0\right)\hat{h}_{t_3-t_2}\left(0\right).
+    \]
+    By the orthogonality of characters (as representations of $(\mathbb{Z}/q\mathbb{Z})^{\times}$),
+    only the terms with $\chi_1=\chi_2=\chi_3$ can have non-zero contribution to the sum. But when $\chi_1=\chi_2=\chi_3$, $|t_i-t_j|=0$ or $|t_i-t_j|\geq T^{\epsilon}$. In the second case, we can apply \hyperref[nonstationary]{Non-Stationary Phase} to get rapid decay in $\hat{h}_{t_i-t_j}({0})$. Therefore \[
+        S_0 = \sum_{(t,\chi)\in\mathcal{S}}
+        \frac{N^3}{q^3}\sum_{x\in (\mathbb{Z}/q\mathbb{Z})^3} \hat{h}_{0}\left(0\right)^3+O(T^{-100})=\frac{|\mathcal{S}|N^3\phi(q)^3}{q^3}\|\omega\|_{L_2}^6+O(T^{-100}).
+    \]
+\end{proof}
+
+\begin{proof}[Proof of Proposition \ref{setup_poisson}]
+    We note that the inequality in equation \ref{basicineq} applies in this case, and apply Lemma \ref{gmtrace} and substitute the values we have obtained.
+\end{proof}

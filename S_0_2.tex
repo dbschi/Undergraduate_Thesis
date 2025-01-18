@@ -1,79 +1,92 @@
-\subsection{$S_0$ bound}
-$S_0$ only has one term corresponding to $m=0$. By the principle of non-stationary phase, $\hat{h}_t(0)$ has rapid decay in $t$, so contributes $O(T^{-1000})$ except possibly when $t_1,t_2,t_3$ are not $T^\epsilon$ separated.
-Moreover, by the orthogonality of characters, all three terms $\chi_a\bar{\chi}_b$ must be principal to have non-zero contribution,
-so this fixes the sum to be across $(t_1,\chi_1)=(t_2,\chi_2)=(t_3,\chi_3)$ to give a $N^3\phi(q)^3|\mathcal{S}|\|\omega\|_{L_2}^6/q^3$ term.
-So that \begin{align*}
-    \textrm{tr}((M^*M)^3)=\frac{N^3\phi(q)^3}{q^3}|\mathcal{S}|\|\omega\|_{L_2}^6 + \sum_{m\in\mathbb{Z}^3 - \{0\}} I_m + O(T^{-100}),
-\end{align*}
-where \begin{align*}
-    I_m=\frac{N^3}{q^3}\sum_{\substack{(t_1,\chi_1),\\(t_2,\chi_2),\\(t_3,\chi_3)\in\mathcal{S}}} &\sum_{x\in (\mathbb{Z}/q\mathbb{Z})^3}\chi_1\bar{\chi}_3(x_1)\chi_2\bar{\chi}_1(x_2)\chi_3\bar{\chi}_2(x_3) e\left(\frac{-x\cdot m}{q}\right)\\
-    \times \ &\hat{h}_{t_1-t_3}\left(\frac{Nm_1}{q}\right)\hat{h}_{t_2-t_1}\left(\frac{Nm_2}{q}\right)\hat{h}_{t_3-t_2}\left(\frac{Nm_3}{q}\right).
-\end{align*}
-which gives the analogous Lemmas 4.5 and 4.6.
 \subsection{$S_1$ bound}
 \begin{proposition}
     $S_1=O\epsilon(T^{-10})$.
 \end{proposition}
+\begin{proof}
+    Recall that \[
+    S_1=\sum_{\substack{m_1,m_2,m_3\in \mathbb{Z},\\
+    \#\{m_j \ | \ m_j\neq 0\}=1}} I_m.\]
 By symmetry, we sum $I_m$ across all $m=(0,0,m_3\neq 0)$ at a cost of a factor of $3$.
-We then have \begin{align*}
-    I_m=\frac{N^3}{q^3}\sum_{\substack{(t_1,\chi_1),\\(t_2,\chi_2),\\(t_3,\chi_3)\in\mathcal{S}}} &\sum_{x\in (\mathbb{Z}/q\mathbb{Z})^3}\chi_1\bar{\chi}_3(x_1)\chi_2\bar{\chi}_1(x_2)\chi_3\bar{\chi}_2(x_3) e\left(\frac{-x_3 m_3}{q}\right)\\
+In this case, \begin{align*}
+    I_{(0,0,m_3)}=\frac{N^3}{q^3}\sum_{\substack{(t_1,\chi_1),\\(t_2,\chi_2),\\(t_3,\chi_3)\in\mathcal{S}}} &\sum_{x\in (\mathbb{Z}/q\mathbb{Z})^3}\chi_1\bar{\chi}_3(x_1)\chi_2\bar{\chi}_1(x_2)\chi_3\bar{\chi}_2(x_3) e\left(\frac{-x_3 m_3}{q}\right)\\
     \times \ &\hat{h}_{t_1-t_3}\left(0\right)\hat{h}_{t_2-t_1}\left(0\right)\hat{h}_{t_3-t_2}\left(\frac{Nm_3}{q}\right)
 \end{align*}
-Again by the orthogonality of characters, the only way to get non-zero contribution is when $\chi_1=\chi_2$ and $\chi_2=\chi_3$. So this reduces to\begin{align*}
+By the orthogonality of characters, this expression vanishes when $\chi_1\neq \chi_2$ (consider summation in $x_2$) or $\chi_2\neq \chi_3$ (summation in $x_1$). Therefore, we can further restrict our summation in $\mathcal{S}$ to be over terms with $\chi_1=\chi_2=\chi_3$ to get \begin{align*}
     I_m&=\frac{N^3}{q^3}\sum_{\substack{(t_1,\chi_1),\\(t_2,\chi_2=\chi_1),\\(t_3,\chi_3=\chi_1)\in\mathcal{S}}} \ \phi(q)^2 \sum_{x_3\in (\mathbb{Z}/q\mathbb{Z})^{\times}}e\left(\frac{-x_3 m_3}{q}\right)\\
    & \quad  \times  \quad {h}_{t_1-t_3}\left(0\right)\hat{h}_{t_2-t_1}\left(0\right)\hat{h}_{t_3-t_2}\left(\frac{Nm_3}{q}\right)\\
-   &=\frac{N^3}{q^3}\phi(q)^2 \frac{\phi(q)}{\phi\left(\frac{q}{\gcd(m_3,q)}\right)}\mu\left(\frac{q}{\gcd(m_3,q)}\right) \sum_{\substack{(t_1,\chi_1),\\(t_2,\chi_2=\chi_1),\\(t_3,\chi_3=\chi_1)\in\mathcal{S}}} \hat{h}_{t_1-t_3}\left(0\right)\hat{h}_{t_2-t_1}\left(0\right)\hat{h}_{t_3-t_2}\left(\frac{Nm_3}{q}\right)\\
+   &=O\left(\frac{N^3\phi(q)^3}{q^3}\right) \sum_{\substack{(t_1,\chi_1),\\(t_2,\chi_2=\chi_1),\\(t_3,\chi_3=\chi_1)\in\mathcal{S}}} \hat{h}_{t_1-t_3}\left(0\right)\hat{h}_{t_2-t_1}\left(0\right)\hat{h}_{t_3-t_2}\left(\frac{Nm_3}{q}\right)\\
 \end{align*}
-if 
 So we trivially bound $S_1$ by\begin{align*}
     |S_1|&\ll  \frac{N^3}{q^3} \phi(q)^3 \sum_{m_3\neq 0}\sum_{\substack{(t_1,\chi_1),\\(t_2,\chi_2=\chi_1),\\(t_3,\chi_3=\chi_1)\in\mathcal{S}}}
    \left|\hat{h}_{t_1-t_3}\left(0\right)\hat{h}_{t_2-t_1}\left(0\right)\hat{h}_{t_3-t_2}\left(\frac{Nm_3}{q}\right)\right|\\
 \end{align*}
-By the quick decay and boundedness of $\hat{h}_t(\xi)$ in both $\xi$ and $t$ (decays in terms of $\langle \xi \rangle^{-A}\langle t \rangle^A $ or $ \langle \xi \rangle^A\langle t \rangle^{-A} $), we can bound the terms when summed across all $|m_3|>qT^{1+\epsilon}/N$. For the remaining terms, $t_1\neq t_2$, $t_1\neq t_3$ can be bounded by $O(T^{-10})$.
-Finally, when $t_1=t_2=t_3$ and $|m_3|$ is small, we get decay in terms of $(N/q)^{-100}$. 
-
-The sum over terms $|m_3|>qT^{1+\epsilon}/N$,
-\begin{align*}
-   & \sum_{|m_3|>qT^{1+\epsilon}/N}\sum_{\substack{(t_1,\chi_1),\\(t_2,\chi_2=\chi_1),\\(t_3,\chi_3=\chi_1)\in\mathcal{S}}} 
-   \left|\hat{h}_{t_1-t_3}\left(0\right)\hat{h}_{t_2-t_1}\left(0\right)\hat{h}_{t_3-t_2}\left(\frac{Nm_3}{q}\right)\right|\\
-    \ll&_{\epsilon,A}  \sum_{|m_3|>qT^{1+\epsilon}/N}\sum_{\substack{(t_1,\chi_1),\\(t_2,\chi_2=\chi_1),\\(t_3,\chi_3=\chi_1)\in\mathcal{S}}} 
-    \left|T^{A}\left(\frac{Nm_3}{q} \right)^{-A}\right|\\
-    \ll & |\mathcal{S}|^3 T^{-10}.
+On the right hand side, we split the sum into three parts \begin{align*}
+    \frac{N^3}{q^3}\phi(q)^3(S_{1,1}+S_{1,2}+S_{1,3}),
 \end{align*}
-For $|m_3|\leq qT^{1+\epsilon}/N$, we use the same bound for terms $t_1\neq t_2$ or $t_1\neq t_3$ by the $\hat{h}_t(0)$ terms. When $t_1=t_2=t_3$, we use $m_3\neq 0$
-to bound \[
-    \left|\hat{h}_{t_3-t_2}\left(\frac{Nm_3}{q}\right)\right| \ll \left(\frac{q}{N}\right)^{100}
+where \begin{align*}
+    S_{1,1}&= \sum_{|m_3|>qT^{1+\epsilon}/N}\sum_{\substack{(t_1,\chi_1),\\(t_2,\chi_2=\chi_1),\\(t_3,\chi_3=\chi_1)\in\mathcal{S}}}
+    \left|\hat{h}_{t_1-t_3}\left(0\right)\hat{h}_{t_2-t_1}\left(0\right)\hat{h}_{t_3-t_2}\left(\frac{Nm_3}{q}\right)\right|,\\
+    S_{1,2}&=  \sum_{|m_3|\leq qT^{1+\epsilon}/N}\sum_{\substack{(t_1,\chi_1),\\(t_2,\chi_2=\chi_1),\\(t_3,\chi_3=\chi_1)\in\mathcal{S},\\ t_1\neq t_2 \ \rm{or} \ t_1\neq t_3}}
+    \left|\hat{h}_{t_1-t_3}\left(0\right)\hat{h}_{t_2-t_1}\left(0\right)\hat{h}_{t_3-t_2}\left(\frac{Nm_3}{q}\right)\right|,\\
+    S_{1,3}&= \sum_{|m_3|\leq qT^{1+\epsilon}/N}\sum_{(t,\chi)\in\mathcal{S}}
+    \left|\hat{h}_{0}\left(0\right)\hat{h}_{0}\left(0\right)\hat{h}_{0}\left(\frac{Nm_3}{q}\right)\right|.
+\end{align*}
+We now apply \hyperref[nonstationary]{Non-Stationary Phase} to $\hat{h}$. In $S_{1,1}$, we consider the terms with $|m_3|>qT^{1+\epsilon}/N$, we have decay in \[
+    \hat{h}_{t_3-t_2}\ll_{A}\left(\frac{Nm_3}{q}\right)\left(1+|t_3-t_2|\right)^A\left(\frac{N|m_3|}{q}\right)^{-A} \ll T^A \left(T^{1+\epsilon}\right)^{-A} \left(\frac{N|m_3|}{qT^{1+\epsilon}}\right)^{-A}.
+\] Therefore, we trivially bound $\hat{h}_t{\xi}\ll 1$ to obtain a bound of $O_\epsilon(T^{-100})$ for the sum across $|m_3|>qT^{1+\epsilon}/N$.
+Similarly, for $S_{1,2}$  with terms consisting $t_1\neq t_2$ or $t_1\neq t_3$, they will be $T^\epsilon$ apart, so $h_{t_2-t_1}(0)$ or $h_{t_1-t_3}(0)$ can be bounded by $O_{\epsilon}(T^{-100})$.
+
+The final terms to bound are when $t_1=t_2=t_3$ in $S_{1,3}$, in which case \[
+    \left|\hat{h}_{t_3-t_2}\left(\frac{Nm_3}{q}\right)\right| \ll_{A} \left(\frac{q}{N}\right)^{A}\ll_{\epsilon} T^{-100}.
 \]
-since $|\mathcal{S}|\ll T\phi(q)$, we can set $T\gg q$ to get the contribution of $S_1$ to be $O\epsilon(T^{-10})$.
+Combined, the contribution of $S_1$ is $O\epsilon(T^{-10})$.
+
+\end{proof}
+
+
 \subsection{$S_2$ bound}
-We write by symmetry \begin{align*}
-    S_2= 3\frac{N^3}{q^3}\sum_{m_1,m_2\neq 0}\sum_{\substack{(t_1,\chi_1),\\(t_2,\chi_2),\\(t_3,\chi_3)\in\mathcal{S}}} &\sum_{x\in (\mathbb{Z}/q\mathbb{Z})^3}\chi_1\bar{\chi}_3(x_1)\chi_2\bar{\chi}_1(x_2)\chi_3\bar{\chi}_2(x_3) e\left(\frac{-x_1m_1-x_2m_2}{q}\right)\\
-    \times \ &\hat{h}_{t_1-t_3}\left(\frac{Nm_1}{q}\right)\hat{h}_{t_2-t_1}\left(\frac{Nm_2}{q}\right)\hat{h}_{t_3-t_2}\left(0\right)
-\end{align*}
-Removing zero contributions from $\chi_2\neq \chi_3$ by orthogonality,
-we have \begin{align*}
-    =3\frac{N^3}{q^3} \phi(q) \sum_{m_1,m_2\neq 0}\sum_{\substack{(t_1,\chi_1),\\(t_2,\chi_2),\\(t_3,\chi_3=\chi_2)\in\mathcal{S}}} &\sum_{x_1,x_2 \in \mathbb{Z}/q\mathbb{Z}}\chi_1\bar{\chi}_3(x_1)\chi_2\bar{\chi}_1(x_2) e\left(\frac{-x_1m_1-x_2m_2}{q}\right)\\
-    \times \ &\hat{h}_{t_1-t_3}\left(\frac{Nm_1}{q}\right)\hat{h}_{t_2-t_1}\left(\frac{Nm_2}{q}\right)\hat{h}_{t_3-t_2}\left(0\right)
-\end{align*}
-Here, we can isolate contributions from the terms where $t_2\neq t_3$ (hence since $\chi_2=\chi_3$, are $T^{\epsilon}$ separated) to be $O(T^{-10})$. For the other terms, we can write
-\[
-    \hat{h}_t(\xi) = \overline{\hat{h}_{-t}(-\xi)}
-\]
-to get 
-\iffalse
-$S_2$
-\begin{align*}
-    = 3\frac{N^3}{q^3} \hat{h}_{0}\left(0\right)\phi(q) \sum_{m_1,m_2\neq 0}\sum_{\substack{(t_1,\chi_1),\\(t_2,\chi_2)\in\mathcal{S}}} &\sum_{x_1,x_2 \in \mathbb{Z}/q\mathbb{Z}}\chi_1\bar{\chi}_2(x_1)\chi_2\bar{\chi}_1(x_2) e\left(\frac{-x_1m_1-x_2m_2}{q}\right)\\
-    \times \ &\hat{h}_{t_1-t_2}\left(\frac{Nm_1}{q}\right)\hat{h}_{t_2-t_1}\left(\frac{Nm_2}{q}\right)
-\end{align*}
-and by 
+\begin{proposition}
+    (give bound on $S_2$).
+\end{proposition}
 
-we can rewrite this to get
-\fi
-\[
+\begin{lemma}
+    We have 
+    \[
     S_2 = 3\frac{N^3}{q^3} \phi(q) \hat{h}_{0}\left(0\right) \sum_{\substack{(t_1,\chi_1),\\(t_2,\chi_2)\in\mathcal{S}}} \left|\sum_{m\neq 0} \sum_{x \in \mathbb{Z}/q\mathbb{Z}}\chi_1\bar{\chi}_2(x) e\left(\frac{-mx}{q}\right)
      \hat{h}_{t_1-t_2}\left(\frac{Nm}{q}\right)\right|^2 + O(T^{-10}).
 \]
+\end{lemma}
+\begin{proof}
+    We write by symmetry \begin{align*}
+        S_2= 3\frac{N^3}{q^3}\sum_{m_1,m_2\neq 0}\sum_{\substack{(t_1,\chi_1),\\(t_2,\chi_2),\\(t_3,\chi_3)\in\mathcal{S}}} &\sum_{x\in (\mathbb{Z}/q\mathbb{Z})^3}\chi_1\bar{\chi}_3(x_1)\chi_2\bar{\chi}_1(x_2)\chi_3\bar{\chi}_2(x_3) e\left(\frac{-x_1m_1-x_2m_2}{q}\right)\\
+        \times \ &\hat{h}_{t_1-t_3}\left(\frac{Nm_1}{q}\right)\hat{h}_{t_2-t_1}\left(\frac{Nm_2}{q}\right)\hat{h}_{t_3-t_2}\left(0\right)
+    \end{align*}
+    Removing zero contributions from $\chi_2\neq \chi_3$ by orthogonality,
+    we have \begin{align*}
+        =3\frac{N^3}{q^3} \phi(q) \sum_{m_1,m_2\neq 0}\sum_{\substack{(t_1,\chi_1),\\(t_2,\chi_2),\\(t_3,\chi_3=\chi_2)\in\mathcal{S}}} &\sum_{x_1,x_2 \in \mathbb{Z}/q\mathbb{Z}}\chi_1\bar{\chi}_2(x_1)\chi_2\bar{\chi}_1(x_2) e\left(\frac{-x_1m_1-x_2m_2}{q}\right)\\
+        \times \ &\hat{h}_{t_1-t_3}\left(\frac{Nm_1}{q}\right)\hat{h}_{t_2-t_1}\left(\frac{Nm_2}{q}\right)\hat{h}_{t_3-t_2}\left(0\right)
+    \end{align*}
+    Here, we can isolate contributions from the terms where $t_2\neq t_3$ (hence since $\chi_2=\chi_3$, are $T^{\epsilon}$ separated) to be $O(T^{-10})$. For the other terms, we can write
+    \[
+        \hat{h}_t(\xi) = \overline{\hat{h}_{-t}(-\xi)}
+    \]
+    to get 
+    \iffalse
+    $S_2$
+    \begin{align*}
+        = 3\frac{N^3}{q^3} \hat{h}_{0}\left(0\right)\phi(q) \sum_{m_1,m_2\neq 0}\sum_{\substack{(t_1,\chi_1),\\(t_2,\chi_2)\in\mathcal{S}}} &\sum_{x_1,x_2 \in \mathbb{Z}/q\mathbb{Z}}\chi_1\bar{\chi}_2(x_1)\chi_2\bar{\chi}_1(x_2) e\left(\frac{-x_1m_1-x_2m_2}{q}\right)\\
+        \times \ &\hat{h}_{t_1-t_2}\left(\frac{Nm_1}{q}\right)\hat{h}_{t_2-t_1}\left(\frac{Nm_2}{q}\right)
+    \end{align*}
+    and by 
+    
+    we can rewrite this to get
+    \fi
+    \[
+        S_2 = 3\frac{N^3}{q^3} \phi(q) \hat{h}_{0}\left(0\right) \sum_{\substack{(t_1,\chi_1),\\(t_2,\chi_2)\in\mathcal{S}}} \left|\sum_{m\neq 0} \sum_{x \in \mathbb{Z}/q\mathbb{Z}}\chi_1\bar{\chi}_2(x) e\left(\frac{-mx}{q}\right)
+         \hat{h}_{t_1-t_2}\left(\frac{Nm}{q}\right)\right|^2 + O(T^{-10}).
+    \]
+\end{proof}
+
 By the principle of non-stationary phase we can move the terms where $|t_1-t_2|<T^\epsilon$ into $O(T^{-10})$ by decay in $Nm/q$. \textit{We also used the fact that there are at most $\phi(q)$ characters mod $q$, so the $O(q^2)$ factor is negligible compared to $N^{-100}$}.
 
 For the other terms where $t_1$ and $t_2$ are $T^\epsilon$ separated, we want to apply Heath Brown's theorem.

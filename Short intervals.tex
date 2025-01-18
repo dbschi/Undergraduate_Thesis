@@ -77,10 +77,12 @@ Recalling that the error term is related to the real part of the zeros of the Ze
     \]
     To make all terms (except for the first) to be $o(1)$, we want to set 
     $y=x^\theta$, $T=x^k$, such that $\theta,k$ satisfy \[
-        k<1,\ ak<1, \ k+\theta>1, 
+        k<1, \ k+\theta>1, 
     \]
-    so that the second, fourth and fifth terms are $o(1)$ in $x$.
-    For the third term, we can simplify \begin{align*}
+    so that the second, fourth and fifth terms are $o(1)$ in $x$. 
+    For the third term, we require the denominator to be non zero, so we add the constraint \[
+        ak<1.
+    \]We can simplify \begin{align*}
         \frac{\log x \log^{b} T}{a \log T - \log x } \left[\frac{T^a}{x}-\left(\frac{T^a}{x}\right)^{A\frac{\log \log T}{\log T}}\right]
         &= \frac{k^b \log^{b}x}{ak-1}  \left[x^{ak-1}-x^{(ak-1)A\frac{\log (k \log x)}{k \log x}}\right]
         \\ &\leq \frac{k^b \log^{b}x}{1-ak} x^{ak-1}  + \frac{k^b \log^{b}x}{1-ak} \exp\left((ak-1)A\frac{\log (k \log x)}{k} \right)\\

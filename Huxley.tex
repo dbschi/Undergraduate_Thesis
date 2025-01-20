@@ -4,7 +4,9 @@
     N(\sigma,t)\lesssim T^{\frac{12}{5}(1-\sigma)}.
     \]
 \end{theorem}
-
+We shall prove a weaker statement of the theorem: instead of showing the original bound, we show \[
+    N(\sigma,t)\lesssim T^{\frac{5\sigma-3}{\sigma^2+\sigma-1}(1-\sigma)},
+\]which is slightly worse away from the half line but gives the same exponent at $\sigma=3/4$.
 Huxley's methodology for detecting zeros as follows. Let $M_x(s) \defeq \sum_{n=1}^{x} \mu(n)n^{-s}$. Since this also converges absolutely on $\Re(s)>1$, we can write the dirichlet series of $\zeta(s) M_x (s)$ as \[
     \zeta(s) M_x (s) \defeq \sum_{n}a_n n^{-s}
 \]
@@ -32,7 +34,7 @@ If we move the line of integration to $\Re(w) = 1/2 - \Re(s)$, we get simple pol
     \label{huxleyperron}
     \begin{split}
     e^{-1/y}+\sum_{n>x}a_n n^{-s} e^{-n/y}=\sum_{n}a_n n^{-s} e^{-n/y}=&\zeta(s)M_x(s) +M_x(1)\Gamma(1-s)y^{1-s}\\+&
-    \frac{1}{2\pi}\int_{-\infty}^{\infty}\zeta(\frac{1}{2}+i\Im(s)+iw)M_x(\frac{1}{2}+i\Im(s)+iw)\\ &\cdot \Gamma\left(\frac{1}{2}-\Re(s)+it\right) y^{\frac{1}{2}-\Re(s)+it} dt.
+    \frac{1}{2\pi}\int_{-\infty}^{\infty}\zeta(\frac{1}{2}+i\Im(s)+it)M_x(\frac{1}{2}+i\Im(s)+it)\\ &\cdot \Gamma\left(\frac{1}{2}-\Re(s)+it\right) y^{\frac{1}{2}-\Re(s)+it} dt.
     \end{split}
 \end{equation}
 We take $y$ large enough so that $e^{-1/y}$ is close to $1$. Since $M_x(s)$ is an approximation of $1/\zeta$, we should expect that the term $\zeta(s)M_x(s)$ is about $1$ most of the time and the other terms are small. However, if $s$ is a zero of $\zeta$, then $\zeta(s)M_x(s)=0$, so at least one of the following things need to happen \begin{enumerate}[label=(\roman{*})]
@@ -61,7 +63,7 @@ We thus transform the problem of detecting zeros to counting the number of occur
     \end{align*}
 \end{proof}
 
-\begin{corollary}
+\begin{corollary} \label{halflinebigvalue}
    Let $W = \{t_j\}\subseteq [0,T]$ be a one-separated set such that \[
         \left|\zeta\left(\frac{1}{2}+it_j\right)\right|>V \ \forall j,
     \]
@@ -107,18 +109,77 @@ We thus transform the problem of detecting zeros to counting the number of occur
 \end{proof}
 
 \begin{proof}[Proof of Huxley's Zero Density Theorem]
-    From equation \ref{huxleyperron}, we take $y>6$ so that $e^{-1/y}>5/6$. We also truncate the sum in $n>x$ to $x<n\leq y^2$ with an error of $1/6$ for large enough $y$. Finally, we truncate the integral in $t$ to the range $|t|\leq B\log T$ with an error of $1/6$. Thus, $s$ is a zero only if \begin{enumerate}[label=(\roman{*})]
+    From equation \ref{huxleyperron}, we take $y>6$ so that $e^{-1/y}>5/6$. We also truncate the sum in $n>x$ to $x<n\leq y^2$ with an error of $1/6$ for large enough $y$. Finally, by the rapid decay of $\Gamma$, we truncate the integral in $t$ to the range $|t|\leq B\log T$ with an error of $1/6$. Thus, $s$ is a zero only if \begin{enumerate}[label=(\roman{*})]
         \item $|\sum_{x<n\leq y^2}a_n n^{-s} e^{-n/y}|\geq \frac{1}{6}$, or
-        \item $\frac{1}{2\pi}|\int_{-B\log T}^{B\log T}\zeta(\frac{1}{2}+i\Im(s)+iw)M_x(\frac{1}{2}+i\Im(s)+iw) \Gamma\left(\frac{1}{2}-\Re(s)+it\right) y^{\frac{1}{2}-\Re(s)+it} dt|\geq \frac{1}{6}$, or
+        \item $\frac{1}{2\pi}|\int_{-B\log T}^{B\log T}\zeta(\frac{1}{2}+i\Im(s)+it)M_x(\frac{1}{2}+i\Im(s)+it) \Gamma\left(\frac{1}{2}-\Re(s)+it\right) y^{\frac{1}{2}-\Re(s)+it} dt|\geq \frac{1}{6}$, or
         \item $|M_x(1)\Gamma(1-s)y^{1-s}|\geq \frac{1}{6}$ .
     \end{enumerate}
     Of the zeros $\rho = \beta+i\gamma$ of $\zeta$ in the region, at the cost of a factor of $\log T$, we take representatives such that if $\rho_1\neq \rho_2$ then $|\rho_1-\rho_2|\geq \textcolor{red}{1}$. 
+
+    For Class (iii) zeros, $\gamma$ has rapid decay. Therefore, the large values can only happen in the range $\Im (s)\lesssim 1$ and so we can bound the occurances of these zeros to be $O(T^\epsilon)$. Therefore, this is negligible.
+
     For Class (i) zeros, we split the sum dyadically to get \begin{equation}
     \label{class1dyadic}
     \bigg| \sum_{n\sim U, n\leq y^2} a(n)  n^{-\rho}e^{n/y}\bigg| \geq O((\log T)^{-1}),
     \end{equation}
-    for some $x\leq U = 2^k\leq y$. Applying Lemma \ref{halasz}, we get that the number of times that equation \ref{class1dyadic} can happen for each $U$ is \[
-    \lesssim U^{2-2\sigma} + U^{4-6\sigma}T\lesssim 
+    for some $x\leq U = 2^k\leq y$. Currently, the zeros do not have the same real part. However, we can remove the dependence of $\beta$ by introducing a bump function $\phi(x)$ that equals $e^{x(\beta-\sigma)}$ on $\log x\sim U$, so that\begin{align*}
+        \sum_{n\sim U}  a(n)  n^{-\rho}e^{n/y} &= \sum_{n\sim U}  a(n)  n^{-\sigma-i\gamma}e^{n/y} \phi(\log n)\\
+        &=\sum_{n\sim U}  a(n)  n^{-\sigma-i\gamma}e^{n/y} \int \hat\phi(\xi) e(\xi\log n ) d\xi \\
+        &=\int \hat\phi(\xi) \sum_{n\sim U}  a(n)  n^{-\sigma-i\gamma-2\pi i \xi}e^{n/y} d\xi \\
+        &= \int_{|\xi|\lesssim 1} \hat\phi(\xi) \sum_{n\sim U}  a(n)  n^{-\sigma-i\gamma-2\pi i \xi}e^{n/y} d\xi + O_{\epsilon,A}(T^{-A}).
+    \end{align*} 
+    $\hat\phi$ is bounded by $O(\log U)$, so this log factor is negligible compared to $T^\epsilon$. Applying the ML estimate on the integral gives there is a value $|\xi|\lesssim 1$ such that \[
+        \sum_{n\sim U}  a(n)  n^{-\sigma-i\gamma-2\pi i \xi}e^{n/y} d\xi \gg T^{-\epsilon}.
+    \] 
+    Therefore, we can assume that all the zeros have real part $\sigma$ without affecting the argument. 
+    Applying Lemma \ref{halasz}, we get that the number of times that equation \ref{class1dyadic} can happen for each $U$ is \[
+    \lesssim U^{2-2\sigma} + U^{4-6\sigma}T\lesssim y^{2-2\sigma}+x^{4-6\sigma}T.
     \]
-    (Note that the $\log$ factors are dominated by any choice of $T^\epsilon$)
+    Note that $\sigma\geq 3/4$, so that $4-6\sigma<0$, so $x^{4-6\sigma}$ is used instead of $y^{4-6\sigma}$.
+    For Class (ii) zeros, we apply ML estimate to see that for each zero $\rho_j=\beta_j+i\gamma_j$ there $|t_j-\gamma_j|\ll \log T$ such that \[
+        \zeta(\frac{1}{2}+i\gamma_j+it_j)M_x(\frac{1}{2}+i\gamma_j+it_j)\gg  y^{\Re(s)-\frac{1}{2}}/\log T \gg y^{\sigma-\frac{1}{2}}/\log T,
+    \]
+    Therefore, we can consider a new set of `zeros' $\sigma + i(\gamma_j+t_j)$, and make them $1$-separated at a cost of a factor of $O(\log T)$.
+    We separate these `zeros' into two cases \begin{enumerate}[label=(\alph*)]
+        \item $\zeta(\frac{1}{2}+i\gamma_j+it_j)\geq A$,
+        \item $M_x(\frac{1}{2}+i\gamma_j+it_j)\geq B$.
+    \end{enumerate}
+    where $AB\gg y^{\sigma-\frac{1}{2}}/\log T$. For case A zeros, this is bounded by corollary \ref{halflinebigvalue} to be \[
+        \lesssim TA^{-4}.
+    \]
+    For case B zeros, we reapply lemma \ref{halasz} to bound this by \[
+    \lesssim xB^{-2}+xTB^{-6}.
+    \]Here, we took $G$ to be $O(\sum_{n\leq x} d(n)n^{-1})$. The divisor function grows slower than any $n^\epsilon$, so $G\lesssim 1$. Combined with type $1$ zeros, we have\[
+    N(\sigma, T)\lesssim y^{2-2\sigma} + x^{4-6\sigma}T+TA^{-4}+xB^{-2}+xTB^{-6}.
+    \]
+    We first consider the terms with $A$ and $B$. We take $B^4\ll T$, so that $xB^{-2} \ll xTB^{-6}$. We can also replace $TA^{-4}$ with $TB^4y^{2-4\sigma}$ to get \[
+    N(\sigma, T)\lesssim y^{2-2\sigma} + x^{4-6\sigma}T+TB^4y^{2-4\sigma}+xTB^{-6}.
+    \]
+    We take $B=(xy^{4\sigma-2})^{1/10}$, so that the last two terms are of the same magnitude \[
+    O(Tx^{2/5}y^{(6-12\sigma)/5}).
+    \]In our new bound \[
+    N(\sigma, T)\lesssim y^{2-2\sigma} + x^{4-6\sigma}T+Tx^{2/5}y^{(6-12\sigma)/5},
+    \]
+    we remove the dependence on $x$ by setting \[
+    x=y^{\frac{(6-12\sigma)/5}{4-2/5 - 6\sigma}}=y^{\frac{1-2\sigma}{3-5\sigma}},
+    \]
+    so that the last two terms are of the same magnitude.
+    Finally, \[
+    N(\sigma, T)\lesssim y^{2-2\sigma} + y^{\frac{(1-2\sigma)(4-6\sigma)}{3-5\sigma}}T,
+    \]
+    we set \[
+    y=T^{\frac{5\sigma-3}{2(\sigma^2+\sigma-1)}}
+    \] so that the last two terms combine into one bound\[
+        N(\sigma, T)\lesssim T^{\frac{(5\sigma-3)(1-\sigma)}{(\sigma^2+\sigma-1)}}.
+    \]
+    When $\sigma=3/4$, we have \[
+        \frac{(5\sigma-3)}{(\sigma^2+\sigma-1)}=\frac{12}{5},
+    \]
+    and the first derivative test gives that this function is decreasing in $\sigma$ in the range $\sigma\in [3/4,1]$.
+    Finally, we have to check the conditions \[
+    x<y,\ B^4\ll T.
+    \]
+    The first condition is true as $(1-2\sigma)/(3-5\sigma) < 1$ in this range. The second condition is true as \[
+    B^4=(xy^{4\sigma-2})^{2/5}=(y^{4\sigma-2+\frac{(6-12\sigma)/5}{4-2/5 - 6\sigma}})^{2/5}= T^{\frac{2}{5}\frac{5\sigma-3}{2(\sigma^2+\sigma-1)}(4\sigma-2+\frac{(6-12\sigma)/5}{4-2/5 - 6\sigma})}= T^{\frac{(3\sigma-2)(\sigma-1)}{\sigma^2+\sigma-1}}\ll T
+    \] in this range.
 \end{proof}

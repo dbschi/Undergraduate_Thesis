@@ -87,28 +87,37 @@ Combined, the contribution of $S_1$ is $O\epsilon(T^{-10})$.
     \]
 \end{proof}
 
-By the principle of non-stationary phase we can move the terms where $|t_1-t_2|<T^\epsilon$ into $O(T^{-10})$ by decay in $Nm/q$. \textit{We also used the fact that there are at most $\phi(q)$ characters mod $q$, so the $O(q^2)$ factor is negligible compared to $N^{-100}$}.
+By the principle of non-stationary phase we can move the terms where $(t_1,\chi_1)=(t_2,\chi_2)$ into $O(T^{-10})$ by decay in $Nm/q$. \textit{We also used the fact that there are at most $\phi(q)$ characters mod $q$, so the $O(q^2)$ factor is negligible compared to $N^{-100}$}.
 
-For the other terms where $t_1$ and $t_2$ are $T^\epsilon$ separated, we want to apply Heath Brown's theorem.
-
-\ 
-\\ \ 
-\\
-\textit{rough work}\ \\
-At the cost of $O_\epsilon(T^{-100})$ we can add in the term $\hat{h}_{t_1-t_2}(0)$ in when $t_1,t_2$ are at $T^\epsilon$ separated. Let $W$ be the Mellin transform of the function $\omega(x)^2$.
+For the other terms where $t_1$ and $t_2$ are $T^\epsilon$ separated or $\chi_1\neq \chi_2$, we want to apply Heath Brown's theorem. 
+\begin{lemma}
+    Let $t>T^\epsilon$ or $\chi$ be a non-primitive character mod $q$.
+    \[
+        \sum_{m\neq 0} \sum_{x \in \mathbb{Z}/q\mathbb{Z}}\chi(x) e\left(\frac{-mx}{q}\right)
+        \hat{h}_{t}\left(\frac{Nm}{q}\right)\ll ?
+    \]
+\end{lemma}
+\begin{proof}
+    If $\chi$ is not primitive, then \[
+        \sum_{m\neq 0} \sum_{x \in \mathbb{Z}/q\mathbb{Z}}\chi(x) e\left(\frac{-mx}{q}\right)
+        \hat{h}_{t}\left(\frac{Nm}{q}\right)=\sum_{m\in \mathbb{Z}} \sum_{x \in \mathbb{Z}/q\mathbb{Z}}\chi(x) e\left(\frac{-mx}{q}\right)
+        \hat{h}_{t}\left(\frac{Nm}{q}\right)
+    \] by the orthogonality of characters.
+    When $t_1,t_2$ are at $T^\epsilon$ separated, we can add in the terms $\hat{h}_{t_1-t_2}(0)$ corresponding to $m=0$, at the cost of $O_\epsilon(T^{-100})$. Therefore, we can consider the sum across all $m\in\mathbb{Z}$ with an error of $O_\epsilon(T^{-100})$. Let $W$ be the Mellin transform of the function $\omega(x)^2$. So that
 \begin{align*}
-    &N^{1+it}\sum_{m\in \mathbb{Z}} \sum_{x \mod q}\chi(x) e\left(\frac{-mx}{q}\right)
+    &\frac{N^{1+it}}{q}\sum_{m\in \mathbb{Z}} \sum_{x \mod q}\chi(x) e\left(\frac{-mx}{q}\right)
     \hat{h}_{t}\left(\frac{Nm}{q}\right) \\
     =& \sum_{n} n^{it}\chi(n)\omega\left(\frac{n}{N}\right)^2\\
-    =& \frac{1}{2\pi i}\int_{2-i\infty}^{2+i\infty}W(s)N^sL(s-it,\chi) ds\\
+    =& \frac{1}{2\pi i}\int_{2-i\infty}^{2+i\infty}W(s)N^s \sum_n n^{-s+it}\chi(n) ds\\
+    =& \frac{1}{2\pi i}\int_{2-i\infty}^{2+i\infty}W(s)N^s L(s-it,\chi) ds\\
     =& \frac{1}{2\pi i}\int_{-1-i\infty}^{-1+i\infty}W(s)N^sL(s-it,\chi) ds + \varepsilon(\chi)\frac{\phi(q)}{q}N^{1+it}W(1+it)
 \end{align*}
-where $\varepsilon$ detects if $\chi$ is principal or not. The second term arising from the (potential) pole at $1$ decays rapidly in $t>T^\epsilon$.
+where $\varepsilon$ detects if $\chi$ is principal or not. The second term arising from the (potential) pole at $1$ decays quickly so is $O_{\epsilon}(T^{-100})$ for $t>T^\epsilon$. If $\chi$ is not principal, the contribution is $0$. Therefore, this term is negligible. 
 For the first term, we let $\chi$ be induced by the primitive $\chi^*$ with modulus $r$, so\[
     L(s-it,\chi)=L(s-it,\chi^*)\prod_{p|q} \left(1-\frac{\chi^*(p)}{p^s}\right).
 \]
 We also let \[
-    G(s) =\frac{\tau(\chi^*)}{i^\delta\sqrt{r}}r^{s-1/2}\pi^{1/2-s}\frac{\Gamma(\frac{1-s+\delta}{2})}{\Gamma(\frac{s+\delta}{2})},
+    G(s) =\frac{\tau(\chi^*)}{i^\delta\sqrt{r}}r^{1/2-s}\pi^{s-1/2}\frac{\Gamma(\frac{1-s+\delta}{2})}{\Gamma(\frac{s+\delta}{2})},
 \]
 so that $L(s-it,\chi^*)(s) = G(s-it)L(1-s+it,\overline{\chi^*})$. The integral becomes
 \begin{align*}
@@ -129,3 +138,4 @@ We thus break up the integral into two pieces according to the two summations $I
 \end{align*}
 By the decay of $W$, we can truncate both integrals to the region $|u|\ll T^\epsilon$.
 Moreover, \textit{decay of gamma - might have a typo in GM paper?}
+\end{proof}

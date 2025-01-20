@@ -205,7 +205,7 @@ N \sum_m \hat{h}_{t_1-t_2}(mN) = \sum_n h_{t_1-t_2}\Big(\frac{n}{N}\Big)=\sum_{n
 \end{remark}
 
 \subsubsection*{7. Bounding $S_3$}
-$S_3$ sums over most points on the $3$-dimensional lattice. By symmetry, we can consider only the terms with $m_1\leq m_2\leq m_3$ with an error factor of $6$.
+$S_3$ sums over most points on the $3$-dimensional lattice. By symmetry, we can consider only the terms with $|m_1|\leq |m_2|\leq |m_3|$ with an error factor of $6$.
 Recall that \[
 I_m=N^3\sum_{t_1,t_2,t_3\in W}\hat{h}_{t_1-t_3}(Nm_1)\hat{h}_{t_2-t_1}(Nm_2)\hat{h}_{t_3-t_2}(Nm_3).
 \]
@@ -269,7 +269,7 @@ If $t_1-t_2\neq 0$, then $|t_1-t_2|>T^\epsilon$, so the oscillatory integral wil
 \]
 We get
 \begin{align*}
-    \int_{v\asymp 1} |R(v)|^2 dv =   \sum_{t_1,t_2,t_3,t_4\in W} \int_{v\asymp 1}  R(v)^{i(t_1+t_2-t_3-t_4)} dv, 
+    \int_{v\asymp 1} |R(v)|^4 dv =   \sum_{t_1,t_2,t_3,t_4\in W} \int_{v\asymp 1}  R(v)^{i(t_1+t_2-t_3-t_4)} dv, 
 \end{align*}
 and the terms in the summation are negligble unless $|t_1+t_2-t_3-t_4|\ll T^\epsilon$. Assembling everything together gives an initial bound of \[
 S_3\lesssim T^2E(W)^{1/2}|W|^{1/2}.

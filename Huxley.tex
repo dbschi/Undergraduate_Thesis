@@ -1,12 +1,11 @@
-\section{Huxley's Proof of Zero Density}
+\section{Huxley's Proof of Zero Density
+}We shall prove a weaker statement of Huxley's zero density bound.
 \begin{theorem}[Huxley]
-    We have  \[
-    N(\sigma,t)\lesssim T^{\frac{12}{5}(1-\sigma)}.
+    Let $\sigma\in[3/4,1]$. We have  \[
+        N(\sigma,t)\lesssim T^{\frac{5\sigma-3}{\sigma^2+\sigma-1}(1-\sigma)}
     \]
 \end{theorem}
-We shall prove a weaker statement of the theorem: instead of showing the original bound, we show \[
-    N(\sigma,t)\lesssim T^{\frac{5\sigma-3}{\sigma^2+\sigma-1}(1-\sigma)},
-\]which is slightly worse away from the half line but gives the same exponent at $\sigma=3/4$.
+This also gives $T^{12/5(1-\sigma)}$ when combined with Ingham's bound, as both give the same exponent $6/5$ when evaluated at $\sigma=3/4$, but the bound given in the previous section is tighter away from $3/4$.
 Huxley's methodology for detecting zeros as follows. Let $M_x(s) \defeq \sum_{n=1}^{x} \mu(n)n^{-s}$. Since this also converges absolutely on $\Re(s)>1$, we can write the dirichlet series of $\zeta(s) M_x (s)$ as \[
     \zeta(s) M_x (s) \defeq \sum_{n}a_n n^{-s}
 \]
@@ -68,7 +67,7 @@ We thus transform the problem of detecting zeros to counting the number of occur
         \left|\zeta\left(\frac{1}{2}+it_j\right)\right|>V \ \forall j,
     \]
     then \[
-    |W|\ll TV^{-4} \log^{O(1)}T.
+    |W|\lesssim TV^{-4}.
     \]
 \end{corollary}
 \begin{proof}
@@ -77,8 +76,18 @@ We thus transform the problem of detecting zeros to counting the number of occur
     \]
     so applying the previous lemma on $D(s)=\sum_{n\leq \sqrt{T}}n^{-s}$ with $\alpha=4$ gives \begin{align*}
         |W|\ll \frac{\log ^2 T}{V^4} \int_{-2(\log T)^{-1}}^{2(\log T)^{-1}}
-        \int_{0}^{T} |D_N(x+it)|^4 dt \ dx
+        \int_{0}^{T} |D_N(1/2+x+it)|^4 dt \ dx.
     \end{align*}
+    We consider the inner integral \begin{align*}
+        \int_{0}^{T} |D_N(1/2+x+it)|^4 dt &=
+        \int_{0}^{T} \sum_{n_1,n_2,n_3,n_4\leq \sqrt{T}}(n_1n_2n_3n_4)^{-1/2-x}\left(\frac{n_1n_2}{n_3n_4}\right)^{it} dt\\
+        &=\sum_{n_1,n_2,n_3,n_4\leq \sqrt{T}}(n_1n_2n_3n_4)^{-1/2-x}O\left(\frac{n_1n_2}{n_3n_4}\right)\\
+        &=O(\sqrt{T}^{-1/2-x+1+1}\sqrt{T}^{-1/2-x+1+1}\sqrt{T}^{-1/2-x-1+1}\sqrt{T}^{-1/2-x-1+1})\\
+        &=O(T^{1-2x}).
+    \end{align*}
+    Integrating this in $x$ gives an estimate of \[
+    O(T^{1+4(\log T)^{-1}}(\log T)^{-1})\ll T^{1+o(1)}    .\]
+    Therefore, we have $|W|\lesssim TV^{-4}$.
 \end{proof}
 
 \begin{lemma}[Hal\'asz Inequality]

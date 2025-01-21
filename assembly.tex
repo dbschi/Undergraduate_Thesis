@@ -1,0 +1,18 @@
+\section{Proof of main theorem}
+\begin{proof}
+    By Proposition \ref{setup_poisson}, we have\[
+        |\mathcal{S}|^3\lesssim \frac{\phi(q)^3}{q^3}N^{6-6\sigma}+ N^{3-6\sigma}(S_1+S_2+S_3).
+    \]
+    By Proposition \ref{s1bound}, $S_1$ is negligible. We bound $S_2$ by Proposition \ref{s2bound}, and $S_3$ by Propositions \ref{refinements_3} and \ref{energybound}. Therefore, \begin{align*}
+        |\mathcal{S}|^3N^{6\sigma-3}\lesssim_k &\frac{\phi(q)^3}{q^3}N^{3}+ \frac{\phi(q)}{q}\left(|\mathcal{S}|^2N+|\mathcal{S}|^{2-1/k}N^2+|\mathcal{S}|^2N^2\Big(\frac{(qT)^{1/2}}{|\mathcal{S}^{3/4}|}\Big)^{1/k}\right)\\
+        &+\phi(q)^{7/2}T^2|\mathcal{S}|^{3/2}+\phi(q)^{3}\frac{NT}{q}|\mathcal{S}|^{1/2}(|\mathcal{S}|^2N^{2-2\sigma}+ |\mathcal{S}|^3N^{1-2\sigma} + |\mathcal{S}|^{9/4}(qT)^{1/2}N^{{1-2\sigma}})^{1/2}\\
+        \ll &\frac{\phi(q)^3}{q^3}N^{3}+ \frac{\phi(q)}{q}\left(|\mathcal{S}|^2N+|\mathcal{S}|^{2-1/k}N^2+|\mathcal{S}|^2N^2\Big(\frac{(qT)^{1/2}}{|\mathcal{S}^{3/4}|}\Big)^{1/k}\right)\\
+        &+\phi(q)^{7/2}T^2|\mathcal{S}|^{3/2}+\phi(q)^{3}\frac{NT}{q}|\mathcal{S}|^{1/2}(|\mathcal{S}|N^{1-\sigma}+ |\mathcal{S}|^{3/2}N^{1/2-\sigma} ).\\
+    \end{align*}
+    where in the last step we take $N>(qT)^{3/4}$, so that $|\mathcal{S}|^{9/4}(qT)^{1/2}N^{{1-2\sigma}}$ is dominated by $|\mathcal{S}|^2N^{2-2\sigma}$. 
+    \begin{align*}
+        |\mathcal{S}|\lesssim_k & \frac{\phi(q)}{q}N^{2-2\sigma} + \frac{\phi(q)}{q}N^{4-6\sigma} + \left(\frac{\phi(q)}{q} N^{5-6\sigma}\right)^{k/(k+1)}+\left(\frac{\phi(q)}{q}\right)^{4k/(4k+3)}N^{4k(5-6\sigma)/(4k+3)}(qT)^{2/(4k+3)}\\
+        & + {\phi(q)}^{7/3}T^{4/3}N^{2-4\sigma}+\phi(q)^{2}\left(\frac{T}{q}\right)^{2/3}N^{(10-14\sigma)/3}  +\phi(q)^{3}\frac{T}{q}N^{9/2-7\sigma} 
+    \end{align*}
+
+\end{proof}

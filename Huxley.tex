@@ -125,7 +125,9 @@ We thus transform the problem of detecting zeros to counting the number of occur
     \end{enumerate}
     Of the zeros $\rho = \beta+i\gamma$ of $\zeta$ in the region, at the cost of a factor of $\log T$, we take representatives such that if $\rho_1\neq \rho_2$ then $|\rho_1-\rho_2|\geq \textcolor{red}{1}$. 
 
-    For Class (iii) zeros, $\gamma$ has rapid decay. Therefore, the large values can only happen in the range $\Im (s)\lesssim 1$ and so we can bound the occurances of these zeros to be $O(T^\epsilon)$. Therefore, this is negligible.
+    For Class (iii) zeros, we use Stirling's formula on $\Gamma$ to get \[
+        \log \Gamma(1-s) = \bigg(\frac{1}{2}-s\bigg)\log (1-s) + s - \frac{1}{2}\log 2\pi + O(|s|^{-1}).
+    \]. Therefore, the $\Gamma(1-s)$ decays at the rate of $O(|s|^{1/2-\sigma})$ Therefore, the large values can only happen in the range $\Im (s)\lesssim 1$ and so we can bound the occurances of these zeros to be $O(T^\epsilon)$. Therefore, this is negligible.
 
     For Class (i) zeros, we split the sum dyadically to get \begin{equation}
     \label{class1dyadic}

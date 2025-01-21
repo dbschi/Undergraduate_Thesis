@@ -1,5 +1,5 @@
 \subsection{$S_1$ bound}
-\begin{proposition}
+\begin{proposition}\label{s1bound}
     $S_1=O\epsilon(T^{-10})$.
 \end{proposition}
 \begin{proof}
@@ -45,8 +45,11 @@ Combined, the contribution of $S_1$ is $O\epsilon(T^{-10})$.
 
 
 \subsection{$S_2$ bound}
-\begin{proposition}
-    (give bound on $S_2$).
+\begin{proposition}\label{s2bound}
+    We have for any integer $k$,
+    \[
+    S_2\lesssim_k \frac{\phi(q)}{q}\left(|\mathcal{S}|^2N+|\mathcal{S}|^{2-1/k}N^2+|\mathcal{S}|^2N^2\Big(\frac{(qT)^{1/2}}{|\mathcal{S}^{3/4}|}\Big)^{1/k}\right).
+    \]
 \end{proposition}
 
 \begin{lemma}
@@ -86,8 +89,28 @@ Combined, the contribution of $S_1$ is $O\epsilon(T^{-10})$.
          \hat{h}_{t_1-t_2}\left(\frac{Nm}{q}\right)\right|^2 + O(T^{-10}).
     \]
 \end{proof}
-
-By the principle of non-stationary phase we can move the terms where $(t_1,\chi_1)=(t_2,\chi_2)$ into $O(T^{-10})$ by decay in $Nm/q$. \textit{We also used the fact that there are at most $\phi(q)$ characters mod $q$, so the $O(q^2)$ factor is negligible compared to $N^{-100}$}.
+\begin{proof}[Proof of Proposition \ref{s2bound}]
+    By the principle of non-stationary phase the terms where $(t_1,\chi_1)=(t_2,\chi_2)$ contribute $O(T^{-10})$. If $\chi_1\neq \chi_2$, then we can apply the orthogonality of characters to extend the summation in $m$ to include $m=0$ too. Lastly, if $\chi_1=\chi_2$ and $t_1\neq t_2$, we add the negligible term corresponding to $m=0$, as $\hat h_{t_1-t_2}(0)$ is negligble.
+    Therefore, we have \begin{align*}
+        S_2&\ll \frac{N^3}{q^3} \phi(q) \sum_{\substack{(t_1,\chi_1),\\(t_2,\chi_2)\in\mathcal{S}\\ (t_1,\chi_1)\neq (t_2,\chi_2)}} \left|\sum_{m\neq 0} \sum_{x \in \mathbb{Z}/q\mathbb{Z}}\chi_1\bar{\chi}_2(x) e\left(\frac{-mx}{q}\right)
+        \hat{h}_{t_1-t_2}\left(\frac{Nm}{q}\right)\right|^2 + O(T^{-10})\\ 
+        &\stackeq{Poisson} \quad \frac{N}{q} \phi(q) \sum_{\substack{(t_1,\chi_1),\\(t_2,\chi_2)\in\mathcal{S}\\ (t_1,\chi_1)\neq (t_2,\chi_2)}} \left|\sum_{n\sim N} \chi_1\bar\chi_2(n)\omega\left(\frac{n}{N}\right)^2\left(\frac{n}{N}\right)^{i(t_1-t_2)}\right|^2 + O(T^{-10})\\
+        &=\frac{N}{q} \phi(q) \sum_{\substack{(t_1,\chi_1),\\(t_2,\chi_2)\in\mathcal{S}\\ (t_1,\chi_1)\neq (t_2,\chi_2)}} \left|\sum_{n\sim N} \chi_1\bar\chi_2(n)\omega\left(\frac{n}{N}\right)^2n^{i(t_1-t_2)}\right|^2 + O(T^{-10})\\
+        & \leq \frac{N}{q} \phi(q) \sum_{\substack{(t_1,\chi_1),\\(t_2,\chi_2)\in\mathcal{S}}} \left|\sum_{n\sim N} \chi_1\bar\chi_2(n)\omega\left(\frac{n}{N}\right)^2n^{i(t_1-t_2)}\right|^2 + O(T^{-10}).
+    \end{align*}
+    Before we apply Heath-Brown's theorem, we use H\"older's inequality to get \begin{align*}
+        \sum_{\substack{(t_1,\chi_1),\\(t_2,\chi_2)\in\mathcal{S}}} \left|\sum_{n\sim N} \chi_1\bar\chi_2(n)\omega\left(\frac{n}{N}\right)^2n^{i(t_1-t_2)}\right|^2\leq \left(\sum_{\substack{(t_1,\chi_1),\\(t_2,\chi_2)\in\mathcal{S}}} 1\right)^{(k-1)/k}\left(\sum_{\substack{(t_1,\chi_1),\\(t_2,\chi_2)\in\mathcal{S}}} \left|\sum_{n\sim N} \chi_1\bar\chi_2(n)\omega\left(\frac{n}{N}\right)^2n^{i(t_1-t_2)}\right|^{2k}\right)^{1/k}\\
+        =|\mathcal{S}|^{2-2/k}\left(\sum_{\substack{(t_1,\chi_1),\\(t_2,\chi_2)\in\mathcal{S}}} \left|\sum_{n\asymp_k N^k} O(d(n))\chi_1\bar\chi_2(n)n^{i(t_1-t_2)}\right|^{2k}\right)^{1/k}.
+    \end{align*}
+    As the divisor is bounded by $d(n)=N^{o(1)}$, we apply \hyperref[heathbrown]{Heath-Brown's theorem} to bound the second term by \[
+    \lesssim_k (|\mathcal{S}|^2N^k+|\mathcal{S}|N^{2k}+|\mathcal{S}|^{5/4}(qT)^{1/2}N^k)^{1/k}\ll_k|\mathcal{S}|^{2k}N+|\mathcal{S}^{1/k}|N^{2}+|\mathcal{S}|^{5/(4k)}(qT)^{1/(2k)}N.
+    \]
+    Therefore, combined with the previous bound on $S_2$, we have \[
+    S_2\lesssim \frac{N}{q} \phi(q)|\mathcal{S}|^{2-2/k}(|\mathcal{S}|^{2k}N+|\mathcal{S}^{1/k}|N^{2}+|\mathcal{S}|^{5/(4k)}(qT)^{1/(2k)}N)
+    \]
+    which gives the proposition upon simplification.
+\end{proof}
+ by decay in $Nm/q$. \textit{We also used the fact that there are at most $\phi(q)$ characters mod $q$, so the $O(q^2)$ factor is negligible compared to $N^{-100}$}.
 
 For the other terms where $t_1$ and $t_2$ are $T^\epsilon$ separated or $\chi_1\neq \chi_2$, we want to apply Heath Brown's theorem. 
 \begin{lemma}
@@ -137,5 +160,8 @@ We thus break up the integral into two pieces according to the two summations $I
         I_2&= \frac{1}{2\pi}\int_{-\infty}^{\infty}W(-2k+iu)N^{-2k+iu}G(-2k+iu-it)\sum_{n> M}\overline{\chi^*}(n)n^{-2k-1-i(u-t)}\prod_{p|q} \left(1-\frac{\chi^*(p)}{p^{-2k+iu}}\right)du.
 \end{align*}
 By the decay of $W$, we can truncate both integrals to the region $|u|\ll T^\epsilon$.
-Moreover, \textit{decay of gamma - might have a typo in GM paper?}
+Moreover, by \textbf{Davenport multiplicative number theory chp 10}
+we have \begin{align*}
+    \frac{\Gamma\left(\frac{i(t-u)+\delta}{2}\right)}{\Gamma\left(\frac{1+i(u-t)+\delta}{2}\right)}\ll \frac{1}{t^{1/2}} \frac{1}{}
+\end{align*}
 \end{proof}

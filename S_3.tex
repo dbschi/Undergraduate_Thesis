@@ -20,81 +20,361 @@ The proof of Proposition \ref{refinements_3} relies on the result for summation 
 \end{lemma}
 This is Proposition 9.1 from [GM].
 
+Recall that \begin{align*}
+	I_m\defeq\frac{N^3}{q^3}\sum_{\substack{(t_1,\chi_1),\\(t_2,\chi_2),\\(t_3,\chi_3)\in\mathcal{S}}} &\sum_{x\in (\mathbb{Z}/q\mathbb{Z})^3}\chi_1\bar{\chi}_3(x_1)\chi_2\bar{\chi}_1(x_2)\chi_3\bar{\chi}_2(x_3) e\left(\frac{-x\cdot m}{q}\right)\\
+	\times \ &\hat{h}_{t_1-t_3}\left(\frac{Nm_1}{q}\right)\hat{h}_{t_2-t_1}\left(\frac{Nm_2}{q}\right)\hat{h}_{t_3-t_2}\left(\frac{Nm_3}{q}\right).
+\end{align*}
 
 By non-stationary phase, $I_m$ is negligible for the terms $qT/N\lesssim |m|$, so 
 \begin{equation}
     S_3 = \sum_{0<|m_1|,|m_2|,|m_3|\lesssim qT/N} I_m + O(T^{-100}).
 \end{equation}
-We define \begin{align*}
-    R(v,n_1,n_2)&\defeq \sum_{(t,\chi)\in \mathcal{S}} 
-    \chi({n_1})\bar{\chi}(n_2)v^{it},\\
-    R(v,n)&\defeq R(v,n,1).
+Furthermore, by symmetry in $m_1$, $m_2$, $m_3$, we can consider the terms $|m_1|\leq |m_2|\leq |m_3|$ at a cost of a factor of $6$.
+We first consider the triple summation in $\mathbb{Z}/q$. Define \begin{align*}
+    A_{m,\chi_1,\chi_2,\chi_3}&\defeq \sum_{x\in (\mathbb{Z}/q\mathbb{Z})^3}\chi_1\bar{\chi}_3(x_1)\chi_2\bar{\chi}_1(x_2)\chi_3\bar{\chi}_2(x_3) e\left(\frac{-x\cdot m}{q}\right),
 \end{align*}
-\begin{proposition}
-    \label{doubleintegrals3}
-    \[
-    |I_m|\ll \phi(q) \frac{N^3}{q^3}  
-    \sum_{y_1,y_2\in (\mathbb{Z}/q\mathbb{Z})^\times}\ \int\displaylimits_{\substack{
-        |v_1m_1+v_2m_2+m_3|\lesssim \frac{q}{N}\\
-        \frac{1}{2}\leq v_1,v_2\leq 2
-    }} \left| R\left(\frac{v_2}{v_1},y_2,y_1\right)
-    R(v_2,y_2)R\left(v_1,y_1\right)\right| dv_1 \ dv_2  + O(T^{-100}).\\
-    \]
-    Moreover, if $|m_1|\leq|m_2|\leq |m_3|$, $|I_m|=O(T^{-100})$ unless $|m_2|\asymp|m_3|$.
-\end{proposition}
-\begin{proof}
-    
-Recall
+which is the inner summation in $I_m$.
+Notice that $\chi(0)=0$, so we can define the summation in $A$ to run over $(\mathbb{Z}/q\mathbb{Z})^\times$ to get 
 \begin{align*}
-    I_m=\frac{N^3}{q^3}\sum_{\substack{(t_1,\chi_1),\\(t_2,\chi_2),\\(t_3,\chi_3)\in\mathcal{S}}} &\sum_{x\in (\mathbb{Z}/q\mathbb{Z})^3}\chi_1\bar{\chi}_3(x_1)\chi_2\bar{\chi}_1(x_2)\chi_3\bar{\chi}_2(x_3) e\left(\frac{-x\cdot m}{q}\right)\\
-    \times \ &\hat{h}_{t_1-t_3}\left(\frac{Nm_1}{q}\right)\hat{h}_{t_2-t_1}\left(\frac{Nm_2}{q}\right)\hat{h}_{t_3-t_2}\left(\frac{Nm_3}{q}\right).
+    A_{m,\chi_1,\chi_2,\chi_3}&= \sum_{x\in ((\mathbb{Z}/q\mathbb{Z})^\times)^3}\chi_1\bar{\chi}_3(x_1)\chi_2\bar{\chi}_1(x_2)\chi_3\bar{\chi}_2(x_3) e\left(\frac{-x\cdot m}{q}\right)\\
 \end{align*}
-Expanding the integrals, 
-\begin{align*}
-    I_m=\frac{N^3}{q^3}\sum_{\substack{(t_1,\chi_1),\\(t_2,\chi_2),\\(t_3,\chi_3)\in\mathcal{S}}} &\sum_{x\in (\mathbb{Z}/q\mathbb{Z})^3}\chi_1\bar{\chi}_3(x_1)\chi_2\bar{\chi}_1(x_2)\chi_3\bar{\chi}_2(x_3) e\left(\frac{-x\cdot m}{q}\right)\\
-    \times \ &
-    \int_{\reals^3}\mathbf{\tilde{\omega}}(\mathbf{u})u_1^{i(t_1-t_3)}u_2^{i(t_2-t_1)}u_3^{i(t_3-t_2)}e\left(\frac{-N\mathbf{m}\cdot \mathbf{u}}{q}\right)d\mathbf{u},
-\end{align*}
-where $\tilde{\omega}(\mathbf{u})=\omega(u_1)^2\omega(u_2)^2\omega(u_3)^2$ is compactly supported.
-We now make the substitution $y_1=x_1x_3^{-1}, y_2=x_2x_3^-1 \mod q$ for the summation over $x$, and $v_1=u_1/u_3,v_2=u_2/u_3$ for the integral on the support of $\tilde{\omega}$.
+We now make the substitution $y_1=x_1x_3^{-1}, y_2=x_2x_3^{-1} \mod q$ for the summation over $x$.
 We thus rewrite the sum over $x$ as 
 \begin{align*}
     &\sum_{y_1,y_2,x_3\in (\mathbb{Z}/q\mathbb{Z})^\times}
     \chi_1(y_1y_2^{-1})\chi_2(y_2)\chi_3(y_1^{-1})e\left(\frac{-(y_1m_1+y_2m_2+m_3)x_3}{q}\right)\\
     =&
-    \sum_{y_1,y_2\in (\mathbb{Z}/q\mathbb{Z})^\times}\chi_1(y_1)\bar{\chi}_1(y_2)\chi_2(y_)\bar{\chi}_3(y_1)\sum_{x_3\in (\mathbb{Z}/q\mathbb{Z})^\times}e\left(\frac{-(y_1m_1+y_2m_2+m_3)x_3}{q}\right),
+    \sum_{y_1,y_2\in (\mathbb{Z}/q\mathbb{Z})^\times}\chi_1(y_1)\bar{\chi}_1(y_2)\chi_2(y_2)\bar{\chi}_3(y_1)\sum_{x_3\in (\mathbb{Z}/q\mathbb{Z})^\times}e\left(\frac{-(y_1m_1+y_2m_2+m_3)x_3}{q}\right)\\
+    =&	\sum_{y_1,y_2\in \mathbb{Z}/q\mathbb{Z}}\chi_1(y_1)\bar{\chi}_1(y_2)\chi_2(y_2)\bar{\chi}_3(y_1)\left(-1+\sum_{x_3\in (\mathbb{Z}/q\mathbb{Z})}e\left(\frac{-(y_1m_1+y_2m_2+m_3)x_3}{q}\right)\right)\\
+    =&\sum_{y_1,y_2\in\mathbb{Z}/q\mathbb{Z}}\chi_1(y_1)\bar{\chi}_1(y_2)\chi_2(y_2)\bar{\chi}_3(y_1) \Big(q \mathbb{I}_{q|(y_1m_1+y_2m_2+m_3)}-1\Big)\\
+    =&  - (q-1)^2 \delta_{\chi_1\chi_2}\delta_{\chi_1\chi_3}+q \sum_{\substack{y_1,y_2 \in\mathbb{Z}/q\mathbb{Z} \\ y_1m_1+y_2m_2+m_3\equiv 0 \mod q}}\chi_1(y_1)\bar{\chi}_1(y_2)\chi_2(y_2)\bar{\chi}_3(y_1).
 \end{align*}
-where we can use the trivial bound $\phi(q)$ for the innermost sum.
-We also rewrite triple integral as 
-\begin{align*}
-    &\int_{\reals^3}\tilde{\omega}(v_1u_3,v_2u_3,u_3) {\left(\frac{v_1}{v_2}\right)}^{it_1} {\left(v_2\right)}^{it_2}{\left(\frac{1}{v_1}\right)}^{it_3} u_3^2 \ e\left(\frac{-N(v_1m_1+v_2m_2+m_3)u_3}{q}\right)\ dv_1\ dv_2\ du_3\\
-    =&\int_{\reals^2}\int_\reals u_3^2 \ \tilde{\omega}(v_1u_3,v_2u_3,u_3) e\left(\frac{-N(v_1m_1+v_2m_2+m_3)u_3}{q}\right)  du_3 \ {\left(\frac{v_1}{v_2}\right)}^{it_1} {\left(v_2\right)}^{it_2}{\left(\frac{1}{v_1}\right)}^{it_3}  \ dv_1\ dv_2.\\
-\end{align*}
-The integrand of the innermost integral is non-zero only if \[
-    v_1u_3,v_2u_3,u_3\sim N.
+Based on the Kronecker delta products, the first term in the last expression is non-zero exactly when $\chi_1=\chi_2=\chi_3$. We turn to the second term with double summation. 
+We first suppose that $(m_1,q)=1$. Then there is exactly one value of $y_1$ for each value of $y_2$ in the summation, namely \[
+y_1\equiv \frac{y_2m_2+m_3}{-m_1} \mod q.
 \]
-Importantly, this requires $1/2 \leq v_1,v_2 \leq 2$, so we can truncate the outermost integrals to these regions. Moreover, by repeated integration by parts, this integral is $O_{\epsilon, A}(T^{-A})$ for any $|v_1m_1+v_2m_2+m_3|>qT^\epsilon/N$.
-So 
-\begin{align*}
-    |I_m|\ll &\phi(q) \frac{N^3}{q^3}  
-    \sum_{y_1,y_2\in (\mathbb{Z}/q\mathbb{Z})^\times}\left|\ \int\displaylimits_{\substack{
+Similarly, if $(m_2,q)=1$, we can rearrange the summation to get one value of $y_2$ for each value of $y_1$,\[
+y_2\equiv \frac{y_1m_1+m_3}{-m_2} \mod q.
+\]
+Finally, if $m_1$ and $m_2$ are multiples of $q$, then the summation is non-empty only if $m_3$ is also a multiple of $q$. In this case, the summation is over all terms $y_1,y_2$ modulo $q$ and evaluates to \[
+q (q-1)^2\delta_{\chi_1\chi_2}\delta_{\chi_1\chi_3}
+\] 
+
+With this in mind, we break $I_m=I_{m,1}+I_{m,2}$,\begin{align*}
+I_{m,1}\defeq&\frac{N^3}{q^3}\sum_{\substack{(t_1,\chi_1),\\(t_2,\chi_2),\\(t_3,\chi_3)\in\mathcal{S}\\
+\chi_1=\chi_2=\chi_3}}(q-1)^2 \hat{h}_{t_1-t_3}\left(\frac{Nm_1}{q}\right)\hat{h}_{t_2-t_1}\left(\frac{Nm_2}{q}\right)\hat{h}_{t_3-t_2}\left(\frac{Nm_3}{q}\right),\\
+I_{m,2}\defeq&\frac{N^3}{q^2}\sum_{\substack{(t_1,\chi_1),\\(t_2,\chi_2),\\(t_3,\chi_3)\in\mathcal{S}}} \sum_{\substack{y_1,y_2 \in\mathbb{Z}/q\mathbb{Z} \\ y_1m_1+y_2m_2+m_3\equiv 0 \mod q}}\chi_1(y_1)\bar{\chi}_1(y_2)\chi_2(y_2)\bar{\chi}_3(y_1)\\
+&\times \hat{h}_{t_1-t_3}\left(\frac{Nm_1}{q}\right)\hat{h}_{t_2-t_1}\left(\frac{Nm_2}{q}\right)\hat{h}_{t_3-t_2}\left(\frac{Nm_3}{q}\right).
+\end{align*}
+
+\subsubsection{Sum in $I_{m,1}$}
+\begin{proposition} [Sum in $I_{m,1}$ bound] \label{im1bound}
+    We have \[
+    \sum_{m_1,m_2,m_3\neq 0} I_{m,1}\lesssim (qT)^2E(\mathcal{S})|\mathcal{S}|^{1/2}.
+    \]
+\end{proposition}
+
+For a Dirichlet character $\chi$, we define \[
+R_\chi (v) \defeq\sum_{(t_1,\chi_1)\in \mathcal{S}, \chi_1=\chi} v^{it_1}.
+\]
+We then consider the expression \[
+	\hat{h}_{t_1-t_3}\left(\frac{Nm_1}{q}\right)\hat{h}_{t_2-t_1}\left(\frac{Nm_2}{q}\right)\hat{h}_{t_3-t_2}\left(\frac{Nm_3}{q}\right).
+\]
+Expanding the Fourier transform as an integral, this expression equals \begin{align*}
+	 &\int_{\reals^3}\mathbf{\tilde{\omega}}(\mathbf{u})u_1^{i(t_1-t_3)}u_2^{i(t_2-t_1)}u_3^{i(t_3-t_2)}e\left(\frac{-N\mathbf{m}\cdot \mathbf{u}}{q}\right)d\mathbf{u}\\
+	 =&\int_{\reals^3}\mathbf{\tilde{\omega}}(\mathbf{u})\left(\frac{u_1}{u_2}\right)^{it_1}\left(\frac{u_2}{u_3}\right)^{it_2}\left(\frac{u_3}{u_1}\right)^{it_3}
+	 e\left(\frac{-N\mathbf{m}\cdot \mathbf{u}}{q}\right)d\mathbf{u}
+	 \end{align*}
+	 where $\tilde{\omega}(u_1,u_2,u_3)\defeq \omega(u_1)^2\omega(u_2)^2\omega(u_3)^2$ is compactly supported. The observation is that the choice of $u_1/u_2$ and $u_2/u_3$ fixes $u_3/u_1$, so this triple integral can be rewritten in two variables. We change variables $v_1=u_1/u_3,v_2=u_2/u_3$ for the integral, which is well defined on the support of $\tilde{\omega}$. This gives us a Jacobian of $u_3^2$ and equals
+	 \begin{equation}\label{im1integral}
+        \begin{split}
+	&\int_{\reals^3}\tilde{\omega}(v_1u_3,v_2u_3,u_3) {\left(\frac{v_1}{v_2}\right)}^{it_1} {\left(v_2\right)}^{it_2}{\left(\frac{1}{v_1}\right)}^{it_3} u_3^2 \ e\left(\frac{-N(v_1m_1+v_2m_2+m_3)u_3}{q}\right)\ dv_1\ dv_2\ du_3\\
+	=&\int_{\reals^2}\int_\reals u_3^2 \ \tilde{\omega}(v_1u_3,v_2u_3,u_3) e\left(\frac{-N(v_1m_1+v_2m_2+m_3)u_3}{q}\right)  du_3 \ {\left(\frac{v_1}{v_2}\right)}^{it_1} {\left(v_2\right)}^{it_2}{\left(\frac{1}{v_1}\right)}^{it_3}  \ dv_1\ dv_2.\\
+     \end{split}
+\end{equation}
+Therefore, \begin{equation*}
+    I_{m,1} = \frac{N^3(q-1)^2}{q^3}\int_{\reals^2} \tilde{I}_{u_3}(v_1,v_2) \sum_{\chi} R_{\chi}{\left(\frac{v_1}{v_2}\right)}R_{\chi} {\left(v_2\right)}R_{\chi}{\left(\frac{1}{v_1}\right)} \ dv_1\ dv_2,
+\end{equation*}
+    where\[
+     \tilde{I}_{u_3}(v_1,v_2)\defeq \tilde{I}_{u_3}(v_1,v_2,m)\defeq \int_\reals u_3^2 \ \tilde{\omega}(v_1u_3,v_2u_3,u_3) e\left(\frac{-N(v_1m_1+v_2m_2+m_3)u_3}{q}\right)  du_3\]
+and $\sum_\chi$ runs over all Dirichlet characters mod $q$.
+The innermost integral $\tilde{I}_{u_3}(v_1,v_2)$ has cancellation property. By the principle of non-stationary phase through repeated integration by parts, this integral is $O_{\epsilon, A}(T^{-A})$ for any $|v_1m_1+v_2m_2+m_3|>qT^\epsilon/N$. Therefore, we can truncate the domain of the integrals in $v_1$ and $v_2$ to  $|v_1m_1+v_2m_2+m_3|\lesssim q/N$ with negligible error. On this domain, the innermost integral in $u_3$ is $O(1)$ by the trivial bound. Moreover, by the compact support of $\tilde{\omega}$ on $[1,2]\times [1,2]\times [1,2]$  the integrand of innermost integral is non-zero only if \[
+v_1u_3,v_2u_3,u_3\sim N.
+\]
+Importantly, this requires $1/2 \leq v_1,v_2 \leq 2$, so we can further restrict the outermost integrals to this region. 
+We therefore have: 
+\begin{proposition}
+    \[
+    |I_{m,1}|\ll \frac{N^3}{q}\int\displaylimits_{\substack{
         |v_1m_1+v_2m_2+m_3|\lesssim \frac{q}{N}\\
         \frac{1}{2}\leq v_1,v_2\leq 2
-    }} R\left(\frac{v_1}{v_2},y_1,y_2\right)
-    R(v_2,y_2)R\left(\frac{1}{v_1},1,y_1\right) dv_1 \ dv_2 \right|\\ &+ O(T^{-100}).\\
-\end{align*}
-Since $|R(v_1^{-1},1,y_1)|=|R(v_1,y_1)|$, $| R\left(\frac{v_1}{v_2},y_1,y_2\right)| = R\left(\frac{v_2}{v_1},y_2,y_1\right)|$, we have the first part of the proposition.
-The second part of the proposition follows from the integral bounds $|v_1m_1+v_2m_2+m_3|\lesssim q/N$
- and $v_1,v_2\asymp 1$. These force $|m_2| \asymp|m_3|$, or else the integral will be zero.
-
+}} \sum_{\chi} R_{\chi}{\left(\frac{v_1}{v_2}\right)}R_{\chi} {\left(v_2\right)}R_{\chi}{\left(\frac{1}{v_1}\right)} \ dv_1\ dv_2+O_{\epsilon}(T^{-100}).
+    \]
+    Moreover, if $|m_1|\leq|m_2|\leq |m_3|$, $|I_m|=O(T^{-100})$ unless $|m_2|\asymp|m_3|$.
+\end{proposition}
+\begin{proof}
+    The first statement is a result of our work so far. The second part of the proposition follows from the integral bounds $|v_1m_1+v_2m_2+m_3|\lesssim q/N$
+    and $v_1,v_2\asymp 1$. When $|m_1|\leq |m_2|$, we have $|v_1m_1+v_2m_2|=O(|m_2|)$. These force $|m_2| \asymp|m_3|$, or else the integral will be negligible as the domain of the integration will be outside the range $|v_1m_1+v_2m_2+m_3|\lesssim q/N$.
 \end{proof}
+    \iffalse
+    \begin{proposition}
+        \label{doubleintegrals3}
+        \[
+        |I_m|\ll \phi(q) \frac{N^3}{q^3}  
+        \sum_{y_1,y_2\in (\mathbb{Z}/q\mathbb{Z})^\times}\ \int\displaylimits_{\substack{
+            |v_1m_1+v_2m_2+m_3|\lesssim \frac{q}{N}\\
+            \frac{1}{2}\leq v_1,v_2\leq 2
+        }} \left| R\left(\frac{v_2}{v_1},y_2,y_1\right)
+        R(v_2,y_2)R\left(v_1,y_1\right)\right| dv_1 \ dv_2  + O(T^{-100}).\\
+        \]
+        Moreover, if $|m_1|\leq|m_2|\leq |m_3|$, $|I_m|=O(T^{-100})$ unless $|m_2|\asymp|m_3|$.
+    \end{proposition}
+    \begin{proof}
+        
+    Recall
+    \begin{align*}
+        I_m=\frac{N^3}{q^3}\sum_{\substack{(t_1,\chi_1),\\(t_2,\chi_2),\\(t_3,\chi_3)\in\mathcal{S}}} &\sum_{x\in (\mathbb{Z}/q\mathbb{Z})^3}\chi_1\bar{\chi}_3(x_1)\chi_2\bar{\chi}_1(x_2)\chi_3\bar{\chi}_2(x_3) e\left(\frac{-x\cdot m}{q}\right)\\
+        \times \ &\hat{h}_{t_1-t_3}\left(\frac{Nm_1}{q}\right)\hat{h}_{t_2-t_1}\left(\frac{Nm_2}{q}\right)\hat{h}_{t_3-t_2}\left(\frac{Nm_3}{q}\right).
+    \end{align*}
+    Expanding the integrals, 
+    \begin{align*}
+        I_m=\frac{N^3}{q^3}\sum_{\substack{(t_1,\chi_1),\\(t_2,\chi_2),\\(t_3,\chi_3)\in\mathcal{S}}} &\sum_{x\in (\mathbb{Z}/q\mathbb{Z})^3}\chi_1\bar{\chi}_3(x_1)\chi_2\bar{\chi}_1(x_2)\chi_3\bar{\chi}_2(x_3) e\left(\frac{-x\cdot m}{q}\right)\\
+        \times \ &
+        \int_{\reals^3}\mathbf{\tilde{\omega}}(\mathbf{u})u_1^{i(t_1-t_3)}u_2^{i(t_2-t_1)}u_3^{i(t_3-t_2)}e\left(\frac{-N\mathbf{m}\cdot \mathbf{u}}{q}\right)d\mathbf{u},
+    \end{align*}
+    where $\tilde{\omega}(\mathbf{u})=\omega(u_1)^2\omega(u_2)^2\omega(u_3)^2$ is compactly supported.
+    We now make the substitution $y_1=x_1x_3^{-1}, y_2=x_2x_3^-1 \mod q$ for the summation over $x$, and $v_1=u_1/u_3,v_2=u_2/u_3$ for the integral on the support of $\tilde{\omega}$.
+    We thus rewrite the sum over $x$ as 
+    \begin{align*}
+        &\sum_{y_1,y_2,x_3\in (\mathbb{Z}/q\mathbb{Z})^\times}
+        \chi_1(y_1y_2^{-1})\chi_2(y_2)\chi_3(y_1^{-1})e\left(\frac{-(y_1m_1+y_2m_2+m_3)x_3}{q}\right)\\
+        =&
+        \sum_{y_1,y_2\in (\mathbb{Z}/q\mathbb{Z})^\times}\chi_1(y_1)\bar{\chi}_1(y_2)\chi_2(y_)\bar{\chi}_3(y_1)\sum_{x_3\in (\mathbb{Z}/q\mathbb{Z})^\times}e\left(\frac{-(y_1m_1+y_2m_2+m_3)x_3}{q}\right),
+    \end{align*}
+    where we can use the trivial bound $\phi(q)$ for the innermost sum.
+    We also rewrite triple integral as 
+    \begin{align*}
+        &\int_{\reals^3}\tilde{\omega}(v_1u_3,v_2u_3,u_3) {\left(\frac{v_1}{v_2}\right)}^{it_1} {\left(v_2\right)}^{it_2}{\left(\frac{1}{v_1}\right)}^{it_3} u_3^2 \ e\left(\frac{-N(v_1m_1+v_2m_2+m_3)u_3}{q}\right)\ dv_1\ dv_2\ du_3\\
+        =&\int_{\reals^2}\int_\reals u_3^2 \ \tilde{\omega}(v_1u_3,v_2u_3,u_3) e\left(\frac{-N(v_1m_1+v_2m_2+m_3)u_3}{q}\right)  du_3 \ {\left(\frac{v_1}{v_2}\right)}^{it_1} {\left(v_2\right)}^{it_2}{\left(\frac{1}{v_1}\right)}^{it_3}  \ dv_1\ dv_2.\\
+    \end{align*}
+    The integrand of the innermost integral is non-zero only if \[
+        v_1u_3,v_2u_3,u_3\sim N.
+    \]
+    Importantly, this requires $1/2 \leq v_1,v_2 \leq 2$, so we can truncate the outermost integrals to these regions. Moreover, by repeated integration by parts, this integral is $O_{\epsilon, A}(T^{-A})$ for any $|v_1m_1+v_2m_2+m_3|>qT^\epsilon/N$.
+    So 
+    \begin{align*}
+        |I_m|\ll &\phi(q) \frac{N^3}{q^3}  
+        \sum_{y_1,y_2\in (\mathbb{Z}/q\mathbb{Z})^\times}\left|\ \int\displaylimits_{\substack{
+            |v_1m_1+v_2m_2+m_3|\lesssim \frac{q}{N}\\
+            \frac{1}{2}\leq v_1,v_2\leq 2
+        }} R\left(\frac{v_1}{v_2},y_1,y_2\right)
+        R(v_2,y_2)R\left(\frac{1}{v_1},1,y_1\right) dv_1 \ dv_2 \right|\\ &+ O(T^{-100}).\\
+    \end{align*}
+    Since $|R(v_1^{-1},1,y_1)|=|R(v_1,y_1)|$, $| R\left(\frac{v_1}{v_2},y_1,y_2\right)| = R\left(\frac{v_2}{v_1},y_2,y_1\right)|$, we have the first part of the proposition.
+    The second part of the proposition follows from the integral bounds $|v_1m_1+v_2m_2+m_3|\lesssim q/N$
+    and $v_1,v_2\asymp 1$. These force $|m_2| \asymp|m_3|$, or else the integral will be zero.
 
+    \end{proof}
+\fi
+\iffalse
+We define \begin{align*}
+	A_{m,\chi_1,\chi_2,\chi_3}&\defeq \sum_{x\in (\mathbb{Z}/q\mathbb{Z})^3}\chi_1\bar{\chi}_3(x_1)\chi_2\bar{\chi}_1(x_2)\chi_3\bar{\chi}_2(x_3) e\left(\frac{-x\cdot m}{q}\right)\\
+	R(v,n_1,n_2)&\defeq \sum_{(t,\chi)\in \mathcal{S}} 
+	\chi({n_1})\bar{\chi}(n_2)v^{it},\\
+	R(v,n)&\defeq R(v,n,1).
+\end{align*}
+\fi
 When $|m_2|\asymp|m_3|$, the domain of integration can be written as\begin{align*}
     |v_1m_1+v_2m_2+m_3|\lesssim \frac{q}{N} \implies \left|v_2 - \frac{v_1m_1+m_3}{-m_2}\right|\lesssim \frac{q}{|m_2|N} \asymp \frac{q}{|m_3|N}.
 \end{align*}
-Thus, the integration in $v_2$ is in a small neighborhood of $\frac{v_1m_1+m_3}{-m_2}$.
+Thus, if we fix $v_1$, the integration in $v_2$ is in a ${q}/{(|m_3|N)}$-small neighborhood of $\frac{v_1m_1+m_3}{-m_2}$. In principle, we can estimate the value of the integral by evalulating at 
+$v_2 = {v_1m_1+m_3}/{-m_2}$ and multiplying it by $q/(|m_3|N)$. This is made precise by splitting the sum across $m_3$ into dyadic interals $M$, and smoothing over ranges of ${q}/{(MN)}$.
 
-Let $\tilde{\phi}$ be a smooth bump function such that equals $\tilde{\phi}=1$ on $|x|\lesssim 1$ and is supported in $|x|\lesssim 1$, with a larger constant, so that $\|\tilde{\phi}^{(j)}\lesssim_j 1\|$ for all $j$. We define \[
+Let $\tilde{\phi}$ be a smooth bump function such that equals $\tilde{\phi}=1$ on $|x|\lesssim 1$ and is supported in $|x|\lesssim 1$, with a larger constant, so that $\|\tilde{\phi}^{(j)}\lesssim_j 1\|$ for all $j$.
+
+We define \[
+\tilde{R}_{\chi,M}(v) \defeq \left( \int \frac{NM}{q}\tilde{\phi}\left(\frac{NM}{q}(v-v')\right)|{R}_{\chi,M}(v')|^2 dv'\right)^{1/2}.
+\]
+\begin{proposition} \label{dyadics_31}
+    Let \[
+    \tilde{I}_{m,1}\defeq 
+    %\frac{N^3}{q}
+    \int\displaylimits_{v_1\asymp 1} \sum_{\chi} \left|R_\chi\left(v_1\right) \tilde{R}_{\chi,M}\left(\frac{m_1v_1+m_3}{-m_2v_1}\right)
+\tilde{R}_{\chi,M}\left(\frac{m_1v_1+m_3}{-m_2}\right)\right|dv_1.
+    \]
+    Then there is a choice of $0<M_1\leq M \lesssim qT/N$ such that \[
+        \sum_{0<|m_1|,|m_2|,|m_3|\lesssim \frac{qT}{N}} I_{m,1}\lesssim \frac{N^2}{M}\sum_{|m_1|\sim M_1,|m_2|,|m_3|\sim M}\tilde{I}_{m,1}+O_\epsilon(T^{-100}).
+    \]
+\end{proposition}
+
+\begin{proof}
+    At the cost of a factor of $6$, we consider the terms $|m_1|\leq |m_2|\asymp |m_3|$, and $|m_2|\leq|m_3|$. Expanding the sum over $m_1,m_2,m_3$ dyadically, we get for some $M_1\leq M \lesssim qT/N $ \begin{align*}
+        \sum_{0<|m_1|,|m_2|,|m_3|\lesssim \frac{qT}{N}} I_{m,1}\lesssim \sum_{\substack{|m_1|\sim M_1,\\|m_2|,|m_3|\sim M}}|I_{m,1}| + O_\epsilon(T^{-100})
+    \end{align*}
+    For these values of $M$ and $M_1$, we now consider as $|R_{\chi}(v)|=|R_\chi(v^{-1})|$,
+    \begin{align*} 
+        &\int\displaylimits_{\substack{
+        |v_1m_1+v_2m_2+m_3|\lesssim \frac{q}{N}\\
+        \frac{1}{2}\leq v_1,v_2\leq 2
+            }}\left|R_{\chi} {\left(\frac{v_1}{v_2}\right)}R_{\chi} {\left(v_2\right)}R_{\chi}{\left(\frac{1}{v_1}\right)}\right| \ dv_1\ dv_2\\
+        =&\int\displaylimits_{\substack{
+            |v_1m_1+v_2m_2+m_3|\lesssim \frac{q}{N}\\
+            \frac{1}{2}\leq v_1,v_2\leq 2
+    }}\left|R_{\chi} {\left(\frac{v_2}{v_1}\right)}R_{\chi} {\left(v_2\right)}R_{\chi}{\left({v_1}\right)}\right| \ dv_1\ dv_2\\
+        \ll& 
+        \int_{v_1\asymp 1}\left|R_{\chi}{\left({v_1}\right)}\right|
+        \int\displaylimits_{\left|v_2 - \frac{v_1m_1+m_3}{-m_2}\right|\lesssim \frac{q}{|m_2|N}} \left| R_{\chi}\left(\frac{v_2}{v_1}\right)
+        R_{\chi}(v_2)\right|  dv_2 \ dv_1\\
+        \ll& 
+        \int_{v_1\asymp 1}\left|R_{\chi}{\left({v_1}\right)}\right|
+        \int\displaylimits_{\left|v_2 - \frac{v_1m_1+m_3}{-m_2}\right|\lesssim \frac{q}{MN}} \left| R_{\chi}\left(\frac{v_2}{v_1}\right)
+        R_{\chi}(v_2)\right|  dv_2 \ dv_1\\
+    \end{align*}
+    The inner integral, by Cauchy-Schwarz,
+    is \begin{align*}
+        \leq & \Bigg(\int\displaylimits_{\left|v_2 - \frac{v_1m_1+m_3}{-m_2}\right|\lesssim \frac{q}{MN}} \left| R_{\chi}\left(\frac{v_2}{v_1}\right)\right|^2 \ dv_2 \Bigg)^{1/2}
+        \Bigg(
+        \int\displaylimits_{\left|v_2 - \frac{v_1m_1+m_3}{-m_2}\right|\lesssim \frac{q}{MN}} \left|
+        R_{\chi}(v_2)\right|^2  dv_2\Bigg)^{1/2}\\
+        \ll& \frac{q}{MN} \tilde{R}_{\chi,M}\left(\frac{v_1m_1+m_3}{-m_2v_1},y_2,y_1\right)  \tilde{R}_{\chi,M}\left(\frac{v_1m_1+m_3}{-m_2}\right)
+    \end{align*}
+    where in the last step, we used $v_1\asymp 1$ for the change of variables $v'=v_2/v_1$.
+    Thus,
+    \[
+    |I_{m,1}|\lesssim \frac{N^2}{M}\tilde{I}_{m,1}.
+    \]
+    The proposition follows from this claim.
+    \end{proof}
+    
+    \begin{lemma} \label{secondmoment1}
+        Let $\mathcal{S}=\{(t_j,\chi_j)\}$, and the $t$'s are contained in an interval of length $T$, and are $T^\epsilon$-separated for the same character. Then \[
+            \sum_{\chi} \int_{v\asymp 1} 
+            \left|R_{\chi}\left(v\right)\right|^2dv \ll |\mathcal{S}|+ O_{\epsilon}(T^{-100}).
+        \]
+    \end{lemma}
+    \begin{proof}
+        
+        Let $\psi$ be a bump function supported on $v\asymp 1$ and equals $1$ on the domain of integration in the lemma. Then
+       \begin{align*}
+        &\sum_{\chi} \int_{v\asymp 1} 
+            \left|R_{\chi}\left(v\right)\right|^2dv\\
+            =&\int_{v\asymp 1} \psi(v)\sum_{\substack{(t_1,\chi_1),(t_2,\chi_2)\in \mathcal{S}\\ \chi_1=\chi_2}}v^{i(t_1-t_2)}dv \\
+            \leq&\int 
+        \psi(v)\sum_{\substack{(t_1,\chi_1),(t_2,\chi_2)\in \mathcal{S}\\ \chi_1=\chi_2}}v^{i(t_1-t_2)}dv
+        \end{align*}
+        In the sum, the terms $t_1=t_2$ contribute $O(|\mathcal{S}|)$. If $t_1\neq t_2$, then $|t_1-t_2|\geq T^\epsilon$. The integral in this case is $O_\epsilon(T^{-100})$ and is negligible.
+    \end{proof}
+    \begin{lemma}\label{fourthmoment1}
+        Let $E(\mathcal{S})=\#\{(t_1,\chi_1),(t_2,\chi_2),(t_3,\chi_3),(t_4,\chi_4)\in \mathcal{S}  :  |t_1+t_2-t_3-t_4|\lesssim 1, \chi_1\chi_2=\chi_3\chi_4\}$. Then \[
+            \sum_{\chi} \int_{v\asymp 1} 
+            \left|R_{\chi}\left(v\right)\right|^4dv \lesssim E(\mathcal{S}) + O_{\epsilon}(T^{-100}).
+        \]
+    \end{lemma}
+    \begin{proof}
+        We have
+        \begin{align*}
+            \sum_{\chi} \int_{v\asymp 1} 
+            \left|R\left(v,y\right)\right|^4dv = & 
+            \sum_{\substack{(t_1,\chi_1),(t_2,\chi_2),\\ (t_3,\chi_3),(t_4,\chi_4)\in \mathcal{S}\\ \chi_1=\chi_2=\chi_3=\chi_4}} \int_{v\asymp 1} v^{i(t_1+t_2-t_3-t_4)} dv.
+        \end{align*}
+        Similar to the previous proof, we can construct a bump function for the integral in the same way, and restrict the summation to the terms $|t_1+t_2-t_3-t_4|\leq T^\epsilon$ with an error of $O_\epsilon(T^{-100})$. The remaining terms in the summation contribute $O(E(\mathcal{S}))$, as $\chi_1=\chi_2=\chi_3=\chi_4$ implies $\chi_1\chi_2=\chi_3\chi_4$.
+    \end{proof}
+    \begin{lemma}\label{fourthmoment_smooth1}
+        Let $E(\mathcal{S})=\#\{(t_1,\chi_1),(t_2,\chi_2),(t_3,\chi_3),(t_4,\chi_4)\in \mathcal{S}  :  |t_1+t_2-t_3-t_4|\lesssim 1, \chi_1\chi_2=\chi_3\chi_4\}$. Then \[
+            \sum_{\chi} \int_{v\asymp 1} 
+            \left|\tilde{R}_{M,\chi}\left(v\right)\right|^4dv \lesssim E(\mathcal{S}) + O_{\epsilon}(T^{-100}).
+        \]
+    \end{lemma}
+    \begin{proof}
+        We apply Cauchy-Schwarz to \begin{align*}
+            \int_{v\asymp 1} 
+            \left|\tilde{R}_{M,\chi}(v)\right|^4dv  \lesssim& \int_{v\asymp 1} 
+            \left(\int_{|u-v|\lesssim q/NM}
+            \frac{NM}{q}|R_{\chi}(u)|^2 du\right)^2
+            dv \\
+            \lesssim& \frac{NM}{q} \int_{v\asymp 1} 
+           \int_{|u-v|\lesssim q/NM}
+            |R(u)|^4 du \ 
+            dv\\
+            \lesssim&  
+            \int_{u\asymp 1}
+             |R_{\chi}(u)|^4 du.
+        \end{align*}
+        Lemma \ref{fourthmoment1} completes the proof.
+    \end{proof}
+\begin{proof}[Proof of Proposition \ref{im1bound}]
+    We apply H\"older's inequality to $\tilde{I}_{m,1}$, so that \begin{align*}  
+        &\int\displaylimits_{v_1\asymp 1} \sum_{\chi} \left|R_\chi\left(v_1\right) \tilde{R}_{\chi,M}\left(\frac{m_1v_1+m_3}{-m_2v_1}\right)
+        \tilde{R}_{\chi,M}\left(\frac{m_1v_1+m_3}{-m_2}\right)\right|dv_1 \\\leq& 
+        \Bigg(\int\displaylimits_{v_1\asymp 1} \sum_{\chi} |R_\chi\left(v_1\right)|^2 dv_1 \Bigg)^{1/2}
+        \Bigg(\int\displaylimits_{v_1\asymp 1} \sum_{\chi} \left|\tilde{R}_{\chi,M}\left(\frac{m_1v_1+m_3}{-m_2v_1}\right)\right|^4dv_1 \Bigg)^{1/4}
+        \Bigg(\int\displaylimits_{v_1\asymp 1} \sum_{\chi}\left| \tilde{R}_{\chi,M}\left(\frac{m_1v_1+m_3}{-m_2}\right)\right|^4dv_1 \Bigg)^{1/4}\\
+        \lesssim & E(\mathcal{S})^{1/2}|\mathcal{S}|^{1/2},
+    \end{align*}
+    where in the last step, we apply change of variables $u=(m_1v_1+m_3)/(-m_2v_1)$ and $u=(m_1v_1+m_3)/(-m_2)$ respectively, with a Jacobian factor of $\asymp 1$.
+    We now sum this over $M_1M^2$ terms, as in Proposition \ref{dyadics_31},
+    so that \begin{align*}
+        \sum_{0<|m_1|,|m_2|,|m_3|\lesssim \frac{qT}{N}} I_{m,1}\lesssim& \frac{N^2}{M}\sum_{|m_1|\sim M_1,|m_2|,|m_3|\sim M}\tilde{I}_{m,1}+O_\epsilon(T^{-100})\\
+        \lesssim & N^2M_1ME(\mathcal{S})^{1/2}|\mathcal{S}|^{1/2}\\
+        \lesssim & (qT)^2E(\mathcal{S})^{1/2}|\mathcal{S}|^{1/2}.
+    \end{align*}
+\end{proof}
+
+\subsubsection{Sum in $I_{m,2}$}
+\begin{proposition} [Sum in $I_{m,2}$ bound] \label{im2bound}
+    We have \[
+    \sum_{m_1,m_2,m_3\neq 0} I_{m,2}\lesssim (qT)^2E(\mathcal{S})|\mathcal{S}|^{1/2}.
+    \]
+\end{proposition}
+Recall that
+\begin{align*}I_{m,2}\defeq&\frac{N^3}{q^2}\sum_{\substack{(t_1,\chi_1),\\(t_2,\chi_2),\\(t_3,\chi_3)\in\mathcal{S}}} \sum_{\substack{y_1,y_2 \in\mathbb{Z}/q\mathbb{Z} \\ y_1m_1+y_2m_2+m_3\equiv 0 \mod q}}\chi_1(y_1)\bar{\chi}_1(y_2)\chi_2(y_2)\bar{\chi}_3(y_1)\\
+    &\times \hat{h}_{t_1-t_3}\left(\frac{Nm_1}{q}\right)\hat{h}_{t_2-t_1}\left(\frac{Nm_2}{q}\right)\hat{h}_{t_3-t_2}\left(\frac{Nm_3}{q}\right).
+    \end{align*}
+The sum in $y_1,y_2$ behaves differently depending on $(m_1, q)$ and $(m_2, q)$.
+\begin{proposition}
+    We have
+    \begin{align*}
+        &\sum_{\substack{y_1,y_2 \in\mathbb{Z}/q\mathbb{Z} \\ y_1m_1+y_2m_2+m_3\equiv 0 \mod q}}\chi_1(y_1)\bar{\chi}_1(y_2)\chi_2(y_2)\bar{\chi}_3(y_1)\\=&
+        \begin{dcases*}
+            \sum_{\substack{y_1\in (\mathbb{Z}/q\mathbb{Z})^\times\\y_2=\frac{y_1m_1+m_3}{-m_2}}}\chi_1(y_1)\bar{\chi}_1(y_2)\chi_2(y_2)\bar{\chi}_3(y_1), &if $(m_1,q)=(m_2,q)=1$;\\
+            \sum_{\substack{y_1\in (\mathbb{Z}/q\mathbb{Z})^\times}}\chi_1(y_1)\bar{\chi}_1(-m_3m_2^{-1})\chi_2(-m_3m_2^{-1})\bar{\chi}_3(y_1)& if $(m_1,q)=q, (m_2,q)=1$;\\
+            \sum_{\substack{y_2\in (\mathbb{Z}/q\mathbb{Z})^\times}}\chi_1(-m_3m_1^{-1})\bar{\chi}_1(y_2)\chi_2(y_2)\bar{\chi}_3(-m_3m_1^{-1})& if $(m_1,q)=1,(m_2,q)=q$;\\
+            (q-1)^2\delta_{\chi_1\chi_2}\delta_{\chi_1\chi_3}\mathbb{I}_{q|m_3}, & if $ (m_1,q)=(m_2,q)=q.$\\
+        \end{dcases*}
+    \end{align*}
+\end{proposition} 
+\begin{proof}
+    If $(m_1,q)=(m_2,q)=1$, we have \begin{align*}
+        \sum_{\substack{y_1,y_2 \in\mathbb{Z}/q\mathbb{Z} \\ y_1m_1+y_2m_2+m_3\equiv 0 \mod q}}\chi_1(y_1)\bar{\chi}_1(y_2)\chi_2(y_2)\bar{\chi}_3(y_1)=
+        \sum_{\substack{y_1\in (\mathbb{Z}/q\mathbb{Z})^\times\\y_2=\frac{y_1m_1+m_3}{-m_2}}}\chi_1(y_1)\bar{\chi}_1(y_2)\chi_2(y_2)\bar{\chi}_3(y_1).
+    \end{align*}
+    
+    If $(m_1,q)=q, \ (m_2,q)=1$, we have \begin{align*}
+        \sum_{\substack{y_1,y_2 \in\mathbb{Z}/q\mathbb{Z} \\ y_1m_1+y_2m_2+m_3\equiv 0 \mod q}}\chi_1(y_1)\bar{\chi}_1(y_2)\chi_2(y_2)\bar{\chi}_3(y_1)=&
+        \sum_{\substack{y_1\in (\mathbb{Z}/q\mathbb{Z})^\times\\y_2=\frac{y_1m_1+m_3}{-m_2}}}\chi_1(y_1)\bar{\chi}_1(y_2)\chi_2(y_2)\bar{\chi}_3(y_1)\\
+        =&\sum_{\substack{y_1\in (\mathbb{Z}/q\mathbb{Z})^\times}}\chi_1(y_1)\bar{\chi}_1(-m_3m_2^{-1})\chi_2(-m_3m_2^{-1})\bar{\chi}_3(y_1).
+    \end{align*}
+    Similarly, for $(m_1,q)=1, \ (m_2,q)=q$, we have\begin{align*}
+        \sum_{\substack{y_1,y_2 \in\mathbb{Z}/q\mathbb{Z} \\ y_1m_1+y_2m_2+m_3\equiv 0 \mod q}}\chi_1(y_1)\bar{\chi}_1(y_2)\chi_2(y_2)\bar{\chi}_3(y_1)=&
+        \sum_{\substack{y_2\in (\mathbb{Z}/q\mathbb{Z})^\times\\y_1=\frac{y_2m_2+m_3}{-m_1}}}\chi_1(y_1)\bar{\chi}_1(y_2)\chi_2(y_2)\bar{\chi}_3(y_1)\\
+        =&\sum_{\substack{y_2\in (\mathbb{Z}/q\mathbb{Z})^\times}}\chi_1(-m_3m_1^{-1})\bar{\chi}_1(y_2)\chi_2(y_2)\bar{\chi}_3(-m_3m_1^{-1}).
+    \end{align*}
+
+    If $(m_1,q)=(m_2,q)=q$, we have, by the orthogonality of characters, \begin{align*}
+        \sum_{\substack{y_1,y_2 \in\mathbb{Z}/q\mathbb{Z} \\ y_1m_1+y_2m_2+m_3\equiv 0 \mod q}}\chi_1(y_1)\bar{\chi}_1(y_2)\chi_2(y_2)\bar{\chi}_3(y_1)=(q-1)^2\delta_{\chi_1\chi_2}\delta_{\chi_1\chi_3}\mathbb{I}_{q|m_3}
+    \end{align*}
+
+\end{proof}
+Therefore, we split the summation of $I_{m,2}$ in $m$ into four pieces. $\Sigma_{11}$ sums over all $(m_1,q)=(m_2,q)=1$, $\Sigma_{1,q}$ sums over $(m_1,q)=1, (m_2,q)=q$, $\Sigma_{q,1}$ sums over $(m_1,q)=q,(m_2,q)=1$, and $\Sigma_{q,q}$ sums over $(m_1,q)=(m_2,q)=q$. Similar to how we dealt with $I_{m,1}$ terms, we can only consider $0<|m_1|,|m_2|,|m_3|\lesssim qT/N$ terms in the sum with an error of $O_\epsilon({T^{-100}})$ from applying Non-stationary phase. Moreover, we repeat the argument in equation \ref{im1integral}
+
+
+
+
+
+
+
+\textcolor{red}{TO FIX}
+We define \[
 \tilde{R}_M(v,y_1,y_2) \defeq \left( \int \frac{NM}{q}\tilde{\phi}\left(\frac{NM}{q}(v-v')\right)|R(v',y_1,y_2)|^2 dv'\right)^{1/2}.
 \]
 \begin{proposition} \label{dyadics_3}

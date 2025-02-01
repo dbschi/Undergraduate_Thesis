@@ -561,7 +561,7 @@ To apply H\"older's inequality, we need to find bounds on the second and fourth 
     Lemma \ref{secondmoment} completes the proof.
 \end{proof}
 \begin{proof}[{Proof of Proposition \ref{im2bound}}]
-    \textbf{Case 1:} $\sum_{11}$\\
+    \textbf{Case 1:} $\Sigma_{11}$\\
     We apply H\"older's inequality on $\tilde{I}_{m,2}$. When $(m_1,q)=(m_2,q)=1$, we have \begin{align*}
         \frac{q^2}{N^3}\tilde{I}_{m,2}\leq &
        \Bigg( \sum_{\substack{y_1\in (\mathbb{Z}/q\mathbb{Z})\\y_2=\frac{y_1m_1+m_3}{-m_2}}} \ \int\displaylimits_{v_1\asymp 1}  \left| \tilde{R}_M\left(\frac{m_1v_1+m_3}{-m_2v_1},y_2,y_1\right)\right|^4\Bigg)^{1/4}
@@ -588,15 +588,15 @@ To apply H\"older's inequality, we need to find bounds on the second and fourth 
     m_1,m_2 \textrm{ coprime to } q}} \tilde{I}_{m,2} \lesssim \frac{N^3}{q}M_1M^2 E(\mathcal{S})^{1/2}|\mathcal{S}|^{1/2}.
     \]
 
-    \textbf{Case 2,3:} $\sum_{q,1}$ and $\sum_{1,q}$. 
+    \textbf{Case 2,3:} $\Sigma_{q,1}$ and $\Sigma_{1,q}$. 
     \\
     The arguments are similar. We can apply H\"older's inequality on the integral ($1=1/4+1/4+1/2$). For Case 2, we apply orthogonality cancellation in $y_1$ for the first and third term. Cancellation in the second term can be achieved by in summation of $m_3$, which is exactly the same argument for the $(q,m_1)=(q,m_2)=1, (q,m_3)=q$. \\
     For Case 3, the first two terms after applying H\"older's inequality achieves cancellation in $y_2$, and the last term achieves cancellation in $m_3$. Combined, these gives the same bounds as Case 1.
 
-    \textbf{Case 4:} $\sum_{qq}$\\
+    \textbf{Case 4:} $\Sigma_{qq}$\\
     We repeat the argument for \hyperref[im1boundproof]{bounding the sum in $\tilde{I}_{m,1}$}. The sum in all $m_1,m_2,m_3$ multiples of $q$ gives
     \[  
-        \sum_{qq}\lesssim \frac{N^3}{q^3}M_1M^2E(\mathcal{S})^{1/2}|\mathcal{S}|^{1/2}.
+        \Sigma_{qq}\lesssim \frac{N^3}{q^3}M_1M^2E(\mathcal{S})^{1/2}|\mathcal{S}|^{1/2}.
     \]
     Therefore, by Proposition \ref{dyadics_32}, we have \[
     \sum_{0<|m_1|,|m_2|,|m_3|\lesssim \frac{qT}{N}} I_{m,2} \lesssim \frac{q}{NM}\frac{N^3}{q}M_1M^2E(\mathcal{S})^{1/2}|\mathcal{S}|^{1/2}\lesssim (qT)^2E(\mathcal{S})^{1/2}|\mathcal{S}|^{1/2}.

@@ -19,8 +19,8 @@ For the sum in $\tilde{I}_{m,1}$, we can directly apply this lemma, exchange the
     \tilde{R}_{\chi,M}\left(\frac{m_1v_1+m_3}{-m_2}\right)\right|dv_1\\
     &\stackon{CS}{\leq} \Big( \sum_{\chi}\int\displaylimits_{v_1\asymp 1}  \left|R_\chi\left(v_1\right)\right|^2 dv_1 \Bigg)^{1/2} \Bigg(\sum_{\chi}\int\displaylimits_{v_1\asymp 1}\Bigg(\sum_{\substack {|m_1|\sim M_1,\\|m_2|,|m_3|\sim M}}\left| \tilde{R}_{\chi,M}\left(\frac{m_1v_1+m_3}{-m_2v_1}\right)
     \tilde{R}_{\chi,M}\left(\frac{m_1v_1+m_3}{-m_2}\right)\right|\Bigg)^2dv_1\Bigg)^{1/2}\\
-    &\stackon{CS}{\lesssim} |\mathcal{S}|^{1/2} \Bigg(\sum_{\chi}\int\displaylimits_{v_1\asymp 1}\Bigg(\sum_{\substack {|m_1|\sim M_1,\\|m_2|,|m_3|\sim M}}\left| \tilde{R}_{\chi,M}\left(\frac{m_1v_1+m_3}{-m_2v_1}\right)\right|^2 \sum_{\substack {|m_1|\sim M_1,\\|m_2|,|m_3|\sim M}}\left|
-    \tilde{R}_{\chi,M}\left(\frac{m_1v_1+m_3}{-m_2}\right)\right|^2\Bigg)^2dv_1\Bigg)^{1/2}\\
+    &\stackon{CS}{\lesssim} |\mathcal{S}|^{1/2} \Bigg(\sum_{\chi}\int\displaylimits_{v_1\asymp 1}\Bigg(\sum_{\substack {|m_1|\sim M_1,\\|m_2|,|m_3|\sim M}}\left| \tilde{R}_{\chi,M}\left(\frac{m_1v_1+m_3}{-m_2v_1}\right)\right|^2 \Bigg)\Bigg(\sum_{\substack {|m_1|\sim M_1,\\|m_2|,|m_3|\sim M}}\left|
+    \tilde{R}_{\chi,M}\left(\frac{m_1v_1+m_3}{-m_2}\right)\right|^2\Bigg)dv_1\Bigg)^{1/2}\\
     &\stackon{CS}{\leq}|\mathcal{S}|^{1/2} \Bigg(\sum_{\chi}
     \int\displaylimits_{v_1\asymp 1}\Bigg(\sum_{\substack {|m_1|\sim M_1,\\|m_2|,|m_3|\sim M}}\left| \tilde{R}_{\chi,M}\left(\frac{m_1v_1+m_3}{-m_2v_1}\right)\right|^2\Bigg)^2 dv_1 \Bigg)^{1/4}\Bigg(\sum_{\chi}
     \int\displaylimits_{v_1\asymp 1}\Big(
@@ -38,9 +38,9 @@ and\begin{align*}
     \sum_{\chi} \|R_\chi^2\|_{L_2}^2=\sum_{\chi} \|R_\chi^4\|_{L_1} \lesssim E(\mathcal{S})^2.
 \end{align*}
 Combined, this gives a bound of \[
-    \frac{N^2}{M}\sum_{\substack {|m_1|\sim M_1,|m_2|,|m_3|\sim M}}\tilde{I}_{m,1}\lesssim \frac{N^2}{M} |\mathcal{S}|^{1/2} (M^6|\mathcal{S}|^{2}+M^4E(\mathcal{S}))^{1/2}\ll N^2 M^2|\mathcal{S}|^{3/2} + NM |\mathcal{S}|^{1/2}E(\mathcal{S})^{3/2},
+    \frac{N^2}{M}\sum_{\substack {|m_1|\sim M_1,|m_2|,|m_3|\sim M}}\tilde{I}_{m,1}\lesssim \frac{N^2}{M} |\mathcal{S}|^{1/2} (M^6|\mathcal{S}|^{2}+M^4E(\mathcal{S}))^{1/2}\ll N^2 M^2|\mathcal{S}|^{3/2} + N^2M |\mathcal{S}|^{1/2}E(\mathcal{S})^{3/2},
 \]
-which is $\lesssim (qT)^{2}|\mathcal{S}|^{3/2}+(qT)|\mathcal{S}|^{1/2}E(\mathcal{S})^{3/2}.$
+which is $\lesssim (qT)^{2}|\mathcal{S}|^{3/2}+N(qT)|\mathcal{S}|^{1/2}E(\mathcal{S})^{3/2}.$
 
 
 For $I_{m,2}$, we can exchange the summations in $y_1,y_2$ and in $m$ to get the sum \begin{align*}
@@ -50,7 +50,7 @@ For $I_{m,2}$, we can exchange the summations in $y_1,y_2$ and in $m$ to get the
 In principle, the condition $y_1m_1+y_2m_2+m_3\equiv 0$ fixes the residue class of $m_3$ based on $m_1$ and $m_2$. Therefore, we would expect a factor of $1/q^2$ if we add this summation condition to Proposition \ref{affineGM}. 
 \begin{lemma}\label{affinetrans}
     Let $M>0$. Let $f(u)\geq 0$, supported on $u\asymp 1$, and $|\hat{f}(\xi)|\lesssim_j (|\xi|/T)^j$ for all $j$. Then \[
-        J(f)\defeq \sup_{0<M_1,M_2,M_3<M} \int\Bigg( \sum_{\substack{|m_1|\sim M_1,|m_2|\sim M_2 , |m_3|\ll M_3\\ y_1m_1+y_2m_2+m_3\equiv 0 \mod q}} f\left(\frac{m_1 u+m_3}{m_2}\right)\Bigg)^2 \ du \lesssim M^6 \|f\|_{L_1}^2/q^2+M^4\|f\|_{L_2}^2/q^2.
+        J(f)\defeq \sup_{0<M_1,M_2,M_3<M} \int\Bigg( \sum_{\substack{|m_1|\sim M_1,|m_2|\sim M_2 , |m_3|\ll M_3\\ y_1m_1+y_2m_2+m_3\equiv 0 \mod q}} f\left(\frac{m_1 u+m_3}{m_2}\right)\Bigg)^2 \ du \lesssim M^6 \|f\|_{L_1}^2/q^3+M^4\|f\|_{L_2}^2/q^2.
     \] 
 \end{lemma}
 \textcolor{red}{Testing proof here...}

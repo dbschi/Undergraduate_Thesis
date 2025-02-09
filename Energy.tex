@@ -7,7 +7,7 @@ Here we provide the generalization for the orthogonal energy bound for Guth and 
 E(\mathcal{S})\lesssim |\mathcal{S}|N^{4-4\sigma}+|\mathcal{S}|^{21/8}T^{1/4}N^{1-2\sigma}+|\mathcal{S}|^3N^{1-\sigma}.
     \end{align*}
 \end{proposition}
-The idea for bounding energy is similar; if $\chi_1\chi_2=\chi_3\chi_4$ and $|t_1+t_2-t_3-t_4|$ is small, we should expect $|D_N(t_1+t_2-t_3,\chi_1\chi_2\bar{\chi}_3)|\simeq |D_N(t_4,\chi_4)|>N^\sigma$.
+The idea for bounding energy is similar; if $\chi_1\chi_2=\chi_3\chi_4$ and $|t_1+t_2-t_3-t_4|$ is small, we should expect $|D_N(t_1+t_2-t_3,\chi_1\chi_2\bar{\chi}_3)|\approx |D_N(t_4,\chi_4)|>N^\sigma$.
 \begin{lemma}
     \label{Dirichletint}
     \[
@@ -211,7 +211,7 @@ Therefore, the sum is $O(1+{N^2}/({qd^2T}))$. So we have \begin{align*}
    \sum_{a \mod q} \sum_{d\leq D}\sum_{\substack{n_1',n_2'\sim (N/d)\\(n_1',n_2')=1\\n_1'/n_2'\cong a \mod q}}  \left|R\left(\frac{n_1'}{n_2'} ,n_1',n_2'\right) \right|^3\\
    \ll& T \sum_{d\leq D}\Big(1+\frac{N^2}{qd^2T}\Big) \sum_{a \mod q}\ \int\displaylimits_{s\asymp 1} \left|R\left(s,a\right) \right|^3 ds\\
    \stackon{CS}{\ll}&T \Big(D+\frac{N^2}{qT}\Big)\Bigg(\sum_{a \mod q}\ \int\displaylimits_{s\asymp 1} \left|R\left(s,a\right) \right|^2 ds\Bigg)^{1/2}\Bigg(\sum_{a \mod q}\ \int\displaylimits_{s\asymp 1} \left|R\left(s,a\right) \right|^4 ds\Bigg)^{1/2}\\
-   \lesssim (qTD+N^2)|\mathcal{S}|^{1/2}E(\mathcal{S})^{1/2}.
+   \lesssim& (qTD+N^2)|\mathcal{S}|^{1/2}E(\mathcal{S})^{1/2}.
 \end{align*}
 
 Picking the choice of $D=N^2/(qT)$, we have produced all analogs of the generalizations of Guth and Maynard's result in bounding energy. The remaining part is to reduce our bounds. The computations are exactly the same except replacing $T$ with $qT$. Thus we have \[

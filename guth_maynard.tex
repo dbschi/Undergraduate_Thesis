@@ -24,7 +24,7 @@ The structure of the proof can be broken down as follows: We first notice that $
     \label{heathbrown}
     Let $\mathcal{S}=\{(t_j,\chi_j)\}$ be one-separate, primitive characters of modulus $q$. Then 
     \[
-        \sum_{\substack{(t_1,\chi_1)\\(t_2,\chi_2)}}\left|\sum_{n=1}^{N} b_n n^{-i(t_1-t2)}\chi_1\bar{\chi}_2(n)\right|^2 \lesssim  |\mathcal{S}|N^2+ |\mathcal{S}|^2N + |\mathcal{S}|^{5/4}(qT)^{1/2}N.
+        \sum_{\substack{(t_1,\chi_1)\\(t_2,\chi_2)}}\left|\sum_{n=1}^{N} b_n n^{-i(t_1-t_2)}\chi_1\bar{\chi}_2(n)\right|^2 \lesssim  |\mathcal{S}|N^2+ |\mathcal{S}|^2N + |\mathcal{S}|^{5/4}(qT)^{1/2}N.
     \]
 \end{theorem}
 The most tricky term, $S_3$ is a summation over a three-dimensional lattice. We will see that $S_3$ is bounded by what is known as the \textit{additive energy} of the set $W$, defined by\[
@@ -141,7 +141,7 @@ What we can gain here is that $\hat{h}_t{m}$ has decay in $t$ or $m$ based on th
     |\hat{h}_t(\xi)|=\left|\int \frac{1}{(it+1)(it+2)\ldots(it+A)}u^{it+A}  \frac{d^A}{(du)^A}\left(\omega^2(u)e^{2\pi i \xi u}\right) du \right|\ll_A \frac{1+|\xi|^A}{|t|^A}.
    \]
 \end{proof}
-This means that we can handle terms in equation \ref{poissongm} if $m_i$ is small and $t_j-t_k$ is big, or  $m_i$ is big and $t_j-t_k$ is small. With this in mind, we split the sum over $n_1,n_2,n_3$ in the equation into four parts. $S_0$, where all three $m$ terms are zero, $S_1$, where exactly one of the $m$ terms is non-zero, $S_2$, where exactly two of the $m$ terms are non-zero, and $S_3$, where all three $m$ terms are non-zero.
+This means that we can handle terms in equation \ref{poissongm} if $m_i$ is small and $t_j-t_k$ is big, or  $m_i$ is big and $t_j-t_k$ is small. With this in mind, we split the sum over $m_1,m_2,m_3$ in the equation into four parts. $S_0$, where all three $m$ terms are zero, $S_1$, where exactly one of the $m$ terms is non-zero, $S_2$, where exactly two of the $m$ terms are non-zero, and $S_3$, where all three $m$ terms are non-zero.
 That is,
 
 \[\rm{tr}((M^*M)^3)= S_0+S_1+S_2+S_3, \]
@@ -168,7 +168,7 @@ S_0 = N^3\sum_{t\in W}\hat{h}_0(0) + O(T^{-100}) = N^3|W|\|\omega\|_{L_2}^6.
     This is Lemma 4.2 from Guth-Maynard. \cite{}
 \end{proof}
 Applying this lemma, we can compute that \[
-    \rm{tr}(MM^*) =\sum_{n\sim N} \sum_{t\in W} \omega\left(\frac{n}{N}\right)^2 n^{-t} n^{t}= |W|\sum_n \omega\left(\frac{n}{N}\right)^2.
+    \rm{tr}(MM^*) =\sum_{n\sim N} \sum_{t\in W} \omega\left(\frac{n}{N}\right)^2 n^{-it} n^{it}= |W|\sum_n \omega\left(\frac{n}{N}\right)^2.
 \]
 Applying Poisson summation, this equals \[
     |W|\sum_m N \hat{h}_0(mN).
@@ -200,9 +200,8 @@ Due to decay of the last term in $|t_3-t_2|$, we can only consider the terms $t_
 Poisson summation gives \[
 N \sum_m \hat{h}_{t_1-t_2}(mN) = \sum_n h_{t_1-t_2}\Big(\frac{n}{N}\Big)=\sum_{n} \omega\left(\frac{n}{N}\right) n^{i(t_1-t_2)}.
 \]
-\begin{remark}
-    Here we have added in the terms for $m=0$. This is somewhat lossy for terms $t_1=t_2$. However, a variation of the argument (and applying Heath-Brown's result in the end) gives a tighter bound, which will be adapted for the general proof.
-\end{remark}
+Therefore, a direct application of Heath Brown's theorem \ref{heathbrown} gives a bound for $S_2$.
+    Here we have added in the terms for $m=0$, which is insignificant when $t_1$ and $t_2$ are $T^\epsilon$ separated. However, this is somewhat lossy for terms $t_1=t_2$. However, we can ignore the terms with $t_1=t_2$ at a small error due to the rapid decay in $\hat{h}_{t_1-t_2}(mN)$, apply Poisson summation, then add the terms $t_1=t_2$ again.
 
 \subsubsection*{7. Bounding $S_3$}
 $S_3$ sums over most points on the $3$-dimensional lattice. By symmetry, we can consider only the terms with $|m_1|\leq |m_2|\leq |m_3|$ with an error factor of $6$.
@@ -252,8 +251,8 @@ Now we fix $v_1$, and consider the integral in $v_2$ in the range \[
     |v_1m_1+v_2m_2+m_3|\lesssim \frac{1}{N} \implies \Big|v_2 -\frac{v_1m_1+m_3}{-m_2}\Big|\lesssim \frac{1}{|m_2| N}.
 \]
 If we enforce the conditions $|m_1|\leq |m_2|\leq|m_3|$ and $v_2\asymp 1$, we see that the domain of integration is empty unless $|m_2|\asymp |m_3|$. Thus, we can break the sum across \[\sum_{|m_1|,|m_2|,|m_3|\lesssim T/N}\] to be \[\log T^{1+\epsilon}/N \ \rm{sup}_{U=2^j, V\leq U} \sum_{\substack{|m_1|\sim V\\  |m_2|, |m_3|\sim U}}.\]
-Moreover, we integrate in $v_2$ over a very small neighborhood of width $\lesssim 1/N$ around $v_2=({v_1m_1+m_3})/({-m_2})$. In principle, we can estimate this integral by taking the value of $R$ at this point to get \[
-    \approx  \frac{N}{|m_2|} \int\displaylimits_{\substack{
+Moreover, we integrate in $v_2$ over a very small neighborhood of width $\lesssim 1/(|m_2|N)$ around $v_2=({v_1m_1+m_3})/({-m_2})$. In principle, we can estimate this integral by taking the value of $R$ at this point to get \[
+    \approx  \frac{1}{|m_2|N} \int\displaylimits_{\substack{
         \frac{1}{2}\leq v_1\leq 2
     }} \Bigg|R\Big(\frac{v_1m_1+m_3}{-v_1m_2}\Big) R(\frac{v_1m_1+m_3}{-m_2}\Big) R({v_1})\Bigg| dv_1.
 \]
@@ -262,18 +261,19 @@ This is made precise by apply to a $(1/N|m_2|)$-smoothened version of $R$, state
 \end{align*}
 
 The second moment of $R$ is bounded by the size of $W$. Indeed, we have \begin{align*}
-    \int_{v\asymp 1} |R(v)|^2 dv =  \sum_{t_1,t_2\in W} \int_{v\asymp 1} R(v)^{i(t_1-t_2)} dv.  
+    \int_{v\asymp 1} |R(v)|^2 dv =  \sum_{t_1,t_2\in W} \int_{v\asymp 1} v^{i(t_1-t_2)} dv.  
 \end{align*}
 If $t_1-t_2\neq 0$, then $|t_1-t_2|>T^\epsilon$, so the oscillatory integral will be negligible by the fast decay. There are $|W|$ terms satisfying $t_1=t_2$, and each contributes $O(1)$ to the sum. Similarly, the fourth moment of $R$ is bounded by the energy, recalling its definition \[
     E(W)\defeq \#\{t_1,t_2,t_3,t_4\in W : |t_1+t_2-t_3-t_4|\ll T^\epsilon\}.
 \]
 We get
 \begin{align*}
-    \int_{v\asymp 1} |R(v)|^4 dv =   \sum_{t_1,t_2,t_3,t_4\in W} \int_{v\asymp 1}  R(v)^{i(t_1+t_2-t_3-t_4)} dv, 
+    \int_{v\asymp 1} |R(v)|^4 dv =   \sum_{t_1,t_2,t_3,t_4\in W} \int_{v\asymp 1}  v^{i(t_1+t_2-t_3-t_4)} dv, 
 \end{align*}
 and the terms in the summation are negligble unless $|t_1+t_2-t_3-t_4|\ll T^\epsilon$. Assembling everything together gives an initial bound of \[
-S_3\lesssim T^2E(W)^{1/2}|W|^{1/2}.
+S_3\lesssim N^3\sum_{|m_1|\sim V ,|m_2|\sim V, |m_3|\sim V}\frac{1}{|m_2|N}E(W)^{1/2}|W|^{1/2}\lesssim T^2E(W)^{1/2}|W|^{1/2},
 \]
+recalling that $U,V\lesssim T/N$.
 
 
 \subsubsection*{9. Refinement of $S_3$ bound}
@@ -285,13 +285,19 @@ Recall that in the previous section, we summed across
     }} \Bigg|R\Big(\frac{v_1m_1+m_3}{-v_1m_2}\Big) R\Big(\frac{v_1m_1+m_3}{-m_2}\Big) R({v_1})\Bigg| dv_1
 \]
 By repeatedly applying Cauchy-Schwartz, we can move the summation into the integral and obtain terms that resembles the form \[
-   \int_{v_1\asymp 1} \sum_{\substack{|m_1|\sim V\\ |m_2|, |m_3|\sim U}}  \Big| R\Big(\frac{v_1m_1+m_3}{-m_2}\Big)\Big|^2 dv_1.
+   \int_{v_1\asymp 1} \Bigg(\sum_{\substack{|m_1|\sim V\\ |m_2|, |m_3|\sim U}}  \Big| R\Big(\frac{v_1m_1+m_3}{-m_2}\Big)\Big|^2\Bigg)^2 dv_1.
 \]
-The term $(v_1m_1+m_3)/(-m_2)$ describes an affine transformation in $v_1$. Therefore, averaging over all the affine transformations, we may expect that this estimates some $L^k$ norm of $R$. Indeed, we have Lemma \ref{affinetrans} that gives us this estimate. This improves the bound on $S_3$ to\[
+The term $(v_1m_1+m_3)/(-m_2)$ describes an affine transformation in $v_1$. Intuitively, thus averaging over all the affine transformations is can be expressed as the expected value of a random variable squared, where the random variable \[
+X\defeq X(v_1)\defeq \sum_{\substack{|m_1|\sim V\\ |m_2|, |m_3|\sim U}}  \Big| R\Big(\frac{v_1m_1+m_3}{-m_2}\Big)\Big|^2,
+\] and the measure is uniform across $v_1\asymp 1$. This can be split up to get \[
+E[X^2] = E[X]^2 + \rm{Var}(X).
+\] Indeed, we have Lemma \ref{affinetrans} that gives us this estimate. By a change of variables, the expected value of $X$ is represented by $M^3 \int_{u\asymp 1} R(u)^2 du$. This improves the bound on $S_3$ to\[
 S_3\lesssim T^2|W|^{3/2}+TN|W|^{1/2}E(W)^{1/2}.
 \]
-This gives an improvement from the previous bound for the case $N \ll T^{1-\delta_1}$ and $E(W)\gg |W|^{3-\delta_2}$ for some small $\delta$'s.
-
+This gives an improvement from the previous bound for the case with high energy and $N<T^{1-\delta}$.
+\begin{remark}
+    The proof to Lemma \ref{affinetrans} does not use probability. Instead, it applies Plancherel's theorem on $X$ and bounds things in the Fourier domain.
+\end{remark}
 
 \subsubsection*{8. Bound on $E(W)$}
 Finally, we give an orthogonal bound on the energy of the set $W$. The idea is that if $|t_1+t_2-t_3-t_4|$ is small, then we can approximate \[
@@ -313,10 +319,11 @@ Now we can apply the trivial bound $|R|\leq |W|$ to get that \[
 This is in turn bounded by Heath-Brown's result as \begin{align*}
     \sum_{n_1,n_2\sim N} \Big|R\Big(\frac{n_1}{n_2}\Big)\Big|^2 &=
     \sum_{n_1,n_2\sim N}\sum_{t_1,t_2\in W} \Big(\frac{n_1}{n_2}\Big)^{i(t_1-t_2)}\\ 
-    &= \sum_{t_1,t_2\in W} \Big|\sum_{n\sim N} n^{i(t_1-t_2)} \Big|^2.
+    &= \sum_{t_1,t_2\in W} \Big|\sum_{n\sim N} n^{i(t_1-t_2)} \Big|^2\\
+    &\lesssim |W|N^2+|W|^2N+|W|^{5/4}T^{1/2}N.
 \end{align*}
 This is enough to give an improvement on Ingham-Huxley's result, but can be further improved using Cauchy Schwartz on the third moment \begin{align*}
     \sum_{n_1,n_2\sim N} \Big|R\Big(\frac{n_1}{n_2}\Big)\Big|^3 \leq 
     \Bigg(\sum_{n_1,n_2\sim N} \Big|R\Big(\frac{n_1}{n_2}\Big)\Big|^2 \Bigg)^{1/2} \Bigg(\sum_{n_1,n_2\sim N} \Big|R\Big(\frac{n_1}{n_2}\Big)\Big|^4\Bigg)^{1/2}.
 \end{align*}
-The fourth moment can be reduced back to the second moment by taking representative classes of $\lfloor t_1-t_2 \rfloor$, thus can also be bounded using Heath-Brown's result.
+The fourth moment can be reduced back to the second moment by taking representative classes of $\lfloor t_1-t_2 \rfloor$, thus can also be bounded using Heath-Brown's result. 

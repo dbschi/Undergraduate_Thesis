@@ -45,12 +45,6 @@ I_{m,q_0}\defeq&\frac{N^3q_0}{q^2}\sum_{\substack{(t_1,\chi_1),\\(t_2,\chi_2),\\
 \begin{proof}
     We split the sum in $I_m$ to be across $I_{m,q_0}$ for each divisor of $q$. The divisor function grows slower than any power of $q$, so gives the proposition.
 \end{proof}
-\subsubsection{Sum in $I_{m,q_0}$}
-\begin{proposition} [Sum in $I_{m,1}$ bound] \label{im1bound}
-    We have \[
-    \sum_{m_1,m_2,m_3\neq 0} I_{m,1}\lesssim (qT)^2E(\mathcal{S})|\mathcal{S}|^{1/2}.
-    \]
-\end{proposition}
 We then consider the subproduct in $I_{m,q_0}$: \[
 	\hat{h}_{t_1-t_3}\left(\frac{Nm_1}{q}\right)\hat{h}_{t_2-t_1}\left(\frac{Nm_2}{q}\right)\hat{h}_{t_3-t_2}\left(\frac{Nm_3}{q}\right).
 \]
@@ -175,7 +169,7 @@ To apply H\"older's inequality, we need to find bounds on the second and fourth 
     By the orthogonality of characters,\[
         \sum_{y_1\in (\mathbb{Z}/q\mathbb{Z})}|R(v,y_1,y_2)|^2 = \phi(q) \sum_{(t_1,\chi_1),(t_2,\chi_2)\in \mathcal{S}} \delta_{\chi_1\chi_2}\bar{\chi}_1{\chi}_2(y_2)v^{i(t_1-t_2)} = \phi(q)\sum_{(t_1,\chi_1),(t_2,\chi_2)\in \mathcal{S}} \delta_{\chi_1\chi_2}\mathbb{I}_{(y_2,q)=1} v^{i(t_1-t_2)},
     \]
-    so it is enough to consider the second moment of $R(v,y,1)$.
+    so it is enough to consider the second moment of $R(v,y,1)$ (and $y_2$ is coprime to $q$).
     Let $\psi$ be a bump function supported on $v\asymp 1$ and equals $1$ on the domain of integration in the lemma.
    Then, \begin{align*}
         \sum_{y\in (\mathbb{Z}/q\mathbb{Z})^\times} \int_{v\asymp 1} 
@@ -216,15 +210,15 @@ To apply H\"older's inequality, we need to find bounds on the second and fourth 
         \int_{v\asymp 1} 
         \left|\tilde{R}_M\left(v,y\right)\right|^4dv  \lesssim& \int_{v\asymp 1} 
         \left(\int_{|u-v|\lesssim q/NM}
-        \frac{NM}{q}|R(u)|^2 du\right)^2
+        \frac{NM}{q}|R(u,y)|^2 du\right)^2
         dv \\
-        \lesssim& \frac{NM}{q} \int_{v\asymp 1} 
+        \stackon{CS}{\lesssim}& \frac{NM}{q} \int_{v\asymp 1} 
        \int_{|u-v|\lesssim q/NM}
-        |R(u)|^4 du \ 
+        |R(u,y)|^4 du \ 
         dv\\
         \lesssim&  
         \int_{u\asymp 1}
-         |R(u)|^4 du.
+         |R(u,y)|^4 du.
     \end{align*}
     Lemma \ref{secondmoment} completes the proof.
 \end{proof}

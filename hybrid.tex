@@ -4,16 +4,16 @@
 \textit{Here I will document some progress with working with
 the hybrid version of Guth-Maynard. This section will be removed when I send the draft to Prof. Wunsch.}
 \fi
-We would like to generalize Guth and Maynard's result to $L$-functions. Specifically, let $\chi$ be a \hyperref[dcharacter]{Dirichlet character}. we are interested in the the zeros defined by \[
+We would like to generalize Guth and Maynard's result to $L$-functions. Specifically, let $\chi$ be a \hyperref[dcharacter]{Dirichlet character}. we are interested in the the zeros of the function defined by \[
 L(s,\chi)\defeq\sum_{n} \frac{\chi(n)}{n^{-s}}
 \]
-on $\Re(s)>1$ and its analytic continuation on the whole complex plane. The structure of the arguments for analytic continuation, its line of symmetry along $\Re(s) = 1/2$, and the locations of trivial zeros are very similar to that of the zeta function. This motivates the Generalized Riemann Hypothesis. \begin{conjecture} [Generalized Riemann Hypothesis]
+on $\Re(s)>1$ and its analytic continuation on the whole complex plane. The zeta function is a special case of an $L$-function with the Dirichlet character $1$ everywhere. The structure of the arguments for analytic continuation of an $L$-function, its line of symmetry along $\Re(s) = 1/2$, and the locations of zeros are very similar to that of the zeta function. This motivates the Generalized Riemann Hypothesis. \begin{conjecture} [Generalized Riemann Hypothesis]
     The \text{Generalized Riemann Hypothesis} asserts that on the critical strip, \[
     L(s,\chi)=0 \implies \Re(s)=\frac{1}{2},
     \]
     for any Dirichlet character.
 \end{conjecture}
-This leads to even stronger for primes in short intervals. Namely, fix an integer $q$, we have that \[
+The Generalized Riemann Hypothesis leads to even stronger for primes in short intervals. Namely, fix an integer $q$, we have that \[
 \sum_{\substack{n\leq N\\ n\equiv a\mod q}}\Lambda(n) = \begin{cases}
     \frac{1}{\phi(q)} N + O(x^{2+o(1)}), & \textrm{if $\gcd(a,q)=1$}\\
     o(n),& \textrm{otherwise.}
@@ -61,11 +61,11 @@ Our result is as follows:
     To be determined \textrm{\smiley}.
 \end{theorem}
 
-The idea of the proof is very similar to Guth and Maynard's proof. We can define a $|\mathcal{S}\times N|$ matrix $M$ with entries
+The idea of the proof is similar to Guth and Maynard's proof. We can define a $|\mathcal{S}\times N|$ matrix $M$ with entries
 \[
     M_{t_j,\chi_j,n} = \chi_j(n)n^{it_j}
 \]
-for $(t_j,\chi_j)\in\mathcal{S}$ and $n\sim N$, and bound its operator norm in the exact same way: taking it to the $M^*M$ to the third power and calculating its trace. The Dirichlet characters are not nice to handle when extended to a function $\reals \to \complex$, so we break the sum into $q$ summations across each residue class $\mod q$, and apply Poisson summation on each piece of the sum. This gives us \begin{align*}
+for $(t_j,\chi_j)\in\mathcal{S}$ and $n\sim N$, and bound its operator norm in the exact same way: taking it to the $M^*M$ to the third power and calculating its trace. The Dirichlet characters are not nice to handle when extended to a function $\reals \to \complex$, so we instead break the sum into $q$ summations across each residue class $\mod q$, and apply Poisson summation on each piece of the sum. This gives us \begin{align*}
     \textrm{tr}((M^*M)^3)=\sum_{\substack{(t_1,\chi_1),\\(t_2,\chi_2),\\(t_3,\chi_3)\in\mathcal{S}}}
     \frac{N^3}{q^3}\sum_{m\in\mathbb{Z}^3}&\sum_{x\in (\mathbb{Z}/q\mathbb{Z})^3}\chi_1\bar{\chi}_3(x_1)\chi_2\bar{\chi}_1(x_2)\chi_3\bar{\chi}_2(x_3) e\left(\frac{-x\cdot m}{q}\right)\\
     \times \ &\hat{h}_{t_1-t_3}\left(\frac{Nm_1}{q}\right)\hat{h}_{t_2-t_1}\left(\frac{Nm_2}{q}\right)\hat{h}_{t_3-t_2}\left(\frac{Nm_3}{q}\right),
@@ -92,7 +92,7 @@ This in turn can be bounded by a third moment of $R$: \[
 
 \subsection{Setup and Reduction of Theorem}
 \begin{lemma}\label{reduction}
-    Let $\mathcal{S}=\{(t_j,\chi_j)\}$ be a set such that each $\chi_j$ is a primitive Dirichlet character of modulus $q$, and $|t_j-t_k|\geq T^\epsilon$ if $j\neq k$ and $\chi_j=\chi_k$. Let $|b_n|\leq 1$ be a sequence of numbers indexed in $n$, $\omega$ be a smooth bump function that equals $1$ on $[6/5,9/5]$ and has support in $[1,2]$ (thus $\omega^{(A)}\ll_A 1$ for all $A$). Let $V=N^\sigma$, where $\sigma \in [placeholder]$, and $N=qT^\alpha$, where $\alpha \in [placeholder]$ Suppose also that \[
+    Let $\mathcal{S}=\{(t_j,\chi_j)\}$ be a set such that each $\chi_j$ is a primitive Dirichlet character of modulus $q$, and $|t_j-t_k|\geq T^\epsilon$ if $j\neq k$ and $\chi_j=\chi_k$. Let $|b_n|\leq 1$ be a sequence of numbers indexed in $n$, $\omega$ be a smooth bump function that equals $1$ on $[6/5,9/5]$ and has support in $[1,2]$ (thus $\omega^{(A)}\ll_A 1$ for all $A$). Let $V=N^\sigma$, where $\sigma \in [placeholder]$, and $N=qT^\alpha$, where $\alpha \in [placeholder]$, and $q^{1+\epsilon}\ll N,T$. Suppose also that \[
     |D_N(t_j,\chi_j)|\defeq\Bigg|\sum_{n\sim N} \omega\Bigg(\frac{n}{N}\Bigg)b_n\chi_j(n)n^{it_j} \Bigg|>V.
 \]
 for all $(t_j,\chi_j)\in\mathcal{S}$.
@@ -105,7 +105,7 @@ Then \[
         \sum_{n\sim N} b_n\chi_j(n)n^{it_j}=\sum_{N\leq n< 6N/5} b_n\chi_j(n)n^{it_j} +\sum_{6N/5 \leq n < 9N/5} b_n\chi_j(n)n^{it_j} +\sum_{9N/5 \leq n < 2N} b_n\chi_j(n)n^{it_j}.
     \]
     So that if \[
-        \Big|\sum{n\sim N} b_n\chi_j(n)n^{it_j}\Big|>V,
+        \Big|\sum_{n\sim N} b_n\chi_j(n)n^{it_j}\Big|>V,
     \]
     then at least one of the three summations in the right has magnitude at least $V/3$.
     But then each of these sums can be written as dirichlet sums in the form of the lemma: \begin{align*}
@@ -132,7 +132,7 @@ we want to bound the size of $\mathcal{S}$ by trace of the matrix \[
         \times \ &\hat{h}_{t_1-t_3}\left(\frac{Nm_1}{q}\right)\hat{h}_{t_2-t_1}\left(\frac{Nm_2}{q}\right)\hat{h}_{t_3-t_2}\left(\frac{Nm_3}{q}\right).
     \end{align*}
     We have \[
-    |\mathcal{S}|\lesssim \frac{\phi(q)}{q}N^2V^{-2}+ NV^{-2}\left(\sum_{m\in\mathbb{Z}^3 - \{0\}} I_m\right)^{1/3}
+    |\mathcal{S}|\lesssim \frac{\phi(q)}{q}N^2V^{-2}+ NV^{-2}\left(\sum_{m\in\mathbb{Z}^3 - \{0\}} I_m\right)^{1/3}.
     \]
 \end{proposition}
 \begin{lemma}[Explicit Expression of Traces]

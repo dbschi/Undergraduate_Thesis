@@ -1,4 +1,4 @@
-\section{Towards a Hybrid Zero Density Result}
+\chapter{Towards a Hybrid Zero Density Result}
 \iffalse
 
 \textit{Here I will document some progress with working with
@@ -90,7 +90,7 @@ This in turn can be bounded by a third moment of $R$: \[
  E(\mathcal{S})\lesssim N^{-2\sigma}\sum_{n_1,n_2\sim N}\left|R\left(\frac{n_1}{n_2},n_1,n_2\right) \right|^3.\]
  This expression is then bounded by Heath-Brown's theorem.
 
-\subsection{Setup and Reduction of Theorem}
+\section{Setup and Reduction of Theorem}
 \begin{lemma}\label{reduction}
     Let $\mathcal{S}=\{(t_j,\chi_j)\}$ be a set such that each $\chi_j$ is a primitive Dirichlet character of modulus $q$, and $|t_j-t_k|\geq T^\epsilon$ if $j\neq k$ and $\chi_j=\chi_k$. Let $|b_n|\leq 1$ be a sequence of numbers indexed in $n$, $\omega$ be a smooth bump function that equals $1$ on $[6/5,9/5]$ and has support in $[1,2]$ (thus $\omega^{(A)}\ll_A 1$ for all $A$). Let $V=N^\sigma$, where $\sigma \in [placeholder]$, and $N=qT^\alpha$, where $\alpha \in [placeholder]$, and $q^{1+\epsilon}\ll N,T$. Suppose also that \[
     |D_N(t_j,\chi_j)|\defeq\Bigg|\sum_{n\sim N} \omega\Bigg(\frac{n}{N}\Bigg)b_n\chi_j(n)n^{it_j} \Bigg|>V.
@@ -115,7 +115,7 @@ Then \[
     \end{align*}
     Applying the lemma on each of these three pieces and summing the three bounds gives the same bound for $\sum_{n\sim N} b_n\chi_j(n)n^{it_j}$ up to a constant factor.
 \end{proof}
-\subsection{The matrix $M$ and its trace expansion}
+\section{The matrix $M$ and its trace expansion}
 We define $M$ a $|\mathcal{S}\times N|$ matrix with entries
 \[
     M_{(t_j,\chi_j),n} = \omega\Big(\frac{n}{N}\Big)\chi_j(n)n^{it_j}

@@ -1,4 +1,4 @@
-\documentclass[
+\documentclass[openany,
 ngerman,
 toc=flat,
 toc=chapterentrywithdots,
@@ -7,7 +7,7 @@ listof=entryprefix,
 listof=leveldown,
 fontsize=12pt,
 numbers=noenddot]
-{article}
+{book}
 \usepackage{blindtext}
 \usepackage{xcolor}
 \usepackage{amsfonts}
@@ -40,7 +40,7 @@ numbers=noenddot]
 
 \MakeOuterQuote{"}
 
-\newtheorem{theorem}{Theorem}[section]
+\newtheorem{theorem}{Theorem}[chapter]
 \newtheorem{definition}[theorem]{Definition}
 \newtheorem{conjecture}[theorem]{Conjecture}
 \newtheorem{corollary}[theorem]{Corollary}
@@ -96,9 +96,9 @@ numbers=noenddot]
 \usepackage{centernot}
 \usepackage{amsthm}
 \usepackage{listings}
-%\setcounter{section}{-1}
-\title{}
-\author{Yung Chi Li\\ Advised by Maksym Radziwi\l\l}
+\setcounter{chapter}{-1}
+\title{Large values of Dirichlet Polynomials and Zero Density Results of the Riemann Zeta function}
+\author{Yung Chi Li}
 %\date{January 2024}
 \usepackage{titling}
 \predate{}
@@ -106,19 +106,49 @@ numbers=noenddot]
 \date{}
 \begin{document}
 
-\maketitle
+%\maketitle
+\begin{titlepage}
+    \begin{center}
+        \vspace*{1cm}
+            
+        \Large
+        \textbf{Large values of Dirichlet Polynomials and Zero Density Results of the Riemann Zeta Function}
+            
+        \vspace{0.5cm}
+        
+        \Large
+        Yung Chi Li
+            
+        \vfill
+            
+       	Submitted in partial fulfillment of the\\ requirements of
+		Honors in Mathematics\\
+		
+		
+		Northwestern University
+            
+    
+            
+    \end{center}
+\end{titlepage}
 \tableofcontents
+\section*{Statement Regarding Generative AI}
+No part of this thesis had been aided by generative AI.
+
+\section*{Acknowledgements}
+I thank my advisor, Professor Maksym Radziwi\l\l, for his guidance on topic selection, explanation of current literature, and insights into solving hybrid Guth-Maynard. 
+\chapter{Notation and Preliminaries}
 \input{Notation}
-%	\begin{abstract}
-		 
-%	\end{abstract}
-	
+
+\input{Preliminaries}
+	\chapter{ The Riemann Zeta Function and the Prime Number Theorem}
 	%\chapter{Background and Introduction}
 	\input{Introduction_to_zeta}
 	\input{PNT}
+	\chapter{Primes in Short Intervals and Zero Density Results}
 	\input{Short intervals}
 	\input{Huxley.tex}
-	%\chapter{The method of Guth and Maynard}
+	\chapter{Guth-Maynard's Proof of the Zero Density near $\sigma = 3/4$}
 	\input{guth_maynard.tex}
 	\input{hybrid.tex}
 	\input{S_0_2.tex}
@@ -126,6 +156,5 @@ numbers=noenddot]
 	\input{S_3 refinement.tex}
 	\input{Energy.tex}
 	\input{assembly.tex}
-	\input{Preliminaries}
 	\printbibliography
 \end{document} 

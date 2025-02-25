@@ -1,4 +1,4 @@
-\section{Guth-Maynard's proof of Large Values of Dirichlet Polynomials}
+%\section{Guth-Maynard's proof of Large Values of Dirichlet Polynomials}
 In May 2024, Guth and Maynard published an improvement of the large values of Dirichlet polynomails estimate at $\sigma\in[7/10,8/10]$.
 \begin{theorem}[Guth-Maynard Large Values Estimate]
     Let $(b_n)$ be a sequence of complex numbers such that $|b_n|\leq 1$ for all $n$, and $W=\{t_j\}_{j=1}^{|W|}$ be a $1$-separated set $\subseteq [0,T]$, such that \[
@@ -17,7 +17,8 @@ In the critical case $V=N^{3/4}, N\leq T^{5/6-\epsilon}$, the original bound wil
 while the bound by Guth and Maynard gives \[
 |W|\lesssim N^2N^{-3/2}+N^{18/5}N^{-3}+TN^{12/5}N^{-3}\lesssim N^{1/2}+TN^{-3/5}\lesssim TN^{-3/5}.
 \]
-\subsection{Outline and Sketch of proof}
+This new theorem, when applied in Huxley's proof in the previous chapter, gives an improvement in the bound of zero density in the range $\sigma\in[7/10,8/10]$.
+\section{Outline and Sketch of proof}
 %\node[label=above/below/etc:{label}] (x) {}
 The structure of the proof can be broken down as follows: We first notice that $|W|$ is bounded by the operator norm of a matrix $M$. This operator norm, using results from linear algebra, is bounded by the trace. Applying Poisson summation on the trace gives $4$ terms that are separately handled, which we will name $S_0$ to $S_3$. We will see that $S_0$ gives the `main term' that is consistent with the density hypothesis, $S_1$ is negligible, $S_2$ is bounded by a theorem by Heath-Brown, which we state below. 
 \begin{theorem}[Heath-Brown]

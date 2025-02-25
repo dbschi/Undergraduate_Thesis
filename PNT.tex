@@ -75,7 +75,7 @@ If we move the line of integration across to $-\infty$, this gives \begin{equati
 \end{equation}
 This formula, due to von Mangoldt, can be derived with more care about the convergence in the sum:
 The sum over zeros $\rho$ is not absolutely convergent, and is ordered in increasing $|\Im(\rho)|$.
-\begin{theorem}[Riemann-von Mangoldt explicit formula]
+\begin{theorem}[Riemann-von Mangoldt explicit formula] \label{explicitformula}
     Let $N>1$ be not a prime power. Then\begin{equation}
     \sum_{n\leq N} \Lambda(n) = N - \lim_{T\to \infty}\sum_{|\Im{(\rho)}|\leq T} \frac{N^\rho}{\rho} -
     \frac{\zeta'(0)}{\zeta(0)} + \frac{1}{2}\log\left(1-N^{-2}\right). 
@@ -88,15 +88,13 @@ This is obtained through integration along the choice of $c=1+1/\log N$
         \sum_{n\leq N} \Lambda(n) = N - \sum_{|\Im{(\rho)}|\leq T} \frac{N^\rho}{\rho} + O(\frac{N}{T}(\log NT) ^2) + O(\log N). 
         \end{equation}
 \end{theorem}
+Theorems \ref{explicitformula} and \ref{truncateexplcit} are stated in \cite{Goldston2004}.
+
 The term $N$ in the explicit formula is already suggestive of the Prime Number Theorem. 
 The major error term comes from $N^\rho$ in the sum, so bounding the $\Re(\rho)$ becomes the most important part in reducing the error term in the prime number theorem. 
 This in turn is equivalent to bounding $\Re({\rho})$, and the best case is when all the zeros have real part $1/2$. This assumption is known as the Riemann Hypothesis, and has not yet been proved. 
-\begin{conjecture}[Riemann Hypothesis]
-	The \textbf{Riemann Hypothesis} (RH) asserts that on the critical strip, \[
-		\zeta(s) = 0 \implies \Re(s) = \frac{1}{2}. 
-	\]
-\end{conjecture}
-Assuming the Riemann Hypothesis, we consider the sum over the non trivial zeros \begin{align*}
+
+Assuming the \hyperref[RH]{Riemann Hypothesis}, we consider the sum over the non trivial zeros \begin{align*}
 \left|\sum_{|\Im(\rho)|\leq T|}\frac{N^\rho}{\rho}\right| &\leq N^{1/2} \sum_{|\Im(\rho)|\leq T}\left|{\frac{1}{\rho}}\right|.    
 \end{align*}
 We know there are $\sim \log T$ zeros of height $[T,T+1)$, thus the integral $\sum |\rho^{-1}|$ behaves as \[

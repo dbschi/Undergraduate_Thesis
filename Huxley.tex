@@ -41,8 +41,8 @@ We take $y$ large enough so that $e^{-1/y}$ is close to $1$. Since $M_x(s)$ is a
     \item The integral in $t$ is large.
     \item $|M_x(1)\Gamma(1-s)y^{1-s}|$ is large.
 \end{enumerate}
-We thus transform the problem of detecting zeros to counting the number of occurences of extreme values. We will later see that type (iii) zeros are negligible, so we need to bound the number of type (i) and type (ii) zeros. 
-
+We thus transform the problem of detecting zeros to counting the number of occurences of extreme values. We will later see that type (iii) zeros are negligible, so we need to bound the number of type (i) and type (ii) zeros. To bound the occurences of extreme values, we introduce the following two lemmas.
+\iffalse
 \begin{lemma}
     Let $a$ be an arithmetic function, and $D_N(s)=\sum_{n\leq N}a(n)n^{s}.$
     If $W = \{t_j\}\subseteq [0,T]$ is a one-separated set such that \[
@@ -61,15 +61,22 @@ We thus transform the problem of detecting zeros to counting the number of occur
         \int_{0}^{T} |D_N(x+it)|^\alpha dt \ dx.
     \end{align*}
 \end{proof}
-
-\begin{corollary} \label{halflinebigvalue}
+\fi
+\begin{lemma} \label{halflinebigvalue}
    Let $W = \{t_j\}\subseteq [0,T]$ be a one-separated set such that \[
         \left|\zeta\left(\frac{1}{2}+it_j\right)\right|>V \ \forall j,
     \]
     then \[
     |W|\lesssim TV^{-4}.
     \]
-\end{corollary}
+\end{lemma}
+\begin{proof}
+    By corollary 10.4 of \cite{Montgomery}, we have \[
+        W V^4 \leq \sum_{t\in W}  \left|\zeta\left(\frac{1}{2}+it_j\right)\right|^4 \ll T(\log T)^5.
+    \]
+    The result follows immediately.
+\end{proof}
+\iffalse
 \begin{proof}
     We have \[
         \left|\zeta\left(\frac{1}{2}+it\right)\right|\ll \sum_{n\leq \sqrt{T}}n^{-1/2-it},
@@ -89,7 +96,7 @@ We thus transform the problem of detecting zeros to counting the number of occur
     O(T^{1+4(\log T)^{-1}}(\log T)^{-1})\ll T^{1+o(1)}    .\]
     Therefore, we have $|W|\lesssim TV^{-4}$.
 \end{proof}
-
+\fi
 \begin{lemma}[Hal\'asz Inequality]
     \label{halasz}
     Let $a$ be an arithmetic function, and $D_N(s)=\sum_{n\leq N}a(n)n^{s}$, and $G=\sum_{n\leq N} |a(n)|^2.$
@@ -101,6 +108,8 @@ We thus transform the problem of detecting zeros to counting the number of occur
         |W|\lesssim GNV^{-2} + G^3NTV^{-6}.
         \]
 \end{lemma}
+This is equation 2.9 from \cite{Huxley1971}.
+\iffalse
 \begin{proof}
     Let $-\theta_j$ be the argument of $D(it_j)$, then we have \begin{align*}
         V|W|\leq \sum_j |D(it_j)| = \sum_j e^{\theta_j}D(it_j ) = \sum_{n\leq N} \sum_j e^{i\theta_j} a(n) n^{-it_j}.
@@ -116,14 +125,14 @@ We thus transform the problem of detecting zeros to counting the number of occur
     \end{align*}
     \textcolor{red}{TODO}
 \end{proof}
-
+\fi
 \begin{proof}[Proof of Huxley's Zero Density Theorem]
     From equation \ref{huxleyperron}, we take $y>6$ so that $e^{-1/y}>5/6$. We also truncate the sum in $n>x$ to $x<n\leq y^2$ with an error of $1/6$ for large enough $y$. Finally, by the rapid decay of $\Gamma$, we truncate the integral in $t$ to the range $|t|\leq B\log T$ with an error of $1/6$. Thus, $s$ is a zero only if \begin{enumerate}[label=(\roman{*})]
         \item $|\sum_{x<n\leq y^2}a_n n^{-s} e^{-n/y}|\geq \frac{1}{6}$, or
         \item $\frac{1}{2\pi}|\int_{-B\log T}^{B\log T}\zeta(\frac{1}{2}+i\Im(s)+it)M_x(\frac{1}{2}+i\Im(s)+it) \Gamma\left(\frac{1}{2}-\Re(s)+it\right) y^{\frac{1}{2}-\Re(s)+it} dt|\geq \frac{1}{6}$, or
         \item $|M_x(1)\Gamma(1-s)y^{1-s}|\geq \frac{1}{6}$ .
     \end{enumerate}
-    Of the zeros $\rho = \beta+i\gamma$ of $\zeta$ in the region, at the cost of a factor of $\log T$, we take representatives such that if $\rho_1\neq \rho_2$ then $|\rho_1-\rho_2|\geq \textcolor{red}{1}$. 
+    Of the zeros $\rho = \beta+i\gamma$ of $\zeta$ in the region, at the cost of a factor of $\log^2 T$, we take representatives such that if $\rho_1\neq \rho_2$ then $|\rho_1-\rho_2|\gtrsim 1$. 
 
     For Class (iii) zeros, we use Stirling's formula on $\Gamma$ to get \[
         \log \Gamma(1-s) = \bigg(\frac{1}{2}-s\bigg)\log (1-s) + s - \frac{1}{2}\log 2\pi + O(|s|^{-1}).

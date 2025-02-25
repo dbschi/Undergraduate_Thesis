@@ -28,12 +28,12 @@ Recalling that the error term is related to the real part of the zeros of the Ze
 \begin{remark}
     The ideal scenario is that $N(\sigma,T)=0$ for all $\sigma> 1/2$. 
 \end{remark}
-\begin{theorem}[Chudakov] 
+\begin{theorem}[Littlewood \cite{Littlewood1922}] 
     There exists a constant $A$ such that $\zeta(\sigma+iT)\neq 0$ in the region \begin{equation*}
-        \sigma > 1 - A\frac{\log \log T}{\log T}.
+        \sigma > 1 - A\frac{\log \log |T|}{\log |T|}. 
     \end{equation*}
 \end{theorem}
-\textit{add reference}
+
 \begin{theorem}[Hoheisel] \label{Hoheisel}
     Let $A$ be defined as in the previous theorem.
     Suppose that $N(\sigma, T)\ll T^{a(1-\sigma)}\log^b T$ uniformly in $1/2\leq\sigma<1$ and in $T$. Then for all \[
@@ -41,6 +41,7 @@ Recalling that the error term is related to the real part of the zeros of the Ze
     \] the Prime Number Theorem holds in 
     intervals of $y=x^\theta$.
 \end{theorem}
+This following proof is expanded from a sketch of proof in Sagun Chanillo's lecture notes \cite{rutgernotes}.
 \begin{proof}
     First notice that $N(1/2,T)$ gets at least half of the zeros of height $T$, so $a\geq 2$.
     Let $y\ll x$. 
@@ -64,7 +65,7 @@ Recalling that the error term is related to the real part of the zeros of the Ze
         &=  \int_0^{1-A\frac{\log \log T}{\log T}} \sum_{\rho_j} \mathbbm{1}_{u\leq \sigma_j}x^{u-1} \log x \ du\\
         &= \int_0^{1-A\frac{\log \log T}{\log T}} N(u,T) x^{u-1} \log x \ du
     \end{align*}
-    Where in the penulitimate step we made use of Chudaokov's bound and exchanged the order of integration and summation.
+    Where in the penulitimate step we made use of Littlewood's bound and exchanged the order of integration and summation.
     Now we can apply the hypothesis that $N(\sigma, T)\ll T^{a(1-\sigma)}\log^b T$ for $\sigma>1/2$ and trivially $N(\sigma, T)\ll T \log T \ll T^{a(1-\sigma)}\log^b T$ for $\sigma \leq 1/2$.
     This evaluates to 
     \begin{align*}
@@ -99,13 +100,13 @@ Recalling that the error term is related to the real part of the zeros of the Ze
     \]for $y=x^\theta$. This completes the proof.
 
 \end{proof}
-Theorem \ref{Hoheisel} gives the classical way to relate the distribution of primes in short intervals to the density of zeros away from the real-half line. The long-standing bound for zero density is due to separate proofs of Ingham and Huxley:
-\begin{theorem}[Ingham bound for zero density]
+Theorem \ref{Hoheisel} gives the classical way to relate the distribution of primes in short intervals to the density of zeros away from the real-half line. The long-standing bound for zero density is due to separate proofs of Ingham and Huxley in 1940 and 1971 respectively:
+\begin{theorem}[Ingham bound for zero density \cite{Ingham1940}]
     Let $1/2\leq \sigma\leq 3/4$. We have \[
         N(\sigma,t)\lesssim T^{\frac{3(1-\sigma)}{2-\sigma}}.
         \]
 \end{theorem}
-\begin{theorem}[Huxley bound for zero density]
+\begin{theorem}[Huxley bound for zero density \cite{Huxley1971}]
     Let $3/4\leq \sigma\leq 1$. We have \[
         N(\sigma,t)\lesssim T^{\frac{3(1-\sigma)}{3\sigma-1}}.
         \]
@@ -139,8 +140,8 @@ Combining these two bounds, we get the following zero density theorem.
     \]
     uniformly for $1/2\leq \sigma\leq 1$
 \end{theorem}
-Notice that $12/5$ comes from $\sigma = 3/4$. In June 2024, Guth and Maynard published a proof that improves the Ingham-Huxley bound at $\sigma \in [7/10,8/10]$, thus improving the result of primes in short intervals (as well as many other number theoretic results). The following sections will be dedicated to Huxley's proof of zero density, as well as Guth-Maynard's ideas in the proof. Finally, adapting from Guth and Maynard, we will provide a proof of the analogous zero-density result for $L$-functions.
-\begin{theorem}[Guth-Maynard bound for zero density]
+Notice that $12/5$ comes from $\sigma = 3/4$. In May 2024, Guth and Maynard published a proof that improves the Ingham-Huxley bound at $\sigma \in [7/10,8/10]$, thus improving the result of primes in short intervals (as well as many other number theoretic results). The following sections will be dedicated to Huxley's proof of zero density, as well as Guth-Maynard's ideas in the proof. Finally, adapting from Guth and Maynard, we will provide a proof of the analogous zero-density result for $L$-functions.
+\begin{theorem}[Guth-Maynard bound for zero density \cite{GM2024}]
     We have \[
      N(\sigma,t)\lesssim T^{\frac{30}{13}(1-\sigma)},
      \]

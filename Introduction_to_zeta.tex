@@ -122,9 +122,16 @@ These zeros are known as the trivial zeros of $\zeta$. The remaining zeros lie b
 The number of zeros in the critical strip can be calculated using the argument principle applied to the function $\xi$ over the box with corners $-1+iT$,$-1-iT$,$2-iT$,$2+iT$.
 Applying the functional equation, we get the following result.
 
-\begin{theorem}[Number of zeros of $\zeta$]
+\begin{theorem}[Number of zeros of $\zeta$] \label{numberzero}
 	The number of zeros up to height $T$\[
 	\#\{\sigma+it \ | \ \zeta(\sigma+it)=0,0 \leq \sigma\leq 1, |t|\leq T \} = \frac{T}{2\pi}\log{\frac{T}{2\pi e}} + O(\log T).
 	\]
 \end{theorem}
-
+Theorem \ref{numberzero} is obtained by Riemann in his famous 1859 paper on the Zeta function, where he analytically continued the Zeta function and conjectured that all the zeros lie on the critical line \cite{Riemann1859}.
+\begin{conjecture}[Riemann Hypothesis] \label{RH}
+	The \textbf{Riemann Hypothesis} (RH) asserts that on the critical strip, \[
+	\zeta(s) = 0 \implies \Re(s) = \frac{1}{2}. 
+	\]
+\end{conjecture}
+In section 2, we will use prove the Prime Number Theorem to demonstrate the connection of Zeta zeros and primes, with the Riemann Hypothesis leading to the tightest bound on the error term of the Prime Number Theorem. 
+The Riemann Hypothesis has not be proved or disproved. Nevertheless, we can still obtain unconditional results on the error term through using the zero density of the Zeta function on the critical strip instead. This will be the main focus of section 3. We will provide a bound on the density of zeros in section 4 and refine it in section 5. Finally, extending from the ideas of the proof in section 5, we provide a generalization for the analogous zero density for Dirichlet L-functions.

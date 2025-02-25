@@ -1,5 +1,5 @@
 \section{Guth-Maynard's proof of Large Values of Dirichlet Polynomials}
-In June 2024, Guth and Maynard published an improvement of the large values of Dirichlet polynomails estimate at $\sigma\in[7/10,8/10]$.
+In May 2024, Guth and Maynard published an improvement of the large values of Dirichlet polynomails estimate at $\sigma\in[7/10,8/10]$.
 \begin{theorem}[Guth-Maynard Large Values Estimate]
     Let $(b_n)$ be a sequence of complex numbers such that $|b_n|\leq 1$ for all $n$, and $W=\{t_j\}_{j=1}^{|W|}$ be a $1$-separated set $\subseteq [0,T]$, such that \[
     \left|\sum_{n\sim N}b_n n^{it_j}\right|\geq V
@@ -291,12 +291,25 @@ The term $(v_1m_1+m_3)/(-m_2)$ describes an affine transformation in $v_1$. Intu
 X\defeq X(v_1)\defeq \sum_{\substack{|m_1|\sim V\\ |m_2|, |m_3|\sim U}}  \Big| R\Big(\frac{v_1m_1+m_3}{-m_2}\Big)\Big|^2,
 \] and the measure is uniform across $v_1\asymp 1$. This can be split up to get \[
 E[X^2] = E[X]^2 + \rm{Var}(X).
-\] Indeed, we have Lemma \ref{affinetrans} that gives us this estimate. By a change of variables, the expected value of $X$ is represented by $M^3 \int_{u\asymp 1} R(u)^2 du$. This improves the bound on $S_3$ to\[
+\] Indeed, we have Lemma \ref{affinetransgm} that gives us this estimate. 
+By a change of variables, the expected value of $X$ is represented by $M^3 \int_{u\asymp 1} R(u)^2 du$.
+\begin{lemma}\label{affinetransgm}
+    Let $M>0$. Let $f(u)\geq 0$, supported on $u\asymp 1$, and $|\hat{f}(\xi)|\lesssim_j (|\xi|/T)^j$ for all $j$. Then \begin{align*}
+        J(f)\defeq &\sup_{0<M_1,M_2,M_3<M} \int\Bigg( \sum_{\substack{|m_1|\sim M_1,|m_2|\sim M_2 , |m_3|\ll M_3}} f\left(\frac{m_1 u+m_3}{m_2}\right)\Bigg)^2 \ du\\
+        \lesssim&M^6\Big( \int f(u) du\Big)^2+M^4 \int f(u)^2 du.
+    \end{align*}
+\end{lemma}
+This is Proposition 9.1 in \cite{GM2024}.
+This improves the bound on $S_3$ to\[
 S_3\lesssim T^2|W|^{3/2}+TN|W|^{1/2}E(W)^{1/2}.
 \]
 This gives an improvement from the previous bound for the case with high energy and $N<T^{1-\delta}$.
 \begin{remark}
-    The proof to Lemma \ref{affinetrans} does not use probability. Instead, it applies Plancherel's theorem on $X$ and bounds things in the Fourier domain.
+    The proof to Lemma \ref{affinetransgm} does not use probability. Instead, it applies Plancherel's theorem on $\sum_{m_1,m_2,m_3} f$ and bounds in the Fourier domain.
+    At low frequencies, this can be bounded by the $L_1$ norm of $f$. At high frequencies, the Fourier transform of $f$ decays rapidly. Finally, at mid frequencies, the integral relates to \[
+     (M^4\int f^2 du)^{1/2}J(f)^{1/2},
+    \]
+    by Cauchy Schwarz and a change of variables to decouple $m_1$ and $m_2$, providing the required bound by backward induction.
 \end{remark}
 
 \subsubsection*{8. Bound on $E(W)$}

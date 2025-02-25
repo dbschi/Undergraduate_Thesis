@@ -34,9 +34,8 @@ numbers=noenddot]
 \usepackage{MnSymbol,wasysym}
 \usepackage{centernot}
 \usepackage{amsthm}
-%\bibliography{bibliograph}
-%\usepackage{biblatex}
-
+\usepackage{biblatex}
+\addbibresource{citations.bib}
 \allowdisplaybreaks
 
 \MakeOuterQuote{"}
@@ -108,6 +107,7 @@ numbers=noenddot]
 \begin{document}
 
 \maketitle
+\tableofcontents
 \input{Notation}
 %	\begin{abstract}
 		 
@@ -125,6 +125,7 @@ numbers=noenddot]
 	\input{S_3.tex}
 	\input{S_3 refinement.tex}
 	\input{Energy.tex}
-	%\input{assembly.tex}
-	%\input{Preliminaries}
+	\input{assembly.tex}
+	\input{Preliminaries}
+	\printbibliography
 \end{document} 

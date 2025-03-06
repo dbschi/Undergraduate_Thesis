@@ -1,5 +1,7 @@
-\section{Refinement of $S_3$ bound}
+\section{Summations over affine transformations result}
+The basic bound for $S_3$ in the previous section is slightly too loose for improving on the current bound. To further improve on the bound, we need to introduce a result that exploits equidistribution over the affine transformations. Morally, the two terms in the following proposition represents the average and the variance of the distribution of $f$ respectively.
 
+\iffalse
 \begin{proposition}[Refinement of $S_3$]
     \label{refinements_3}
     We have \[
@@ -8,7 +10,7 @@
 \end{proposition}
 The refinement of the previous bound relies on the result for summation over affine transformation by Guth and Maynard.
 \begin{lemma} \label{affineGM}
-    Let $M>0$. Let $f(u)\geq 0$, supported on $u\asymp 1$, and $|\hat{f}(\xi)|\lesssim_j (|\xi|/T)^j$ for all $j$. Then \[
+    Let $M>0$. Let $f(u)\geq 0$, supported on $u\asymp 1$, and $|\hat{f}(\xi)|\lesssim_j ((1+|\xi|)/T)^{-j}$ for all $j\in \mathbb{N}$. Then \[
         \sup_{0<M_1,M_2,M_3<M} \int\Bigg( \sum_{\substack{|m_1|\sim M_1\\|m_2|\sim M_2 \\ |m_3|\ll M_3}} f\left(\frac{m_1 u+m_3}{m_2}\right)\Bigg)^2 \ du \lesssim M^6 \|f\|_{L_1}^2+M^4\|f\|_{L_2}^2.
     \] 
 \end{lemma}
@@ -16,49 +18,239 @@ This is Proposition 9.1 from [GM]. The reduction in \[
 \sum_{\substack{y_1,y_2 \in\mathbb{Z}/q\mathbb{Z} }}\int_{v_1\asymp 1}\Big[\sum_{\substack{|m_1|\sim M_1,|m_2|,|m_3|\sim M\\ y_1m_1+y_2m_2+m_3\equiv 0 \mod q_0}}\Big|\tilde{R}_M\left(\frac{m_1v_1+m_3}{-m_2v_1},y_2,y_1\right)\Big|^2\Big]^2dv_1\]
 is somewhat lossy, so we aim to refine this bound in this section.
 In principle, the condition $y_1m_1+y_2m_2+m_3\equiv 0$ fixes the residue class of $m_3$ based on $m_1$ and $m_2$. Therefore, we would expect a factor of $1/q^2$ if we add this summation condition to Proposition \ref{affineGM}. 
-\begin{lemma}\label{affinetrans}
-    Let $M>0$. Let $f(u)\geq 0$, supported on $u\asymp 1$, and $|\hat{f}(\xi)|\lesssim_j (|\xi|/T)^j$ for all $j$. Then \begin{align*}
-        J(f)\defeq &\sup_{0<M_1,M_2,M_3<M}\sum_{\substack{y_1,y_2 \in\mathbb{Z}/q\mathbb{Z} }} \int\Bigg( \sum_{\substack{|m_1|\sim M_1,|m_2|\sim M_2 , |m_3|\ll M_3\\ y_1m_1+y_2m_2+m_3\equiv 0 \mod q_0}} f\left(\frac{m_1 u+m_3}{m_2},y_1,y_2\right)\Bigg)^2 \ du\\
-        \lesssim&\frac{M^6}{q^2q_0^2}\Big(\sum_{\substack{y_1,y_2 \in\mathbb{Z}/q\mathbb{Z} }} \int f(u,y_1,y_2) du\Big)^2+\frac{M^4}{q_0^2} \sum_{\substack{y_1,y_2 \in\mathbb{Z}/q\mathbb{Z} }} \int f(u,y_1,y_2)^2 du.
+\fi
+\begin{proposition}\label{affinetrans}
+    Let $M>0$, and $T>M^{1+\epsilon}, T>d^{1+\epsilon}$. Let $f(u,y):\reals\times \mathbb{Z}/d \to \reals$ be non-negative, supported on $u\asymp 1$ uniformly in $y$, and $|\hat{f}(\xi,x)|\lesssim_j (|\xi|/T)^j$ for all $j$. Then \begin{align*}
+        J(f)\defeq &\sup_{0<M_1,M_2,M_3<M}\sum_{y \mod d} \int\Bigg( \sum_{\substack{|m_1|\sim M_1,|m_2|\sim M_2 , |m_3|\ll M_3\\ (m_1,d)=(m_2,d)=1}} f\left(\frac{m_1 u+m_3}{m_2},(m_1 y+m_3)m_2^{-1}\right)\Bigg)^2 \ du\\
+        \lesssim&\frac{M^6}{d}\Big(\sum_{y \mod d } \int f(u,y) du\Big)^2+{M^4}\sum_{y\mod d} \int f(u,y)^2 du.
     \end{align*}
+\end{proposition}
+\begin{remark}
+    Based on the definition of $R$, $f=R^2$ has support when $(y,q)=1 \implies (y,d)=1$ for $d|q$. 
+\end{remark}
+
+\begin{lemma}[Iterative bound for $J(f)$] \label{iterative}
+    There exists a bump function $\phi(x)$ supported on $|x|\lesssim 1$, such that for \[
+    \tilde{f}(u,y) \defeq \int T \phi(T(u'-u)) f(u',y) du'
+    \]
+    we have \[
+    J(f)\lesssim \frac{M^6}{d}\|f\|_{L_1}^2 + M^2 \|f\|_{L_2} J(\tilde{f}).
+    \]
 \end{lemma}
-\textcolor{red}{Testing proof here...}
 
-Let $\psi$ be a smooth bump on $|x|\lesssim 1$, such that $\psi(m_3/M_3)=1$ where $m_3\lesssim M_3$ in the summation conditiion. Furthermore, let \[
-    \bar{y}\defeq \bar{y}(m_1,m_2,y_1,y_2)\defeq -m_1y_1-m_2y_2,
-\]so that the condition $y_1m_1+y_2m_2+m_3\equiv 0 \mod q$ becomes $m_3=kq+\bar{y}$ for integer $k$.
+\begin{proof}[Proof of Proposition \ref{affinetrans} from Lemma \ref{iterative}]
+    The argument is exactly the same as Lemma 9.2 in \cite{GM2024}.
+\end{proof}
+Let $\psi$ be a smooth bump on $|x|\lesssim 1$, such that $\psi(m_3/M_3)=1$ where $m_3\lesssim M_3$ in the summation conditiion. 
 For the choice of $M_1,M_2,M_3$ that the supremum in the lemma is achieved, we define \[
-    g(u)\defeq\sum_{m_1\sim M_1,m_2\sim M_2} \sum_{k\in \mathbb{Z}} \psi\left(\frac{kq+\bar{y}}{M_3}\right)f\left(\frac{m_1 u+kq+\bar{y}}{m_2}\right),
+    g(u,y)\defeq\sum_{\substack{m_1\sim M_1,m_2\sim M_2\\ (m_1,d)=(m_2,d)=1}} \sum_{m_3\in \mathbb{Z}} \psi\left(\frac{m_3}{M_3}\right)f\left(\frac{m_1 u+m_3}{m_2} , (m_1 y+m_3)m_2^{-1}\right),
 \]so that we have \[
-J(f)\leq \int |g(u)|^2 du \quad \stackeq{Plancheral} \quad  \int |\hat{g}(\xi)|^2 d\xi.
+J(f)\leq \sum_{y\mod d} \int |g(u,y)|^2 du \quad \stackeq{Plancheral} \quad  \frac{1}{d}\sum_{x\mod d} \int |\hat{g}(\xi,x)|^2 d\xi.
 \]
-We now compute, using the change of variables $u'=u+(kq+y)/m_1$, \begin{align*}
-    \hat{g}(\xi)=&\int \sum_{m_1\sim M_1,m_2\sim M_2} \sum_{k\in \mathbb{Z}} \psi\left(\frac{kq+\bar{y}}{M_3}\right)f\left(\frac{m_1 u+kq+\bar{y}}{m_2}\right) e(-u\xi) du\\
-    =& \sum_{m_1\sim M_1,m_2\sim M_2}\int \sum_{k\in \mathbb{Z}} \psi\left(\frac{kq+\bar{y}}{M_3}\right)f\left(\frac{m_1 u+kq+\bar{y}}{m_2}\right) e(-u\xi) du\\
-    =& \sum_{m_1\sim M_1,m_2\sim M_2}\int \sum_{k\in \mathbb{Z}} \psi\left(\frac{kq+\bar{y}}{M_3}\right)f\left(\frac{m_1 u'}{m_2}\right) e(-u'\xi) e\left(\frac{kq+\bar{y}}{m_1}\xi\right)du'\\
-    =& \sum_{m_1\sim M_1,m_2\sim M_2} \left(\int f\left(\frac{m_1 u'}{m_2}\right) e(-u'\xi) du'\right)\left(\sum_{k\in \mathbb{Z}} \psi\left(\frac{kq+\bar{y}}{M_3}\right) e\left(\frac{kq+\bar{y}}{m_1}\xi\right)\right)\\
-    =& \sum_{m_1\sim M_1,m_2\sim M_2} \frac{m_2}{m_1}\hat{f}\left(\frac{m_2}{m_1}\xi\right)\left(\sum_{k\in \mathbb{Z}} \psi\left(\frac{kq+\bar{y}}{M_3}\right) e\left(\frac{kq+\bar{y}}{m_1}\xi\right)\right).\\
+We now compute, using the change of variables $\tilde{u}=u+m_3/m_1$ and $\tilde{y}\equiv y + m_3 m_1^{-1} (d)$, \begin{align*}
+    \hat{g}(\xi,x)=&\sum_{y=0}^{d-1}\int 
+    e\left(\frac{-xy}{d}\right)e(-u\xi)
+    \sum_{\substack{m_1\sim M_1,m_2\sim M_2\\ (m_1,d)=(m_2,d)=1}} \sum_{m_3\in \mathbb{Z}} \psi\left(\frac{m_3}{M_3}\right)f\left(\frac{m_1 u+m_3}{m_2} , (m_1 y+m_3)m_2^{-1}\right) du\\
+    =& 
+    \sum_{\substack{m_1\sim M_1,m_2\sim M_2\\ (m_1,d)=(m_2,d)=1}} \sum_{m_3\in \mathbb{Z}} \sum_{\tilde{y}=0}^{d-1}\int 
+    e\left(\frac{-x\tilde{y}}{d}\right) e\left(\frac{[{m_3x}{m_1}^{-1}]}{d}\right)e(-\tilde{u}\xi) e\left(\frac{m_3\xi}{m_1}\right)\psi\left(\frac{m_3}{M_3}\right)f\left(\frac{m_1 \tilde{u}}{m_2} , (m_1 \tilde{y})m_2^{-1}\right) d\tilde{u}\\
+    =& \sum_{\substack{m_1\sim M_1,m_2\sim M_2\\ (m_1,d)=(m_2,d)=1}} \sum_{\tilde{y}=0}^{d-1}\int e\left(\frac{-x\tilde{y}}{d}\right)e(-\tilde{u}\xi) f\left(\frac{m_1 \tilde{u}}{m_2} , (m_1 \tilde{y})m_2^{-1}\right) d\tilde{u}
+    \sum_{m_3\in \mathbb{Z}}
+    \psi\left(\frac{m_3}{M_3}\right)e\left(\frac{[{m_3x}{m_1}^{-1}]}{d}\right)e\left(\frac{m_3\xi}{m_1}\right)\\
+    =&\sum_{\substack{m_1\sim M_1,m_2\sim M_2\\ (m_1,d)=(m_2,d)=1}} \frac{m_2}{m_1}\hat{f}\left(\frac{m_2}{m_1}\xi, m_2 m_1^{-1}x\right)
+    \sum_{m_3\in \mathbb{Z}}
+    \psi\left(\frac{m_3}{M_3}\right)e\left(\frac{[{m_3x}{m_1}^{-1}]}{d}\right)e\left(\frac{m_3\xi}{m_1}\right)\\
+    \stackon{Poisson}{=}&\sum_{\substack{m_1\sim M_1,m_2\sim M_2\\ (m_1,d)=(m_2,d)=1}} \frac{m_2}{m_1}\hat{f}\left(\frac{m_2}{m_1}\xi, m_2 m_1^{-1}x\right)
+    \sum_{l\in \mathbb{Z}}M_3
+    \hat{\psi}\left(M_3\left(l-\frac{\xi}{m_1}-\frac{[m_1^{-1}x]}{d}\right)\right)
 \end{align*}
-The summation in $k$ can be rewritten through Poisson summation to get \[
-    \sum_{k\in \mathbb{Z}} \psi\left(\frac{kq+\bar{y}}{M_3}\right) e\left(\frac{kq+\bar{y}}{m_1}\xi\right) = \sum_{\xi'} \frac{M_3}{q}\hat{\psi}\left(M_3\left(\frac{\xi}{m_1}-\frac{\xi'}{q}\right)\right)e\left(\frac{y\xi'}{q}\right).
+By non-stationary phase, $\hat{\psi}$ has rapid decay and thus we can truncate the summation in $l$ to \[
+    M_3\left(l-\frac{\xi}{m_1}-\frac{[m_1^{-1}x]}{d}\right) \lesssim 1 \implies  m_1\left(l-\frac{[m_1^{-1}x]}{d}\right)- \xi \lesssim \frac{M_1}{M_3}
 \]
-Therefore,
-\[
-\hat{g}(\xi) = \sum_{\substack{m_1\sim M_1\\m_2\sim M_2}}\sum_{\xi'}\frac{m_2}{m_1}\frac{M_3}{q}\hat{f}\left(\frac{m_2}{m_1}\xi\right)\hat\psi\left(M_3\left(\frac{\xi}{m_1}-\frac{\xi'}{q}\right)\right)e\left(\frac{-y_1m_1\xi'}{q}\right)e\left(\frac{-y_2m_2\xi'}{q}\right).
-\]
-By the principle of stationary phase, \[
-\hat\psi\left(M_3\left(\frac{\xi}{m_1}-\frac{\xi'}{q}\right)\right)\]
-is negligible except when  \[
-\left|M_3\left(\frac{\xi}{m_1}-\frac{\xi'}{q}\right)\right| \lesssim 1 \implies \left|\frac{q\xi}{m_1}-\xi'\right|\lesssim \frac{q}{M_3},\]
-so we can truncate the summation in $\xi'$ to be in this range.
+with negligible error.
+Thus we have \begin{align*}
+    |\hat{g}(\xi,x)|\lesssim 
+    \sum_{\substack{m_1\sim M_1\\(m_1,d)=1}} 
+    \sum_{l : m_1\left(l-\frac{[m_1^{-1}x]}{d}\right)- \xi \lesssim \frac{M_1}{M_3} } M_3\Bigg|
+    \sum_{\substack{m_2\sim M_2\\(m_2,d)=1}} \frac{m_2}{m_1}\hat{f}\left(\frac{m_2}{m_1}\xi, m_2 m_1^{-1}x\right) 
+    \Bigg|+ O(T^{-100})
+\end{align*}
+where the choice of the representative $[m_1^{-1}x]$ is arbitrary, as it only induces a shift in the the range of $l$ by an integer.
 
-We split \[
-\int |\hat{g}(\xi)|^2 d\xi = A+B+C, 
+Let $\eta>0$. We break \[
+\sum_{x\mod d} \int |\hat{g}(\xi,x)|^2 d\xi
 \]
-where
-\begin{align*}
-    A&\defeq \int_{|\xi|\leq T^\delta \frac{M_1}{M_3}}     |\hat{g}(\xi)|^2 d\xi\\
-    B&\defeq \int_{T^\delta \frac{M_1}{M_3}\leq|\xi|\leq T^2}     |\hat{g}(\xi)|^2 d\xi\\
-    C&\defeq \int_{T^2\leq |\xi|}     |\hat{g}(\xi)|^2 d\xi\\
-\end{align*}
-$C$ is negligible based on rapid decay in $\hat{f}(\xi m_2/m_1)$.
+into five pieces. \begin{enumerate}
+    \item [Ai] $\int_{|\xi|<\frac{M_1}{M_3}T^\eta} |\hat{g}(\xi,0)|^2 d\xi$
+    \item [Aii]$\sum_{x\neq 0 \mod d}\int_{|\xi|<\frac{M_1}{M_3}T^\eta} |\hat{g}(\xi,x)|^2 d\xi$
+    \item [Bi] $\int_{\frac{M_1}{M_3}\leq|\xi|<T^2} |\hat{g}(\xi,0)|^2 d\xi$
+    \item [Bii]$\sum_{x\neq 0 \mod d}\int_{\frac{M_1}{M_3}\leq|\xi|<T^2} |\hat{g}(\xi,x)|^2 d\xi$
+    \item [C]  $\sum_{x \mod d}\int_{|\xi|\geq T^2} |\hat{g}(\xi,x)|^2 d\xi$
+\end{enumerate}
+By the decay in $\hat{f}$ and $T>d^{1+\epsilon}, M^{1+\epsilon}$, C is negligible. 
+
+\begin{lemma}[Ai bound]\label{affinemainterm}
+    We have \[
+    \rm{Ai} \lesssim T^{3\eta}M^6\left(\sum_y \int f(u,y) du\right)^2
+    \]
+\end{lemma}
+\begin{proof}
+    We have
+    \[
+        |\hat{g}(\xi,0)|\lesssim 
+        \sum_{\substack{m_1\sim M_1\\(m_1,d)=1}} 
+        \sum_{l : m_1l- \xi \lesssim \frac{M_1}{M_3} }M_3\Bigg|
+        \sum_{\substack{m_2\sim M_2\\(m_2,d)=1}} \frac{m_2}{m_1}\hat{f}\left(\frac{m_2}{m_1}\xi, 0\right) 
+        \Bigg|+ O(T^{-100}),
+    \]
+    so the possible non-zero contributions of $l$ satisfy $l\lesssim T^\eta/M_3$. Therefore, for $\xi\leq T^\eta M_1/M_3$\begin{align*}
+    |\hat{g}(\xi,0)|^2 \lesssim& \Bigg|\Big(M_3+T^\eta\Big)\sum_{\substack{m_1\sim M_1\\(m_1,d)=1}} 
+    \Big|
+        \sum_{\substack{m_2\sim M_2\\(m_2,d)=1}} \frac{m_2}{m_1}\hat{f}\left(\frac{m_2}{m_1}\xi, 0\right) 
+        \Big| \Bigg|^2\\
+        \stackon{CS}{\ll}& M_3^2T^{2\eta} M_1\sum_{\substack{m_1\sim M_1\\(m_1,d)=1}} 
+        \Big|\sum_{\substack{m_2\sim M_2\\(m_2,d)=1}} \frac{m_2}{m_1}\hat{f}\left(\frac{m_2}{m_1}\xi, 0\right) \Big|^2\\
+        \lesssim & T^{2\eta}M_3^2M_2^4 |\sup_{\xi'} \hat{f}(\xi',0)|^2.
+    \end{align*}
+    We have $|\hat{f}(\xi',0)|\leq \sum_{y\mod d}\int |f(\xi,y)|$,
+    so integrating over the range $\xi\leq M_1/M_3 T^\eta$ and taking $M_1,M_2,M_3\leq M$ gives the result.
+\end{proof}
+
+
+\begin{lemma}[Aii, Bi, Bii bound]\label{affineweirdterm}
+    We have
+    \[
+    \rm{Aii}+\rm{Bi}+\rm{Bii}\lesssim dT^{2\eta}\left(M^4 \sum_{y\mod d}\int f(u,y)^2 du\right)^{1/2} (J(f))^{1/2}
+    \]
+\end{lemma}
+\begin{proof}
+    As in Ai bound, the non-zero contribution from $l$ occurs only if \[
+        \Bigg|m_1\left(l-\frac{[m_1^{-1}x]}{d}\right)- \xi \lesssim \frac{M_1}{M_3} \Bigg|\implies
+        \Bigg|m_1\left(dl-[m_1^{-1}]x\right) -d\xi\Bigg|\lesssim\frac{dM_1T^\eta}{M_3}
+    \]
+    Let $s=m_1\left(dl-[m_1^{-1}]x\right) $, so that $s$ must be an integer within $\lesssim{dM_1T^\eta}/{M_3}$ of $d\xi$. Moreover, $s\equiv -x \mod d$, so there are $\lesssim (1+M_1T^\eta/M_3)$ candidates of $s$. Since $\xi\geq T^\eta M_1/M_3$ or $x\neq 0$, we also have $s\neq 0$. Thus noticing the choice of $m_1$ and $s$ fixes the value of $l$ we have by the divisor bound \[
+    \lesssim 1+\frac{M_1}{M_3}
+    \]
+    pairs of $(m_1,l)$ that satisfy these conditions. So in this range 
+    \begin{align*}
+        &|\hat{g}(\xi,x)|^2 \\
+        \stackon{CS}{\ll}&T^\eta(M_1M_3+M_3^2)
+        \sum_{\substack{m_1\sim M_1\\(m_1,d)=1}}  \sum_{l : m_1\left(l-\frac{[m_1^{-1}x]}{d}\right)- \xi \lesssim \frac{M_1}{M_3} } 
+        \Big|
+            \sum_{\substack{m_2\sim M_2\\(m_2,d)=1}} \frac{m_2}{m_1}\hat{f}\left(\frac{m_2}{m_1}\xi, m_2m_1^{-1}x\right) 
+            \Big|^2,\\
+    \end{align*}
+    giving 
+    \begin{align*}
+        \rm{Aii}+{Bi}+{Bii}\leq&\sum_{x \mod d}\int_{|\xi|\leq T^2} (1-\mathbb{I}_{x=0}*\mathbb{I}_{\xi\leq M_1T^{\eta}/M_3})|\hat{g}(\xi,x)|^2 d\xi\\
+        {\lesssim}&T^\eta(M_1M_3+M_3^2)
+        \sum_{\substack{m_1\sim M_1\\(m_1,d)=1}} \sum_{x \mod d} \int_{|\xi|<\frac{M_1}{M_3}T^\eta}\sum_{l : m_1\left(l-\frac{[m_1^{-1}x]}{d}\right)- \xi \lesssim \frac{M_1}{M_3} } 
+        \Big|
+            \sum_{\substack{m_2\sim M_2\\(m_2,d)=1}} \frac{m_2}{m_1}\hat{f}\left(\frac{m_2}{m_1}\xi, m_2m_1^{-1}x\right) 
+            \Big|^2\\
+            \leq&T^\eta(M_1M_3+M_3^2)
+            \sum_{\substack{m_1\sim M_1\\(m_1,d)=1}} \sum_{x \mod d} \sum_{l} 
+            \int\displaylimits_{\Big|m_1\left(l-\frac{[m_1^{-1}x]}{d}\right)- \xi \Big|\lesssim \frac{M_1}{M_3}}
+            \Big|
+                \sum_{\substack{m_2\sim M_2\\(m_2,d)=1}} \frac{m_2}{m_1}\hat{f}\left(\frac{m_2}{m_1}\xi, m_2m_1^{-1}x\right) 
+                \Big|^2.\\
+    \end{align*}
+    We now remove the dependence on $m_1$. First $\tilde{x} \equiv x m_1^{-1}$, so that the summation condition in $x$ and $l$ becomes \[
+        \sum_{\tilde{x} \mod d} \sum_{l : m_1\left(l-\frac{\tilde{x}}{d}\right)- \xi \lesssim \frac{M_1}{M_3} }.
+    \]
+    Moreover, for each $m_1$, we now make the change of variables \[
+    \xi = m_1\Big(l-\frac{\tilde{x}}{d}\Big)+\tau\frac{m_1}{M_3}
+    \]
+    so by slightly extending the domain of integration we can find uniformly $|\tau|\lesssim 1$ with Jacobian $\asymp M_1/M_3$.
+    Combined we get
+    \begin{align*}
+        \rm{Aii}+{Bi}+{Bii} \lesssim &
+        \frac{M_1}{M_3}(M_3^2+M_3M_1)T^{\eta}
+        \sum_{\substack{m_1\sim M_1\\(m_1,d)=1}}\sum_{\tilde{x} \mod d} \sum_{l  } 
+        \int_{|\tau|\lesssim 1}
+        \Big|
+            \sum_{\substack{m_2\sim M_2\\(m_2,d)=1}} \frac{m_2}{m_1}\hat{f}\left(m_2\Big(l-\frac{\tilde{x}}{d}\Big)+\frac{m_2}{M_3}\tau, m_2\tilde{x}\right) 
+            \Big|^2\\
+            \lesssim (M_1+M_3)T^{\eta} \Sigma_1,
+    \end{align*}
+    where\[
+    \Sigma_1 \defeq \sum_{\tilde{x} \mod d} \sum_{l  } 
+    \int_{|\tau|\lesssim 1}
+    \Big|
+        \sum_{\substack{m_2\sim M_2\\(m_2,d)=1}} {m_2}\hat{f}\left(m_2\Big(l-\frac{\tilde{x}}{d}\Big)+\frac{m_2}{M_3}\tau, m_2\tilde{x}\right) 
+        \Big|^2.
+    \]
+    Since $\hat{f}(\xi,x)$ is negligble unless $|\xi|\lesssim T$, we can introduce a bump function $\psi_2(x)$ supported on $|x|\lesssim 1$ to get \[
+        \Sigma_1 = \sum_{\tilde{x} \mod d} \sum_{l  } \psi_2\left(\frac{M_2(l-\tilde{x}/d)}{T}\right)
+        \int_{|\tau|\lesssim 1}
+        \Big|
+            \sum_{\substack{m_2\sim M_2\\(m_2,d)=1}} {m_2}\hat{f}\left(m_2\Big(l-\frac{\tilde{x}}{d}\Big)+\frac{m_2}{M_3}\tau, m_2\tilde{x}\right) 
+            \Big|^2+O(T^{-100}).
+    \]
+    Expanding the square, we have \begin{align*}
+        \Sigma_1= & \sum_{\tilde{x} \mod d} \sum_{l  }  \psi_2\left(\frac{M_2(l-\tilde{x}/d)}{T}\right)
+        \int_{|\tau|\lesssim 1}
+        \int\int \sum_{\substack{m_2,m_2'\sim M_2\\(m_2,d)=(m_2',d)=1}} \sum_{y,y'\mod d}
+         {m_2} m_2' f(u,y)f(u',y')  \\ & \quad \quad \times e\left(\frac{\tilde{x}(m_2'y'-m_2y)}{d}\right) 
+         e\left((m_2'u'-m_2u)\Big(l-\frac{\tilde{x}}{d}\Big)\right) e\left((m_2'u'-m_2u)\Big(\frac{\tau}{M_3}\Big)\right) du du' d\tau\\
+        &= \sum_{\tilde{x} \mod d} \int\int  \sum_{y,y'\mod d} \sum_{\substack{m_2,m_2'\sim M_2\\(m_2,d)=(m_2',d)=1}} {m_2} m_2' f(u,y)f(u',y') 
+        e\left(\frac{\tilde{x}(m_2'y'-m_2y)}{d}\right) 
+        \Sigma_{2}\Sigma_3 du du'
+           .
+    \end{align*}
+    where \begin{align*}
+        \Sigma_2\defeq &\int_{|\tau|\lesssim 1}  e\left((m_2'u'-m_2u)\Big(\frac{\tau}{M_3}\Big)\right)  d\tau\\
+        \Sigma_3\defeq &\sum_{l}  \psi_2\left(\frac{M_2(l-\tilde{x}/d)}{T}\right)e\left((m_2'u'-m_2u)l\right)e\left((m_2u-m_2'u')\Big(\frac{\tilde{x}}{d}\Big)\right)
+    \end{align*}
+   On $\Sigma_3$, we apply Poisson summation to get \begin{align*}
+        \Sigma_3 \quad \stackon{Poisson}{=}& \quad  \frac{T}{M_2}\sum_k \hat{\psi}_2 \left(\frac{k+m_2-m_2'u'}{M_2/T}\right) e\left(-\frac{k\tilde{x}}{d}\right)\\
+        =& \frac{T}{M_2}\sum_{\substack{k\\
+        |k+m_2u-m_2'u'|\lesssim M_2/T}} \hat{\psi}_2 \left(\frac{k+m_2u-m_2'u'}{M_2/T}\right)+O(T^{-100}),
+    \end{align*}
+    where we truncated in the last step by the rapid decay of $\hat\psi_2$.
+    We can directly compute the remaining dependecies on $\tilde{x}$ \[
+        \sum_{\tilde{x} \mod d} e\left(\frac{\tilde{x}(m_2'y'-m_2y)}{d}\right)e\left(-\frac{k\tilde{x}}{d}\right)=d \mathbb{I}_{d|(m_2'y'-m_2y-k)}.
+    \]
+    Finally, we trivially bound \[
+        |\Sigma_2|\lesssim 1.
+     \]
+     This gives us\begin{align*}
+        \Sigma_1\lesssim
+        d \int  {M_2}T \sum_{y\mod d}\sum_{\substack{m_2,m_2'\sim M_2\\(m_2,d)=(m_2',d)=1
+        }} \sum_{\substack{k}}  f(u,y)\sum_{\substack{y'\mod d\\d|(m_2'y'-m_2y-k)}} \int_{\substack{
+        |k+m_2u-m_2'u'|\lesssim M_2/T}} f(u',y')  du' du.
+     \end{align*}
+    The condition $d|(m_2'y'-m_2y-k)$ forces $y'= (m_2y+k)m_2'^{-1}$.
+    For the second condition, we notice that $u'$ is in a $\lesssim 1/T$ neighborhood of $(m_2u+k)/m_2'$, so let $\phi(x)$ be a bump function supported on $|x|\lesssim 1$ \[
+    \tilde{f}(u,y) \defeq \int T \phi(T(u'-u)) f(u',y) du'
+    \]
+    if needed, we extend the support of $\phi$ by a constant such that 
+    \begin{align*}
+        \Sigma_1\lesssim
+        d \int  {M_2} \sum_{y\mod d}\sum_{\substack{m_2,m_2'\sim M_2\\(m_2,d)=(m_2',d)=1
+        }} \sum_{\substack{k}}  f(u,y) \tilde{f}\left(\frac{m_2u+k}{m_2'},(m_2y+k)m_2'^{-1}\right)  du.
+     \end{align*}
+     Thus putting this bound for $\Sigma_1$ we obtain
+     \begin{align*}
+        \rm{Aii}+{Bi}+{Bii}\lesssim& (M_1+M_3)T^{\eta} d \int  {M_2} \sum_{y\mod d}\sum_{\substack{m_2,m_2'\sim M_2\\(m_2,d)=(m_2',d)=1
+        }} \sum_{\substack{k}}  f(u,y) \tilde{f}\left(\frac{m_2y+k}{m_2'},(m_2y+k)m_2'^{-1}\right)  du\\
+        \stackon{CS}{\ll}& M^2T^{\eta}d \Bigg(\sum_{y\mod d}\int f(u,y)^2 du \Bigg) ^{1/2}
+        \Bigg(\sum_{y\mod d} \int \Big(\sum_{\substack{m_2,m_2'\sim M_2\\(m_2,d)=(m_2',d)=1
+        }} \sum_{\substack{k}} \tilde{f}\left(\frac{m_2u+k}{m_2'},(m_2y+k)m_2'^{-1}\right)\Big)^2 du\Bigg) ^{1/2}
+    \end{align*}
+    Finally, noticing that $\tilde{f}$ has support on $y\asymp 1$ we can restrict the summation in $k$ to be $|k|\lesssim M_2$, so that 
+    \begin{align*}
+        \rm{Aii}+{Bi}+{Bii}\lesssim M^2T^{\eta}d \Bigg(\sum_{y\mod d}\int f(u,y)^2 du \Bigg) ^{1/2}
+        \Bigg(J(\tilde{f})\Bigg) ^{1/2}.
+    \end{align*}
+\end{proof}
+\begin{proof}[Proof of Lemma \ref{iterative}]
+    Recall that\[
+J(f)\leq \frac{1}{d}\sum_{x\mod d} \int |\hat{g}(\xi,x)|^2 d\xi.
+\]
+By the decay in $\hat{f}$, the range $|\xi|\geq T^2$ is negligble. The remaining parts are bounded by lemmas \ref{affinemainterm} and \ref{affineweirdterm} to get \[
+J(f)\lesssim \frac{1}{d}T^{3\eta}M^6\left(\sum_y \int f(u,y) du\right)^2+ M^2T^{\eta} \Bigg(\sum_{y\mod d}\int f(u,y)^2 du \Bigg) ^{1/2}
+\Bigg(J(\tilde{f})\Bigg) ^{1/2}.
+\]
+Letting $\eta \to 0$ sufficiently slowly gives the result.
+\end{proof}

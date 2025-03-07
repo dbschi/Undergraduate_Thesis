@@ -1,0 +1,172 @@
+\section{Refinement of $S_3$}
+
+\begin{proposition}[Refinement of $S_3$ bound] \label{s3refined}
+    We have
+    \[
+S_3 \lesssim \frac{N^2d}{M}(|\mathcal{S}|)^{1/2}(M^3|\mathcal{S}|/d^3 + M^2E(\mathcal{S})^{1/2}/d^2)\lesssim (qT)^{2}|\mathcal{S}|^{3/2}+N(qT)|\mathcal{S}|^{1/2}E(\mathcal{S})^{1/2}.
+\]
+\end{proposition}
+We repeat the arguments in \ref{s_3chapter} until proposition \ref{dyadics_3}.
+
+Recall that at this step, we expressed $v_2$ as a small neighborhood around $v_1$ by the condition \[
+|v_1m_1+v_2m_2+m_3|\lesssim \frac{q}{N}.
+\] 
+\textcolor{red}{We assume that $(m_1,q_0)=(m_2,q_0)=(m_3,q_0)$, which is a weaker assumption than $(m_1,q)=(m_2,q)=(m_3,q)$ is stronger.}
+Let $d=\gcd(m_2,q_0)$. Thus we (with the assumption) can set \[
+    k_1\defeq \frac{m_1}{d},k_2\defeq \frac{m_2}{d},k_3\defeq \frac{m_3}{d},
+\]
+where $k_1,k_2,k_3$ are coprime to $q_0/d$.
+We can repeat the same argument for the condition \[
+y_1m_1+y_2m_2+m_3 \equiv 0 \mod q_0 \implies y_1k_1+y_2k_2+k_3 \equiv 0 \mod \frac{q_0}{d}
+\implies y_2\equiv \frac{y_1k_1+k_3}{-k_2} \mod \frac{q_0}{d}.
+\]
+This means for fixed $y_1$ the values $y_2$ can take are \[
+y_2 \equiv \left[\frac{y_1k_1+k_3}{-k_2}\right]_{q_0/d} + \alpha \frac{q_0}{d} \mod q,
+\]
+
+$\alpha=0,1,\ldots, (qd/q_0)-1$. We are now ready to state the new definition for the smoothed function $\tilde{R}$.
+
+\begin{proposition}
+    Let $d=(m_1,q_0)=(m_2,q_0)=(m_3,q_0)$, and
+    \[
+        \tilde{R}^{(q_0,d)}_M(u,y) \defeq \tilde{R}^{(d)}_M(u,y) \defeq  \Bigg(\sum_{l=0}^{(qd/q_0)-1} \frac{q_0}{qd} \Big|\tilde{R}_M\Big(\left[y\right]_{q_0/d} + l \frac{q_0}{d}\Big)\Big|^2\Bigg)^{1/2}.
+    \]
+    Then the following hold:\begin{enumerate}
+        \item $\tilde{R}^{(d)}_M$ is $q_0/d$-periodic in the second argument.
+        \item $\sum_{a\mod q_0/d} \int_{u\asymp 1 }|\tilde{R}^{(d)}_M(u,a)|^2 du\lesssim\frac{q_0}{d}|\mathcal{S}|$.
+        \item $\sum_{a\mod q_0/d} \int_{u\asymp 1 }|\tilde{R}^{(d)}_M(u,a)|^4 du\lesssim\frac{q_0}{d}E(\mathcal{S})$.
+    \end{enumerate}
+    Moreover, there is a choice of $d|q_0, q_0|q$, $0<M_1\leq M\lesssim qT/N$ such that  \[
+        S_3\lesssim \frac{N^2d}{Mq}
+        \sum_{\substack{|k_1|\sim M_1/d,\\|k_2|,|k_3|\sim M/d\\
+        (k_1,q_0/d)=(k_2,q_0/d)\\=(k_3,q_0/d)=1}} \sum_{y_1\in \mathbb{Z}/q^\times} \int_{v_1\asymp 1}
+        \tilde{R}_M^{(d)}\Big(\frac{k_1v_1+k_3}{-k_2v_1},\frac{k_1y_1+k_3}{-k_2y_1}\Big)\tilde{R}_M^{(d)}\Big(\frac{k_1v_1+k_3}{-k_2},\frac{k_1y_1+k_3}{-k_2}\Big) |R(v_1,y_1)|dv_1.
+    \]
+\end{proposition}\ 
+\\ \ 
+\begin{proof}
+    The periodicity statement is evident from the construction. 
+
+    The argument for the second and fourth moments are the same. We use the fourth moment as an example. We unfold \begin{align*}
+        \sum_{a\mod q_0/d} \int_{u\asymp 1 }|\tilde{R}^{(d)}_M(u,a)|^4 du=&
+        \sum_{a\mod q_0/d} \int_{u\asymp 1 }
+        \Bigg(\sum_{l=0}^{(qd/q_0)-1} \frac{q_0}{qd} \Big|\tilde{R}_M\Big(u,a + l \frac{q_0}{d}\Big)\Big|^2\Bigg)^{2}\\
+        \stackon{CS}{\leq}&\sum_{a\mod q_0/d} \int_{u\asymp 1 }
+        \sum_{l=0}^{(qd/q_0)-1} \frac{q_0}{qd} \Big|\tilde{R}_M\Big(u,a + l \frac{q_0}{d}\Big)\Big|^4 du\\
+        =& \frac{q_0}{qd} \sum_{y\mod q}\int_{u\asymp 1}\Big|\tilde{R}_M\Big(u,a + l \frac{q_0}{d}\Big)\Big|^4 du\\
+        \lesssim& \frac{q_0}{d}E(\mathcal{S})
+    \end{align*}
+    by Proposition \ref{fourthmoment_smooth}.
+
+
+    Finally, from Proposition \ref{dyadics_3}, we choose $q_0|q$, $0<M_1\leq M\lesssim qT/N$ such that
+    \[
+        S_3\lesssim \frac{N^2q_0}{Mq^2}\sum_{|m_1|\sim M_1,|m_2|,|m_3|\sim M}\sum_{\substack{y_1,y_2 \in\mathbb{Z}/q\mathbb{Z} \\ y_1m_1+y_2m_2+m_3\equiv 0 \mod q_0}}\tilde{I}_{m,q_0}+O(T^{-100}).
+    \]
+    \textcolor{red}{Assuming that we can restrict the summation in $m_i$ to have the same gcd's with $q_0$}, we split the summation in $m_1,m_2,m_3$ according to $(m_2,q_0)=d$. By the divisor bound, we have for a choice of $d|q_0$,
+     \[
+        S_3\lesssim \frac{N^2q_0}{Mq^2}\sum_{\substack{|m_1|\sim M_1,|m_2|,|m_3|\sim M\\
+        (m_1,q_0)=(m_2,q_0)=(m_3,q_0)=d}}\sum_{\substack{y_1,y_2 \in\mathbb{Z}/q\mathbb{Z} \\ y_1m_1+y_2m_2+m_3\equiv 0 \mod q_0/d}}\tilde{I}_{m,q_0}+O(T^{-100}).
+    \]
+    
+    Set $k_i=m_i/d$, so that the summation in $m$ becomes \[
+        \sum_{\substack{|k_1|\sim M_1/d,|k_2|,|k_3|\sim M/d\\
+        (k_1,q_0/d)=(k_2,q_0/d)=(k_3,q_0/d)=1}}.
+    \]We notate $I_{m,q_0}=I_{dk,q_0}$.
+    Recall that \[
+        \tilde{I}_{m,q_0}\defeq \ \int_{v_1\asymp 1} \left| \tilde{R}_M\left(\frac{m_1v_1+m_3}{-m_2v_1},y_2,y_1\right)
+    \tilde{R}_M\left(\frac{m_1v_1+m_3}{-m_2},y_2\right)R\left(v_1,y_1\right)\right| dv_1.\]
+    We now rewrite the summation in $y$ as \begin{align*}
+        \sum_{\substack{y_1,y_2 \in\mathbb{Z}/q\mathbb{Z} \\ y_1k_1+y_2k_2+m_3\equiv 0 \mod q_0/d}}\tilde{I}_{d k ,q_0} =& \sum_{y_1\mod q} \sum_{\substack{y_2 \mod q,\\y_2\equiv \frac{y_1m_1+m_3}{-k2} \mod q_0/d}
+        } \tilde{I}_{d k ,q_0}\\
+        =&\sum_{y_1\mod q} \sum_{\substack{y_2 \mod q,\\y_2\equiv \frac{y_1m_1+m_3}{-k2} \mod q_0/d} }\int_{v_1\asymp 1} \Bigg| \tilde{R}_M\left(\frac{dk_1v_1+dk_3}{-dk_2v_1},y_2,y_1\right)\\
+        & \quad \quad
+        \tilde{R}_M\left(\frac{dk_1v_1+dk_3}{-dk_2},y_2\right)R\left(v_1,y_1\right)\Bigg| dv_1
+    \end{align*}
+    Keeping in mind that $R$ only has support in $y_1,y_2$ coprime to $q$, we apply Cauchy-schwarz to the summation in $y_2$ to get \begin{align*}
+        &\sum_{\substack{y_2 \mod q,\\y_2\equiv \frac{y_1m_1+m_3}{-k2} \mod q_0/d} }\Bigg|\tilde{R}_M\left(\frac{dk_1v_1+dk_3}{-dk_2v_1},[y_2y_1^{-1}]_{q}\right)\tilde{R}_M\left(\frac{dk_1v_1+dk_3}{-dk_2},[y_2]_q\right)\Bigg|\\
+        \leq &\Bigg(\sum_{\substack{y_2 \mod q,\\y_2\equiv \frac{y_1m_1+m_3}{-k2} \mod q_0/d} }\Big|\tilde{R}_M\left(\frac{k_1v_1+k_3}{-k_2v_1},[y_2y_1^{-1}]_{q}\right)\Big|^2\Bigg)^{1/2}
+       \Bigg( \sum_{\substack{y_2 \mod q,\\y_2\equiv \frac{y_1m_1+m_3}{-k2} \mod q_0/d} }
+        \Big|\tilde{R}_M\left(\frac{k_1v_1+k_3}{-k_2},[y_2]_q\right)\Big|^2 \Bigg)^{1/2}\\
+        =&\frac{qd}{q_0}\tilde{R}_M^{(d)}\Big(\frac{k_1v_1+k_3}{-k_2v_1},\frac{k_1y_1+k_3}{-k_2y_1}\Big)\tilde{R}_M^{(d)}\Big(\frac{k_1v_1+k_3}{-k_2},\frac{k_1y_1+k_3}{-k_2}\Big),
+    \end{align*} 
+    Combined, we have \[
+        S_3\lesssim \frac{N^2d}{Mq}
+        \sum_{\substack{|k_1|\sim M_1/d,\\|k_2|,|k_3|\sim M/d\\
+        (k_1,q_0/d)=(k_2,q_0/d)\\=(k_3,q_0/d)=1}} \sum_{y_1\in \mathbb{Z}/q^\times} \int_{v_1\asymp 1}
+        \tilde{R}_M^{(d)}\Big(\frac{k_1v_1+k_3}{-k_2v_1},\frac{k_1y_1+k_3}{-k_2y_1}\Big)\tilde{R}_M^{(d)}\Big(\frac{k_1v_1+k_3}{-k_2},\frac{k_1y_1+k_3}{-k_2}\Big) |R(v_1,y_1)|dv_1.
+    \]
+\end{proof}
+
+
+\begin{proof}[Proof of Proposition \ref{s3refined}]
+We repeatedly apply Cauchy- Schwarz to \begin{align*}
+    S_3\lesssim& \frac{N^2d}{Mq}
+    \sum_{\substack{|k_1|\sim M_1/d,\\|k_2|,|k_3|\sim M/d\\
+    (k_1,q_0/d)=(k_2,q_0/d)\\=(k_3,q_0/d)=1}} \sum_{y_1\in \mathbb{Z}/q^\times} \int_{v_1\asymp 1}
+    \tilde{R}_M^{(d)}\Big(\frac{k_1v_1+k_3}{-k_2v_1},\frac{k_1y_1+k_3}{-k_2y_1}\Big)\tilde{R}_M^{(d)}\Big(\frac{k_1v_1+k_3}{-k_2},\frac{k_1y_1+k_3}{-k_2}\Big) |R(v_1,y_1)|dv_1\\
+    \stackon{CS}{\leq}&
+    \frac{N^2d}{Mq} \Big(\sum_{y_1\in \mathbb{Z}/q^\times} \int_{v_1\asymp 1}|R(v_1,y_1)|^2 dv_1\Big)^{1/2}\\
+    & \quad \quad
+    \Bigg(
+    \sum_{y_1\in \mathbb{Z}/q^\times} \int_{v_1\asymp 1} \Big[
+    \sum_{\substack{|k_1|\sim M_1/d,\\|k_2|,|k_3|\sim M/d\\
+    (k_1,q_0/d)=(k_2,q_0/d)\\=(k_3,q_0/d)=1}}
+    \tilde{R}_M^{(d)}\Big(\frac{k_1v_1+k_3}{-k_2v_1},\frac{k_1y_1+k_3}{-k_2y_1}\Big)\tilde{R}_M^{(d)}\Big(\frac{k_1v_1+k_3}{-k_2},\frac{k_1y_1+k_3}{-k_2}\Big)\Big] ^2 dv_1\Bigg)^{1/2}.\\
+\end{align*}
+The second moment gives a factor of \[
+    \Big(\sum_{y_1\in \mathbb{Z}/q^\times} \int_{v_1\asymp 1}|R(v_1,y_1)|^2 dv_1\Big)^{1/2} \lesssim (q|\mathcal{S}|)^{1/2}.
+\]
+And we also have \begin{align*}
+    &\sum_{y_1\in \mathbb{Z}/q^\times} \int_{v_1\asymp 1} \Big[
+    \sum_{\substack{|k_1|\sim M_1/d,\\|k_2|,|k_3|\sim M/d\\
+    (k_1,q_0/d)=(k_2,q_0/d)\\=(k_3,q_0/d)=1}}
+    \tilde{R}_M^{(d)}\Big(\frac{k_1v_1+k_3}{-k_2v_1},\frac{k_1y_1+k_3}{-k_2y_1}\Big)\tilde{R}_M^{(d)}\Big(\frac{k_1v_1+k_3}{-k_2},\frac{k_1y_1+k_3}{-k_2}\Big)\Big] ^2 dv_1\\
+    \stackon{CS}{\leq} &
+    \sum_{y_1\in \mathbb{Z}/q^\times} \int_{v_1\asymp 1} 
+    \Big[\sum_{\substack{|k_1|\sim M_1/d,\\|k_2|,|k_3|\sim M/d\\
+        (k_1,q_0/d)=(k_2,q_0/d)\\=(k_3,q_0/d)=1}}
+        \tilde{R}_M^{(d)}\Big(\frac{k_1v_1+k_3}{-k_2v_1},\frac{k_1y_1+k_3}{-k_2y_1}\Big)^2\Big]
+        \Big[\sum_{\substack{|k_1|\sim M_1/d,\\|k_2|,|k_3|\sim M/d\\
+        (k_1,q_0/d)=(k_2,q_0/d)\\=(k_3,q_0/d)=1}}
+        \tilde{R}_M^{(d)}\Big(\frac{k_1v_1+k_3}{-k_2},\frac{k_1y_1+k_3}{-k_2}\Big)^2\Big]dv_1\\
+        \stackon{CS}{\leq}& (AB)^{1/2},
+\end{align*} 
+where\begin{align*}
+    A\defeq& \sum_{y_1\in \mathbb{Z}/q^\times} \int_{v_1\asymp 1} 
+    \Big[\sum_{\substack{|k_1|\sim M_1/d,\\|k_2|,|k_3|\sim M/d\\
+        (k_1,q_0/d)=(k_2,q_0/d)\\=(k_3,q_0/d)=1}}
+        \tilde{R}_M^{(d)}\Big(\frac{k_1v_1+k_3}{-k_2v_1},\frac{k_1y_1+k_3}{-k_2y_1}\Big)^2\Big]^2 dv_1,\\
+    B\defeq&\sum_{y_1\in \mathbb{Z}/q^\times} \int_{v_1\asymp 1} 
+    \Big[\sum_{\substack{|k_1|\sim M_1/d,\\|k_2|,|k_3|\sim M/d\\
+        (k_1,q_0/d)=(k_2,q_0/d)\\=(k_3,q_0/d)=1}}
+        \tilde{R}_M^{(d)}\Big(\frac{k_1v_1+k_3}{-k_2},\frac{k_1y_1+k_3}{-k_2}\Big)^2\Big]^2 dv_1.
+\end{align*}
+(Confirm that $\tilde{R}$ has the desired fourier decay)
+For $A$, we take the substitution $u=1/v_1$ with Jacobian $\asymp 1$ and $a\equiv y^{-1} \mod q$, so that it descends to $a\equiv y^{-1}\mod {q_0}/d$ to get \begin{align*}
+A\ll & \sum_{a\in \mathbb{Z}/q^\times} \int_{u\asymp 1} 
+\Big[\sum_{\substack{|k_1|\sim M_1/d,\\|k_2|,|k_3|\sim M/d\\
+    (k_1,q_0/d)=(k_2,q_0/d)\\=(k_3,q_0/d)=1}}
+    \tilde{R}_M^{(d)}\Big(\frac{k_1+k_3u}{-k_2u},\frac{k_1+k_3a}{-k_2}\Big)^2\Big]^2 dv_1\\
+    \leq& \frac{qd}{q_0}\sum_{\tilde{a}\in \mathbb{Z}/{(q_0/d)}^\times} \int_{u\asymp 1} 
+    \Big[\sum_{\substack{|k_1|\sim M_1/d,\\|k_2|,|k_3|\sim M/d\\
+        (k_1,q_0/d)=(k_2,q_0/d)\\=(k_3,q_0/d)=1}}
+        \tilde{R}_M^{(d)}\Big(\frac{k_1+k_3u}{-k_2u},\frac{k_1+k_3a}{-k_2}\Big)^2\Big]^2 dv_1
+\end{align*}
+by the $q_0/d$ periodicity of $\tilde{R}^{(d)}_M$ in the second argument.
+We can now apply proposition \ref{affinetrans} to bound this to be \[
+    A\lesssim \frac{qd}{q_0} \left(\frac{d}{q_0}\Big(\frac{M}{d}\Big)^6\Big(\frac{q_0}{d}|\mathcal{S}|\Big)^2 +
+    \Big(\frac{M}{d}\Big)^4\frac{q_0}{d}E(\mathcal{S})
+    \right) \lesssim qM^6|\mathcal{S}|^2/d^6 + qM^4E(\mathcal{S})/d^4.
+\]
+Similarly, descending each $y_1\in\mathbb{Z}/q^{\times}$ into $\tilde{y_1} \in \mathbb{Z}/(q_0/d)^{\times}$ gives \[
+    B\lesssim  qM^6|\mathcal{S}|^2/d^6 + qM^4E(\mathcal{S})/d^4
+\]
+by proposition \ref{affinetrans}.
+Substituting this back into \[
+S_3\lesssim \frac{N^2d}{Mq}(q|\mathcal{S}|)^{1/2}(AB)^{1/4}
+\]
+gives \[
+S_3 \lesssim \frac{N^2d}{M}(|\mathcal{S}|)^{1/2}(M^3|\mathcal{S}|/d^3 + M^2E(\mathcal{S})^{1/2}/d^2)\lesssim (qT)^{2}|\mathcal{S}|^{3/2}+N(qT)|\mathcal{S}|^{1/2}E(\mathcal{S})^{1/2}.
+\]
+\end{proof}

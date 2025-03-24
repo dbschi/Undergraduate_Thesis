@@ -219,7 +219,11 @@ We are now ready to state the new definition for the smoothed function $\tilde{R
         \textrm{all coprime to $q_0/d$}}}
         \tilde{R}_M^{(d)}\Big(\frac{\omega_1\tilde{d}_1\tilde{k}_1+\tilde{k}_3\tilde{u}}{-\omega_2\tilde{d}_2\tilde{k}_2},\frac{\omega_1\tilde{d}_1\tilde{k}_1+\tilde{k}_3 \tilde{x}}{-\tilde{k}_2}\Big)^2\Bigg)^2 d\tilde{u}.
     \end{align*}
-    Applying corollary \ref{cor: affine} to the function $f(u,x)\defeq R_M^{(d)}(u/(-\tilde{d}_2\omega_2),x)^2$, and setting $L\defeq\omega_2\tilde{d}_2$ gives a bound, and we have bounds that $\tilde{M} = \max(ML/(d_2\omega_2) ,M_1/(d_1\omega_1),M_3/(d_3\omega_3))\leq M/d $
+    We now apply corollary \ref{cor: affine} to the function $f(u,x)\defeq R_M^{(d)}(u/(-\tilde{d}_2\omega_2),x)^2$, and setting $L\defeq\omega_2\tilde{d}_2$ gives a bound, and we have bounds that $\tilde{M} = \max(ML/(d_2\omega_2) ,M_1/(d_1\omega_1),M_3/(d_3\omega_3))\leq M/d $. First we confirm that $f$ has the desired Fourier decay.
+    Recall that $R_M^{(d)}$ is obtained by folding and averaging $R_M$ in the second argument, so it actually suffices to check the Fourier decay in $R_M$.
+    Since $R_M^2$ is obtained from a convolution with a bump function of length $NM/q\lesssim T$, its Fourier transform in the first argument is rapidly decreasing when
+    $|\xi|\gtrsim T$. So that the scaling of $1/L$ means that $f$ has Fourier transform rapidly decreasing when $|\xi|\gtrsim TL$. Since $L=\tilde{d}_2\omega_2\leq qT/(Nd)$, we 
+    have the desired Fourier transform decay of $f$ when $|\xi|\gtrsim (qT)^2$.
     \begin{align*}
         S_3^{(2,1)}\lesssim &  \frac{qd}{q_0\omega_3}\left[\frac{M^6d}{d^6L^4q_0}\Big(\sum_{y \mod q_0/d } \int f(u,y) du\Big)^2  + \frac{M^4}{d^4L^2}\sum_{y\mod q_0/d} \int f(u,y)^2 du
         \right]\\
@@ -227,7 +231,7 @@ We are now ready to state the new definition for the smoothed function $\tilde{R
         \right]\\
         \lesssim & \frac{qd}{q_0}\left[\frac{M^6d}{d^6L^2q_0}\Big(\frac{q_0}{d_2}|W|)^2  + \frac{M^4}{d^4L}\frac{q_0}{d_2}E(W)\right].
     \end{align*}
-    Where we had to introduce a factor of $L$ in the second and fourth moments as we defined $f(u,y) = R(-u/L,y)^2$. 
+    Where we had to introduce a factor of $L$ in the second and fourth moments as we defined $f(u,y) = \tilde{R}_M^{(d)}(-u/L,y)^2$. 
     The same bound holds for $S^{(2,2)}_3$.
     Therefore we have \begin{align*}
         S_3\lesssim &\frac{N^2 d_2}{Mq} (q|W|)^{1/2}  \left\{\frac{qd}{q_0}\left[\frac{M^6d}{L^2d^6q_0}\Big(\frac{q_0}{d_2}|W|)^2  + \frac{M^4}{d^4L}\frac{q_0}{d_2}E(W)\right]\right\}^{1/2}\\

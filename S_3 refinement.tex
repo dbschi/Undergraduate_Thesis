@@ -20,7 +20,7 @@ is somewhat lossy, so we aim to refine this bound in this section.
 In principle, the condition $y_1m_1+y_2m_2+m_3\equiv 0$ fixes the residue class of $m_3$ based on $m_1$ and $m_2$. Therefore, we would expect a factor of $1/q^2$ if we add this summation condition to Proposition \ref{affineGM}. 
 \fi
 \begin{proposition}\label{affinetrans}
-    Let $M>0$. Let $f(u,y):\reals\times \mathbb{Z}/d \to \reals$ be non-negative, supported on $u\asymp 1$ uniformly in $y$, and $|\hat{f}(\xi,x)|\lesssim_j (|\xi|/(dT)^2)^{-j}$ for all $j$. Then \begin{align*}
+    Let $M>0$. Let $f(u,y):\reals\times \mathbb{Z}/d \to \reals$ be non-negative, supported on $u\asymp 1$ uniformly in $y$, and $|\hat{f}(\xi,x)|\lesssim_j (|\xi|/(qT)^2)^{-j}$ for all $j$. Then \begin{align*}
         J(f)\defeq &\sup_{0<M_1,M_2,M_3<M}\sum_{y \mod d} \int\Bigg( \sum_{\substack{|m_1|\sim M_1,|m_2|\sim M_2 , |m_3|\ll M_3\\ (m_1,d)=(m_2,d)=1}} f\left(\frac{m_1 u+m_3}{m_2},(m_1 y+m_3)m_2^{-1}\right)\Bigg)^2 \ du\\
         \lesssim&\frac{M^6}{d}\Big(\sum_{y \mod d } \int f(u,y) du\Big)^2+{M^4}\sum_{y\mod d} \int f(u,y)^2 du.
     \end{align*}
@@ -139,18 +139,18 @@ By the decay in $\hat{f}$ and $T>d^{1+\epsilon}, M^{1+\epsilon}$, C is negligibl
     \end{align*}
     giving 
     \begin{align*}
-        \rm{Aii}+{Bi}+{Bii}\leq&\sum_{x \mod d}\int_{|\xi|\leq T^2} (1-\mathbb{I}_{x=0}*\mathbb{I}_{\xi\leq M_1T^{\eta}/M_3})|\hat{g}(\xi,x)|^2 d\xi\\
+        \rm{Aii}+{Bi}+{Bii}\leq&\sum_{x \mod d}\int_{|\xi|\leq (qT)^4} (1-\mathbb{I}_{x=0}*\mathbb{I}_{\xi\leq M_1T^{\eta}/M_3})|\hat{g}(\xi,x)|^2 d\xi\\
         {\lesssim}&T^\eta(M_1M_3+M_3^2)
-        \sum_{\substack{m_1\sim M_1\\(m_1,d)=1}} \sum_{x \mod d} \int_{|\xi|<\frac{M_1}{M_3}T^\eta}\sum_{l : m_1\left(l-\frac{[m_1^{-1}x]}{d}\right)- \xi \lesssim \frac{M_1}{M_3} } 
+        \sum_{\substack{m_1\sim M_1\\(m_1,d)=1}} \sum_{x \mod d} \int_{|\xi|<(qT)^4}\sum_{l : m_1\left(l-\frac{[m_1^{-1}x]}{d}\right)- \xi \lesssim \frac{M_1}{M_3} } 
         \Big|
             \sum_{\substack{m_2\sim M_2\\(m_2,d)=1}} \frac{m_2}{m_1}\hat{f}\left(\frac{m_2}{m_1}\xi, m_2m_1^{-1}x\right) 
-            \Big|^2\\
+            \Big|^2d\xi\\
             \leq&T^\eta(M_1M_3+M_3^2)
             \sum_{\substack{m_1\sim M_1\\(m_1,d)=1}} \sum_{x \mod d} \sum_{l} 
             \int\displaylimits_{\Big|m_1\left(l-\frac{[m_1^{-1}x]}{d}\right)- \xi \Big|\lesssim \frac{M_1}{M_3}}
             \Big|
                 \sum_{\substack{m_2\sim M_2\\(m_2,d)=1}} \frac{m_2}{m_1}\hat{f}\left(\frac{m_2}{m_1}\xi, m_2m_1^{-1}x\right) 
-                \Big|^2.\\
+                \Big|^2 d\xi.\\
     \end{align*}
     We now remove the dependence on $m_1$. First $\tilde{x} \equiv x m_1^{-1}$, so that the summation condition in $x$ and $l$ becomes \[
         \sum_{\tilde{x} \mod d} \sum_{l : m_1\left(l-\frac{\tilde{x}}{d}\right)- \xi \lesssim \frac{M_1}{M_3} }.
@@ -167,7 +167,7 @@ By the decay in $\hat{f}$ and $T>d^{1+\epsilon}, M^{1+\epsilon}$, C is negligibl
         \int_{|\tau|\lesssim 1}
         \Big|
             \sum_{\substack{m_2\sim M_2\\(m_2,d)=1}} \frac{m_2}{m_1}\hat{f}\left(m_2\Big(l-\frac{\tilde{x}}{d}\Big)+\frac{m_2}{M_3}\tau, m_2\tilde{x}\right) 
-            \Big|^2\\
+            \Big|^2 d\tau\\
             \lesssim (M_1+M_3)T^{\eta} \Sigma_1,
     \end{align*}
     where\[
@@ -175,14 +175,14 @@ By the decay in $\hat{f}$ and $T>d^{1+\epsilon}, M^{1+\epsilon}$, C is negligibl
     \int_{|\tau|\lesssim 1}
     \Big|
         \sum_{\substack{m_2\sim M_2\\(m_2,d)=1}} {m_2}\hat{f}\left(m_2\Big(l-\frac{\tilde{x}}{d}\Big)+\frac{m_2}{M_3}\tau, m_2\tilde{x}\right) 
-        \Big|^2.
+        \Big|^2d\tau.
     \]
     Since $\hat{f}(\xi,x)$ is negligble unless $|\xi|\lesssim T$, we can introduce a bump function $\psi_2(x)$ supported on $|x|\lesssim 1$ to get \[
         \Sigma_1 = \sum_{\tilde{x} \mod d} \sum_{l  } \psi_2\left(\frac{M_2(l-\tilde{x}/d)}{T}\right)
         \int_{|\tau|\lesssim 1}
         \Big|
             \sum_{\substack{m_2\sim M_2\\(m_2,d)=1}} {m_2}\hat{f}\left(m_2\Big(l-\frac{\tilde{x}}{d}\Big)+\frac{m_2}{M_3}\tau, m_2\tilde{x}\right) 
-            \Big|^2+O(T^{-100}).
+            \Big|^2d\tau+O(T^{-100}).
     \]
     Expanding the square, we have \begin{align*}
         \Sigma_1= & \sum_{\tilde{x} \mod d} \sum_{l  }  \psi_2\left(\frac{M_2(l-\tilde{x}/d)}{T}\right)

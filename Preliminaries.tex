@@ -52,7 +52,15 @@ Here we provide some supplementary definitions and statements of theorems. These
 	\]
 	with the same $a_n$ as in the previous equation.
 \end{example}
-
+\begin{theorem}[Erd\"os-Kac]
+	Let $\omega(n)$ be the number of prime divisors of $n$, ignoring multiplicity. Let $X_N\sim \rm{unif}\{1,N\}$, the uniform distribution from $1$ to $N$, and
+	\[
+	Y_N\defeq \frac{\omega(X_N)-\log\log X_N}{\sqrt{\log \log X_N}}.
+	\] 
+	Then \[
+	\lim_{N\to\infty} P(a<Y_N<b) = \frac{1}{\sqrt{2\pi}}\int_a^b e^{-t^2/2}dt.
+	\]
+\end{theorem}
 \subsection*{Harmonic Analysis}
 \begin{theorem}[Fourier Inversion]
 	In Schwartz space, the Fourier transform of $\mathcal{F}:\schwartz(\reals^d)\to\schwartz(\reals^d)$ of $f\in\mathcal{S}(\reals^d)$ is given by

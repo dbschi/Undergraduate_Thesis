@@ -20,7 +20,7 @@ is somewhat lossy, so we aim to refine this bound in this section.
 In principle, the condition $y_1m_1+y_2m_2+m_3\equiv 0$ fixes the residue class of $m_3$ based on $m_1$ and $m_2$. Therefore, we would expect a factor of $1/q^2$ if we add this summation condition to Proposition \ref{affineGM}. 
 \fi
 \begin{proposition}\label{affinetrans}
-    Let $M>0$, and $T>M^{1+\epsilon}, T>d^{1+\epsilon}$. Let $f(u,y):\reals\times \mathbb{Z}/d \to \reals$ be non-negative, supported on $u\asymp 1$ uniformly in $y$, and $|\hat{f}(\xi,x)|\lesssim_j (|\xi|/T)^j$ for all $j$. Then \begin{align*}
+    Let $M>0$. Let $f(u,y):\reals\times \mathbb{Z}/d \to \reals$ be non-negative, supported on $u\asymp 1$ uniformly in $y$, and $|\hat{f}(\xi,x)|\lesssim_j (|\xi|/(dT)^2)^{-j}$ for all $j$. Then \begin{align*}
         J(f)\defeq &\sup_{0<M_1,M_2,M_3<M}\sum_{y \mod d} \int\Bigg( \sum_{\substack{|m_1|\sim M_1,|m_2|\sim M_2 , |m_3|\ll M_3\\ (m_1,d)=(m_2,d)=1}} f\left(\frac{m_1 u+m_3}{m_2},(m_1 y+m_3)m_2^{-1}\right)\Bigg)^2 \ du\\
         \lesssim&\frac{M^6}{d}\Big(\sum_{y \mod d } \int f(u,y) du\Big)^2+{M^4}\sum_{y\mod d} \int f(u,y)^2 du.
     \end{align*}
@@ -80,9 +80,9 @@ Let $\eta>0$. We break \[
 into five pieces. \begin{enumerate}
     \item [Ai] $\int_{|\xi|<\frac{M_1}{M_3}T^\eta} |\hat{g}(\xi,0)|^2 d\xi$
     \item [Aii]$\sum_{x\neq 0 \mod d}\int_{|\xi|<\frac{M_1}{M_3}T^\eta} |\hat{g}(\xi,x)|^2 d\xi$
-    \item [Bi] $\int_{\frac{M_1}{M_3}\leq|\xi|<T^2} |\hat{g}(\xi,0)|^2 d\xi$
-    \item [Bii]$\sum_{x\neq 0 \mod d}\int_{\frac{M_1}{M_3}\leq|\xi|<T^2} |\hat{g}(\xi,x)|^2 d\xi$
-    \item [C]  $\sum_{x \mod d}\int_{|\xi|\geq T^2} |\hat{g}(\xi,x)|^2 d\xi$
+    \item [Bi] $\int_{\frac{M_1}{M_3}\leq|\xi|<(qT)^4} |\hat{g}(\xi,0)|^2 d\xi$
+    \item [Bii]$\sum_{x\neq 0 \mod d}\int_{\frac{M_1}{M_3}\leq|\xi|<(qT)^4} |\hat{g}(\xi,x)|^2 d\xi$
+    \item [C]  $\sum_{x \mod d}\int_{|\xi|\geq (qT)^4} |\hat{g}(\xi,x)|^2 d\xi$
 \end{enumerate}
 By the decay in $\hat{f}$ and $T>d^{1+\epsilon}, M^{1+\epsilon}$, C is negligible. 
 
@@ -250,4 +250,23 @@ J(f)\lesssim \frac{1}{d}T^{3\eta}M^6\left(\sum_y \int f(u,y) du\right)^2+ M^2T^{
 \Bigg(J(\tilde{f})\Bigg) ^{1/2}.
 \]
 Letting $\eta \to 0$ sufficiently slowly gives the result.
+\end{proof}
+\begin{proposition}
+    Let $f(u,y):\reals\times \mathbb{Z}/d \to \reals$ be non-negative, supported on $u\asymp 1$ uniformly in $y$, and $|\hat{f}(\xi,x)|\lesssim_j (|\xi|/(dT)^2)^{-j}$ for all $j$. Then \begin{align*}
+        J(f)\defeq &\sup_{0<M_1,M_2,M_3<M}\sum_{y \mod d} \int\Bigg( \sum_{\substack{|m_1|\sim M_1,|m_2|\sim M_2 , |m_3|\ll M_3\\ (m_1,d)=(m_2,d)=1}} f\left(\frac{m_1 u+m_3}{m_2},(m_1 y+m_3)m_2^{-1}\right)\Bigg)^2 \ du\\
+        \lesssim&\frac{M^6}{d}\Big(\sum_{y \mod d } \int f(u,y) du\Big)^2+{M^4}\sum_{y\mod d} \int f(u,y)^2 du.
+    \end{align*}
+\end{proposition}
+
+\begin{corollary}\label{cor: affine}
+    Let $f$ be as in Proposition \ref{affinetrans}, except $f$ is now supported on $u \asymp L$, and $\tilde{M}={ML}$. Then \begin{align*}
+        J_{M}(f)\defeq &\sup_{\substack{0<M_1,M_3<\tilde{M}, \\ 0< M_2<{M}}}\sum_{y \mod d} \int\Bigg( \sum_{\substack{|m_1|\sim M_1,|m_2|\sim M_2 , |m_3|\ll M_3\\ (m_1,d)=(m_2,d)=1}} f\left(\frac{m_1 u+m_3}{m_2},(m_1 y+m_3)m_2^{-1}\right)\Bigg)^2 \ du\\
+        \lesssim&\frac{M^4\tilde{M}^2}{d}\Big(\sum_{y \mod d } \int f(u,y) du\Big)^2  + {M}^2\tilde{M}^2\sum_{y\mod d} \int f(u,y)^2 du.
+    \end{align*}
+\end{corollary}
+\begin{proof}
+    By the same argument as above, we keep track of the $M_2$'s to get 
+    \[
+        J_{{M}}(f) \lesssim M^4\tilde{M}^2/d \Big(\sum_{y \mod d } \int f(u,y) du\Big)^2 + \Big(M^2\tilde{M}^2\sum_{y\mod d} \int f(u,y)^2 du\Big)^{1/2}(J_{M}(\tilde{f}))^{1/2},
+    \] where $J(\tilde{f})$ uses the bounds $m_1,m_2\sim M_2, m_3 \ll LM_2\leq \tilde{M}$.
 \end{proof}

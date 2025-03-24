@@ -1,0 +1,239 @@
+\section{Refinement of $S_3$}
+
+\begin{proposition}[Refinement of $S_3$ bound] \label{s3refined}
+    We have for almost all $q$,
+    \[
+S_3 \lesssim (qT)^{2}| W|^{3/2}+N(qT)| W|^{1/2}E( W)^{1/2}.
+\]
+\end{proposition}
+\begin{remark}
+    The ``almost all'' in the statement is required as one argument, corollary \ref{almostallek}, applies the Erd\"os Kac theorem to bound the number of prime divisors
+    (excluding multiplicity) to be $\omega(n) \asymp \log \log n$ for almost all numbers. This fails if $q$ is primordial and $\omega(n)\asymp \log n / \log \log n$. We note that the argument is somewhat lossy and there should be a more efficient method to provide a bound for all $q$. 
+\end{remark}
+We repeat the arguments in \ref{s_3chapter} until proposition \ref{dyadics_3}.
+
+Recall that at this step, we expressed $v_2$ as a small neighborhood around $v_1$ by the condition \[
+|v_1m_1+v_2m_2+m_3|\lesssim \frac{q}{N}.
+\] 
+We split up the sum in $m_1,m_2,m_3$ according to the gcd's with $q_0$. By the divisor bound, the loss from this step negligible.
+
+Let $d_1\defeq \gcd (m_1,q_0),d_2\defeq \gcd(m_2,q_0), d_3\defeq \gcd (m_3,q_0)$. 
+
+
+\begin{proposition}[Extension of Proposition \ref{domainreduction}]
+    We have 
+    \[
+        |I_{m,q_0}|\ll \frac{N^3q_0}{q^3}\sum_{\substack{y_1,y_2 \in\mathbb{Z}/q\mathbb{Z} \\ y_1m_1+y_2m_2+m_3\equiv 0 \mod q_0}}\int\displaylimits_{\substack{
+            |v_1m_1+v_2m_2+m_3|\lesssim \frac{q}{N}\\
+            \frac{1}{2}\leq v_1,v_2\leq 2
+    }}  R{\left(\frac{v_1}{v_2},y_1,y_2\right)}R {\left(v_2,y_2\right)}R{\left(\frac{1}{v_1},y_1^{-1}\right)} \ dv_1\ dv_2+O_{\epsilon}(T^{-100}).
+        \]
+
+        Moreover, if $|m_1|\leq|m_2|\leq |m_3|$, $|I_{m,q_0}|=O(T^{-100})$ unless $|m_2|\asymp|m_3|$. 
+        
+        Furthermore, $I_{m,q_0}=0$ unless $\gcd(d_1,d_2)=\gcd(d_2,d_3)=\gcd(d_3,d_1)$.
+        
+\end{proposition}
+\begin{proof}
+    It suffices to show the last statement, as we have already proved the first two. 
+    Suppose $|I_{m,q_0}|\neq 0$. Then the summation condition $y_1m_1+y_2m_2+m_3\equiv 0 \mod q_0$ is fulfilled for some choice of $y_1,y_2$ which are coprime to $q_0$, as the characters vanish when $y_1,y_2$ are not coprime. We want to show that there exists a value $d$ such that $d_1/d, d_2/d, d_3/d$ are mutually coprime. We proceed by contradiction. Let $d=\gcd(d_1,d_2,d_3)$, and suppose without lost of generality (because $y_1$, $y_2$ are coprime to $q_0$) that $(d_1/d,d_2/d)= k\neq 1$. Naturally $k|(q_0/d)$ Then for some choice of $y_1,y_2, \alpha$, we have \[
+    y_1m_1+y_2m_2 = -m_3 + \alpha q_0 \implies y_1 \big(\frac{m_1}{d}\big)+ y_2 \big(\frac{m_1}{d}\big) = -\frac{m_3}{d} + \frac{q_0}{d} \implies (m_3/d) \equiv 0 \mod k.
+    \]
+\end{proof}
+
+We now set $d=\gcd(d_1,d_2,d_3)$, and set $k_i \defeq m_i/d$, $\tilde{d}_i\defeq d_i/d$ \[
+y_1m_1+y_2m_2+m_3\equiv 0 \mod q_0 \implies y_1k_1+y_2k_2 + k_3 \equiv 0 \mod \frac{q_0}{d}.
+\]
+We can solve the last equation in $y_2$ in terms of $y_1$ as \[
+y_2 \quad \begin{cases}
+     \equiv \left[\frac{y_1k_1+k_3}{-k_2}\right]_{q_0/d_2} , & \textrm{if $\tilde{d_2}|y_1k_1+k_3$}, \\
+      \textrm{has no solutions}, & \rm{otherwise}.
+\end{cases}
+\]
+One caveat is that $k_2/\tilde{d}_2$ might not be coprime to $q_0/d$, for instance if $k_1=k_3=1,k_2=q^2$ and $q_0=q$. Therefore, we cannot naively evaluate $\left[\frac{y_1k_1+k_3}{-k_2}\right]_{q_0/d}$ to find the class of $\left[\frac{y_1k_1+k_3}{-k_2}\right]_{q_0/d_2}$. However, we can isolate the 
+non-coprime parts by setting $k_2 = \tilde{k}_2 \tilde{d}_2 \omega$, where $\tilde{k}_2$ is coprime to $q_0/d$. Then the solution set for $y_2$ for when $\tilde{d}_2|y_1k_1+k_3$ is \[
+    \left[\frac{y_1k_1+k_3}{-\tilde{k}_2\tilde{d}_2}\right]_{q_0/d_2}\left[\frac{1}{\omega}\right]_{q_0/d_2}+ \alpha \frac{q_0}{d_2}
+\]
+for integer $\alpha$. If we set $y_2\mod q$ then we can pick $0\leq \alpha < qd_2/q_0 $.
+
+
+We are now ready to state the new definition for the smoothed function $\tilde{R}$, which intuitively sums up the solutions in $y_2$.
+
+\begin{proposition}[Extension of Proposition \ref{dyadics_3}] \label{folding unfolding}
+    Let
+    \[
+        \tilde{R}^{(q_0,d,d_2,\omega_2)}_M(u,y) \defeq \tilde{R}^{(d)}_M(u,y) \defeq \mathbb{I}_{\tilde{d}_2|y} \Bigg(\sum_{l=0}^{(qd_2/q_0)-1} \frac{q_0}{qd_2} \Big|\tilde{R}_M\Big(u,\left[\frac{y}{\tilde{d}_2}\right]_{q_0/d_2} \left[\frac{1}{\omega_2}\right]_{q_0/d_2} + l \frac{q_0}{d_2}\Big)\Big|^2\Bigg)^{1/2}.
+    \]
+    Then the following hold:\begin{enumerate}
+        \item $\tilde{R}^{(d)}_M$ is $q_0/d$-periodic in the second argument.
+        \item $\sum_{a\mod q_0/d} \int_{u\asymp 1 }|\tilde{R}^{(d)}_M(u,a)|^2 du\lesssim\frac{q_0}{d_2}| W|$.
+        \item $\sum_{a\mod q_0/d} \int_{u\asymp 1 }|\tilde{R}^{(d)}_M(u,a)|^4 du\lesssim\frac{q_0}{d_2}E( W)$.
+    \end{enumerate}
+    Moreover, there is a choice of $d_1,d_2,d_3|q_0, q_0|q$, $0<M_1\leq M\lesssim qT/N$ such that  \[
+        S_3\lesssim \frac{N^2d_2}{Mq} \sum_{\substack{\omega_1,\omega_2,\omega_3\\ (**)}}  \sum_{\substack{|m_1|\sim M_1,\\|m_2|,|m_3|\sim M\\
+        (***)}}\sum_{\substack{y_1\mod q\\ (y_1,q)=1} }\int_{v_1\asymp 1}
+        \tilde{R}_M^{(d)}\Big(\frac{k_1v_1+k_3}{-k_2v_1},\frac{k_1y_1+k_3}{-\tilde{k}_2y_1}\Big)\tilde{R}_M^{(d)}\Big(\frac{k_1v_1+k_3}{-k_2},\frac{k_1y_1+k_3}{-\tilde{k}_2}\Big)|R\left(v_1,y_1\right)| dv_1,
+    \]
+    where the summation conditions are$(**)$ on $\omega_i$'s are that $\omega_i<qT/N$ only has prime factors that are also prime factors of $d_i$, $(***)$ on $m_i$'s are that
+    $m_i=d_i\tilde{k}_i\omega_i$ where $(\tilde{k}_i,q_0)=1$. 
+\end{proposition}
+\begin{remark}
+    As a recall, we defined $d\defeq \gcd(d_1,d_2,d_3)$, $k_i\defeq m_i/d$, $\tilde{d}_i=\gcd(k_i,q_0/d)$, $\tilde{k}_i=k_i/(\tilde{d}_i\omega_i) = m_i/(d_i\omega_i)$.
+\end{remark}
+\begin{proof}
+    The first statement is evident from construction. We have $[(y+q_0/d)/\tilde{d}_2] \equiv [y/\tilde{d}_2 + q_0/d_2] \equiv [y/\tilde{d}_2]$.
+    
+    For the second statement, we have \begin{align*}
+        \sum_{a\mod q_0/d} \int_{u\asymp 1 } |\tilde{R}^{(d)}_M(u,a)|^2 du =&  \sum_{a\mod q_0/d} \int_{u\asymp 1 }\mathbb{I}_{\tilde{d}_2|y} \sum_{l=0}^{(qd_2/q_0)-1} \frac{q_0}{qd_2} \Big|\tilde{R}_M\Big(u,\left[\frac{a}{\tilde{d}_2}\right]_{q_0/d_2} \left[\frac{1}{\omega_2}\right]_{q_0/d_2} + l \frac{q_0}{d_2}\Big)\Big|^2\\
+       =&\sum_{a\mod q_0/d_2} \int_{u\asymp 1 } \sum_{l=0}^{(qd_2/q_0)-1} \frac{q_0}{qd_2} \Big|\tilde{R}_M\Big(u,\left[a\right]_{q_0/d_2} \left[\frac{1}{\omega_2}\right]_{q_0/d_2} + l \frac{q_0}{d_2}\Big)\Big|^2\\
+       =&\sum_{b\mod q} \int_{u\asymp 1 }\frac{q_0}{qd_2} \Big|\tilde{R}_M\Big(u,b\Big)\Big|^2\\
+       \lesssim& \frac{q_0}{d_2} |W|.
+    \end{align*}
+
+    Similarly, the third statement follows from \begin{align*}
+        \sum_{a\mod q_0/d} \int_{u\asymp 1 }|\tilde{R}^{(d)}_M(u,a)|^4 = & 
+        \sum_{a\mod q_0/d} \int_{u\asymp 1 }\mathbb{I}_{\tilde{d}_2|y}\Bigg( \sum_{l=0}^{(qd_2/q_0)-1} \frac{q_0}{qd_2} \Big|\tilde{R}_M\Big(u,\left[\frac{a}{\tilde{d}_2}\right]_{q_0/d_2} \left[\frac{1}{\omega_2}\right]_{q_0/d_2} + l \frac{q_0}{d_2}\Big)\Big|^2\Bigg)^2\\
+        \stackon{CS}{\leq} &\sum_{a\mod q_0/d} \int_{u\asymp 1 }\mathbb{I}_{\tilde{d}_2|y}\sum_{l=0}^{(qd_2/q_0)-1} \frac{q_0}{qd_2} \Big|\tilde{R}_M\Big(u,\left[\frac{a}{\tilde{d}_2}\right]_{q_0/d_2} \left[\frac{1}{\omega_2}\right]_{q_0/d_2} + l \frac{q_0}{d_2}\Big)\Big|^4 
+        \\
+        \lesssim & \frac{q_0}{d_2} E(W).
+    \end{align*}
+
+    Finally, from Proposition \ref{dyadics_3}, we choose $q_0|q$, $0<M_1\leq M\lesssim qT/N$ such that
+    \[
+        S_3\lesssim \frac{N^2q_0}{Mq^2}\sum_{|m_1|\sim M_1,|m_2|,|m_3|\sim M}\sum_{\substack{y_1,y_2 \in\mathbb{Z}/q\mathbb{Z} \\ y_1m_1+y_2m_2+m_3\equiv 0 \mod q_0}}\tilde{I}_{m,q_0}+O(T^{-100}).
+    \]
+    We split the summation in $m_1,m_2,m_3$ according to the gcd's $d_1,d_2,d_3$. By the divisor bound, we have for a choice of $d_1,d_2,d_3|q_0$,
+     \[
+        S_3\lesssim \frac{N^2q_0}{Mq^2}\sum_{\substack{|m_1|\sim M_1,|m_2|,|m_3|\sim M\\
+        (m_1,q_0)=d_1\\(m_2,q_0)=d_2\\(m_3,q_0)=d_3}}\sum_{\substack{y_1,y_2 \in\mathbb{Z}/q\mathbb{Z} \\ y_1m_1+y_2m_2+m_3\equiv 0 \mod q_0/d}}\tilde{I}_{m,q_0}+O(T^{-100}).
+    \]
+    In the summation of $m_i$'s we split the $m_i$'s according to $\omega_i$'s. Such that we can write $m_i=d_i\tilde{k}_i\omega_i$ with $\tilde{k}_i$ coprime to $q_0$.
+    Therefore we have \begin{align*}
+        S_3\lesssim \frac{N^2q_0}{Mq^2} \sum_{\substack{\omega_1,\omega_2,\omega_3\\ (**)}}  \sum_{\substack{|m_1|\sim M_1,|m_2|,|m_3|\sim M\\
+        (***)}}\sum_{\substack{y_1,y_2 \in\mathbb{Z}/q\mathbb{Z} \\ y_1m_1+y_2m_2+m_3\equiv 0 \mod q_0/d}}\tilde{I}_{m,q_0}+O(T^{-100}),
+    \end{align*}
+    where the conditions $(**)$ on $\omega_i$'s are that $\omega_i<qT/N$ only has prime factors that are also prime factors of $d_i$, $(***)$ on $m_i$'s are that
+    $m_i=d_i\tilde{k}_i\omega_i$ where $(\tilde{k}_i,q_0)=1$. 
+    Recall that \[
+        \tilde{I}_{m,q_0}\defeq \ \int_{v_1\asymp 1} \left| \tilde{R}_M\left(\frac{m_1v_1+m_3}{-m_2v_1},y_2,y_1\right)
+    \tilde{R}_M\left(\frac{m_1v_1+m_3}{-m_2},y_2\right)R\left(v_1,y_1\right)\right| dv_1.\]
+
+    We now rewrite the summation in $y$, using $m=dk$, as \begin{align*}
+        \sum_{\substack{y_1,y_2 \in\mathbb{Z}/q\mathbb{Z} \\ y_1k_1+y_2k_2+k_3\equiv 0 \mod q_0/d}}\tilde{I}_{d k ,q_0} =& \sum_{y_1\mod q} \sum_{\substack{y_2 \mod q,\\y_2\equiv y_1k_1+y_2k_2+k_3\equiv 0 \mod q_0/d}
+        } \tilde{I}_{dk ,q_0}\\
+        =&\sum_{y_1\mod q} \sum_{\substack{y_2 \mod q,\\ y_1k_1+y_2k_2+k_3\equiv 0 \mod q_0/d} }\int_{v_1\asymp 1} \Bigg| \tilde{R}_M\left(\frac{dk_1v_1+dk_3}{-dk_2v_1},y_2,y_1\right)\\
+        & \quad \quad
+        \tilde{R}_M\left(\frac{dk_1v_1+dk_3}{-dk_2},y_2\right)R\left(v_1,y_1\right)\Bigg| dv_1
+    \end{align*}
+    Keeping in mind that $R$ only has support in $y_1,y_2$ coprime to $q$, we apply Cauchy-schwarz to the summation in $y_2$ to get \begin{align*}
+        &\sum_{\substack{y_2 \mod q,\\ y_1k_1+y_2k_2+k_3\equiv 0 \mod q_0/d} } \Bigg|\tilde{R}_M\left(\frac{dk_1v_1+dk_3}{-dk_2v_1},[y_2y_1^{-1}]_{q}\right)\tilde{R}_M\left(\frac{dk_1v_1+dk_3}{-dk_2},[y_2]_q\right)\Bigg|\\
+        \leq &\Bigg(\sum_{\substack{y_2 \mod q,\\ y_1k_1+y_2k_2+k_3\equiv 0 \mod q_0/d} }\Big|\tilde{R}_M\left(\frac{k_1v_1+k_3}{-k_2v_1},[y_2y_1^{-1}]_{q}\right)\Big|^2\Bigg)^{1/2}
+       \Bigg( \sum_{\substack{y_2 \mod q,\\ y_1k_1+y_2k_2+k_3\equiv 0 \mod q_0/d}  }
+        \Big|\tilde{R}_M\left(\frac{k_1v_1+k_3}{-k_2},[y_2]_q\right)\Big|^2 \Bigg)^{1/2}\\
+        =&\frac{qd_2}{q_0}\tilde{R}_M^{(d)}\Big(\frac{k_1v_1+k_3}{-k_2v_1},\frac{k_1y_1+k_3}{-\tilde{k}_2y_1}\Big)\tilde{R}_M^{(d)}\Big(\frac{k_1v_1+k_3}{-k_2},\frac{k_1y_1+k_3}{-\tilde{k}_2}\Big),
+    \end{align*} 
+    Combined, we have \[
+        S_3\lesssim \frac{N^2d_2}{Mq} \sum_{\substack{\omega_1,\omega_2,\omega_3\\ (**)}} \sum_{\substack{|m_1|\sim M_1,\\|m_2|,|m_3|\sim M\\
+        (***)}}\sum_{\substack{y_1\mod q\\ (y_1,q)=1} }\int_{v_1\asymp 1}
+        \tilde{R}_M^{(d)}\Big(\frac{k_1v_1+k_3}{-k_2v_1},\frac{k_1y_1+k_3}{-\tilde{k}_2y_1}\Big)\tilde{R}_M^{(d)}\Big(\frac{k_1v_1+k_3}{-k_2},\frac{k_1y_1+k_3}{-\tilde{k}_2}\Big)|R\left(v_1,y_1\right)| dv_1
+    \]
+\end{proof}
+\begin{corollary}\label{almostallek}
+    For \textbf{almost all} $q$, there is a choice of $d_1,d_2,d_3|q_0, q_0|q$, $0<M_1\leq M\lesssim qT/N$, $\omega_1,\omega_2,\omega_3$ such that  \[
+        S_3\lesssim \frac{N^2d_2}{Mq} 
+        %\sum_{\substack{\omega_1,\omega_2,\omega_3\\ (**)}}  
+        \sum_{\substack{|m_1|\sim M_1,\\|m_2|,|m_3|\sim M\\
+        (***)}}\sum_{\substack{y_1\mod q\\ (y_1,q)=1} }\int_{v_1\asymp 1}
+        \tilde{R}_M^{(d)}\Big(\frac{k_1v_1+k_3}{-k_2v_1},\frac{k_1y_1+k_3}{-\tilde{k}_2y_1}\Big)\tilde{R}_M^{(d)}\Big(\frac{k_1v_1+k_3}{-k_2},\frac{k_1y_1+k_3}{-\tilde{k}_2}\Big)|R\left(v_1,y_1\right)| dv_1,
+    \]
+    where each $\omega_i<qT/N$ consists of only factors that are also prime factors of $d_i$, and the summation condition $(***)$ on $m_i$'s are that
+    $m_i=d_i\tilde{k}_i\omega_i$ where $(\tilde{k}_i,q_0)=1$. 
+\end{corollary}
+\begin{proof}
+    It suffices to show that \[
+   \Sigma\defeq \sum_{\omega_1 (**)} 1 \lesssim 1.
+    \]
+    The conditions on $\omega_2,\omega_3$ are the same. Since $\omega_1$ consists of only prime factors of $d_i$, the number of choices of $\omega_1$ is bounded above by\[
+    \prod_{p|d_1, p\leq qT/N}\log_{p} \frac{qT}{N}\leq \prod_{p|q,p\leq qT/N}\log_{p} \frac{qT}{N} \ll \prod_{p|q} \log \frac{qT}{N}.
+    \]
+    We now apply the Erd\"os Kac Theorem to see that for almost all values of $q$, the possible number of $p|q$ is $\asymp \log \log q$.
+    Therefore we have \[
+    \Sigma \ll (\log qT)^{2\log \log q} = \exp(2\log \log q \times \log \log qT) \ll_{\epsilon} \exp(\epsilon \log qT)
+    \]
+    for any value of $\epsilon$.
+\end{proof}
+\begin{remark}
+    This is the only argument that requires ``almost all'' $q$. The bound here is very lossy so we suspect there should be a way to generalize this to all $q$.
+\end{remark}
+\begin{proof}[Proof of Proposition \ref{s3refined}]
+    
+    \[
+    S_3\lesssim \frac{N^2d_2}{Mq} \sum_{\substack{|m_1|\sim M_1,\\|m_2|,|m_3|\sim M\\
+        (***)}}\sum_{\substack{y_1\mod q\\ (y_1,q)=1} }\int_{v_1\asymp 1}
+        \tilde{R}_M^{(d)}\Big(\frac{k_1v_1+k_3}{-k_2v_1},\frac{k_1y_1+k_3}{-\tilde{k}_2y_1}\Big)\tilde{R}_M^{(d)}\Big(\frac{k_1v_1+k_3}{-k_2},\frac{k_1y_1+k_3}{-\tilde{k}_2}\Big)|R\left(v_1,y_1\right)| dv_1
+    \]
+    We apply Cauchy Schwarz repeatedly to get \begin{align*}
+        S_3\lesssim \frac{N^2d_2}{Mq} (\sum_{y_1\mod q}\int_{v_1\asymp 1}|R\left(v_1,y_1\right)| dv_1)^{1/2} (S_3^{(1)})^{1/2},
+    \end{align*}
+    where \begin{align*}
+        S_3^{(1)}=&\sum_{\substack{y_1\mod q\\ (y_1,q)=1} }\int_{v_1\asymp 1}\Bigg(\sum_{\substack{|m_1|\sim M_1,\\|m_2|,|m_3|\sim M\\
+        (***)}}
+        \tilde{R}_M^{(d)}\Big(\frac{k_1v_1+k_3}{-k_2v_1},\frac{k_1y_1+k_3}{-\tilde{k}_2y_1}\Big)\tilde{R}_M^{(d)}\Big(\frac{k_1v_1+k_3}{-k_2},\frac{k_1y_1+k_3}{-\tilde{k}_2}\Big)\Bigg)^2 dv_1\\
+        \stackon{CS}{\lesssim}& ( S_3^{(2,1)} )^{1/2}( S_3^{(2,2)} )^{1/2}.
+    \end{align*}
+    In the last step we define \begin{align*}
+        S_3^{(2,1)}\defeq&\sum_{\substack{y_1\mod q\\ (y_1,q)=1} }\int_{v_1\asymp 1}\Bigg(\sum_{\substack{|m_1|\sim M_1,\\|m_2|,|m_3|\sim M\\
+        (***)}}
+        \tilde{R}_M^{(d)}\Big(\frac{k_1v_1+k_3}{-k_2v_1},\frac{k_1y_1+k_3}{-\tilde{k}_2y_1}\Big)^2\Bigg)^2 dv_1,
+        \\
+        S_3^{(2,2)}\defeq&\sum_{\substack{y_1\mod q\\ (y_1,q)=1} }\int_{v_1\asymp 1}\Bigg(\sum_{\substack{|m_1|\sim M_1,\\|m_2|,|m_3|\sim M\\
+        (***)}}
+       \tilde{R}_M^{(d)}\Big(\frac{k_1v_1+k_3}{-k_2},\frac{k_1y_1+k_3}{-\tilde{k}_2}\Big)^2\Bigg)^2 dv_1.
+    \end{align*}
+    We shall bound $ S_3^{(2,1)}$ The second term is similar. 
+    Recall that \[
+        k_i = m_i/d = \tilde{k}_i \tilde{d}_i \omega_i,
+    \]  
+    where $\tilde{k}_i$ is copirme to $q_0/d$, $\omega_i$ is coprime to $q_0/d_i = q_0/(d\tilde{d}_i)$.
+    Thus 
+    \begin{align*}
+        S_3^{(2,1)}=&\sum_{\substack{y_1\mod q\\ (y_1,q)=1} }\int_{v_1\asymp 1}\Bigg(\sum_{\substack{|\tilde{k}_1|\sim M_1/(d_1\omega_1),\\|\tilde{k}_2|\sim M/(d_2\omega_2)\\|\tilde{k}_3|\sim M/(d_3\omega_3)\\
+        (***)}}
+        \tilde{R}_M^{(d)}\Big(\frac{\omega_1\tilde{d}_1\tilde{k}_1v_1+\omega_3\tilde{d}_3\tilde{k}_3}{-\omega_2\tilde{d}_2\tilde{k}_2v_1},\frac{\omega_1\tilde{d}_1\tilde{k}_1y_1+\omega_3\tilde{d}_3\tilde{k}_3}{-\tilde{k}_2y_1}\Big)^2\Bigg)^2 dv_1
+        \\
+        \asymp& \sum_{\substack{x \mod q\\ (x,q)=1} }\int_{u\asymp 1}\Bigg(\sum_{\substack{|\tilde{k}_1|\sim M_1/(d_1\omega_1),\\|\tilde{k}_2|\sim M/(d_2\omega_2)\\|\tilde{k}_3|\sim M/(d_3\omega_3)\\
+        (***)}}
+        \tilde{R}_M^{(d)}\Big(\frac{\omega_1\tilde{d}_1\tilde{k}_1+\omega_3\tilde{d}_3\tilde{k}_3u}{-\omega_2\tilde{d}_2\tilde{k}_2},\frac{\omega_1\tilde{d}_1\tilde{k}_1+\omega_3\tilde{d}_3\tilde{k}_3 x}{-\tilde{k}_2}\Big)^2\Bigg)^2 du
+    \end{align*}
+    by the change of variables $x\equiv y^{-1}\mod q$, $u=1/v_1$.
+    Since the second argument is $q_0/d$ periodic, we can fold in $x$ to get \begin{align*}
+        S_3^{(2,1)}\ll
+        \frac{qd}{q_0} \sum_{\substack{x \mod q_0/d} }\int_{u\asymp 1}\Bigg(\sum_{\substack{|\tilde{k}_1|\sim M_1/(d_1\omega_1),\\|\tilde{k}_2|\sim M/(d_2\omega_2)\\|\tilde{k}_3|\sim M/(d_3\omega_3)\\
+        (***)}}
+        \tilde{R}_M^{(d)}\Big(\frac{\omega_1\tilde{d}_1\tilde{k}_1+\omega_3\tilde{d}_3\tilde{k}_3u}{-\omega_2\tilde{d}_2\tilde{k}_2},\frac{\omega_1\tilde{d}_1\tilde{k}_1+\omega_3\tilde{d}_3\tilde{k}_3 x}{-\tilde{k}_2}\Big)^2\Bigg)^2 du.
+    \end{align*}
+    We now make a change in variables $\tilde{u} = \omega_3\tilde{d}_3u$, and $\tilde{x}\equiv \omega_3\tilde{d_3}x$. The Jacobian factor is $1/(\omega_3\tilde{d}_3)$, and noticing that $\gcd(\omega_3\tilde{d_3},q_0/d) = \tilde{d_3}$ by the condition $\gcd(m_3,q_0) =d_3$, $\tilde{x}$ counts the multiples of $\tilde{d}_3$ by $\tilde{d}_3$ times.
+    \begin{align*}
+        S_3^{(2,1)}\ll
+        \frac{qd}{q_0} \frac{1}{\omega_3\tilde{d_3}}\tilde{d_3} \sum_{\substack{\tilde{x} \mod q_0/d} }\int\Bigg(\sum_{\substack{|\tilde{k}_1|\sim M_1/(d_1\omega_1),\\|\tilde{k}_2|\sim M/(d_2\omega_2)\\|\tilde{k}_3|\sim M/(d_3\omega_3)\\
+        \textrm{all coprime to $q_0/d$}}}
+        \tilde{R}_M^{(d)}\Big(\frac{\omega_1\tilde{d}_1\tilde{k}_1+\tilde{k}_3\tilde{u}}{-\omega_2\tilde{d}_2\tilde{k}_2},\frac{\omega_1\tilde{d}_1\tilde{k}_1+\tilde{k}_3 \tilde{x}}{-\tilde{k}_2}\Big)^2\Bigg)^2 d\tilde{u}.
+    \end{align*}
+    Applying corollary \ref{cor: affine} to the function $f(u,x)\defeq R_M^{(d)}(u/(-\tilde{d}_2\omega_2),x)^2$, and setting $L\defeq\omega_2\tilde{d}_2$ gives a bound, and we have bounds that $\tilde{M} = \max(ML/(d_2\omega_2) ,M_1/(d_1\omega_1),M_3/(d_3\omega_3))\leq M/d $
+    \begin{align*}
+        S_3^{(2,1)}\lesssim &  \frac{qd}{q_0\omega_3}\left[\frac{M^6d}{d^6L^4q_0}\Big(\sum_{y \mod q_0/d } \int f(u,y) du\Big)^2  + \frac{M^4}{d^4L^2}\sum_{y\mod q_0/d} \int f(u,y)^2 du
+        \right]\\
+        \lesssim& \frac{qd}{q_0\omega_3}\left[\frac{M^6d}{d^6L^4q_0}\Big(\frac{q_0}{d_2}|W|L)^2  + \frac{M^4}{d^4L^2}\frac{q_0}{d_2}LE(W)
+        \right]\\
+        \lesssim & \frac{qd}{q_0}\left[\frac{M^6d}{d^6L^2q_0}\Big(\frac{q_0}{d_2}|W|)^2  + \frac{M^4}{d^4L}\frac{q_0}{d_2}E(W)\right].
+    \end{align*}
+    Where we had to introduce a factor of $L$ in the second and fourth moments as we defined $f(u,y) = R(-u/L,y)^2$. 
+    The same bound holds for $S^{(2,2)}_3$.
+    Therefore we have \begin{align*}
+        S_3\lesssim &\frac{N^2 d_2}{Mq} (q|W|)^{1/2}  \left\{\frac{qd}{q_0}\left[\frac{M^6d}{L^2d^6q_0}\Big(\frac{q_0}{d_2}|W|)^2  + \frac{M^4}{d^4L}\frac{q_0}{d_2}E(W)\right]\right\}^{1/2}\\
+        \lesssim& \frac{N^2M^2}{Ld^2}|W|^{3/2} + N^2M|W|^{1/2}E(W)^{1/2}\frac{d_2^{1/2}}{d^{3/2}\tilde{d}_2^{1/2}\omega_2^{1/2}}\\
+        \lesssim& N^2M^2|W|^{3/2} + N^2M|W|^{1/2}E(W)^{1/2}\\
+        \lesssim& (qT)^2|W|^{3/2} + N(qT)|W|^{1/2}E(W)^{1/2}.
+    \end{align*}
+    Where in the last two steps, we used $L=\tilde{d}_2\omega_2$, so that $d\tilde{d}_2=d_2$ cancels in the the last term, and that $M\lesssim qT/N$.
+\end{proof}

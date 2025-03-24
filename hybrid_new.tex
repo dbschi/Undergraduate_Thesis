@@ -1,0 +1,278 @@
+ \chapter{Towards a Hybrid Zero Density Result}
+
+\iffalse
+
+\textit{Here I will document some progress with working with
+the hybrid version of Guth-Maynard. This section will be removed when I send the draft to Prof. Wunsch.}
+\fi
+We would like to generalize Guth and Maynard's result to $L$-functions. Specifically, let $\chi$ be a \hyperref[dcharacter]{Dirichlet character}. we are interested in the the zeros of the function defined by \[
+L(s,\chi)\defeq\sum_{n} \frac{\chi(n)}{n^{-s}}
+\]
+on $\Re(s)>1$ and its analytic continuation on the whole complex plane. The zeta function is a special case of an $L$-function with the Dirichlet character $1$ everywhere. The structure of the arguments for analytic continuation of an $L$-function, its line of symmetry along $\Re(s) = 1/2$, and the locations of zeros are very similar to that of the zeta function. This motivates the Generalized Riemann Hypothesis. \begin{conjecture} [Generalized Riemann Hypothesis]
+    The \text{Generalized Riemann Hypothesis} asserts that on the critical strip, \[
+    L(s,\chi)=0 \implies \Re(s)=\frac{1}{2},
+    \]
+    for any Dirichlet character.
+\end{conjecture}
+The Generalized Riemann Hypothesis leads to even stronger for primes in short intervals. Namely, fix an integer $q$, we have that \[
+\sum_{\substack{n\leq N\\ n\equiv a\mod q}}\Lambda(n) = \begin{cases}
+    \frac{1}{\phi(q)} N + O(x^{2+o(1)}), & \textrm{if $\gcd(a,q)=1$}\\
+    o(n),& \textrm{otherwise.}
+\end{cases}
+\]
+This means that not only that the Prime Number Theorem holds in intervals of $x^{2+\epsilon}$, the distribution of primes in each of the residual classes (coprime to $q$) are uniform at this scale too. Noticing that we can modify Huxley's proof with \[
+M_{x,\chi} = \sum_{n\leq x} \chi(n) \mu(n) n^{-s},
+\]
+we have \[
+L(s,\chi)M_{x,\chi} = \sum_{n} a_n \chi(n) \mu(n) n^{-s}.
+\]
+
+Thus, we can reproduce a similar proof on the zero density of $L$-functions. 
+\begin{definition}[Zero Density for $L$-functions]
+    Let $N(\sigma,\chi,T)$ denote the number of zeros of the $L$-function $L(-,\chi)$ with real part greater than $\sigma$ and imaginary part between $-T$ and $-T$. That is \[
+    N(\sigma,\chi,T) \defeq \#\{\rho=\beta+i\gamma \ | \ \beta\geq \sigma, |\gamma|\leq T\}.
+    \]
+    For backwards compatibility with our previous definition, we take $N(\sigma,T)\defeq N(\sigma, 1,T)$.
+\end{definition}
+The hybrid analogs of the zero density bounds of Ingham and Huxley are known.
+\begin{theorem}[Hybrid Ingham bound for zero density]
+    Let $1/2\leq \sigma\leq 3/4$. We have \[
+        \sum_{\chi^* }N(\sigma,\chi^*,t)\lesssim (qT)^{\frac{3(1-\sigma)}{2-\sigma}},
+        \]
+        where $\sum_{\chi^*}$ sums over all the primitive characters $\chi^*$ of modulus $q$.
+\end{theorem}
+\begin{theorem}[Hybrid Huxley bound for zero density]
+    Let $3/4\leq \sigma\leq 1$. We have \[
+        \sum_{\chi^* }N(\sigma,\chi^*,t)\lesssim (qT)^{\frac{3(1-\sigma)}{3\sigma-1}},
+        \]        
+        where $\sum_{\chi^*}$ sums over all the primitive characters $\chi^*$ of modulus $q$.
+\end{theorem}
+
+The method for detecting zeros is very similar to Huxley's proof above with the slight change in definition of $M_{x,\chi}$. This argument then reduces to bounding the number of times large values of Dirichlet polynomials can occur. Therefore we want a result in the form:
+\begin{quotation}  
+Let $W=\{(t_j,\chi_j)\}$ be a set such that each $\chi_j$ is a primitive Dirichlet character of modulus $q$, and $|t_j-t_k|\geq 1$ if $j\neq k$ and $\chi_j=\chi_k$. (That is, the $t$'s are $1$-separated if the characters are the same.)Let $|b_n|\leq 1$ be a sequence of numbers indexed in $n$, and suppose also that \[
+\Bigg|\sum_{n\sim N} b_n\chi_j(n)n^{it_j} \Bigg|>V.
+\]
+We want to find a bound on $|W|$.
+\end{quotation}
+\section{Statement of Main Theorem}
+Our result is as follows: 
+\begin{theorem}\label{mainthm}
+    Let $W=\{(t_j,\chi_j)\}$ be a set such that each $\chi_j$ is a primitive Dirichlet character of modulus $q$, and $t_j\in[0,T]$. Further assume that $|t_j-t_k|\geq T^\epsilon$ if $j\neq k$ and $\chi_j=\chi_k$. Let $|b_n|\leq 1$ be a sequence of numbers indexed in $n$, $\omega$ be a smooth bump function that equals $1$ on $[6/5,9/5]$ and has support in $[1,2]$ (thus $\omega^{(A)}\ll_A 1$ for all $A$). Let $V=N^{\sigma}$, where $[7/10,8/10]$, and $N=(qT)^{5/6}$. Suppose also that \[
+    |D_N(t_j,\chi_j)|\defeq\Bigg|\sum_{n\sim N} \omega\Bigg(\frac{n}{N}\Bigg)b_n\chi_j(n)n^{it_j} \Bigg|>V.
+\]
+for all $(t_j,\chi_j)\in W$.
+Then \[
+|W|\ll (qT)N^{(12-20\sigma)/5+o_{\epsilon}(1)}
+\]
+for \textbf{almost all} values of $q$ that satisfy $\omega(q)= O(\log\log q)$ by the Erd\"os-Kac Theorem.
+\end{theorem}
+
+The idea of the proof is similar to Guth and Maynard's proof. We can define a $|W|\times N$ matrix $M$ with entries
+\[
+    M_{t_j,\chi_j,n} = \chi_j(n)n^{it_j}
+\]
+for $(t_j,\chi_j)\in W$ and $n\sim N$, and bound its operator norm in the exact same way: taking it to the $M^*M$ to the third power and calculating its trace. We will highlight similar ideas when they come up.
+
+\section{The matrix $M$ and its trace expansion}
+We define $M$ a $|W |\times N$ matrix with entries
+\[
+    M_{(t_j,\chi_j),n} = \omega\Big(\frac{n}{N}\Big)\chi_j(n)n^{it_j}
+\]
+for $(t_j,\chi_j)\in W$ and $n\sim N$.
+Thus by the same reasoning that $(M\vec{b})_j=D_N(t_j,\chi_j)$,
+we want to bound the size of $W$ by trace of the matrix \[
+\textrm{tr}((M^*M)^3).
+\].
+\begin{proposition} \label{Tracebound}
+    Let \[
+    P(n,(t_1,\chi_1),(t_2,\chi_2))\defeq \omega\left(\frac{n}{N}\right)^2 \left(\frac{n}{N}\right)^{i(t_2-t_1)}\chi_2\bar{\chi}_1(n),
+    \]
+    and \[
+    S \defeq \sum_{\substack{(t_1,\chi_1),(t_2,\chi_2),\\(t_3,\chi_3)\in W\\ (*)} }\ \sum_{n_1,n_2,n_3\sim N} 
+    P(n_1,(t_1,\chi_1),(t_3,\chi_3))P(n_2,(t_2,\chi_2),(t_1,\chi_1))P(n_3,(t_3,\chi_3),(t_2,\chi_2)),
+    \]
+    where the condition $(*)$ denotes that the three pairs are not all identical.
+    We have 
+    \[
+        |W|\ll N^2 V^{-2} + N V^{-2} S^{1/3}.
+    \]
+    
+\end{proposition}
+
+
+\begin{lemma}\label{trace formula}
+    We have 
+    \[
+        |W|\ll N V^{-2}\left(\frac{\rm{tr}(AA^*)}{|W|}\right) + N V^{-2}\left(\rm{tr}((MM^*)^3)-\frac{\rm{tr}(MM^*)^3}{|W|^2}\right)^{1/3}.
+    \]
+\end{lemma}
+
+
+\begin{lemma}\label{hilberttrace}
+    Let $A$ be an $m\times n$ matrix. Then 
+    \[\|A\| \leq 2\left(\rm{tr}((AA^*)^3)-\frac{\rm{tr}(AA^*)^3}{m^2}\right)^{1/6}+2\left(\frac{\rm{tr}(AA^*)}{m}\right)^{1/2}.
+    \]
+\end{lemma}
+\begin{proof}
+    This is Lemma 4.2 from Guth-Maynard. \cite{GM2024}
+\end{proof}
+
+
+\begin{proof}[Proof of Proposition \ref{trace formula}]
+    Consider the product $M\vec{b}$. The $j$-th entry is exactly $D_n(t_j,\chi_j)$. Thus we have \[
+    V^2|W|\leq |M \vec{b}|^2 \leq \|M\|^2|\vec{b}|^2\leq \|M\|^2N.
+    \]
+    Applying lemma \label{hilberttrace} gives the desired result.
+\end{proof}
+
+
+We now compute the expression for the traces.
+\begin{lemma}[Explicit Expression of Traces]
+    Let \[
+    P(n,(t_1,\chi_1),(t_2,\chi_2))\defeq \omega\left(\frac{n}{N}\right)^2 \left(\frac{n}{N}\right)^{i(t_2-t_1)}\chi_2\bar{\chi}_1(n).
+    \]
+    We have 
+    \begin{align*}
+        \rm{tr}(M^*M) = & \ |W|\sum_{n\sim N, \gcd (n,q)=1} \omega\left(\frac{n}{N}\right)^2, \\
+        \rm{tr}((M^*M)^3)=&\sum_{\substack{(t_1,\chi_1),(t_2,\chi_2),\\(t_3,\chi_3)\in W}}\sum_{n_1,n_2,n_3\sim N} 
+        P(n_1,(t_1,\chi_1),(t_3,\chi_3))P(n_2,(t_2,\chi_2),(t_1,\chi_1))P(n_3,(t_3,\chi_3),(t_2,\chi_2)).
+    \end{align*}
+\end{lemma}
+\begin{proof}
+   % We compute the traces of $MM^*$ and $(MM^*)^3$ instead, as this makes the calculations cleaner.
+    We see that \begin{align*}
+        (MM^*)_{(t_j,\chi_j),(t_k,\chi_k)} = \sum_{n\sim N} \omega\left(\frac{n}{N}\right)^2 n^{i(t_k-t_j)}\bar{\chi}_j\chi_k(n) = \sum_{n\sim N}P(n,(t_k,\chi_k),(t_j,\chi_j))N^{i(t_k-t_j)},
+    \end{align*}
+    so that \begin{align*}
+        \textrm{tr}(MM^*) =& \sum_{(t_j,\chi_j)} \sum_{n\sim N} P(n,(t_j,\chi_j),(t_j,\chi_j)) \\
+        =&|W|\sum_{n\sim N} |\chi_j(n)|\omega\left(\frac{n}{N}\right)^2.
+    \end{align*}
+    For the third power, we have 
+    \begin{align*}
+        (MM^*)^3_{(t_j,\chi_j),(t_k,\chi_k)} = \sum_{(t_1,\chi_1),(t_2,\chi_2)\in W}   (MM^*)_{(t_j,\chi_j),(t_1,\chi_1)} (MM^*)_{(t_1,\chi_1),(t_2,\chi_2)} (MM^*)_{(t_2,\chi_2),(t_k,\chi_k)},
+    \end{align*}
+    so that the trace is given by \begin{align*}
+        &\sum_{\substack{(t_1,\chi_1),(t_2,\chi_2),\\(t_3,\chi_3)\in W}} (MM^*)_{(t_3,\chi_3),(t_1,\chi_1)} (MM^*)_{(t_1,\chi_1),(t_2,\chi_2)} (MM^*)_{(t_2,\chi_2),(t_3,\chi_3)}\\
+        =&\sum_{\substack{(t_1,\chi_1),(t_2,\chi_2),\\(t_3,\chi_3)\in W}} \sum_{n_1,n_2,n_3\sim N} 
+        P(n_1,(t_1,\chi_1),(t_3,\chi_3))P(n_2,(t_2,\chi_2),(t_1,\chi_1))P(n_3,(t_3,\chi_3),(t_2,\chi_2)).
+    \end{align*}
+\end{proof}
+
+Consider the sum \[\sum_{\substack{(t_1,\chi_1),(t_2,\chi_2),\\(t_3,\chi_3)\in W}}\]  in the expression of $\rm{tr}((M^*M)^3)$.
+We isolate the terms where $(t_1,\chi_1)=(t_2,\chi_2)=(t_3,\chi_3)$ in the sum, and call it $S_0$.
+
+\begin{lemma}[Explicit Calculation of $S_0$]
+    We have \[
+    S_0 = |W|^2\Bigg(\sum_{n\sim N, \gcd(n,q)=1} \omega\Big(\frac{n}{N}\Big)^2 \Bigg)^2.
+    \]
+    In particular, \[
+    S_0 =  \Big(\rm{tr}(M^*M)\Big)^3/|W|^2.
+    \]
+\end{lemma}
+\begin{proof}
+    Notice that \[
+    P(n_1,(t_1,\chi_1),(t_1,\chi_1)) = \omega\Big(\frac{n_1}{N}\Big)^2 \mathbb{I}_{\gcd(n_1,q)=1}.
+    \]
+    Thus we have \[
+    S_0 = \sum_{(t_1,\chi_1)\in W} \sum_{n_1,n_2,n_3 \sim N}\omega\Big(\frac{n_1}{N}\Big)^2 \omega\Big(\frac{n_2}{N}\Big)^2 \omega\Big(\frac{n_3}{N}\Big)^2 \mathbb{I}_{\gcd(n_1,q)=1}.\mathbb{I}_{\gcd(n_2,q)=1}.\mathbb{I}_{\gcd(n_3,q)=1}
+    \]
+    which gives the result.
+\end{proof}
+Thus assembling this lemma with Proposition \ref{trace formula} gives proposition \ref{Tracebound}.
+
+\section{Poisson summation on $S$}
+We now bound $S$ using Poisson summation. We would like to apply Poisson summation directly to $P$ in $n_1$, $n_2$, $n_3$, respectively. However, we do not have a good way to express the Dirichlet character $\chi_j\bar\chi_k$ as a $C^\infty$ function. To get around this, we just split the sum in $n$ into $q$ pieces. 
+\begin{lemma}[Poisson Summation with Periodic Arithmetic Function]
+    Let $f:\reals \to \complex$ be Schwartz, and $g:\naturals\to\complex$ be an arithmetic with period $q$. Then \[
+    \sum_n g(n)f(n) = \frac{1}{q}\sum_{\xi} \sum_{x \mod q} g(x) e\bigg(\frac{-x\xi}{q}\bigg)\hat{f}\bigg(\frac{\xi}{q}\bigg). 
+    \]
+\end{lemma}
+\begin{proof}
+    By absolute convergence, we have \begin{align*}
+        \sum_n g(n)f(n) = \sum_n \sum_{x\mod q} g(qn+x)f(qn+x)=  \sum_{x\mod q} g(x)\sum_n f(qn+x).
+    \end{align*}
+    Applying Poisson summation to the last expression in $n$ gives \[
+        \frac{1}{q} \sum_{x\mod q} g(x) \sum_{\xi} e\bigg(\frac{-x\xi}{q}\bigg)\hat{f}\bigg(\frac{\xi}{q}\bigg).
+    \]
+\end{proof}
+\begin{corollary}[Poisson summation of Trace]
+    Let $h_t(u)\defeq\omega(u)^2u^{it}$,
+    Then \begin{align*}
+        %\rm{tr}(M^*M) &= | W|\frac{N}{q}\sum_{m}\sum_{x\in \mathbb{Z}/q\mathbb{Z}}e\left(\frac{-xm}{q}\right)\hat{h}_0\left(\frac{Nm}{q}\right)\\
+        S&=\sum_{\substack{(t_1,\chi_1),\\(t_2,\chi_2),\\(t_3,\chi_3)\in W \\ (*)}}
+        \frac{N^3}{q^3}\sum_{m\in\mathbb{Z}^3}\sum_{x\in (\mathbb{Z}/q\mathbb{Z})^3}\chi_1\bar{\chi}_3(x_1)\chi_2\bar{\chi}_1(x_2)\chi_3\bar{\chi}_2(x_3) e\left(\frac{-x\cdot m}{q}\right)\\
+        & \quad \quad \quad \times \ \hat{h}_{t_1-t_3}\left(\frac{Nm_1}{q}\right)\hat{h}_{t_2-t_1}\left(\frac{Nm_2}{q}\right)\hat{h}_{t_3-t_2}\left(\frac{Nm_3}{q}\right).
+    \end{align*}
+\end{corollary}
+
+In the summation in $m$, we separate this into two terms. $S_2$, when at least one of the $m_i$'s are zero, and $S_3$, when all three $m_i$'s are non-zero.
+
+Finally, we state the key result that allows us to bound $\hat{h}$ in the Fourier domain. The proof is very standard, but is included anyway.
+\begin{lemma}[Non-stationary phase]
+    \label{nonstationarynew}
+    We have for any integer $A>0$\begin{align*}
+        |\hat{h}_t(\xi)|\ll_A \frac{1+|t|^A}{|\xi|^A},\\
+        |\hat{h}_t(\xi)|\ll_A \frac{1+|\xi|^A}{|t|^A}. 
+    \end{align*}
+\end{lemma}
+\begin{proof}
+   We have \[
+   \hat{h}_t(\xi)=\int \omega(u)^2u^{it}e^{2\pi i \xi u} du.\]
+   By repeated integration by parts on $\omega(u)^2u^{it}$ and $e^{2\pi i \xi u}$, we get \[
+    |\hat{h}_t(\xi)|=\left|\int (2\pi i \xi)^{-A} e^{2\pi i \xi u}  \frac{d^A}{(du)^A}\left(\omega^2(u)u^{it}\right) du\right| \ll_A \frac{1+|t|^A}{|\xi|^A}.
+   \]
+   A similar argument for integration by parts on $\omega(u)^2e^{2\pi i \xi u}$ and $u^{it}$ gives \[
+    |\hat{h}_t(\xi)|=\left|\int \frac{1}{(it+1)(it+2)\ldots(it+A)}u^{it+A}  \frac{d^A}{(du)^A}\left(\omega^2(u)e^{2\pi i \xi u}\right) du \right|\ll_A \frac{1+|\xi|^A}{|t|^A}.
+   \]
+\end{proof}
+\section{$S_2$ Bound}
+
+\begin{proposition}[Bound on $S_2$]\label{s2bound}
+    We have \[
+    S_2 \lesssim_k N^2|W|^2 + qTN|W|^{2-1/k} + N^2|W|^2 \Big(\frac{(qT)^{1/2}}{|W|^{3/4}}\Big)^{1/k}.
+    \]
+\end{proposition}
+
+With a loss of a factor of $3$, we can set $m_3=0$. Thus \begin{align*}
+    %\rm{tr}(M^*M) &= | W|\frac{N}{q}\sum_{m}\sum_{x\in \mathbb{Z}/q\mathbb{Z}}e\left(\frac{-xm}{q}\right)\hat{h}_0\left(\frac{Nm}{q}\right)\\
+    S_2&\ll\sum_{\substack{(t_1,\chi_1),\\(t_2,\chi_2),\\(t_3,\chi_3)\in W \\ (*)}}
+    \frac{N^3}{q^3}\sum_{m_1,m_2\in\mathbb{Z}}\sum_{x\in (\mathbb{Z}/q\mathbb{Z})^3}\chi_1\bar{\chi}_3(x_1)\chi_2\bar{\chi}_1(x_2)\chi_3\bar{\chi}_2(x_3) e\left(\frac{-x_1m_1-x_2m_2}{q}\right)\\
+    & \quad \quad \quad \times \ \hat{h}_{t_1-t_3}\left(\frac{Nm_1}{q}\right)\hat{h}_{t_2-t_1}\left(\frac{Nm_2}{q}\right)\hat{h}_{t_3-t_2}\left(0\right).
+\end{align*}
+By the orthogonality of characters, the terms when $\chi_2\neq \chi_3$ vanish in the summation for $x_3$. But when $\chi_2=\chi_3$ and $t_3\neq t_2$, then they are $T^{\epsilon}$ apart and $\hat{h}_{t_3-t_2}(0)\ll T^{-100}$. Thus the terms for which $(t_2,\chi_2)\neq(t_3,\chi_3)$ are negligble by Lemma \ref{nonstationarynew} and we have \[
+    S_2\ll\sum_{\substack{(t_1,\chi_1),\\(t_2,\chi_2)\in W \\ (t_1,\chi_1)\neq (t_2,\chi_2)}}
+    \frac{N^3}{q^2}\sum_{m_1,m_2\in\mathbb{Z}}\sum_{x_1,x_2\in \mathbb{Z}/q\mathbb{Z}}\chi_1\bar{\chi}_2(x_1)\chi_2\bar{\chi}_1(x_2) e\left(\frac{-x_1m_1-x_2m_2}{q}\right)
+    \hat{h}_{t_1-t_2}\left(\frac{Nm_1}{q}\right)\hat{h}_{t_2-t_1}\left(\frac{Nm_2}{q}\right)+O(T^{-100}).
+\]
+Noticing that $\hat{h}_t(\xi)=\overline{\hat{h}_{-t}(-\xi)}$, we rewrite \begin{equation} \label{S2clean}
+    S_2 \ll\sum_{\substack{(t_1,\chi_1),\\(t_2,\chi_2)\in W \\ (t_1,\chi_1)\neq (t_2,\chi_2)}}
+    \frac{N^3}{q^2}\left|\sum_{m \in \mathbb{Z}}\sum_{x\in \mathbb{Z}/q\mathbb{Z}}\chi_1\bar{\chi}_2(x_1) e\left(\frac{-xm}{q}\right)
+    \hat{h}_{t_1-t_2}\left(\frac{Nm}{q}\right)\right|^2.
+\end{equation}
+\begin{lemma}[Approximate Functional Equation]
+    Let $|t|\leq T_0$, and $\chi$ be a Dirichlet character mod $q$. Further assume that if $\chi$ is principal then $|t|\geq T^{\epsilon}$. Then we have \[
+        \left|\sum_{m \in \mathbb{Z}}\sum_{x\in \mathbb{Z}/q\mathbb{Z}}\chi_1\bar{\chi}_2(x_1) e\left(\frac{-xm}{q}\right)
+        \hat{h}_{t_1-t_2}\left(\frac{Nm}{q}\right)\right|\lesssim qN^{1/2}\int_{|u|\lesssim 1}\Big|\sum_{n\lesssim \frac{qT_0}{N}}n^{-1/2-i(t+u)}\bar{\chi}(n)\Big| du + O(((qT)^{-100})).
+    \]
+\end{lemma}
+The proof to this approximate functional equation is due to Vishal Gupta, who had been collaborating with me on this problem. The proof relies on the reflection method for $L$-functions akin to Theorem 9.15 in \cite{iwaniec}. 
+
+\begin{proof}[Proof of Proposition \ref{s2bound}]
+    Beginning from equation \ref{S2clean}, we apply the approximate functional equation to get \begin{align*}
+    S_2\lesssim& N^2  \sum_{\substack{(t_1,\chi_1),\\(t_2,\chi_2)\in W \\ (t_1,\chi_1)\neq (t_2,\chi_2)}} \Bigg|
+    \int_{u\lesssim 1}\Big|\sum_{n\lesssim \frac{qT}{N}}n^{-1/2-i(t_1-t_2+u)}\bar{\chi}_2\chi_1(n)\Big| du\Bigg|^2\\
+    \stackon{CS}{\lesssim}& \sup_{|u|\lesssim 1} N^2  \sum_{\substack{(t_1,\chi_1),\\(t_2,\chi_2)\in W}} \Big|\sum_{n\lesssim \frac{q{T_0}}{N}}n^{-1/2-i(t_1-t_2+u)}\bar{\chi}_2\chi_1(n)\Big|^2.
+    \end{align*}
+
+    We now apply H\"older's inequality on \begin{align*}
+        &\sum_{\substack{(t_1,\chi_1),\\(t_2,\chi_2)\in W}} \Big|\sum_{n\lesssim \frac{q{T_0}}{N}}n^{-1/2-i(t_1-t_2+u)}\bar{\chi}_2\chi_1(n)\Big|^2\\
+        \leq& \Bigg(\sum_{\substack{(t_1,\chi_1),\\(t_2,\chi_2)\in W}} 1 \Bigg)^{(k-1)/k} \Bigg(\sum_{\substack{(t_1,\chi_1),\\(t_2,\chi_2)\in W}}
+            \Big|\sum_{n\lesssim \frac{q{T_0}}{N}}n^{-1/2-i(t_1-t_2+u)}\bar{\chi}_2\chi_1(n)\Big|^2\Bigg)^{1/k}\\
+        =&|W|^{2-2/k}\Bigg(\sum_{\substack{(t_1,\chi_1),\\(t_2,\chi_2)\in W}}
+        \Big|\sum_{n\lesssim \big(\frac{q{T_0}}{N}\big)^k} b_n n^{-1/2-i(t_1-t_2)}\bar{\chi}_2\chi_1(n)\Big|^2\Bigg)^{1/k}
+    \end{align*}
+    where each $|b_n|\lesssim 1$ by the divisor bound. We can thus apply Heath-Brown's theorem to get \[
+    S_2 \lesssim N^2 |W|^{2-2/k}(|W|M^k+|W|^2+W^{5/4}(qT)^{1/2})^{1/k},
+    \]where $M=qT/N$. This gives the proposition upon reduction.
+\end{proof}

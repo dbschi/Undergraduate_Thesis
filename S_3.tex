@@ -1,17 +1,25 @@
 \section{$S_3$ bound}\label{s_3chapter}
 \begin{proposition}[Preliminary bound on $S_3$]\label{s_3bound}
     We have \[
-    S_3 \lesssim \Big(\frac{\phi(q)}{q}\Big)^2 (qT)^2 E(\mathcal{S})^{1/2} |\mathcal{S}|^{1/2}.
+    S_3 \lesssim \Big(\frac{\phi(q)}{q}\Big)^2 (qT)^2 E( W)^{1/2} | W|^{1/2}.
     \]
 \end{proposition}
-Recall that \begin{align*}
-	I_m\defeq\frac{N^3}{q^3}\sum_{\substack{(t_1,\chi_1),\\(t_2,\chi_2),\\(t_3,\chi_3)\in\mathcal{S}}} &\sum_{x\in (\mathbb{Z}/q\mathbb{Z})^3}\chi_1\bar{\chi}_3(x_1)\chi_2\bar{\chi}_1(x_2)\chi_3\bar{\chi}_2(x_3) e\left(\frac{-x\cdot m}{q}\right)\\
+Recall that 
+\begin{align*}
+S_3 = \sum_{\substack{(t_1,\chi_1),\\(t_2,\chi_2),\\(t_3,\chi_3)\in W \\ (*)}}&
+\frac{N^3}{q^3}\sum_{m\in(\mathbb{Z}\backslash \{0\})^3}\sum_{x\in (\mathbb{Z}/q\mathbb{Z})^3}\chi_1\bar{\chi}_3(x_1)\chi_2\bar{\chi}_1(x_2)\chi_3\bar{\chi}_2(x_3) e\left(\frac{-x\cdot m}{q}\right)\\
+& \quad \quad \quad \times \ \hat{h}_{t_1-t_3}\left(\frac{Nm_1}{q}\right)\hat{h}_{t_2-t_1}\left(\frac{Nm_2}{q}\right)\hat{h}_{t_3-t_2}\left(\frac{Nm_3}{q}\right).
+\end{align*}
+
+Therefore, we define 
+\begin{align*}
+	I_m\defeq\frac{N^3}{q^3}\sum_{\substack{(t_1,\chi_1),\\(t_2,\chi_2),\\(t_3,\chi_3)\in W}} &\sum_{x\in (\mathbb{Z}/q\mathbb{Z})^3}\chi_1\bar{\chi}_3(x_1)\chi_2\bar{\chi}_1(x_2)\chi_3\bar{\chi}_2(x_3) e\left(\frac{-x\cdot m}{q}\right)\\
 	\times \ &\hat{h}_{t_1-t_3}\left(\frac{Nm_1}{q}\right)\hat{h}_{t_2-t_1}\left(\frac{Nm_2}{q}\right)\hat{h}_{t_3-t_2}\left(\frac{Nm_3}{q}\right).
 \end{align*}
 
-By non-stationary phase, $I_m$ is negligible for the terms $qT/N\lesssim |m|$, so 
+By non-stationary phase, $I_m$ is negligible for the terms $qT/N\lesssim |m|$, so (by relaxing the condition $(*)$ in the sum over pairs in $W$ and exchanging the summations)
 \begin{equation}
-    S_3 = \sum_{0<|m_1|,|m_2|,|m_3|\lesssim qT/N} I_m + O(T^{-100}).
+    S_3 \leq \sum_{0<|m_1|,|m_2|,|m_3|\lesssim qT/N} I_m + O(T^{-100}).
 \end{equation}
 Furthermore, by symmetry in $m_1$, $m_2$, $m_3$, we can consider the terms $|m_1|\leq |m_2|\leq |m_3|$ at a cost of a factor of $6$.
 We first consider the triple summation in $\mathbb{Z}/q$. Define \begin{align*}
@@ -35,7 +43,7 @@ Now we can apply M\"obius inversion on the summation in $x_3$ to get \begin{alig
 \end{align*}
 
 With this in mind, we break $I_m=\sum_{q_0|q}\mu(q/q_0)I_{m,q_0}$,\begin{align*}
-I_{m,q_0}\defeq&\frac{N^3q_0}{q^2}\sum_{\substack{(t_1,\chi_1),\\(t_2,\chi_2),\\(t_3,\chi_3)\in\mathcal{S}}} \sum_{\substack{y_1,y_2 \in\mathbb{Z}/q\mathbb{Z} \\ y_1m_1+y_2m_2+m_3\equiv 0 \mod q_0}}\chi_1(y_1)\bar{\chi}_1(y_2)\chi_2(y_2)\bar{\chi}_3(y_1)\\
+I_{m,q_0}\defeq&\frac{N^3q_0}{q^2}\sum_{\substack{(t_1,\chi_1),\\(t_2,\chi_2),\\(t_3,\chi_3)\in W}} \sum_{\substack{y_1,y_2 \in\mathbb{Z}/q\mathbb{Z} \\ y_1m_1+y_2m_2+m_3\equiv 0 \mod q_0}}\chi_1(y_1)\bar{\chi}_1(y_2)\chi_2(y_2)\bar{\chi}_3(y_1)\\
 &\times \hat{h}_{t_1-t_3}\left(\frac{Nm_1}{q}\right)\hat{h}_{t_2-t_1}\left(\frac{Nm_2}{q}\right)\hat{h}_{t_3-t_2}\left(\frac{Nm_3}{q}\right).
 \end{align*}
 \begin{proposition} [Divisor reduction of $S_3$] \label{divisorreduction}We have\[
@@ -61,7 +69,7 @@ Expanding the Fourier transform as an integral, this expression equals \begin{al
      \end{split}
 \end{equation}
 We define \begin{align*}
-	R(v,n_1,n_2)&\defeq \sum_{(t,\chi)\in \mathcal{S}} 
+	R(v,n_1,n_2)&\defeq \sum_{(t,\chi)\in  W} 
 	\chi({n_1})\bar{\chi}(n_2)v^{it},\\
 	R(v,n)&\defeq R(v,n,1).
 \end{align*}
@@ -150,24 +158,24 @@ Thus, for $|m_2|\sim M$,
 \]
 The proposition follows from this claim.
 \end{proof}
-To apply H\"older's inequality, we need to find bounds on the second and fourth moments of $R(v,y_1,y_2)$.
+To apply H\"older's inequality, we need to find bounds on the second and fourth moments of $R(v,y_1,y_2)$. This is analogous to the second and fourth moments of $R$ in Guth and Maynard's proof.
 \begin{lemma} [Second and fourth moments of $R$]\label{secondmoment}
-    Let $\mathcal{S}=\{(t_j,\chi_j)\}$, such that $\chi_j$ is a character mod $q$, and the $t$'s are contained in an interval of length $T$, and are $T^\epsilon$-separated for the same character. Then uniformly in $y_2\in \mathbb{Z}/q\mathbb{Z}$, \[
+    Let $ W=\{(t_j,\chi_j)\}$, such that $\chi_j$ is a character mod $q$, and the $t$'s are contained in an interval of length $T$, and are $T^\epsilon$-separated for the same character. Then uniformly in $y_2\in \mathbb{Z}/q\mathbb{Z}$, \[
         \sum_{y_1\in (\mathbb{Z}/q\mathbb{Z})} \int_{v\asymp 1} 
-        \left|R\left(v,y_1,y_2\right)\right|^2dv \ll_{\epsilon} \phi(q)|\mathcal{S}|,
+        \left|R\left(v,y_1,y_2\right)\right|^2dv \ll_{\epsilon} \phi(q)| W|,
     \]
      and \[
         \sum_{y_1\in (\mathbb{Z}/q\mathbb{Z})} \int_{v\asymp 1} 
-        \left|R\left(v,y_1,y_2\right)\right|^4dv  \lesssim \phi(q)E(\mathcal{S}).
+        \left|R\left(v,y_1,y_2\right)\right|^4dv  \lesssim \phi(q)E( W).
     \]
 \end{lemma}
 \begin{proof}
     For the second moment, we have \[
-    |R(v,y_1,y_2)|^2 = \sum_{(t_1,\chi_1),(t_2,\chi_2)\in \mathcal{S}}
+    |R(v,y_1,y_2)|^2 = \sum_{(t_1,\chi_1),(t_2,\chi_2)\in  W}
     \chi_1\bar{\chi}_2(y_1)\bar{\chi}_1{\chi}_2(y_2)v^{i(t_1-t_2)}.
     \]
     By the orthogonality of characters,\[
-        \sum_{y_1\in (\mathbb{Z}/q\mathbb{Z})}|R(v,y_1,y_2)|^2 = \phi(q) \sum_{(t_1,\chi_1),(t_2,\chi_2)\in \mathcal{S}} \delta_{\chi_1\chi_2}\bar{\chi}_1{\chi}_2(y_2)v^{i(t_1-t_2)} = \phi(q)\sum_{(t_1,\chi_1),(t_2,\chi_2)\in \mathcal{S}} \delta_{\chi_1\chi_2}\mathbb{I}_{(y_2,q)=1} v^{i(t_1-t_2)},
+        \sum_{y_1\in (\mathbb{Z}/q\mathbb{Z})}|R(v,y_1,y_2)|^2 = \phi(q) \sum_{(t_1,\chi_1),(t_2,\chi_2)\in  W} \delta_{\chi_1\chi_2}\bar{\chi}_1{\chi}_2(y_2)v^{i(t_1-t_2)} = \phi(q)\sum_{(t_1,\chi_1),(t_2,\chi_2)\in  W} \delta_{\chi_1\chi_2}\mathbb{I}_{(y_2,q)=1} v^{i(t_1-t_2)},
     \]
     so it is enough to consider the second moment of $R(v,y,1)$ (and $y_2$ is coprime to $q$).
     Let $\psi$ be a bump function supported on $v\asymp 1$ and equals $1$ on the domain of integration in the lemma.
@@ -178,30 +186,30 @@ To apply H\"older's inequality, we need to find bounds on the second and fourth 
         \psi(v)\left|R\left(v,y\right)\right|^2dv 
         \\=&
         \phi(q)\int \psi(v)
-        \sum_{\substack{(t_1,\chi_1),(t_2,\chi_2)\in \mathcal{S}\\ \chi_1=\chi_2}}v^{i(t_1-t_2)}
+        \sum_{\substack{(t_1,\chi_1),(t_2,\chi_2)\in  W\\ \chi_1=\chi_2}}v^{i(t_1-t_2)}
         dv\\
         =&
-        \phi(q)\sum_{\substack{(t_1,\chi_1),(t_2,\chi_2)\in \mathcal{S}\\ \chi_1=\chi_2}}\int \psi(v)
+        \phi(q)\sum_{\substack{(t_1,\chi_1),(t_2,\chi_2)\in  W\\ \chi_1=\chi_2}}\int \psi(v)
         v^{i(t_1-t_2)}
         dv.
     \end{align*}
-    In the sum, the terms $t_1=t_2$ contribute $O(|\mathcal{S}|)$. If $t_1\neq t_2$, then $|t_1-t_2|\geq T^\epsilon$. The integral in this case is $O_\epsilon(T^{-100})$ and is negligible.
+    In the sum, the terms $t_1=t_2$ contribute $O(| W|)$. If $t_1\neq t_2$, then $|t_1-t_2|\geq T^\epsilon$. The integral in this case is $O_\epsilon(T^{-100})$ and is negligible.
 
     Similarly for the fourth moment, it is enough to consider $R(v,y)$. We have \[
-    |R(v,y)|^4 = \sum_{\substack{(t_1,\chi_1),(t_2,\chi_2),\\ (t_3,\chi_3),(t_4,\chi_4)\in \mathcal{S}}}
+    |R(v,y)|^4 = \sum_{\substack{(t_1,\chi_1),(t_2,\chi_2),\\ (t_3,\chi_3),(t_4,\chi_4)\in  W}}
     \chi_1{\chi}_2\bar{\chi_3}\bar{\chi_4}(y)v^{i(t_1+t_2-t_3-t_4)}.
     \]
     So again by the orthogonality of characters, \begin{align*}
         \sum_{y\in (\mathbb{Z}/q\mathbb{Z})^\times} \int_{v\asymp 1} 
         \left|R\left(v,y\right)\right|^4dv = & \phi(q)
-        \sum_{\substack{(t_1,\chi_1),(t_2,\chi_2),\\ (t_3,\chi_3),(t_4,\chi_4)\in \mathcal{S}\\ \chi_1\chi_2=\chi_3\chi_4}} \int_{v\asymp 1} v^{i(t_1+t_2-t_3-t_4)} dv.
+        \sum_{\substack{(t_1,\chi_1),(t_2,\chi_2),\\ (t_3,\chi_3),(t_4,\chi_4)\in  W\\ \chi_1\chi_2=\chi_3\chi_4}} \int_{v\asymp 1} v^{i(t_1+t_2-t_3-t_4)} dv.
     \end{align*}
-    Similar to the previous proof, we can introduce the bump function $\psi$ for the integral, and restrict the summation to the terms $|t_1+t_2-t_3-t_4|\leq T^\epsilon$ with an error of $O_\epsilon(T^{-100})$. The remaining terms in the summation contribute $O(E(\mathcal{S}))$.
+    Similar to the previous proof, we can introduce the bump function $\psi$ for the integral, and restrict the summation to the terms $|t_1+t_2-t_3-t_4|\leq T^\epsilon$ with an error of $O_\epsilon(T^{-100})$. The remaining terms in the summation contribute $O(E( W))$.
 \end{proof}
 \begin{lemma}\label{fourthmoment_smooth}
-    Let $E(\mathcal{S})=\#\{(t_1,\chi_1),(t_2,\chi_2),(t_3,\chi_3),(t_4,\chi_4)\in \mathcal{S}  :  |t_1+t_2-t_3-t_4|\leq 1, \chi_1\chi_2=\chi_3\chi_4\}$. Then \[
+    Let $E( W)=\#\{(t_1,\chi_1),(t_2,\chi_2),(t_3,\chi_3),(t_4,\chi_4)\in  W  :  |t_1+t_2-t_3-t_4|\leq 1, \chi_1\chi_2=\chi_3\chi_4\}$. Then \[
         \sum_{y_1\in (\mathbb{Z}/q\mathbb{Z})^\times} \int_{v\asymp 1} 
-        \left|\tilde{R}_M\left(v,y_1,y_2\right)\right|^4dv  \lesssim \phi(q)E(\mathcal{S}).
+        \left|\tilde{R}_M\left(v,y_1,y_2\right)\right|^4dv  \lesssim \phi(q)E( W).
     \]
 \end{lemma}
 \begin{proof}
@@ -235,7 +243,7 @@ To apply H\"older's inequality, we need to find bounds on the second and fourth 
     \tilde{R}_M\left(\frac{m_1v_1+m_3}{-m_2},y_2\right)\right|\Big)^2 dv_1\Bigg)^{1/2}.
     \end{align*}
     The second moment of $R$ (and only considering non-zero contributions from $\gcd(q,y_1)=\gcd(q,y_2)=1$) gives \begin{align*}
-        \Big(\sum_{\substack{y_1,y_2 \in\mathbb{Z}/q\mathbb{Z} }}\int_{v_1\asymp 1} \left|R\left(v_1,y_1\right)\right|dv_1\Big)^{1/2}  \lesssim (phi(q)^2 |\mathcal{S}|)^{1/2} \ll \phi(q) |\mathcal{S}|^{1/2}. 
+        \Big(\sum_{\substack{y_1,y_2 \in\mathbb{Z}/q\mathbb{Z} }}\int_{v_1\asymp 1} \left|R\left(v_1,y_1\right)\right|dv_1\Big)^{1/2}  \lesssim (phi(q)^2 | W|)^{1/2} \ll \phi(q) | W|^{1/2}. 
     \end{align*}
     We apply repeated Cauchy-Schwarz in the second term to get \begin{align*}
      &   \Bigg(\sum_{\substack{y_1,y_2 \in\mathbb{Z}/q\mathbb{Z} }}\int_{v_1\asymp 1} \Big(\sum_{\substack{|m_1|\sim M_1,|m_2|,|m_3|\sim M\\ y_1m_1+y_2m_2+m_3\equiv 0 \mod q_0}}\Big|\tilde{R}_M\left(\frac{m_1v_1+m_3}{-m_2v_1},y_2,y_1\right)
@@ -253,16 +261,16 @@ To apply H\"older's inequality, we need to find bounds on the second and fourth 
     \end{align*}
     For any choice $m_1,m_2,m_3$, we can make the change of variables $u=(m_1v_1+m_3/(-m_2v_1))$ with a Jacbian factor of $O(1)$, and the domain of integration is still $u\asymp 1$, so \begin{align*}
         &\sum_{\substack{y_1,y_2 \in\mathbb{Z}/q\mathbb{Z} }}\int_{v_1\asymp 1}\sum_{\substack{|m_1|\sim M_1,|m_2|,|m_3|\sim M\\ y_1m_1+y_2m_2+m_3\equiv 0 \mod q_0}}\Big|\tilde{R}_M\left(\frac{m_1v_1+m_3}{-m_2v_1},y_2,y_1\right)\Big|^4dv_1\\
-        \ll &\frac{M_1M^2}{q_0} sum_{\substack{y_1,y_2 \in\mathbb{Z}/q\mathbb{Z} }}\int_{u\asymp 1}\Big|\tilde{R}_M\left(u,y_2,y_1\right)\Big|^4du\\
-        \lesssim& \frac{M_1M^2}{q_0} \phi(q)^2 E(\mathcal{S}).
+        \ll &\frac{M_1M^2}{q_0} \sum_{\substack{y_1,y_2 \in\mathbb{Z}/q\mathbb{Z} }}\int_{u\asymp 1}\Big|\tilde{R}_M\left(u,y_2,y_1\right)\Big|^4du\\
+        \lesssim& \frac{M_1M^2}{q_0} \phi(q)^2 E( W).
     \end{align*}
     Similarly, \begin{align*}
         \sum_{\substack{y_1,y_2 \in\mathbb{Z}/q\mathbb{Z} }}\int_{v_1\asymp 1}\Big[ \sum_{\substack{|m_1|\sim M_1,|m_2|,|m_3|\sim M\\ y_1m_1+y_2m_2+m_3\equiv 0 \mod q_0}}
-     \Big|\tilde{R}_M\left(\frac{m_1v_1+m_3}{-m_2},y_2\right)\Big|^2\Big]^2 dv_1\lesssim& \frac{M_1^2M^4}{q_0^2} \phi(q)^2 E(\mathcal{S}).\end{align*}
+     \Big|\tilde{R}_M\left(\frac{m_1v_1+m_3}{-m_2},y_2\right)\Big|^2\Big]^2 dv_1\lesssim& \frac{M_1^2M^4}{q_0^2} \phi(q)^2 E( W).\end{align*}
 
      Therefore, we have \[
-     S_3\lesssim \frac{N^2q_0}{Mq^2} \phi(q) |\mathcal{S}|^{1/2}\Big(\frac{M_1^2M^4}{q_0^2} \phi(q)^2 E(\mathcal{S})\Big)^{1/2} \ll 
-     \frac{N^2q_0}{Mq^2} \phi(q)^2 |\mathcal{S}|^{1/2} \frac{M_1M^2}{q_0}E(\mathcal{S})^{1/2} \lesssim\Big(\frac{\phi(q)}{q}\Big)^2(qT)^2|\mathcal{S}|^{1/2}E(\mathcal{S})^{1/2},
+     S_3\lesssim \frac{N^2q_0}{Mq^2} \phi(q) | W|^{1/2}\Big(\frac{M_1^2M^4}{q_0^2} \phi(q)^2 E( W)\Big)^{1/2} \ll 
+     \frac{N^2q_0}{Mq^2} \phi(q)^2 | W|^{1/2} \frac{M_1M^2}{q_0}E( W)^{1/2} \lesssim\Big(\frac{\phi(q)}{q}\Big)^2(qT)^2| W|^{1/2}E( W)^{1/2},
      \]
     where we applied $M_1\leq M\lesssim qT/N$ in the last step.
 \end{proof}

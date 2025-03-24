@@ -4,7 +4,7 @@ Here we provide the generalization for the orthogonal energy bound for Guth and 
 \begin{proposition}\label{energybound}
     Let $(qT)^{3/4}\leq N\leq (qT)$. Then
     \begin{align*}
-E(\mathcal{S})\lesssim |\mathcal{S}|N^{4-4\sigma}+|\mathcal{S}|^{21/8}T^{1/4}N^{1-2\sigma}+|\mathcal{S}|^3N^{1-\sigma}.
+E(\mathcal{S})\lesssim |\mathcal{S}|N^{4-4\sigma}+|\mathcal{S}|^{21/8}(qT)^{1/4}N^{1-2\sigma}+|\mathcal{S}|^3N^{1-\sigma}.
     \end{align*}
 \end{proposition}
 The idea for bounding energy is similar; if $\chi_1\chi_2=\chi_3\chi_4$ and $|t_1+t_2-t_3-t_4|$ is small, we should expect $|D_N(t_1+t_2-t_3,\chi_1\chi_2\bar{\chi}_3)|\approx |D_N(t_4,\chi_4)|>N^\sigma$.
@@ -16,11 +16,7 @@ The idea for bounding energy is similar; if $\chi_1\chi_2=\chi_3\chi_4$ and $|t_
     uniformly in $\chi$.
 \end{lemma}
 \begin{proof}
-    (GM)
-    \begin{align*}
-        D_N(t,\chi)=\sum_n \omega\left(\frac{n}{N}\right) b_n n^{it} \psi\left(\frac{\log n}{2\pi}\right)
-    \end{align*}
-    For other characters, we can just redefine $b'_n=b_n\chi(n)$.
+    This is Lemme 11.3 is \cite{GM2024}.
 \end{proof}
 \begin{lemma} We have \[
     E(\mathcal{S})\lesssim N^{-2\sigma}\sum_{n_1,n_2\sim N}\left|R\left(\frac{n_1}{n_2},n_1,n_2\right) \right|^3.
@@ -215,5 +211,5 @@ Therefore, the sum is $O(1+{N^2}/({qd^2T}))$. So we have \begin{align*}
 \end{align*}
 
 Picking the choice of $D=N^2/(qT)$, we have produced all analogs of the generalizations of Guth and Maynard's result in bounding energy. The remaining part is to reduce our bounds. The computations are exactly the same except replacing $T$ with $qT$. Thus we have \[
-E(\mathcal{S})\lesssim |\mathcal{S}|N^{4-4\sigma}+|\mathcal{S}|^{21/8}T^{1/4}N^{1-2\sigma}+|\mathcal{S}|^3N^{1-\sigma}.
+E(\mathcal{S})\lesssim |\mathcal{S}|N^{4-4\sigma}+|\mathcal{S}|^{21/8}(qT)^{1/4}N^{1-2\sigma}+|\mathcal{S}|^3N^{1-\sigma}.
 \]

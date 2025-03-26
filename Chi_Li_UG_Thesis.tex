@@ -1,0 +1,175 @@
+\documentclass[openany,
+ngerman,
+toc=flat,
+toc=chapterentrywithdots,
+captions=tableabove,
+listof=entryprefix,
+listof=leveldown,
+fontsize=12pt,
+numbers=noenddot]
+{book}
+\usepackage{blindtext}
+\usepackage{xcolor}
+\usepackage{amsfonts}
+\usepackage{hyperref} 
+\usepackage{subcaption}
+\usepackage{indentfirst}
+\usepackage{graphicx}
+\usepackage[normalem]{ulem}
+\usepackage [english]{babel}
+\usepackage [autostyle, english = american]{csquotes}
+\usepackage{appendix}
+\usepackage{tabularx}
+\usepackage{bbm}
+\usepackage{amsmath,amssymb}
+\usepackage{mathtools}
+\usepackage{makecell}
+\graphicspath{ {./images/} }
+\usepackage{enumitem}
+\usepackage{soul}
+\usepackage{mathtools}
+\usepackage{wrapfig}
+\usepackage{mathrsfs}
+\usepackage{MnSymbol,wasysym}
+\usepackage{centernot}
+\usepackage{amsthm}
+\usepackage{biblatex}
+\addbibresource{citations.bib}
+\allowdisplaybreaks
+
+\MakeOuterQuote{"}
+
+\newtheorem{theorem}{Theorem}[chapter]
+\newtheorem*{theorem*}{Theorem}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem*{lemma*}{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{example}[theorem]{Example}
+\newenvironment{remark}[1][Remark:]{\begin{trivlist}
+		\item[\hskip \labelsep {\bfseries #1}]}{\end{trivlist}}
+
+\newcommand{\defeq}{\mathrel{\mathop:}=}
+\newcommand{\stackeq}[1]{\stackrel{\mathclap{\normalfont\mbox{\normalfont\tiny {#1}}}}{=}}
+\newcommand{\stackon}[2]{\stackrel{\mathclap{\normalfont\mbox{\normalfont\tiny {#1}}}}{#2}}
+\newcommand\reals{\mathbb{R}}
+\newcommand\field{\mathbb{F}}
+\newcommand\complex{\mathbb{C}}
+\newcommand\schwartz{\mathcal{S}}
+\renewcommand{\mod}{ \textrm{ mod }}
+\newcommand\naturals{\mathbb{N}}
+\usepackage{geometry}
+\geometry{
+	letterpaper,
+	margin=1in
+}
+\usepackage{blindtext}
+\usepackage{tikz,tcolorbox,tikz-3dplot}
+\usepackage{pgfplots}
+\usepgfplotslibrary{fillbetween}
+\usepackage{xcolor}
+\usepackage{amsfonts}
+\usepackage{hyperref} 
+\usepackage{indentfirst}
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage[normalem]{ulem}
+\usepackage [english]{babel}
+\usepackage [autostyle, english = american]{csquotes}
+\usepackage{appendix}
+
+\usepackage[ruled,linesnumbered]{algorithm2e}
+\SetKwComment{Comment}{/* }{ */}
+\DontPrintSemicolon 
+\usepackage{tabularx}
+\usepackage{amsmath,amssymb}
+\usepackage{mathtools}
+\usepackage{makecell}
+\graphicspath{ {./images/} }
+\usepackage{enumitem}
+\usepackage{soul}
+\usepackage{mathtools}
+\usepackage{wrapfig}
+\usepackage{mathrsfs}
+\usepackage{centernot}
+\usepackage{amsthm}
+\usepackage{listings}
+\setcounter{chapter}{-1}
+\title{Large values of Dirichlet Polynomials and Zero Density Results of the Riemann Zeta function}
+\author{Yung Chi Li}
+%\date{January 2024}
+\usepackage{titling}
+\predate{}
+\postdate{}
+\date{}
+\usepackage{tocloft}
+\setlength{\cftaftertoctitleskip}{0.3em}
+%\setlength{\cftbeforetoctitleskip}{1 em}
+\begin{document}
+
+%\maketitle
+\begin{titlepage}
+    \begin{center}
+        \vspace*{1cm}
+            
+        \Large
+        \textbf{Large values of Dirichlet Polynomials and Zero Density Results of the Riemann Zeta Function}
+            
+        \vspace{0.5cm}
+        
+        \Large
+        Yung Chi Li
+            
+        \vfill
+            
+       	Submitted in partial fulfillment of the\\ requirements of
+		Honors in Mathematics\\
+		
+		
+		Northwestern University
+            
+    
+            
+    \end{center}
+\end{titlepage}
+
+\section*{Overview}
+	We motivate the result of large values of Dirichlet polynomials through the study of primes in short intervals. We first introduce the Riemann Zeta function. We then prove the Prime Number Theorem to demonstrate the connection of Zeta zeros and primes, with the Riemann Hypothesis leading to the tightest bound on the error term of the Prime Number Theorem. 
+	The Riemann Hypothesis has not be proved or disproved. Nevertheless, one can still obtain unconditional results on the error term through appealing to the distribution of Zeta zero density. We will provide the previous bound on the density of zeros and sketch its refinement. Finally, extending from the ideas of Guth and Maynard's proof in section 5, we provide a generalization for the analogous Hal\'asz inequality lemma for Dirichlet L-functions.
+
+
+{\let\clearpage\relax \tableofcontents}
+\section*{Statement Regarding Generative AI}
+No part of this thesis had been aided by generative AI.
+
+\section*{Acknowledgements}
+I thank my advisor, Professor Maksym Radziwi\l\l, for his guidance on topic selection, explanation of current literature, and insights into solving hybrid Guth-Maynard. 
+I also thank Vishal Gupta, who had been collaborating with me on the problem of generalizing the result of Guth and Maynard and provided key observations that allowed 
+me to crack the $S_3$ term.
+\chapter{Notation and Preliminaries}
+\input{Notation}
+
+\input{Preliminaries}
+	\chapter{ The Riemann Zeta Function and the Prime Number Theorem}
+	%\chapter{Background and Introduction}
+	\input{Introduction_to_zeta}
+	\input{PNT}
+	\chapter{Primes in Short Intervals and Zero Density Results}
+	\input{Short intervals}
+	\input{Huxley.tex}
+	\chapter{Guth-Maynard's Large Values Estimate near $\sigma = 3/4$}
+	\input{guth_maynard.tex}
+	
+	\input{hybrid_new.tex}
+	\input{S_3.tex}
+	\input{S_3 refinement.tex}
+	%\input{S_3_stronger_bound.tex}
+	\input{s_3_complete.tex}
+	\input{Energy.tex}
+	\input{assembly.tex}
+
+	\printbibliography
+\end{document} 

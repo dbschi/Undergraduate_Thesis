@@ -1,4 +1,4 @@
- \chapter{Towards a Hybrid Zero Density Result}
+ \chapter{Towards a Hybrid Large Values Estimate Result}
 
 \iffalse
 
@@ -48,27 +48,65 @@ The hybrid analogs of the zero density bounds of Ingham and Huxley are known.
         where $\sum_{\chi^*}$ sums over all the primitive characters $\chi^*$ of modulus $q$.
 \end{theorem}
 
-The method for detecting zeros is very similar to Huxley's proof above with the slight change in definition of $M_{x,\chi}$. This argument then reduces to bounding the number of times large values of Dirichlet polynomials can occur. Therefore we want a result in the form:
+The method for detecting zeros is very similar to Huxley's proof above with the slight change in definition of $M_{x,\chi}$. This argument then reduces to bounding the number of times large values of Dirichlet polynomials can occur. Therefore we want a result in the form of the Hal\'asz inequality, this time with twisted Dirchlet polynomials:
 \begin{quotation}  
 Let $W=\{(t_j,\chi_j)\}$ be a set such that each $\chi_j$ is a primitive Dirichlet character of modulus $q$, and $|t_j-t_k|\geq 1$ if $j\neq k$ and $\chi_j=\chi_k$. (That is, the $t$'s are $1$-separated if the characters are the same.)Let $|b_n|\leq 1$ be a sequence of numbers indexed in $n$, and suppose also that \[
 \Bigg|\sum_{n\sim N} b_n\chi_j(n)n^{it_j} \Bigg|>V.
 \]
 We want to find a bound on $|W|$.
 \end{quotation}
-\section{Statement of Main Theorem}
+\section{Statement of Main Theorem and its Reduction}
 Our result is as follows: 
-\begin{theorem}\label{mainthm}
-    Let $W=\{(t_j,\chi_j)\}$ be a set such that each $\chi_j$ is a primitive Dirichlet character of modulus $q$, and $t_j\in[0,T]$. Further assume that $|t_j-t_k|\geq T^\epsilon$ if $j\neq k$ and $\chi_j=\chi_k$. Let $|b_n|\leq 1$ be a sequence of numbers indexed in $n$, $\omega$ be a smooth bump function that equals $1$ on $[6/5,9/5]$ and has support in $[1,2]$ (thus $\omega^{(A)}\ll_A 1$ for all $A$). Let $V=N^{\sigma}$, where $[7/10,8/10]$, and $N=(qT)^{5/6}$. Suppose also that \[
+\begin{theorem}[Incomplete generalization of Guth-Maynard Hal\'asz Inequality]\label{incompletehybrid}
+	Let $W=\{(t_j,\chi_j)\}$ be a set such that each $\chi_j$ is a primitive Dirichlet character of modulus $q<N$, and $|t_j-t_k|\geq 1$ if $j\neq k$ and $\chi_j=\chi_k$. (That is, the $t$'s are $1$-separated if the characters are the same.)Let $|b_n|\leq 1$ be a sequence of numbers indexed in $n$, and suppose also that \[
+	\Bigg|\sum_{n\sim N} b_n\chi_j(n)n^{it_j} \Bigg|>V.
+	\]
+	Then for \textbf{almost all} values of $q$ \[
+	|W|\leq (qT)^{o_\epsilon(1)}(N^2V^{-2}+ N^{18/5}V^{-4}+(qT)^{12/5}V^{-4} ).
+	\]
+\end{theorem}
+\begin{remark}
+This theorem is incomplete in the sense that it does not take care of the case $q>N$ and only applies to almost all values of $q$.
+\end{remark}
+\begin{proposition}[Reduction of Main Theorem]\label{mainthm}
+    Let $W=\{(t_j,\chi_j)\}$ be a set such that each $\chi_j$ is a primitive Dirichlet character of modulus $q$, and $t_j\in[0,T]$. Further assume that $|t_j-t_k|\geq T^\epsilon$ if $j\neq k$ and $\chi_j=\chi_k$. Let $|b_n|\leq 1$ be a sequence of numbers indexed in $n$, $\omega$ be a smooth bump function that equals $1$ on $[6/5,9/5]$ and has support in $[1,2]$ (thus $\omega^{(A)}\ll_A 1$ for all $A$). Let $V=N^{\sigma}$, where $[7/10,8/10]$, and $N=(qT)^{5/6}$, $T\geq q^{1/5}$. Suppose also that \[
     |D_N(t_j,\chi_j)|\defeq\Bigg|\sum_{n\sim N} \omega\Bigg(\frac{n}{N}\Bigg)b_n\chi_j(n)n^{it_j} \Bigg|>V.
 \]
 for all $(t_j,\chi_j)\in W$.
 Then \[
 |W|\ll (qT)N^{(12-20\sigma)/5+o_{\epsilon}(1)}
 \]
-for \textbf{almost all} values of $q$ that satisfy $\omega(q)= O(\log\log q)$ by the Erd\"os-Kac Theorem.
-\end{theorem}
+for \textbf{almost all} values of $q$.
+\end{proposition}
+\begin{proof}[Proof of Theorem \ref{incompletehybrid} assuming Proposition \ref{mainthm}]
+The argument is essentially identical to the Guth and Maynard's proof, except checking the condition that $T$ is not too small compared to $q$.
 
-The idea of the proof is similar to Guth and Maynard's proof. We can define a $|W|\times N$ matrix $M$ with entries
+The result is given by Ingham and Huxley when $V\leq N^{7/10+o(1)}$ or $V\geq N^{8/10+o(1)}$. Now let $V\in [4N^{7/10},N^{8/10}]$. Then we have $N^2V^{-2}\ll N^{18/5}V^{-4}$.
+We split \[
+\sum_{n\sim N} b_n\chi_j(n)n^{it_j}=\sum_{N\leq n< 6N/5} b_n\chi_j(n)n^{it_j} +\sum_{6N/5 \leq n < 9N/5} b_n\chi_j(n)n^{it_j} +\sum_{9N/5 \leq n < 2N} b_n\chi_j(n)n^{it_j}.
+\]
+So that if \[
+\Big|\sum_{n\sim N} b_n\chi_j(n)n^{it_j}\Big|>V,
+\]
+then at least one of the three summations in the right has magnitude at least $V/3$.
+But then each of these sums can be written as dirichlet sums in the form of the lemma: \begin{align*}
+	\sum_{N\leq n< 6N/5} b_n\chi_j(n)n^{it_j} &=  \sum_{N\leq n< 6N/5} \omega\Bigg(\frac{n}{11N/15}\Bigg) b_n\chi_j(n)n^{it_j}, \\
+	\sum_{6N/5 \leq n < 9N/5} b_n\chi_j(n)n^{it_j} &=  \sum_{6N/5 \leq n < 9N/5} \omega\Bigg(\frac{n}{N}\Bigg) b_n\chi_j(n)n^{it_j}, \\
+	\sum_{9N/5 \leq n < 2N}  b_n\chi_j(n)n^{it_j} &=  \sum_{9N/5 \leq n < 2N}  \omega\Bigg(\frac{n}{19N/15}\Bigg) b_n\chi_j(n)n^{it_j}. \\
+\end{align*}
+Applying the lemma on each of these three pieces and summing the three bounds gives the same bound for $\sum_{n\sim N} b_n\chi_j(n)n^{it_j}$ up to a constant factor, so it suffices to show the result assuming that
+$b_n=0$ for $6N/5 \leq n < 9N/5$, in which case $b_n=b_n\omega(n/N)$.
+Now suppose that $qT\leq N^{6/5}$. Then the $t_j$'s lie in an interval of length $N^{6/5}/q\geq T$. Thus in this case at a cost of $T^{\epsilon}$ we consider the $T^{\epsilon}$ disjoint subsets of $|W|$ each
+being $T^{\epsilon}$ separated in the $t_j$'s. Setting $V=N^{\sigma}$ and checking that $N^{6/5}/q\geq q^{1/5},$ the proposition gives\[
+|W|\leq T^{\epsilon} N^{(18-20\sigma)/5+o_{\epsilon}(1)} \leq T^{\epsilon} N^{18/5+o_{\epsilon}(1)}V^{-4}.
+\] 
+Letting $\epsilon\to 0$ gives the result. If $qT\geq N^{6/5}$, we divide $|W|$ into $[T/N^{6/5}]$ subsets each supported on a length of $N^{6/5}/q\geq q^{1/5}$. Therefore, we can apply the proposition (on the $T^\epsilon$ disjoint subsets) to get \[
+|W|\leq T^{1+\epsilon}  N^{-6/5}(N^{18/5+o_{\epsilon}(1)}V^{-4})\leq T^{o_\epsilon(1)}N^{12/5}.
+\] 
+Letting $\epsilon\to 0$ slowly gives the result in this case too.
+\end{proof}
+	
+The idea of the proof of Proposition \ref{mainthm} is similar to Guth and Maynard's proof. We can define a $|W|\times N$ matrix $M$ with entries
 \[
     M_{t_j,\chi_j,n} = \chi_j(n)n^{it_j}
 \]
@@ -123,7 +161,7 @@ we want to bound the size of $W$ by trace of the matrix \[
     Consider the product $M\vec{b}$. The $j$-th entry is exactly $D_n(t_j,\chi_j)$. Thus we have \[
     V^2|W|\leq |M \vec{b}|^2 \leq \|M\|^2|\vec{b}|^2\leq \|M\|^2N.
     \]
-    Applying lemma \label{hilberttrace} gives the desired result.
+    Applying Lemma \ref{hilberttrace} gives the desired result.
 \end{proof}
 
 
@@ -185,7 +223,7 @@ Thus assembling this lemma with Proposition \ref{trace formula} gives propositio
 We now bound $S$ using Poisson summation. We would like to apply Poisson summation directly to $P$ in $n_1$, $n_2$, $n_3$, respectively. However, we do not have a good way to express the Dirichlet character $\chi_j\bar\chi_k$ as a $C^\infty$ function. To get around this, we just split the sum in $n$ into $q$ pieces. 
 \begin{lemma}[Poisson Summation with Periodic Arithmetic Function]
     Let $f:\reals \to \complex$ be Schwartz, and $g:\naturals\to\complex$ be an arithmetic with period $q$. Then \[
-    \sum_n g(n)f(n) = \frac{1}{q}\sum_{\xi} \sum_{x \mod q} g(x) e\bigg(\frac{-x\xi}{q}\bigg)\hat{f}\bigg(\frac{\xi}{q}\bigg). 
+    \sum_n g(n)f(n) = \frac{1}{q}\sum_{\xi} \hat{g}(\xi)\hat{f}\bigg(\frac{\xi}{q}\bigg). 
     \]
 \end{lemma}
 \begin{proof}
@@ -193,7 +231,7 @@ We now bound $S$ using Poisson summation. We would like to apply Poisson summati
         \sum_n g(n)f(n) = \sum_n \sum_{x\mod q} g(qn+x)f(qn+x)=  \sum_{x\mod q} g(x)\sum_n f(qn+x).
     \end{align*}
     Applying Poisson summation to the last expression in $n$ gives \[
-        \frac{1}{q} \sum_{x\mod q} g(x) \sum_{\xi} e\bigg(\frac{-x\xi}{q}\bigg)\hat{f}\bigg(\frac{\xi}{q}\bigg).
+        \frac{1}{q} \sum_{x\mod q} g(x) \sum_{\xi} e\bigg(\frac{-x\xi}{q}\bigg)\hat{f}\bigg(\frac{\xi}{q}\bigg)= \frac{1}{q}\sum_{\xi} \hat{g}(\xi)\hat{f}\bigg(\frac{\xi}{q}\bigg).
     \]
 \end{proof}
 \begin{corollary}[Poisson summation of Trace]
@@ -201,31 +239,21 @@ We now bound $S$ using Poisson summation. We would like to apply Poisson summati
     Then \begin{align*}
         %\rm{tr}(M^*M) &= | W|\frac{N}{q}\sum_{m}\sum_{x\in \mathbb{Z}/q\mathbb{Z}}e\left(\frac{-xm}{q}\right)\hat{h}_0\left(\frac{Nm}{q}\right)\\
         S&=\sum_{\substack{(t_1,\chi_1),\\(t_2,\chi_2),\\(t_3,\chi_3)\in W \\ (*)}}
-        \frac{N^3}{q^3}\sum_{m\in\mathbb{Z}^3}\sum_{x\in (\mathbb{Z}/q\mathbb{Z})^3}\chi_1\bar{\chi}_3(x_1)\chi_2\bar{\chi}_1(x_2)\chi_3\bar{\chi}_2(x_3) e\left(\frac{-x\cdot m}{q}\right)\\
-        & \quad \quad \quad \times \ \hat{h}_{t_1-t_3}\left(\frac{Nm_1}{q}\right)\hat{h}_{t_2-t_1}\left(\frac{Nm_2}{q}\right)\hat{h}_{t_3-t_2}\left(\frac{Nm_3}{q}\right).
+        \frac{N^3}{q^3}\sum_{m\in\mathbb{Z}^3}\widehat{{\chi_1{\overline{\chi_3}}}}(m_1)\widehat{\chi_2\overline{\chi_1}}(m_2)\widehat{\chi_3\overline{\chi_2}}(m_3)
+         \hat{h}_{t_1-t_3}\left(\frac{Nm_1}{q}\right)\hat{h}_{t_2-t_1}\left(\frac{Nm_2}{q}\right)\hat{h}_{t_3-t_2}\left(\frac{Nm_3}{q}\right).
     \end{align*}
 \end{corollary}
 
 In the summation in $m$, we separate this into two terms. $S_2$, when at least one of the $m_i$'s are zero, and $S_3$, when all three $m_i$'s are non-zero.
 
-Finally, we state the key result that allows us to bound $\hat{h}$ in the Fourier domain. The proof is very standard, but is included anyway.
-\begin{lemma}[Non-stationary phase]
+Finally, we restate the key result that allows us to bound $\hat{h}$ in the Fourier domain. We have not modified the $\hat{h}$ function, so the proof is the same as in Lemma \ref{nonstationary}.
+\begin{lemma*}[Non-stationary phase]
     \label{nonstationarynew}
     We have for any integer $A>0$\begin{align*}
         |\hat{h}_t(\xi)|\ll_A \frac{1+|t|^A}{|\xi|^A},\\
         |\hat{h}_t(\xi)|\ll_A \frac{1+|\xi|^A}{|t|^A}. 
     \end{align*}
-\end{lemma}
-\begin{proof}
-   We have \[
-   \hat{h}_t(\xi)=\int \omega(u)^2u^{it}e^{2\pi i \xi u} du.\]
-   By repeated integration by parts on $\omega(u)^2u^{it}$ and $e^{2\pi i \xi u}$, we get \[
-    |\hat{h}_t(\xi)|=\left|\int (2\pi i \xi)^{-A} e^{2\pi i \xi u}  \frac{d^A}{(du)^A}\left(\omega^2(u)u^{it}\right) du\right| \ll_A \frac{1+|t|^A}{|\xi|^A}.
-   \]
-   A similar argument for integration by parts on $\omega(u)^2e^{2\pi i \xi u}$ and $u^{it}$ gives \[
-    |\hat{h}_t(\xi)|=\left|\int \frac{1}{(it+1)(it+2)\ldots(it+A)}u^{it+A}  \frac{d^A}{(du)^A}\left(\omega^2(u)e^{2\pi i \xi u}\right) du \right|\ll_A \frac{1+|\xi|^A}{|t|^A}.
-   \]
-\end{proof}
+\end{lemma*}
 \section{$S_2$ Bound}
 
 \begin{proposition}[Bound on $S_2$]\label{s2bound}
@@ -233,26 +261,34 @@ Finally, we state the key result that allows us to bound $\hat{h}$ in the Fourie
     S_2 \lesssim_k N^2|W|^2 + qTN|W|^{2-1/k} + N^2|W|^2 \Big(\frac{(qT)^{1/2}}{|W|^{3/4}}\Big)^{1/k}.
     \]
 \end{proposition}
+This bound relies on Heath-Brown's theorem. We recall its statement here.
+\begin{theorem*}[Heath-Brown]
+	%\label{heathbrown}
+	Let $\mathcal{S}=\{(t_j,\chi_j)\}$ be one-separate, primitive characters of modulus $q$. Then 
+	\[
+	\sum_{\substack{(t_1,\chi_1)\\(t_2,\chi_2)}}\left|\sum_{n=1}^{N} b_n n^{-1/2 -i(t_1-t_2)}\chi_1\bar{\chi}_2(n)\right|^2 \lesssim  (|\mathcal{S}|N+ |\mathcal{S}|^2 + |\mathcal{S}|^{5/4}(qT)^{1/2}) \max_{n\leq N} |b_n|.
+	\]
+\end{theorem*}
 
 With a loss of a factor of $3$, we can set $m_3=0$. Thus \begin{align*}
     %\rm{tr}(M^*M) &= | W|\frac{N}{q}\sum_{m}\sum_{x\in \mathbb{Z}/q\mathbb{Z}}e\left(\frac{-xm}{q}\right)\hat{h}_0\left(\frac{Nm}{q}\right)\\
     S_2&\ll\sum_{\substack{(t_1,\chi_1),\\(t_2,\chi_2),\\(t_3,\chi_3)\in W \\ (*)}}
-    \frac{N^3}{q^3}\sum_{m_1,m_2\in\mathbb{Z}}\sum_{x\in (\mathbb{Z}/q\mathbb{Z})^3}\chi_1\bar{\chi}_3(x_1)\chi_2\bar{\chi}_1(x_2)\chi_3\bar{\chi}_2(x_3) e\left(\frac{-x_1m_1-x_2m_2}{q}\right)\\
-    & \quad \quad \quad \times \ \hat{h}_{t_1-t_3}\left(\frac{Nm_1}{q}\right)\hat{h}_{t_2-t_1}\left(\frac{Nm_2}{q}\right)\hat{h}_{t_3-t_2}\left(0\right).
+    \frac{N^3}{q^3}\sum_{m_1,m_2\in\mathbb{Z}}\widehat{{\chi_1{\overline{\chi}_3}}}(m_1)\widehat{\chi_2\overline{\chi}_1}(m_2)\widehat{\chi_3\overline{\chi}_2}(0) \hat{h}_{t_1-t_3}\left(\frac{Nm_1}{q}\right)\hat{h}_{t_2-t_1}\left(\frac{Nm_2}{q}\right)\hat{h}_{t_3-t_2}\left(0\right).
 \end{align*}
-By the orthogonality of characters, the terms when $\chi_2\neq \chi_3$ vanish in the summation for $x_3$. But when $\chi_2=\chi_3$ and $t_3\neq t_2$, then they are $T^{\epsilon}$ apart and $\hat{h}_{t_3-t_2}(0)\ll T^{-100}$. Thus the terms for which $(t_2,\chi_2)\neq(t_3,\chi_3)$ are negligble by Lemma \ref{nonstationarynew} and we have \[
-    S_2\ll\sum_{\substack{(t_1,\chi_1),\\(t_2,\chi_2)\in W \\ (t_1,\chi_1)\neq (t_2,\chi_2)}}
-    \frac{N^3}{q^2}\sum_{m_1,m_2\in\mathbb{Z}}\sum_{x_1,x_2\in \mathbb{Z}/q\mathbb{Z}}\chi_1\bar{\chi}_2(x_1)\chi_2\bar{\chi}_1(x_2) e\left(\frac{-x_1m_1-x_2m_2}{q}\right)
-    \hat{h}_{t_1-t_2}\left(\frac{Nm_1}{q}\right)\hat{h}_{t_2-t_1}\left(\frac{Nm_2}{q}\right)+O(T^{-100}).
-\]
+By the orthogonality of characters, the terms when $\chi_2\neq \chi_3$ vanish as $\widehat{\chi_3\overline{\chi_2}}(0)=0.$ But when $\chi_2=\chi_3$ and $t_3\neq t_2$, then they are $T^{\epsilon}$ apart and $\hat{h}_{t_3-t_2}(0)\ll T^{-100}$. Since we have a trivial bound on the $T^{\epsilon}$-separated $|W|$ to be $qT\leq T^6$, 
+ the terms for which $(t_2,\chi_2)\neq(t_3,\chi_3)$ are negligible by Lemma \ref{nonstationarynew} and we have \begin{align*}
+	 S_2\ll\sum_{\substack{(t_1,\chi_1),\\(t_2,\chi_2)\in W \\ (t_1,\chi_1)\neq (t_2,\chi_2)}}
+	\frac{N^3}{q^2}\sum_{m_1,m_2\in\mathbb{Z}}\widehat{{\chi_1{\overline{\chi}_2}}}(m_1)\widehat{\chi_2\overline{\chi}_1}(m_2)
+	\hat{h}_{t_1-t_2}\left(\frac{Nm_1}{q}\right)&\hat{h}_{t_2-t_1}\left(\frac{Nm_2}{q}\right)+O(T^{-100}).
+\end{align*}   
 Noticing that $\hat{h}_t(\xi)=\overline{\hat{h}_{-t}(-\xi)}$, we rewrite \begin{equation} \label{S2clean}
     S_2 \ll\sum_{\substack{(t_1,\chi_1),\\(t_2,\chi_2)\in W \\ (t_1,\chi_1)\neq (t_2,\chi_2)}}
-    \frac{N^3}{q^2}\left|\sum_{m \in \mathbb{Z}}\sum_{x\in \mathbb{Z}/q\mathbb{Z}}\chi_1\bar{\chi}_2(x_1) e\left(\frac{-xm}{q}\right)
+    \frac{N^3}{q^2}\left|\sum_{m \in \mathbb{Z}}\widehat{{\chi_1{\overline{\chi}_2}}}(m) e\left(\frac{-xm}{q}\right)
     \hat{h}_{t_1-t_2}\left(\frac{Nm}{q}\right)\right|^2.
 \end{equation}
 \begin{lemma}[Approximate Functional Equation]
     Let $|t|\leq T_0$, and $\chi$ be a Dirichlet character mod $q$. Further assume that if $\chi$ is principal then $|t|\geq T^{\epsilon}$. Then we have \[
-        \left|\sum_{m \in \mathbb{Z}}\sum_{x\in \mathbb{Z}/q\mathbb{Z}}\chi_1\bar{\chi}_2(x_1) e\left(\frac{-xm}{q}\right)
+        \left|\sum_{m \in \mathbb{Z}}\hat{\bar{\chi}}(m)
         \hat{h}_{t_1-t_2}\left(\frac{Nm}{q}\right)\right|\lesssim qN^{1/2}\int_{|u|\lesssim 1}\Big|\sum_{n\lesssim \frac{qT_0}{N}}n^{-1/2-i(t+u)}\bar{\chi}(n)\Big| du + O(((qT)^{-100})).
     \]
 \end{lemma}
@@ -267,8 +303,8 @@ The proof to this approximate functional equation is due to Vishal Gupta, who ha
 
     We now apply H\"older's inequality on \begin{align*}
         &\sum_{\substack{(t_1,\chi_1),\\(t_2,\chi_2)\in W}} \Big|\sum_{n\lesssim \frac{q{T_0}}{N}}n^{-1/2-i(t_1-t_2+u)}\bar{\chi}_2\chi_1(n)\Big|^2\\
-        \leq& \Bigg(\sum_{\substack{(t_1,\chi_1),\\(t_2,\chi_2)\in W}} 1 \Bigg)^{(k-1)/k} \Bigg(\sum_{\substack{(t_1,\chi_1),\\(t_2,\chi_2)\in W}}
-            \Big|\sum_{n\lesssim \frac{q{T_0}}{N}}n^{-1/2-i(t_1-t_2+u)}\bar{\chi}_2\chi_1(n)\Big|^2\Bigg)^{1/k}\\
+        \stackon{H\"older}{\leq}&  \quad \Bigg(\sum_{\substack{(t_1,\chi_1),\\(t_2,\chi_2)\in W}} 1 \Bigg)^{(k-1)/k} \Bigg(\sum_{\substack{(t_1,\chi_1),\\(t_2,\chi_2)\in W}}
+            \Big|\sum_{n\lesssim \frac{q{T_0}}{N}}n^{-1/2-i(t_1-t_2+u)}\bar{\chi}_2\chi_1(n)\Big|^{2k}\Bigg)^{1/k}\\
         =&|W|^{2-2/k}\Bigg(\sum_{\substack{(t_1,\chi_1),\\(t_2,\chi_2)\in W}}
         \Big|\sum_{n\lesssim \big(\frac{q{T_0}}{N}\big)^k} b_n n^{-1/2-i(t_1-t_2)}\bar{\chi}_2\chi_1(n)\Big|^2\Bigg)^{1/k}
     \end{align*}

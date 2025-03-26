@@ -1,5 +1,8 @@
 %\section{Guth-Maynard's proof of Large Values of Dirichlet Polynomials}
-In May 2024, Guth and Maynard published an improvement of the large values of Dirichlet polynomails estimate at $\sigma\in[7/10,8/10]$.
+In May 2024, Guth and Maynard published an improvement to the zero density bound at $\sigma\in[7/10,8/10]$.
+This result is in fact a corollary of their main theorem - an improvement on the Hal\'asz inequality. Since the zero detection methodology is the same as in Huxley's proof, we omit their proof of zero density and focus
+on the main result instead.
+
 \begin{theorem}[Guth-Maynard Large Values Estimate]
     Let $(b_n)$ be a sequence of complex numbers such that $|b_n|\leq 1$ for all $n$, and $W=\{t_j\}_{j=1}^{|W|}$ be a $1$-separated set $\subseteq [0,T]$, such that \[
     \left|\sum_{n\sim N}b_n n^{it_j}\right|\geq V
@@ -25,7 +28,7 @@ The structure of the proof can be broken down as follows: We first notice that $
     \label{heathbrown}
     Let $\mathcal{S}=\{(t_j,\chi_j)\}$ be one-separate, primitive characters of modulus $q$. Then 
     \[
-        \sum_{\substack{(t_1,\chi_1)\\(t_2,\chi_2)}}\left|\sum_{n=1}^{N} b_n n^{-i(t_1-t_2)}\chi_1\bar{\chi}_2(n)\right|^2 \lesssim  |\mathcal{S}|N^2+ |\mathcal{S}|^2N + |\mathcal{S}|^{5/4}(qT)^{1/2}N.
+        \sum_{\substack{(t_1,\chi_1)\\(t_2,\chi_2)}}\left|\sum_{n=1}^{N} b_n n^{-1/2 -i(t_1-t_2)}\chi_1\bar{\chi}_2(n)\right|^2 \lesssim  (|\mathcal{S}|N+ |\mathcal{S}|^2 + |\mathcal{S}|^{5/4}(qT)^{1/2}) \max_{n\leq N} |b_n|.
     \]
 \end{theorem}
 The most tricky term, $S_3$ is a summation over a three-dimensional lattice. We will see that $S_3$ is bounded by what is known as the \textit{additive energy} of the set $W$, defined by\[
@@ -41,7 +44,7 @@ R(v)^4=\sum_{t_1,t_2,t_3,t_4\in W}v^{i(t_1+t_2-t_3-t_4)}.
 
 The naive choice $E(W)\leq W^3$ is slightly too loose to beat the Ingham-Huxley bound. However, an orthogonal bound can be found for $E(W)$ based on Heath-Brown's theorem. Finally, the bound in $7$ and $8$ combined is enough to give an improvement in most cases, a further refinement of the $S_3$ bound was required. This relies on the averaging over the affine summations of $R$.
  \[
-        \sup_{0<M_1,M_2,M_3<M} \int\Bigg( \sum_{\substack{|m_1|\sim M_1\\|m_2|\sim M_2 \\ |m_3|\ll M_3}} \left|R\left(\frac{m_1 u+m_3}{m_2}\right)\right|\Bigg)^2 \ du \lesssim M^6 \|R\|_{L_2}^4+M^4\|f\|_{L_4}^4.
+        \sup_{0<M_1,M_2,M_3<M} \int\Bigg( \sum_{\substack{|m_1|\sim M_1\\|m_2|\sim M_2 \\ |m_3|\ll M_3}} \left|R\left(\frac{m_1 u+m_3}{m_2}\right)\right|^2\Bigg)^2 \ du \lesssim M^6 \|R\|_{L_2}^4+M^4\|R\|_{L_4}^4.
 \] 
 
 We give a quick sketch of the whole proof below. In the next section, we will give a full proof of the generalized statement of the theorem that considers primitive Dirichlet characters mod $q$. The proof of Guth-Maynard can be recovered by using the special case $q=1$.
@@ -124,7 +127,7 @@ Let $h_t(u)\defeq \omega(u)^2 u^{it}$, we can apply Poisson summation in the inn
 \begin{equation}\label{poissongm}
     \rm{tr}((M^*M)^3)= N^3\sum_{t_1,t_2,t_3\in W}\sum_{m_1,m_2,m_3}  \hat{h}_{t_1-t_3}(Nm_1)\hat{h}_{t_2-t_1}(Nm_2)\hat{h}_{t_3-t_2}(Nm_3).
 \end{equation}
-What we can gain here is that $\hat{h}_t{m}$ has decay in $t$ or $m$ based on the principle of non-stationary phase. 
+What we can gain here is that $\hat{h}_t{m}$ has decay in $t$ or $m$ based on the principle of non-stationary phase. The proof is very standard and uses repeated integration by parts.
 \begin{lemma}[Non-stationary phase]
     \label{nonstationary}
     We have for any integer $A>0$\begin{align*}
@@ -307,10 +310,11 @@ S_3\lesssim T^2|W|^{3/2}+TN|W|^{1/2}E(W)^{1/2}.
 This gives an improvement from the previous bound for the case with high energy and $N<T^{1-\delta}$.
 \begin{remark}
     The proof to Lemma \ref{affinetransgm} does not use probability. Instead, it applies Plancherel's theorem on $\sum_{m_1,m_2,m_3} f$ and bounds in the Fourier domain.
-    At low frequencies, this can be bounded by the $L_1$ norm of $f$. At high frequencies, the Fourier transform of $f$ decays rapidly. Finally, at mid frequencies, the integral relates to \[
+    At low frequencies, this can be bounded by the $L_1$ norm of $f$. At higher frequencies, the integral relates to \[
      (M^4\int f^2 du)^{1/2}J(f)^{1/2},
     \]
-    by Cauchy Schwarz and a change of variables to decouple $m_1$ and $m_2$, providing the required bound by backward induction.
+    by Cauchy Schwarz and a change of variables to decouple $m_1$ and $m_2$, providing the required bound by backward induction. The proof of the hybrid statement requires an extension of this theorem
+    which we will prove.
 \end{remark}
 
 \subsubsection*{8. Bound on $E(W)$}

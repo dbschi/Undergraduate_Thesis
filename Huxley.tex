@@ -2,7 +2,7 @@
 }We shall prove a weaker statement of Huxley's zero density bound.
 \begin{theorem}[Huxley]
     Let $\sigma\in[3/4,1]$. We have  \[
-        N(\sigma,t)\lesssim T^{\frac{5\sigma-3}{\sigma^2+\sigma-1}(1-\sigma)}
+        N(\sigma,t)\lesssim T^{\frac{5\sigma-3}{\sigma^2+\sigma-1}(1-\sigma)}.
     \]
 \end{theorem}
 This also gives $T^{12/5(1-\sigma)}$ when combined with Ingham's bound, as both give the same exponent $6/5$ when evaluated at $\sigma=3/4$, but the bound given in the previous section is tighter away from $3/4$.
@@ -164,10 +164,10 @@ This is equation 2.9 from \cite{Huxley1971}.
         \item $\zeta(\frac{1}{2}+i\gamma_j+it_j)\geq A$,
         \item $M_x(\frac{1}{2}+i\gamma_j+it_j)\geq B$.
     \end{enumerate}
-    where $AB\gg y^{\sigma-\frac{1}{2}}/\log T$. For case A zeros, this is bounded by corollary \ref{halflinebigvalue} to be \[
+    where $AB\gg y^{\sigma-\frac{1}{2}}/\log T$. For case (a) zeros, this is bounded by corollary \ref{halflinebigvalue} to be \[
         \lesssim TA^{-4}.
     \]
-    For case B zeros, we reapply lemma \ref{halasz} to bound this by \[
+    For case (b) zeros, we reapply lemma \ref{halasz} to bound this by \[
     \lesssim xB^{-2}+xTB^{-6}.
     \]Here, we took $G$ to be $O(\sum_{n\leq x} d(n)n^{-1})$. The divisor function grows slower than any $n^\epsilon$, so $G\lesssim 1$. Combined with type $1$ zeros, we have\[
     N(\sigma, T)\lesssim y^{2-2\sigma} + x^{4-6\sigma}T+TA^{-4}+xB^{-2}+xTB^{-6}.

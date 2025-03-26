@@ -235,7 +235,7 @@ By the decay in $\hat{f}$ and $T>d^{1+\epsilon}, M^{1+\epsilon}$, C is negligibl
         \Bigg(\sum_{y\mod d} \int \Big(\sum_{\substack{m_2,m_2'\sim M_2\\(m_2,d)=(m_2',d)=1
         }} \sum_{\substack{k}} \tilde{f}\left(\frac{m_2u+k}{m_2'},(m_2y+k)m_2'^{-1}\right)\Big)^2 du\Bigg) ^{1/2}
     \end{align*}
-    Finally, noticing that $\tilde{f}$ has support on $y\asymp 1$ we can restrict the summation in $k$ to be $|k|\lesssim M_2$, so that 
+    Finally, noticing that $\tilde{f}$ has support on $y\asymp 1$ we can restrict the summation in $k$ to be $|k|\ll M_2$, so that 
     \begin{align*}
         \rm{Aii}+{Bi}+{Bii}\lesssim M^2T^{\eta}d \Bigg(\sum_{y\mod d}\int f(u,y)^2 du \Bigg) ^{1/2}
         \Bigg(J(\tilde{f})\Bigg) ^{1/2}.
@@ -251,22 +251,19 @@ J(f)\lesssim \frac{1}{d}T^{3\eta}M^6\left(\sum_y \int f(u,y) du\right)^2+ M^2T^{
 \]
 Letting $\eta \to 0$ sufficiently slowly gives the result.
 \end{proof}
-\begin{proposition}
-    Let $f(u,y):\reals\times \mathbb{Z}/d \to \reals$ be non-negative, supported on $u\asymp 1$ uniformly in $y$, and $|\hat{f}(\xi,x)|\lesssim_j (|\xi|/(dT)^2)^{-j}$ for all $j$. Then \begin{align*}
-        J(f)\defeq &\sup_{0<M_1,M_2,M_3<M}\sum_{y \mod d} \int\Bigg( \sum_{\substack{|m_1|\sim M_1,|m_2|\sim M_2 , |m_3|\ll M_3\\ (m_1,d)=(m_2,d)=1}} f\left(\frac{m_1 u+m_3}{m_2},(m_1 y+m_3)m_2^{-1}\right)\Bigg)^2 \ du\\
-        \lesssim&\frac{M^6}{d}\Big(\sum_{y \mod d } \int f(u,y) du\Big)^2+{M^4}\sum_{y\mod d} \int f(u,y)^2 du.
-    \end{align*}
-\end{proposition}
+
 
 \begin{corollary}\label{cor: affine}
     Let $f$ be as in Proposition \ref{affinetrans}, except $f$ is now supported on $u \asymp L$, and $\tilde{M}={ML}$. Then \begin{align*}
         J_{M}(f)\defeq &\sup_{\substack{0<M_1,M_3<\tilde{M}, \\ 0< M_2<{M}}}\sum_{y \mod d} \int\Bigg( \sum_{\substack{|m_1|\sim M_1,|m_2|\sim M_2 , |m_3|\ll M_3\\ (m_1,d)=(m_2,d)=1}} f\left(\frac{m_1 u+m_3}{m_2},(m_1 y+m_3)m_2^{-1}\right)\Bigg)^2 \ du\\
-        \lesssim&\frac{M^4\tilde{M}^2}{d}\Big(\sum_{y \mod d } \int f(u,y) du\Big)^2  + {M}^2\tilde{M}^2\sum_{y\mod d} \int f(u,y)^2 du.
+        \lesssim&\frac{M^4\tilde{M}^2}{d}\Big(\sum_{y \mod d } \int f(u,y) du\Big)^2  + {M}^2\tilde{M}^2\sum_{y\mod d} \int f(u,y)^2 du\\
+        =&\frac{\tilde{M}^6}{L^4d}\Big(\sum_{y \mod d } \int f(u,y) du\Big)^2  + \frac{\tilde{M}^4}{L^2}\sum_{y\mod d} \int f(u,y)^2 du
+        .
     \end{align*}
 \end{corollary}
 \begin{proof}
     By the same argument as above, we keep track of the $M_2$'s to get 
     \[
-        J_{{M}}(f) \lesssim M^4\tilde{M}^2/d \Big(\sum_{y \mod d } \int f(u,y) du\Big)^2 + \Big(M^2\tilde{M}^2\sum_{y\mod d} \int f(u,y)^2 du\Big)^{1/2}(J_{M}(\tilde{f}))^{1/2},
+        J_{{M}}(f) \lesssim \frac{M^4\tilde{M}^2}{d} \Big(\sum_{y \mod d } \int f(u,y) du\Big)^2 + \Big(M^2\tilde{M}^2\sum_{y\mod d} \int f(u,y)^2 du\Big)^{1/2}(J_{M}(\tilde{f}))^{1/2},
     \] where $J(\tilde{f})$ uses the bounds $m_1,m_2\sim M_2, m_3 \ll LM_2\leq \tilde{M}$.
 \end{proof}

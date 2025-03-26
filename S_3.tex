@@ -7,14 +7,12 @@
 Recall that 
 \begin{align*}
 S_3 = \sum_{\substack{(t_1,\chi_1),\\(t_2,\chi_2),\\(t_3,\chi_3)\in W \\ (*)}}&
-\frac{N^3}{q^3}\sum_{m\in(\mathbb{Z}\backslash \{0\})^3}\sum_{x\in (\mathbb{Z}/q\mathbb{Z})^3}\chi_1\bar{\chi}_3(x_1)\chi_2\bar{\chi}_1(x_2)\chi_3\bar{\chi}_2(x_3) e\left(\frac{-x\cdot m}{q}\right)\\
-& \quad \quad \quad \times \ \hat{h}_{t_1-t_3}\left(\frac{Nm_1}{q}\right)\hat{h}_{t_2-t_1}\left(\frac{Nm_2}{q}\right)\hat{h}_{t_3-t_2}\left(\frac{Nm_3}{q}\right).
+\frac{N^3}{q^3}\sum_{m\in(\mathbb{Z}\backslash \{0\})^3}\widehat{{\chi_1{\overline{\chi}_3}}}(m_1)\widehat{\chi_2\overline{\chi}_1}(m_2)\widehat{\chi_3\overline{\chi}_2}(m_3) \hat{h}_{t_1-t_3}\left(\frac{Nm_1}{q}\right)\hat{h}_{t_2-t_1}\left(\frac{Nm_2}{q}\right)\hat{h}_{t_3-t_2}\left(\frac{Nm_3}{q}\right).
 \end{align*}
 
 Therefore, we define 
 \begin{align*}
-	I_m\defeq\frac{N^3}{q^3}\sum_{\substack{(t_1,\chi_1),\\(t_2,\chi_2),\\(t_3,\chi_3)\in W}} &\sum_{x\in (\mathbb{Z}/q\mathbb{Z})^3}\chi_1\bar{\chi}_3(x_1)\chi_2\bar{\chi}_1(x_2)\chi_3\bar{\chi}_2(x_3) e\left(\frac{-x\cdot m}{q}\right)\\
-	\times \ &\hat{h}_{t_1-t_3}\left(\frac{Nm_1}{q}\right)\hat{h}_{t_2-t_1}\left(\frac{Nm_2}{q}\right)\hat{h}_{t_3-t_2}\left(\frac{Nm_3}{q}\right).
+	I_m\defeq\frac{N^3}{q^3}\sum_{\substack{(t_1,\chi_1),\\(t_2,\chi_2),\\(t_3,\chi_3)\in W}} &\widehat{{\chi_1{\overline{\chi}_3}}}(m_1)\widehat{\chi_2\overline{\chi}_1}(m_2)\widehat{\chi_3\overline{\chi}_2}(m_3) \hat{h}_{t_1-t_3}\left(\frac{Nm_1}{q}\right)\hat{h}_{t_2-t_1}\left(\frac{Nm_2}{q}\right)\hat{h}_{t_3-t_2}\left(\frac{Nm_3}{q}\right).
 \end{align*}
 
 By non-stationary phase, $I_m$ is negligible for the terms $qT/N\lesssim |m|$, so (by relaxing the condition $(*)$ in the sum over pairs in $W$ and exchanging the summations)
@@ -23,7 +21,7 @@ By non-stationary phase, $I_m$ is negligible for the terms $qT/N\lesssim |m|$, s
 \end{equation}
 Furthermore, by symmetry in $m_1$, $m_2$, $m_3$, we can consider the terms $|m_1|\leq |m_2|\leq |m_3|$ at a cost of a factor of $6$.
 We first consider the triple summation in $\mathbb{Z}/q$. Define \begin{align*}
-    A_{m,\chi_1,\chi_2,\chi_3}&\defeq \sum_{x\in (\mathbb{Z}/q\mathbb{Z})^3}\chi_1\bar{\chi}_3(x_1)\chi_2\bar{\chi}_1(x_2)\chi_3\bar{\chi}_2(x_3) e\left(\frac{-x\cdot m}{q}\right),
+    A_{m,\chi_1,\chi_2,\chi_3}&\defeq\widehat{{\chi_1{\overline{\chi}_3}}}(m_1)\widehat{\chi_2\overline{\chi}_1}(m_2)\widehat{\chi_3\overline{\chi}_2}(m_3)= \sum_{x\in (\mathbb{Z}/q\mathbb{Z})^3}\chi_1\bar{\chi}_3(x_1)\chi_2\bar{\chi}_1(x_2)\chi_3\bar{\chi}_2(x_3) e\left(\frac{-x\cdot m}{q}\right),
 \end{align*}
 which is the inner summation in $I_m$.
 Notice that $\chi(0)=0$, so we can define the summation in $A$ to run over $(\mathbb{Z}/q\mathbb{Z})^\times$ to get 
@@ -238,12 +236,12 @@ To apply H\"older's inequality, we need to find bounds on the second and fourth 
     =&\sum_{\substack{y_1,y_2 \in\mathbb{Z}/q\mathbb{Z} }}\int_{v_1\asymp 1} \left|R\left(v_1,y_1\right)\right|
     \sum_{\substack{|m_1|\sim M_1,|m_2|,|m_3|\sim M\\ y_1m_1+y_2m_2+m_3\equiv 0 \mod q_0}}\left| \tilde{R}_M\left(\frac{m_1v_1+m_3}{-m_2v_1},y_2,y_1\right)
     \tilde{R}_M\left(\frac{m_1v_1+m_3}{-m_2},y_2\right)\right| dv_1\\
-    \stackon{CS}{\leq} & \Big(\sum_{\substack{y_1,y_2 \in\mathbb{Z}/q\mathbb{Z} }}\int_{v_1\asymp 1} \left|R\left(v_1,y_1\right)\right|dv_1\Big)^{1/2} 
+    \stackon{CS}{\leq} & \Big(\sum_{\substack{y_1,y_2 \in\mathbb{Z}/q\mathbb{Z} }}\int_{v_1\asymp 1} \left|R\left(v_1,y_1\right)\right|^2dv_1\Big)^{1/2} 
     \\ & \quad \quad\Bigg(\sum_{\substack{y_1,y_2 \in\mathbb{Z}/q\mathbb{Z} }}\int_{v_1\asymp 1} \Big(\sum_{\substack{|m_1|\sim M_1,|m_2|,|m_3|\sim M\\ y_1m_1+y_2m_2+m_3\equiv 0 \mod q_0}}\left|\tilde{R}_M\left(\frac{m_1v_1+m_3}{-m_2v_1},y_2,y_1\right)
     \tilde{R}_M\left(\frac{m_1v_1+m_3}{-m_2},y_2\right)\right|\Big)^2 dv_1\Bigg)^{1/2}.
     \end{align*}
     The second moment of $R$ (and only considering non-zero contributions from $\gcd(q,y_1)=\gcd(q,y_2)=1$) gives \begin{align*}
-        \Big(\sum_{\substack{y_1,y_2 \in\mathbb{Z}/q\mathbb{Z} }}\int_{v_1\asymp 1} \left|R\left(v_1,y_1\right)\right|dv_1\Big)^{1/2}  \lesssim (\phi(q)^2 | W|)^{1/2} \ll \phi(q) | W|^{1/2}. 
+        \Big(\sum_{\substack{y_1,y_2 \in\mathbb{Z}/q\mathbb{Z} }}\int_{v_1\asymp 1} \left|R\left(v_1,y_1\right)\right|^2 dv_1\Big)^{1/2}  \lesssim (\phi(q)^2 | W|)^{1/2} \ll \phi(q) | W|^{1/2}. 
     \end{align*}
     We apply repeated Cauchy-Schwarz in the second term to get \begin{align*}
      &   \Bigg(\sum_{\substack{y_1,y_2 \in\mathbb{Z}/q\mathbb{Z} }}\int_{v_1\asymp 1} \Big(\sum_{\substack{|m_1|\sim M_1,|m_2|,|m_3|\sim M\\ y_1m_1+y_2m_2+m_3\equiv 0 \mod q_0}}\Big|\tilde{R}_M\left(\frac{m_1v_1+m_3}{-m_2v_1},y_2,y_1\right)
@@ -253,11 +251,11 @@ To apply H\"older's inequality, we need to find bounds on the second and fourth 
     \Big|\tilde{R}_M\left(\frac{m_1v_1+m_3}{-m_2},y_2\right)\Big|^2\Big] dv_1\Bigg)^{1/2}\\
     \stackon{CS}{\leq}&\Bigg(\sum_{\substack{y_1,y_2 \in\mathbb{Z}/q\mathbb{Z} }}\int_{v_1\asymp 1}\Big[\sum_{\substack{|m_1|\sim M_1,|m_2|,|m_3|\sim M\\ y_1m_1+y_2m_2+m_3\equiv 0 \mod q_0}}\Big|\tilde{R}_M\left(\frac{m_1v_1+m_3}{-m_2v_1},y_2,y_1\right)\Big|^2\Big]^2dv_1\Bigg)^{1/4}\\ & \quad \quad
     \Bigg(\sum_{\substack{y_1,y_2 \in\mathbb{Z}/q\mathbb{Z} }}\int_{v_1\asymp 1}\Big[ \sum_{\substack{|m_1|\sim M_1,|m_2|,|m_3|\sim M\\ y_1m_1+y_2m_2+m_3\equiv 0 \mod q_0}}
-     \Big|\tilde{R}_M\left(\frac{m_1v_1+m_3}{-m_2},y_2\right)\Big|^2\Big]^2 dv_1\Bigg)^{1/4}\\
+     \Big|\tilde{R}_M\left(\frac{m_1v_1+m_3}{-m_2},y_2\right)\Big|^2\Big]^2 dv_1\Bigg)^{1/4}.\\
     \end{align*}
     We focus on one term, the computation of the second term is similar. \begin{align*}
         &\sum_{\substack{y_1,y_2 \in\mathbb{Z}/q\mathbb{Z} }}\int_{v_1\asymp 1}\Big[\sum_{\substack{|m_1|\sim M_1,|m_2|,|m_3|\sim M\\ y_1m_1+y_2m_2+m_3\equiv 0 \mod q_0}}\Big|\tilde{R}_M\left(\frac{m_1v_1+m_3}{-m_2v_1},y_2,y_1\right)\Big|^2\Big]^2dv_1\\
-        \stackon{CS}{\leq}&\frac{M_1M^2}{q_0}\sum_{\substack{y_1,y_2 \in\mathbb{Z}/q\mathbb{Z} }}\int_{v_1\asymp 1}\sum_{\substack{|m_1|\sim M_1,|m_2|,|m_3|\sim M\\ y_1m_1+y_2m_2+m_3\equiv 0 \mod q_0}}\Big|\tilde{R}_M\left(\frac{m_1v_1+m_3}{-m_2v_1},y_2,y_1\right)\Big|^4dv_1
+        \stackon{CS}{\leq}&\frac{M_1M^2}{q_0}\sum_{\substack{y_1,y_2 \in\mathbb{Z}/q\mathbb{Z} }}\int_{v_1\asymp 1}\sum_{\substack{|m_1|\sim M_1,|m_2|,|m_3|\sim M\\ y_1m_1+y_2m_2+m_3\equiv 0 \mod q_0}}\Big|\tilde{R}_M\left(\frac{m_1v_1+m_3}{-m_2v_1},y_2,y_1\right)\Big|^4dv_1.
     \end{align*}
     For any choice $m_1,m_2,m_3$, we can make the change of variables $u=(m_1v_1+m_3/(-m_2v_1))$ with a Jacbian factor of $O(1)$, and the domain of integration is still $u\asymp 1$, so \begin{align*}
         &\sum_{\substack{y_1,y_2 \in\mathbb{Z}/q\mathbb{Z} }}\int_{v_1\asymp 1}\sum_{\substack{|m_1|\sim M_1,|m_2|,|m_3|\sim M\\ y_1m_1+y_2m_2+m_3\equiv 0 \mod q_0}}\Big|\tilde{R}_M\left(\frac{m_1v_1+m_3}{-m_2v_1},y_2,y_1\right)\Big|^4dv_1\\
@@ -268,9 +266,9 @@ To apply H\"older's inequality, we need to find bounds on the second and fourth 
         \sum_{\substack{y_1,y_2 \in\mathbb{Z}/q\mathbb{Z} }}\int_{v_1\asymp 1}\Big[ \sum_{\substack{|m_1|\sim M_1,|m_2|,|m_3|\sim M\\ y_1m_1+y_2m_2+m_3\equiv 0 \mod q_0}}
      \Big|\tilde{R}_M\left(\frac{m_1v_1+m_3}{-m_2},y_2\right)\Big|^2\Big]^2 dv_1\lesssim& \frac{M_1^2M^4}{q_0^2} \phi(q)^2 E( W).\end{align*}
 
-     Therefore, we have \[
-     S_3\lesssim \frac{N^2q_0}{Mq^2} \phi(q) | W|^{1/2}\Big(\frac{M_1^2M^4}{q_0^2} \phi(q)^2 E( W)\Big)^{1/2} \ll 
-     \frac{N^2q_0}{Mq^2} \phi(q)^2 | W|^{1/2} \frac{M_1M^2}{q_0}E( W)^{1/2} \lesssim\Big(\frac{\phi(q)}{q}\Big)^2(qT)^2| W|^{1/2}E( W)^{1/2},
-     \]
+     Therefore, we have \begin{align*}
+     	S_3\lesssim& \frac{N^2q_0}{Mq^2} \phi(q) | W|^{1/2}\Big(\frac{M_1^2M^4}{q_0^2} \phi(q)^2 E( W)\Big)^{1/2}\\ \ll& 
+     	\frac{N^2q_0}{Mq^2} \phi(q)^2 | W|^{1/2} \frac{M_1M^2}{q_0}E( W)^{1/2}\\ \lesssim&\Big(\frac{\phi(q)}{q}\Big)^2(qT)^2| W|^{1/2}E( W)^{1/2},
+     \end{align*}
     where we applied $M_1\leq M\lesssim qT/N$ in the last step.
 \end{proof}

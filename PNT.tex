@@ -6,7 +6,7 @@
     \]
 \end{theorem}
 
-In this section we will prove the Prime Number Theorem. This result is a minor goal of this paper.
+In this section we will prove the Prime Number Theorem. This proof is heavily inspired by one of Terence Tao's lectures, with modifications to fit the techniques used in this thesis.
 The Prime Number theorem serves as a starting point for
 studying primes in short intervals, and sets the stage for zero-density theorems.
 \begin{definition}[Von Mangoldt Function]
@@ -91,8 +91,8 @@ This is obtained through integration along the choice of $c=1+1/\log N$
 Theorems \ref{explicitformula} and \ref{truncateexplcit} are stated in \cite{Goldston2004}.
 
 The term $N$ in the explicit formula is already suggestive of the Prime Number Theorem. 
-The major error term comes from $N^\rho$ in the sum, so bounding the $\Re(\rho)$ becomes the most important part in reducing the error term in the prime number theorem. 
-This in turn is equivalent to bounding $\Re({\rho})$, and the best case is when all the zeros have real part $1/2$. This assumption is known as the Riemann Hypothesis, and has not yet been proved. 
+The major error term comes from $N^\rho$ in the sum.  
+Bounding $N^{\rho}$ is in turn equivalent to bounding $\Re({\rho})$, and the best case is when all the zeros have real part $1/2$. This is the motivation behind the Riemann Hypothesis, which has not yet been proved. 
 
 Assuming the \hyperref[RH]{Riemann Hypothesis}, we consider the sum over the non trivial zeros \begin{align*}
 \left|\sum_{|\Im(\rho)|\leq T|}\frac{N^\rho}{\rho}\right| &\leq N^{1/2} \sum_{|\Im(\rho)|\leq T}\left|{\frac{1}{\rho}}\right|.    

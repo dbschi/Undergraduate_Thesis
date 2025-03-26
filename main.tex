@@ -30,7 +30,6 @@ numbers=noenddot]
 \usepackage{mathtools}
 \usepackage{wrapfig}
 \usepackage{mathrsfs}
-
 \usepackage{MnSymbol,wasysym}
 \usepackage{centernot}
 \usepackage{amsthm}
@@ -41,10 +40,12 @@ numbers=noenddot]
 \MakeOuterQuote{"}
 
 \newtheorem{theorem}{Theorem}[chapter]
+\newtheorem*{theorem*}{Theorem}
 \newtheorem{definition}[theorem]{Definition}
 \newtheorem{conjecture}[theorem]{Conjecture}
 \newtheorem{corollary}[theorem]{Corollary}
 \newtheorem{lemma}[theorem]{Lemma}
+\newtheorem*{lemma*}{Lemma}
 \newtheorem{proposition}[theorem]{Proposition}
 \newtheorem{example}[theorem]{Example}
 \newenvironment{remark}[1][Remark:]{\begin{trivlist}
@@ -104,6 +105,9 @@ numbers=noenddot]
 \predate{}
 \postdate{}
 \date{}
+\usepackage{tocloft}
+\setlength{\cftaftertoctitleskip}{0.3em}
+%\setlength{\cftbeforetoctitleskip}{1 em}
 \begin{document}
 
 %\maketitle
@@ -131,7 +135,13 @@ numbers=noenddot]
             
     \end{center}
 \end{titlepage}
-\tableofcontents
+
+\section*{Overview}
+	We motivate the result of large values of Dirichlet polynomials through the study of primes in short intervals. We first introduce the Riemann Zeta function. We then prove the Prime Number Theorem to demonstrate the connection of Zeta zeros and primes, with the Riemann Hypothesis leading to the tightest bound on the error term of the Prime Number Theorem. 
+	The Riemann Hypothesis has not be proved or disproved. Nevertheless, one can still obtain unconditional results on the error term through appealing to the distribution of Zeta zero density. We will provide the previous bound on the density of zeros and sketch its refinement. Finally, extending from the ideas of Guth and Maynard's proof in section 5, we provide a generalization for the analogous Hal\'asz inequality lemma for Dirichlet L-functions.
+
+
+{\let\clearpage\relax \tableofcontents}
 \section*{Statement Regarding Generative AI}
 No part of this thesis had been aided by generative AI.
 
@@ -150,7 +160,7 @@ me to crack the $S_3$ term.
 	\chapter{Primes in Short Intervals and Zero Density Results}
 	\input{Short intervals}
 	\input{Huxley.tex}
-	\chapter{Guth-Maynard's Proof of the Zero Density near $\sigma = 3/4$}
+	\chapter{Guth-Maynard's Large Values Estimate near $\sigma = 3/4$}
 	\input{guth_maynard.tex}
 	
 	\input{hybrid_new.tex}

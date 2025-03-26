@@ -166,13 +166,13 @@ We are now ready to state the new definition for the smoothed function $\tilde{R
     This is the only argument that requires ``almost all'' $q$. The bound here is very lossy so we suspect there should be a way to generalize this to all $q$.
 \end{remark}
 \begin{proof}[Proof of Proposition \ref{s3refined}]
-    
+    From Corollary \ref{almostallek}, we have
     \[
     S_3\lesssim \frac{N^2d_2}{Mq} \sum_{\substack{|m_1|\sim M_1,\\|m_2|,|m_3|\sim M\\
         (***)}}\sum_{\substack{y_1\mod q\\ (y_1,q)=1} }\int_{v_1\asymp 1}
-        \tilde{R}_M^{(d)}\Big(\frac{k_1v_1+k_3}{-k_2v_1},\frac{k_1y_1+k_3}{-\tilde{k}_2y_1}\Big)\tilde{R}_M^{(d)}\Big(\frac{k_1v_1+k_3}{-k_2},\frac{k_1y_1+k_3}{-\tilde{k}_2}\Big)|R\left(v_1,y_1\right)| dv_1
+        \tilde{R}_M^{(d)}\Big(\frac{k_1v_1+k_3}{-k_2v_1},\frac{k_1y_1+k_3}{-\tilde{k}_2y_1}\Big)\tilde{R}_M^{(d)}\Big(\frac{k_1v_1+k_3}{-k_2},\frac{k_1y_1+k_3}{-\tilde{k}_2}\Big)|R\left(v_1,y_1\right)| dv_1.
     \]
-    We apply Cauchy Schwarz repeatedly to get \begin{align*}
+    We apply Cauchy Schwarz repeatedly in the same fashion as the proof of Proposition \ref{s_3bound} to get \begin{align*}
         S_3\lesssim \frac{N^2d_2}{Mq} (\sum_{y_1\mod q}\int_{v_1\asymp 1}|R\left(v_1,y_1\right)| dv_1)^{1/2} (S_3^{(1)})^{1/2},
     \end{align*}
     where \begin{align*}
@@ -194,28 +194,28 @@ We are now ready to state the new definition for the smoothed function $\tilde{R
     Recall that \[
         k_i = m_i/d = \tilde{k}_i \tilde{d}_i \omega_i,
     \]  
-    where $\tilde{k}_i$ is copirme to $q_0/d$, $\omega_i$ is coprime to $q_0/d_i = q_0/(d\tilde{d}_i)$.
+    where $\tilde{k}_i$ is coprime to $q_0/d$, $\omega_i$ is coprime to $q_0/d_i = q_0/(d\tilde{d}_i)$.
     Thus 
     \begin{align*}
-        S_3^{(2,1)}=&\sum_{\substack{y_1\mod q\\ (y_1,q)=1} }\int_{v_1\asymp 1}\Bigg(\sum_{\substack{|\tilde{k}_1|\sim M_1/(d_1\omega_1),\\|\tilde{k}_2|\sim M/(d_2\omega_2)\\|\tilde{k}_3|\sim M/(d_3\omega_3)\\
+        S_3^{(2,1)}=&\sum_{\substack{y_1\mod q\\ (y_1,q)=1} }\int_{v_1\asymp 1}\Bigg(\sum_{\substack{|\tilde{k}_1|\sim M_1/(d_1\omega_1),\\|\tilde{k}_2|\sim M/(d_2\omega_2),\\|\tilde{k}_3|\sim M/(d_3\omega_3)\\
         (***)}}
         \tilde{R}_M^{(d)}\Big(\frac{\omega_1\tilde{d}_1\tilde{k}_1v_1+\omega_3\tilde{d}_3\tilde{k}_3}{-\omega_2\tilde{d}_2\tilde{k}_2v_1},\frac{\omega_1\tilde{d}_1\tilde{k}_1y_1+\omega_3\tilde{d}_3\tilde{k}_3}{-\tilde{k}_2y_1}\Big)^2\Bigg)^2 dv_1
         \\
-        \asymp& \sum_{\substack{x \mod q\\ (x,q)=1} }\int_{u\asymp 1}\Bigg(\sum_{\substack{|\tilde{k}_1|\sim M_1/(d_1\omega_1),\\|\tilde{k}_2|\sim M/(d_2\omega_2)\\|\tilde{k}_3|\sim M/(d_3\omega_3)\\
+        \asymp& \sum_{\substack{x \mod q\\ (x,q)=1} }\int_{u\asymp 1}\Bigg(\sum_{\substack{|\tilde{k}_1|\sim M_1/(d_1\omega_1),\\|\tilde{k}_2|\sim M/(d_2\omega_2),\\|\tilde{k}_3|\sim M/(d_3\omega_3)\\
         (***)}}
         \tilde{R}_M^{(d)}\Big(\frac{\omega_1\tilde{d}_1\tilde{k}_1+\omega_3\tilde{d}_3\tilde{k}_3u}{-\omega_2\tilde{d}_2\tilde{k}_2},\frac{\omega_1\tilde{d}_1\tilde{k}_1+\omega_3\tilde{d}_3\tilde{k}_3 x}{-\tilde{k}_2}\Big)^2\Bigg)^2 du
     \end{align*}
     by the change of variables $x\equiv y^{-1}\mod q$, $u=1/v_1$.
     Since the second argument is $q_0/d$ periodic, we can fold in $x$ to get \begin{align*}
         S_3^{(2,1)}\ll
-        \frac{qd}{q_0} \sum_{\substack{x \mod q_0/d} }\int_{u\asymp 1}\Bigg(\sum_{\substack{|\tilde{k}_1|\sim M_1/(d_1\omega_1),\\|\tilde{k}_2|\sim M/(d_2\omega_2)\\|\tilde{k}_3|\sim M/(d_3\omega_3)\\
+        \frac{qd}{q_0} \sum_{\substack{x \mod q_0/d} }\int_{u\asymp 1}\Bigg(\sum_{\substack{|\tilde{k}_1|\sim M_1/(d_1\omega_1),\\|\tilde{k}_2|\sim M/(d_2\omega_2),\\|\tilde{k}_3|\sim M/(d_3\omega_3)\\
         (***)}}
         \tilde{R}_M^{(d)}\Big(\frac{\omega_1\tilde{d}_1\tilde{k}_1+\omega_3\tilde{d}_3\tilde{k}_3u}{-\omega_2\tilde{d}_2\tilde{k}_2},\frac{\omega_1\tilde{d}_1\tilde{k}_1+\omega_3\tilde{d}_3\tilde{k}_3 x}{-\tilde{k}_2}\Big)^2\Bigg)^2 du.
     \end{align*}
     We now make a change in variables $\tilde{u} = \omega_3\tilde{d}_3u$, and $\tilde{x}\equiv \omega_3\tilde{d_3}x$. The Jacobian factor is $1/(\omega_3\tilde{d}_3)$, and noticing that $\gcd(\omega_3\tilde{d_3},q_0/d) = \tilde{d_3}$ by the condition $\gcd(m_3,q_0) =d_3$, $\tilde{x}$ counts the multiples of $\tilde{d}_3$ by $\tilde{d}_3$ times.
     \begin{align*}
         S_3^{(2,1)}\ll
-        \frac{qd}{q_0} \frac{1}{\omega_3\tilde{d_3}}\tilde{d_3} \sum_{\substack{\tilde{x} \mod q_0/d} }\int\Bigg(\sum_{\substack{|\tilde{k}_1|\sim M_1/(d_1\omega_1),\\|\tilde{k}_2|\sim M/(d_2\omega_2)\\|\tilde{k}_3|\sim M/(d_3\omega_3)\\
+        \frac{qd}{q_0} \frac{1}{\omega_3\tilde{d_3}}\tilde{d_3} \sum_{\substack{\tilde{x} \mod q_0/d} }\int\Bigg(\sum_{\substack{|\tilde{k}_1|\sim M_1/(d_1\omega_1),\\|\tilde{k}_2|\sim M/(d_2\omega_2),\\|\tilde{k}_3|\sim M/(d_3\omega_3),\\
         \textrm{all coprime to $q_0/d$}}}
         \tilde{R}_M^{(d)}\Big(\frac{\omega_1\tilde{d}_1\tilde{k}_1+\tilde{k}_3\tilde{u}}{-\omega_2\tilde{d}_2\tilde{k}_2},\frac{\omega_1\tilde{d}_1\tilde{k}_1+\tilde{k}_3 \tilde{x}}{-\tilde{k}_2}\Big)^2\Bigg)^2 d\tilde{u}.
     \end{align*}

@@ -72,6 +72,25 @@ Here we provide some supplementary definitions and statements of theorems. These
        f(\mathbf{x})= \mathcal{F}^{-1}\hat{f}(\mathbf{x})\defeq \int_{\reals^d} e(\mathbf{\xi}\cdot \mathbf{x}) \hat{f}(\mathbf{\xi}) \ d\mathbf{\xi}.
     \]
 \end{theorem}
+\begin{theorem}[Discrete Fourier Inversion]
+	Let $g$ be an arithmetic function that is periodic $\mod q$. We define the discrete Fourier transform of $g$ to be \[
+		\hat{g}(y) \defeq \sum_{x \mod q}g(x)e\big(-\frac{xy}{q}\big)
+	\]
+	which is periodic $\mod q$.
+	This has inverse given by \[
+		g(x) = \frac{1}{q}\sum_{y\mod q} \hat{g}(y)e\big(\frac{xy}{q}\big).
+	\]
+\end{theorem}
+\begin{theorem}[Plancherel/Parsavel]
+We have \[
+\|f\|_{L^2}=\|\hat{f}\|_{L^2}
+\]
+for Schwartz functions and \[
+\sum_{x\mod q}|g(x)|^2 = \frac{1}{q}\sum_{y\mod q}|\hat{g}|^2
+\]
+for the discrete Fourier transform for functions periodic $\mod q$.
+
+\end{theorem}
 \begin{theorem}[Mellin Inversion]
 	The Mellin transform of a function $f:(0,\infty)\to\complex$
 	\[

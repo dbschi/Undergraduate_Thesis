@@ -73,7 +73,7 @@ Here we provide some supplementary definitions and statements of theorems. These
     \]
 \end{theorem}
 \begin{theorem}[Discrete Fourier Inversion]
-	Let $g$ be an arithmetic function that is periodic $\mod q$. We define the discrete Fourier transform of $g$ to be \[
+	Let $g$ be an arithmetic function that is periodic$\mod q$. We define the discrete Fourier transform of $g$ to be \[
 		\hat{g}(y) \defeq \sum_{x \mod q}g(x)e\big(-\frac{xy}{q}\big)
 	\]
 	which is periodic $\mod q$.
@@ -86,9 +86,9 @@ We have \[
 \|f\|_{L^2}=\|\hat{f}\|_{L^2}
 \]
 for Schwartz functions and \[
-\sum_{x\mod q}|g(x)|^2 = \frac{1}{q}\sum_{y\mod q}|\hat{g}|^2
+\sum_{x\mod q}|g(x)|^2 = \frac{1}{q}\sum_{y\mod q}|\hat{g}(y)|^2
 \]
-for the discrete Fourier transform for functions periodic $\mod q$.
+for the discrete Fourier transform of functions periodic$\mod q$.
 
 \end{theorem}
 \begin{theorem}[Mellin Inversion]

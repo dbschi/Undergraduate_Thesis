@@ -1,14 +1,13 @@
 \section{Refinement of $S_3$}
 
 \begin{proposition}[Refinement of $S_3$ bound] \label{s3refined}
-    We have for almost all $q$,
+   If $q$ satisfies $\omega(q)=o(\log q /\log\log q)$,
     \[
 S_3 \lesssim (qT)^{2}| W|^{3/2}+N(qT)| W|^{1/2}E( W)^{1/2}.
 \]
 \end{proposition}
 \begin{remark}
-    The ``almost all'' in the statement is required as one argument, corollary \ref{almostallek}, applies the Erd\"os Kac theorem to bound the number of prime divisors
-    (excluding multiplicity) to be $\omega(n) \asymp \log \log n$ for almost all numbers. This fails if $q$ is primordial and $\omega(n)\asymp \log n / \log \log n$. We note that the argument is somewhat lossy and there should be a more efficient method to provide a bound for all $q$. 
+    This additional assumption is used in corollary \ref{almostallek}. Fortunately most $q$ satisfy this assumption and we can prove the statement for primes and almost all numbers. We however note that the argument is somewhat lossy and there should be a more efficient method to provide a bound for all $q$. 
 \end{remark}
 We repeat the arguments in \ref{s_3chapter} until proposition \ref{dyadics_3}.
 
@@ -139,7 +138,7 @@ We are now ready to state the new definition for the smoothed function $\tilde{R
     \]
 \end{proof}
 \begin{corollary}\label{almostallek}
-    For \textbf{almost all} $q$, there is a choice of $d_1,d_2,d_3|q_0, q_0|q$, $0<M_1\leq M\lesssim qT/N$, $\omega_1,\omega_2,\omega_3$ such that  \[
+    For $\omega(q)=o(\log q /\log\log q)$, there is a choice of $d_1,d_2,d_3|q_0, q_0|q$, $0<M_1\leq M\lesssim qT/N$, $\omega_1,\omega_2,\omega_3$ such that  \[
         S_3\lesssim \frac{N^2d_2}{Mq} 
         %\sum_{\substack{\omega_1,\omega_2,\omega_3\\ (**)}}  
         \sum_{\substack{|m_1|\sim M_1,\\|m_2|,|m_3|\sim M\\
@@ -156,15 +155,76 @@ We are now ready to state the new definition for the smoothed function $\tilde{R
     The conditions on $\omega_2,\omega_3$ are the same. Since $\omega_1$ consists of only prime factors of $d_i$, the number of choices of $\omega_1$ is bounded above by\[
     \prod_{p|d_1, p\leq qT/N}\log_{p} \frac{qT}{N}\leq \prod_{p|q,p\leq qT/N}\log_{p} \frac{qT}{N} \ll \prod_{p|q} \log \frac{qT}{N}.
     \]
-    We now apply the Erd\"os Kac Theorem to see that for almost all values of $q$, the possible number of $p|q$ is $\asymp \log \log q$.
     Therefore we have \[
-    \Sigma \ll (\log qT)^{2\log \log q} = \exp(2\log \log q \times \log \log qT) \ll_{\epsilon} \exp(\epsilon \log qT)
+    \Sigma \ll (\log qT)^{\omega(q)} = \exp(\omega(q) \times \log \log qT) \ll_{\epsilon} \exp(\epsilon \log qT)
     \]
     for any value of $\epsilon$.
 \end{proof}
 \begin{remark}
     This is the only argument that requires ``almost all'' $q$. The bound here is very lossy so we suspect there should be a way to generalize this to all $q$.
 \end{remark}
+This arguement is a heuristic to argue that for most values of $q$, the amount of $\omega$'s are not too much. With some careful handling, we can prove this bound for all $q$.
+\begin{proposition}\label{allek}
+   There is a choice of $d_1,d_2,d_3|q_0, q_0|q$, $0<M_1\leq M\lesssim qT/N$, $\omega_1,\omega_2,\omega_3$ such that  \[
+        S_3\lesssim \frac{N^2d_2}{Mq} 
+        %\sum_{\substack{\omega_1,\omega_2,\omega_3\\ (**)}}  
+        \sum_{\substack{|m_1|\sim M_1,\\|m_2|,|m_3|\sim M\\
+        (***)}}\sum_{\substack{y_1\mod q\\ (y_1,q)=1} }\int_{v_1\asymp 1}
+        \tilde{R}_M^{(d)}\Big(\frac{k_1v_1+k_3}{-k_2v_1},\frac{k_1y_1+k_3}{-\tilde{k}_2y_1}\Big)\tilde{R}_M^{(d)}\Big(\frac{k_1v_1+k_3}{-k_2},\frac{k_1y_1+k_3}{-\tilde{k}_2}\Big)|R\left(v_1,y_1\right)| dv_1,
+    \]
+    where each $\omega_i<qT/N$ consists of only factors that are also prime factors of $d_i$, and the summation condition $(***)$ on $m_i$'s are that
+    $m_i=d_i\tilde{k}_i\omega_i$ where $(\tilde{k}_i,q_0)=1$. 
+\end{proposition}
+\begin{proof}
+    Similar to the above corollary, it suffices to show that \[
+    \Sigma\lesssim 1.
+    \]
+    We shall show that $\log \Sigma = o(\log qT)$, thus $\Sigma$ grows slower than any power of $qT$.
+
+    Fix $d_1$, and let $p_1,p_2,\ldots, p_k$ the prime factors of $d_1$, not counting multiplicity. Let $s=d_1\omega_1$. Since $\omega_1$ only consists of prime factors that are prime factors of $d_1$, and $d_1|\omega_1$, the number of $s$ is equal to the number of positive integer lattice points $(x_1,\dots,x_k)$ that satisfy \[
+    \sum_{i=1}^{k}x_i\log p_k\leq \log M,
+    \]
+    recalling that $M=qT/N= (qT)^{1/6}$. Without loss of generality, we can also assume that $p_i$ is the $i$-th smallest prime, as this leads to the upper bound. Moreover, since the product of the first $k$ primes is of order $\exp((1+o(1))k\log k ),$ we have \[
+    (1+o(1))k\log k \leq \log q
+    \]
+    and \[
+    p_k = (1+o(1))k\log k.
+    \]
+    We now bound the number of lattice points. Notice that each positive integer lattice point that satisfies the inequality can be identified uniquely with a unit cube completely contained inside the simplex \[
+    \Delta=\{\sum_{i=1}^{k}x_i\log p_k\leq \log M,x_i\geq 0\},
+    \]
+    and each of the cubes are pairwise disjoint. Thus, the number of $\omega_1$ is bounded above by the volume of the simplex \[
+    \rm{Vol}\Delta = \frac{1}{k!}\prod_{i=1}^{k}\frac{\log M}{\log p_i}.
+    \]
+    Taking the logarithm, \begin{align*}
+        \log \Sigma&\leq \log \rm{Vol}\Delta\\
+        &=\int_{3/2}^{p_k}(\log \log M-\log \log y) d \pi(y) -\log k!.
+    \end{align*}
+    We apply integration by parts to the integral. This gives us\begin{align*}
+    &\pi(p_k)(\log \log M -\log \log p_k)+\int_{3/2}^{p_k}\frac{\pi(y)}{y\log y}d y\\
+    =&k\log \log M - k\log \log p_k + O\Big(\int_{3/2}^{p_k}\frac{1}{(\log y)^2}d y\Big)
+    \end{align*}
+    by the Prime Number Theorem. Since we have $p_k\ll \log q$ the integral behaves as $\log q / (\log \log q)^2 = o(\log qT)$. Similarly the second term is negligible by $k\ll \log q/\log \log q$. Therefore we have \[
+        \int_{3/2}^{p_k}(\log \log M-\log \log y) d \pi(y)=k\log \log M+o(\log qT).
+    \]
+    We apply Stirling's approximation to get \[
+    \log k! = k\log k + o(\log qT).
+    \]
+    Finally, we need to show that \[
+    k\log \log M - k\log k =o( \log qT).
+    \]
+    
+    Taking the first derivative in $k$ gives $\log \log M -\log k - 1$, we see that this function is increasing in $k$ when $k\ll \log q/\log \log q$ for sufficiently large $q$, as $\log q/\log \log q = o(\log qT)$.
+    So we can bound this by evaluating at $k=(1+o(1))\log q/\log \log q.$ We also simplify using $M=q^{\alpha}$. (so that $qT=q^{6\alpha}$) \begin{align*}
+        k\log \log M - k\log k &=k(\log \log M -\log k)\\&= (1+o(1))\frac{\log q}{\log \log q} \left(\log \frac{\alpha \log q \log \log q}{\log q}\right) \\&=(1+o(1))\frac{\log q}{\log \log q}\log \alpha + (1+o(1))\frac{\log q\log \log \log q}{\log \log q}
+        \\&=(1+o(1))\frac{\log q \log \alpha}{\log \log q} + o(\log qT). 
+    \end{align*}
+    To show this is $o(\log qT)$, we consider \[
+    \frac{\log q\log \alpha}{\log \log q} (\log qT)^{-1} =\frac{\log \alpha}{6\alpha \log \log q}\leq  \frac{1}{6e\log \log q} \to 0 
+    \]
+    as $q\to \infty$ independent of $\alpha$.
+
+\end{proof}
 \begin{proof}[Proof of Proposition \ref{s3refined}]
     From Corollary \ref{almostallek}, we have
     \[

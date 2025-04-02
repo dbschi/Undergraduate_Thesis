@@ -61,22 +61,28 @@ Our result is as follows:
 	Let $W=\{(t_j,\chi_j)\}$ be a set such that each $\chi_j$ is a primitive Dirichlet character of modulus $q<N$, and $|t_j-t_k|\geq 1$ if $j\neq k$ and $\chi_j=\chi_k$. (That is, the $t$'s are $1$-separated if the characters are the same.)Let $|b_n|\leq 1$ be a sequence of numbers indexed in $n$, and suppose also that \[
 	\Bigg|\sum_{n\sim N} b_n\chi_j(n)n^{it_j} \Bigg|>V.
 	\]
-	Then for \textbf{almost all} values of $q$ \[
+	Then for $q$ such that $\omega(q)=o(\log q /\log\log q),$ \[
 	|W|\leq T^{o(1)}(N^2V^{-2}+ N^{18/5}V^{-4}+(qT)^{12/5}V^{-4} ).
 	\]
+	In particular, it holds for all primes $q=p$ and powers of primes $q=p^k$.
 \end{theorem}
 \begin{remark}
-This theorem is incomplete in the sense that it does not take care of the case $q>N$ and only applies to almost all values of $q$.
+$o(\log q/\log \log q)$ is taken in $q\to\infty$ sense, across the subset of natural numbers. This means that it generally holds for numbers with a reasonably small number of distinct prime factors. In fact, most numbers satisfy this additional assumption on $q$. The worst edge case is when $q$ is primorial (i.e. it is the multiple of the first $k$ primes), in which case $\omega(q)=O(\log q/\log \log q)$ and is just slightly too large to bound with this method.
 \end{remark}
+\begin{corollary}
+	The statement in Theorem \ref{incompletehybrid} holds for almost all values of $q$.
+\end{corollary}
+\begin{proof}
+This is a direct consequence of the Erd\"os-Kac Theorem that almost all $q$ satisfy $\omega(q)\asymp \log \log q = o(\log q/\log \log q)$.
+\end{proof}
 \begin{proposition}[Reduction of Main Theorem]\label{mainthm}
-    Let $W=\{(t_j,\chi_j)\}$ be a set such that each $\chi_j$ is a primitive Dirichlet character of modulus $q$, and $t_j\in[0,T]$. Further assume that $|t_j-t_k|\geq T^\epsilon$ if $j\neq k$ and $\chi_j=\chi_k$. Let $|b_n|\leq 1$ be a sequence of numbers indexed in $n$, $\omega$ be a smooth bump function that equals $1$ on $[6/5,9/5]$ and has support in $[1,2]$ (thus $\omega^{(A)}\ll_A 1$ for all $A$). Let $V=N^{\sigma}$, where $[7/10,8/10]$, and $N=(qT)^{5/6}$, $T\geq q^{1/5}$. Suppose also that \[
+    Let $q$ as in Theorem \ref{incompletehybrid}. Let $W=\{(t_j,\chi_j)\}$ be a set such that each $\chi_j$ is a primitive Dirichlet character of modulus $q$, and $t_j\in[0,T]$. Further assume that $|t_j-t_k|\geq T^\epsilon$ if $j\neq k$ and $\chi_j=\chi_k$. Let $|b_n|\leq 1$ be a sequence of numbers indexed in $n$, $\omega$ be a smooth bump function that equals $1$ on $[6/5,9/5]$ and has support in $[1,2]$ (thus $\omega^{(A)}\ll_A 1$ for all $A$). Let $V=N^{\sigma}$, where $[7/10,8/10]$, and $N=(qT)^{5/6}$, $T\geq q^{1/5}$. Suppose also that \[
     |D_N(t_j,\chi_j)|\defeq\Bigg|\sum_{n\sim N} \omega\Bigg(\frac{n}{N}\Bigg)b_n\chi_j(n)n^{it_j} \Bigg|>V.
 \]
 for all $(t_j,\chi_j)\in W$.
 Then \[
-|W|\ll (qT)N^{(12-20\sigma)/5+o_{\epsilon}(1)}
+|W|\ll (qT)N^{(12-20\sigma)/5+o_{\epsilon}(1)}.
 \]
-for \textbf{almost all} values of $q$.
 \end{proposition}
 \begin{proof}[Proof of Theorem \ref{incompletehybrid} assuming Proposition \ref{mainthm}]
 The argument is essentially identical to the Guth and Maynard's proof, except checking the condition that $T$ is not too small compared to $q$.

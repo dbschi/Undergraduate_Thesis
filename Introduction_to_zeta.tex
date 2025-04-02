@@ -24,8 +24,8 @@ The properties of the zeta function as they relate to the distribution primes. I
 	\]
 	converges absolutely for $\Re(s)>1$ and uniformly across all $p$. We thus take for $m>N$ \begin{align*}
 		\prod_{p\leq N}\left(1-\frac{1}{p^s}\right)^{-1}  &= \prod_{p\leq N}\left(\sum_{k=1}^{m} \frac{1}{p^{ks}}+O(2^{-m\sigma})\right)\\
-		&\stackeq{(*)}\sum_{n=1}^{N}\frac{1}{n^s}+O_1(\sum_{n=N+1}^{\infty} \frac{1}{n^\sigma}) + O(2^{-m\sigma})\\
-		&=\zeta(s) + O_1(\sum_{n=N+1}^{\infty} \frac{1}{n^\sigma}) + O(2^{-m\sigma})
+		&\stackeq{(*)}\sum_{n=1}^{N}\frac{1}{n^s}+O(\sum_{n=N+1}^{\infty} \frac{1}{n^\sigma}) + O(2^{-m\sigma})\\
+		&=\zeta(s) + O(\sum_{n=N+1}^{\infty} \frac{1}{n^\sigma}) + O(2^{-m\sigma})
 	\end{align*}
 	Where we apply to Fundemental Theorem of Arithmetic in (*) to show that each term $n^{-s}$ has coefficient $1$ determined by the unique prime factorization.
 	As $m\to\infty$, $2^{-m\sigma} \to 0$. Then we take $N\to\infty$, the tail of the infinite sum converges to zero too.

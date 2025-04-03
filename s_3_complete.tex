@@ -1,14 +1,12 @@
 \section{Refinement of $S_3$}
 
 \begin{proposition}[Refinement of $S_3$ bound] \label{s3refined}
-   If $q$ satisfies $\omega(q)=o(\log q /\log\log q)$,
+  We have
     \[
 S_3 \lesssim (qT)^{2}| W|^{3/2}+N(qT)| W|^{1/2}E( W)^{1/2}.
 \]
 \end{proposition}
-\begin{remark}
-    This additional assumption is used in corollary \ref{almostallek}. Fortunately most $q$ satisfy this assumption and we can prove the statement for primes and almost all numbers. We however note that the argument is somewhat lossy and there should be a more efficient method to provide a bound for all $q$. 
-\end{remark}
+
 We repeat the arguments in \ref{s_3chapter} until proposition \ref{dyadics_3}.
 
 Recall that at this step, we expressed $v_2$ as a small neighborhood around $v_1$ by the condition \[
@@ -138,7 +136,7 @@ We are now ready to state the new definition for the smoothed function $\tilde{R
     \]
 \end{proof}
 \begin{corollary}\label{almostallek}
-    For $\omega(q)=o(\log q /\log\log q)$, there is a choice of $d_1,d_2,d_3|q_0, q_0|q$, $0<M_1\leq M\lesssim qT/N$, $\omega_1,\omega_2,\omega_3$ such that  \[
+    If $\omega(q)=o(\log q /\log\log q)$, there is a choice of $d_1,d_2,d_3|q_0, q_0|q$, $0<M_1\leq M\lesssim qT/N$, $\omega_1,\omega_2,\omega_3$ such that  \[
         S_3\lesssim \frac{N^2d_2}{Mq} 
         %\sum_{\substack{\omega_1,\omega_2,\omega_3\\ (**)}}  
         \sum_{\substack{|m_1|\sim M_1,\\|m_2|,|m_3|\sim M\\
@@ -160,10 +158,8 @@ We are now ready to state the new definition for the smoothed function $\tilde{R
     \]
     for any value of $\epsilon$.
 \end{proof}
-\begin{remark}
-    This is the only argument that requires ``almost all'' $q$. The bound here is very lossy so we suspect there should be a way to generalize this to all $q$.
-\end{remark}
-This arguement is a heuristic to argue that for most values of $q$, the amount of $\omega$'s are not too much. With some careful handling, we can prove this bound for all $q$.
+With this bound, we can prove the statement for almost all $q$ with a small number of distinct prime factors. This is because the Erd\"os Kac theorem implies almost all numbers $q$ satisfy $\omega(q)\asymp \log \log q$.
+With some careful handling, we can prove this bound for all $q$.
 \begin{proposition}\label{allek}
    There is a choice of $d_1,d_2,d_3|q_0, q_0|q$, $0<M_1\leq M\lesssim qT/N$, $\omega_1,\omega_2,\omega_3$ such that  \[
         S_3\lesssim \frac{N^2d_2}{Mq} 
@@ -191,9 +187,9 @@ This arguement is a heuristic to argue that for most values of $q$, the amount o
     p_k = (1+o(1))k\log k.
     \]
     We now bound the number of lattice points. Notice that each positive integer lattice point that satisfies the inequality can be identified uniquely with a unit cube completely contained inside the simplex \[
-    \Delta=\{\sum_{i=1}^{k}x_i\log p_k\leq \log M,x_i\geq 0\},
+    \Delta=\{\sum_{i=1}^{k}x_i\log p_i\leq \log M,x_i\geq 0\},
     \]
-    and each of the cubes are pairwise disjoint. Thus, the number of $\omega_1$ is bounded above by the volume of the simplex \[
+    and the interiors of each of the cubes are pairwise disjoint. Thus, the number of $\omega_1$ is bounded above by the volume of the simplex \[
     \rm{Vol}\Delta = \frac{1}{k!}\prod_{i=1}^{k}\frac{\log M}{\log p_i}.
     \]
     Taking the logarithm, \begin{align*}
@@ -226,7 +222,7 @@ This arguement is a heuristic to argue that for most values of $q$, the amount o
 
 \end{proof}
 \begin{proof}[Proof of Proposition \ref{s3refined}]
-    From Corollary \ref{almostallek}, we have
+    From Proposition \ref{allek}, we have
     \[
     S_3\lesssim \frac{N^2d_2}{Mq} \sum_{\substack{|m_1|\sim M_1,\\|m_2|,|m_3|\sim M\\
         (***)}}\sum_{\substack{y_1\mod q\\ (y_1,q)=1} }\int_{v_1\asymp 1}

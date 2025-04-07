@@ -11,12 +11,12 @@ The idea for bounding energy is similar; if $\chi_1\chi_2=\chi_3\chi_4$ and $|t_
 \begin{lemma}
     \label{Dirichletint}
     \[
-    D_N(t,\chi)\lesssim \int_{|u-t|\lesssim 1} |D_N(u,\chi)|du + O(T^{-100}),
+    D_N(t,\chi)\lesssim \int_{|u-t|\lesssim 1} |D_N(u,\chi)|du + O((qT)^{-100}),
     \]
     uniformly in $\chi$.
 \end{lemma}
 \begin{proof}
-    This is Lemma 11.3 is \cite{GM2024}.
+    This is Lemma 11.3 is \cite{GM2024}, with the restriction $\lesssim 1$ in terms of $(qT)^{\epsilon}$ instead of just $T^{\epsilon}$.
 \end{proof}
 \begin{lemma} We have \[
     E(\mathcal{S})\lesssim N^{-2\sigma}\sum_{n_1,n_2\sim N}\left|R\left(\frac{n_1}{n_2},n_1,n_2\right) \right|^3.
@@ -168,6 +168,9 @@ When $d$ is small, we expect fractions $n_1/n_2$ for $n_1,n_2\sim N/d$ to be wel
     |R(v,n_1,n_2)|\lesssim T\int_{|s|\lesssim 1/T} |R(v+s)|ds.
     \]
 \end{lemma}
+\begin{remark}
+	$qT$ is not required here. As we will see in the proof, the $1/T$ factor comes from the fact that the $t_j$'s are contained in an interval of length $T$.
+\end{remark}
 \begin{proof}
     Recall \[
     R(v,n_1,n_2)=\sum_j \chi_j(n_1)\chi_j(n_2)v^{i(t_j)},
@@ -181,15 +184,15 @@ When $d$ is small, we expect fractions $n_1/n_2$ for $n_1,n_2\sim N/d$ to be wel
     The right hand side equals \begin{align*}
         \int \sum_j c_j  \hat\psi(\xi)e\left(t_j\Big(\frac{\xi}{T} +\frac{\log v}{2\pi}\Big)\right)d\xi.
     \end{align*}
-    By the rapid decay in $\hat\psi$, we can truncate the integral to the range $|\xi|\lesssim 1$ at a cost of $O(T^{-100})$, and use the trivial bound $\hat\psi(\xi)\ll 1$.
+    By the rapid decay in $\hat\psi$, we can truncate the integral to the range $|\xi|\lesssim 1$ at a cost of $O((qT)^{-100})$, and use the trivial bound $\hat\psi(\xi)\ll 1$.
     Therefore, \begin{align*}
-        |f(v)|\ll \int_{|\xi|\lesssim 1}\left| \sum_j c_j  e\left(t_j\Big(\frac{\xi}{T} +\frac{\log v}{2\pi}\Big)\right)\right|d\xi +O(T^{-100}).
+        |f(v)|\ll \int_{|\xi|\lesssim 1}\left| \sum_j c_j  e\left(t_j\Big(\frac{\xi}{T} +\frac{\log v}{2\pi}\Big)\right)\right|d\xi +O((qT)^{-100}).
     \end{align*}
     We now make the change of variables \[
     \log s= \log v + \frac{2\pi\xi}{T},
     \]
     so this gives a Jacobian factor of $T$, and \[
-        |f(v)|\ll T \int_{|s-v|\lesssim 1/T}\left| \sum_j c_j  e\left(\frac{t_js}{2\pi}\right)\right|ds +O(T^{-100})\]
+        |f(v)|\ll T \int_{|s-v|\lesssim 1/T}\left| \sum_j c_j  e\left(\frac{t_js}{2\pi}\right)\right|ds +O((qT)^{-100})\]
         which gives the bound in the lemma upon making a second change of variables $v'=s-v$.
 \end{proof}
 

@@ -56,20 +56,23 @@ Let $W=\{(t_j,\chi_j)\}$ be a set such that each $\chi_j$ is a primitive Dirichl
 We want to find a bound on $|W|$.
 \end{quotation}
 \section{Statement of Main Theorem and its Reduction}
+\subsubsection*{Notation}
+From this point onward, we interpret Big O and little o asymptotic quantities as $qT\to \infty$. 
+
 Our result is as follows: 
 \begin{theorem}[Generalization of Guth-Maynard Hal\'asz Inequality]\label{incompletehybrid}
-	Let $W=\{(t_j,\chi_j)\}$ be a set such that each $\chi_j$ is a primitive Dirichlet character of modulus $q\leq N$, and $|t_j-t_k|\geq 1$ if $j\neq k$ and $\chi_j=\chi_k$. (That is, the $t$'s are $1$-separated if the characters are the same.)Let $|b_n|\leq 1$ be a sequence of numbers indexed in $n$, and suppose also that \[
+	Let $W=\{(t_j,\chi_j)\}$ be a set such that each $\chi_j$ is a primitive Dirichlet character of modulus $q$, and $|t_j-t_k|\geq 1$ if $j\neq k$ and $\chi_j=\chi_k$. (That is, the $t$'s are $1$-separated if the characters are the same.)Let $|b_n|\leq 1$ be a sequence of numbers indexed in $n$, and suppose also that \[
 	\Bigg|\sum_{n\sim N} b_n\chi_j(n)n^{it_j} \Bigg|>V.
 	\]
 Then we have  \[
-	|W|\leq T^{o(1)}(N^2V^{-2}+ N^{18/5}V^{-4}+(qT)^{12/5}V^{-4} ).
+	|W|\leq (qT)^{o(1)}(N^2V^{-2}+ N^{18/5}V^{-4}+(qT)^{12/5}V^{-4} ).
 	\]
 \end{theorem}
 \begin{remark}
-	The assumption that $q\leq N$ required, though it can be relaxed to $q\leq N^{6/5}$. The reason will be evident in the proof, where we used subdivision of $T$ to make $qT=N^{6/5}$ on each interval. If the length of each subdivided interval is less than $1$, we will run into problems when taking bounds $\ll_A T^{-A}$ using the principle of non-stationary phase.
+This is a restatement of Guth-Maynard's inequality with all $T$'s changed to $qT$.
 \end{remark}
 \begin{proposition}[Reduction of Main Theorem]\label{mainthm}
-    Let $W=\{(t_j,\chi_j)\}$ be a set such that each $\chi_j$ is a primitive Dirichlet character of modulus $q\leq N$, and $t_j\in[0,T]$. Further assume that $|t_j-t_k|\geq T^\epsilon$ if $j\neq k$ and $\chi_j=\chi_k$. Let $|b_n|\leq 1$ be a sequence of numbers indexed in $n$, $\omega$ be a smooth bump function that equals $1$ on $[6/5,9/5]$ and has support in $[1,2]$ (thus $\omega^{(A)}\ll_A 1$ for all $A$). Let $V=N^{\sigma}$, where $[7/10,8/10]$, and $N=(qT)^{5/6}$, $N\geq q$. Suppose also that \[
+    Let $W=\{(t_j,\chi_j)\}$ be a set such that each $\chi_j$ is a primitive Dirichlet character of modulus $q$, and $t_j\in[0,T]$. Further assume that $|t_j-t_k|\geq (qT)^\epsilon$ if $j\neq k$ and $\chi_j=\chi_k$. Let $|b_n|\leq 1$ be a sequence of numbers indexed in $n$, $\omega$ be a smooth bump function that equals $1$ on $[6/5,9/5]$ and has support in $[1,2]$ (thus $\omega^{(A)}\ll_A 1$ for all $A$). Let $V=N^{\sigma}$, where $[7/10,8/10]$, and $N=(qT)^{5/6}$. Suppose also that \[
     |D_N(t_j,\chi_j)|\defeq\Bigg|\sum_{n\sim N} \omega\Bigg(\frac{n}{N}\Bigg)b_n\chi_j(n)n^{it_j} \Bigg|>V.
 \]
 for all $(t_j,\chi_j)\in W$.
@@ -77,10 +80,6 @@ Then \[
 |W|\ll (qT)N^{(12-20\sigma)/5+o_{\epsilon}(1)}.
 \]
 \end{proposition}
-\begin{remark}
-	This proposition also holds for $N<q$ by the same argument, with the modification instead in Proposition \ref{dyadics_3} we lift the restriction $|m_1|\leq |m_2| \asymp |m_3|$. Since $q/N$ can now be arbitrarily large which affects the argument in Proposition \ref{domainreduction} that we must have $|m_2|\asymp|m_3|$. We choose $M_1,M_2,M_3\lesssim qT/N$, and sum across 
-	$|m_1|\sim M_1, |m_2|\sim M_2, |m_3|\sim M_3$. Since the expansion is still dyadic, the extra factor incurred is still $\lesssim 1$. All the arguments can be adapted with tracking of $M_2$ and $M_3$ instead of just one $M$.
-\end{remark}
 \begin{proof}[Proof of Theorem \ref{incompletehybrid} assuming Proposition \ref{mainthm}]
 The argument is essentially identical to the Guth and Maynard's proof, except checking the condition that $T$ is not too small compared to $q$.
 
@@ -99,14 +98,14 @@ But then each of these sums can be written as dirichlet sums in the form of the 
 \end{align*}
 Applying the lemma on each of these three pieces and summing the three bounds gives the same bound for $\sum_{n\sim N} b_n\chi_j(n)n^{it_j}$ up to a constant factor, so it suffices to show the result assuming that
 $b_n=0$ for $6N/5 \leq n < 9N/5$, in which case $b_n=b_n\omega(n/N)$.
-Now suppose that $qT\leq N^{6/5}$. Then the $t_j$'s lie in an interval of length $N^{6/5}/q\geq T$. Thus in this case at a cost of $T^{\epsilon}$ we consider the $T^{\epsilon}$ disjoint subsets of $|W|$ each
-being $T^{\epsilon}$ separated in the $t_j$'s. Setting $V=N^{\sigma}$ and checking that $N^{6/5}/q\geq q^{1/5},$ the proposition gives\[
-|W|\leq T^{\epsilon} N^{(18-20\sigma)/5+o_{\epsilon}(1)} \leq T^{\epsilon} N^{18/5+o_{\epsilon}(1)}V^{-4}.
+Now suppose that $qT\leq N^{6/5}$. Then the $t_j$'s lie in an interval of length $N^{6/5}/q\geq T$. Thus in this case at a cost of $(qT)^{\epsilon}$ we consider the $(qT)^{\epsilon}$ disjoint subsets of $|W|$ each
+being $(qT)^{\epsilon}$ separated in the $t_j$'s if they share a character. Setting $V=N^{\sigma}$, the proposition gives\[
+|W|\leq (qT)^{\epsilon} N^{(18-20\sigma)/5+o_{\epsilon}(1)} \leq (qT)^{\epsilon} N^{18/5+o_{\epsilon}(1)}V^{-4}.
 \] 
-Letting $\epsilon\to 0$ gives the result. If $qT\geq N^{6/5}$, we divide $|W|$ into $[T/N^{6/5}]$ subsets each supported on a length of $N^{6/5}/q\geq q^{1/5}$. Therefore, we can apply the proposition (on the $T^\epsilon$ disjoint subsets) to get \[
-|W|\leq T^{1+\epsilon}  N^{-6/5}(N^{18/5+o_{\epsilon}(1)}V^{-4})\leq T^{o_\epsilon(1)}N^{12/5}.
+Letting $\epsilon\to 0$ gives the result. If $qT\geq N^{6/5}$, we divide $|W|$ into $[qT/N^{6/5}]$ subsets each supported on a length of $N^{6/5}/q$. Therefore, we can apply the proposition (on the $(qT)^\epsilon$ disjoint subsets) to get \[
+|W|\leq (qT)^{1+\epsilon}  N^{-6/5}(N^{18/5+o_{\epsilon}(1)}V^{-4})\leq (qT)^{1+\epsilon+o_\epsilon(1)}N^{12/5}V^{-4}.
 \] 
-Letting $\epsilon\to 0$ slowly gives the result in this case too.
+Letting $\epsilon\to 0$ sufficiently slowly gives the result in this case too.
 \end{proof}
 	
 The idea of the proof of Proposition \ref{mainthm} is similar to Guth and Maynard's proof. We can define a $|W|\times N$ matrix $M$ with entries
@@ -125,6 +124,7 @@ Thus by the same reasoning that $(M\vec{b})_j=D_N(t_j,\chi_j)$,
 we want to bound the size of $W$ by trace of the matrix \[
 \textrm{tr}((M^*M)^3).
 \].
+Our key intermediate result this section is as follows:
 \begin{proposition} \label{Tracebound}
     Let \[
     P(n,(t_1,\chi_1),(t_2,\chi_2))\defeq \omega\left(\frac{n}{N}\right)^2 \left(\frac{n}{N}\right)^{i(t_2-t_1)}\chi_2\bar{\chi}_1(n),
@@ -142,12 +142,6 @@ we want to bound the size of $W$ by trace of the matrix \[
 \end{proposition}
 
 
-\begin{lemma}\label{trace formula}
-    We have 
-    \[
-        |W|\ll N V^{-2}\left(\frac{\rm{tr}(AA^*)}{|W|}\right) + N V^{-2}\left(\rm{tr}((MM^*)^3)-\frac{\rm{tr}(MM^*)^3}{|W|^2}\right)^{1/3}.
-    \]
-\end{lemma}
 
 
 \begin{lemma}\label{hilberttrace}
@@ -158,9 +152,14 @@ we want to bound the size of $W$ by trace of the matrix \[
 \begin{proof}
     This is Lemma 4.2 from Guth-Maynard. \cite{GM2024}
 \end{proof}
+\begin{corollary}\label{trace formula}
+	We have 
+	\[
+	|W|\ll N V^{-2}\left(\frac{\rm{tr}(AA^*)}{|W|}\right) + N V^{-2}\left(\rm{tr}((MM^*)^3)-\frac{\rm{tr}(MM^*)^3}{|W|^2}\right)^{1/3}.
+	\]
+\end{corollary}
 
-
-\begin{proof}[Proof of Proposition \ref{trace formula}]
+\begin{proof}
     Consider the product $M\vec{b}$. The $j$-th entry is exactly $D_n(t_j,\chi_j)$. Thus we have \[
     V^2|W|\leq |M \vec{b}|^2 \leq \|M\|^2|\vec{b}|^2\leq \|M\|^2N.
     \]
@@ -220,7 +219,7 @@ We isolate the terms where $(t_1,\chi_1)=(t_2,\chi_2)=(t_3,\chi_3)$ in the sum, 
     \]
     which gives the result.
 \end{proof}
-Thus assembling this lemma with Proposition \ref{trace formula} gives proposition \ref{Tracebound}.
+Thus assembling this lemma with Proposition \ref{trace formula} gives Proposition \ref{Tracebound}.
 
 \section{Poisson summation on $S$}
 We now bound $S$ using Poisson summation. We would like to apply Poisson summation directly to $P$ in $n_1$, $n_2$, $n_3$, respectively. However, we do not have a good way to express the Dirichlet character $\chi_j\bar\chi_k$ as a $C^\infty$ function. To get around this, we just split the sum in $n$ into $q$ pieces. 
@@ -278,11 +277,11 @@ With a loss of a factor of $3$, we can set $m_3=0$. Thus \begin{align*}
     S_2&\ll\sum_{\substack{(t_1,\chi_1),\\(t_2,\chi_2),\\(t_3,\chi_3)\in W \\ (*)}}
     \frac{N^3}{q^3}\sum_{m_1,m_2\in\mathbb{Z}}\widehat{{\chi_1{\overline{\chi}_3}}}(m_1)\widehat{\chi_2\overline{\chi}_1}(m_2)\widehat{\chi_3\overline{\chi}_2}(0) \hat{h}_{t_1-t_3}\left(\frac{Nm_1}{q}\right)\hat{h}_{t_2-t_1}\left(\frac{Nm_2}{q}\right)\hat{h}_{t_3-t_2}\left(0\right).
 \end{align*}
-By the orthogonality of characters, the terms when $\chi_2\neq \chi_3$ vanish as $\widehat{\chi_3\overline{\chi_2}}(0)=0.$ But when $\chi_2=\chi_3$ and $t_3\neq t_2$, then they are $T^{\epsilon}$ apart and $\hat{h}_{t_3-t_2}(0)\ll T^{-100}$. Since we have a trivial bound on the $T^{\epsilon}$-separated $|W|$ to be $qT\leq T^6$, 
+By the orthogonality of characters, the terms when $\chi_2\neq \chi_3$ vanish as $\widehat{\chi_3\overline{\chi_2}}(0)=0.$ But when $\chi_2=\chi_3$ and $t_3\neq t_2$, then they are $(qT)^{\epsilon}$ apart and $\hat{h}_{t_3-t_2}(0)\ll (qT)^{-100}$. Since we have a trivial bound on the $|W|$ to be $qT$, 
  the terms for which $(t_2,\chi_2)\neq(t_3,\chi_3)$ are negligible by Lemma \ref{nonstationarynew} and we have \begin{align*}
 	 S_2\ll\sum_{\substack{(t_1,\chi_1),\\(t_2,\chi_2)\in W \\ (t_1,\chi_1)\neq (t_2,\chi_2)}}
 	\frac{N^3}{q^2}\sum_{m_1,m_2\in\mathbb{Z}}\widehat{{\chi_1{\overline{\chi}_2}}}(m_1)\widehat{\chi_2\overline{\chi}_1}(m_2)
-	\hat{h}_{t_1-t_2}\left(\frac{Nm_1}{q}\right)&\hat{h}_{t_2-t_1}\left(\frac{Nm_2}{q}\right)+O(T^{-100}).
+	\hat{h}_{t_1-t_2}\left(\frac{Nm_1}{q}\right)&\hat{h}_{t_2-t_1}\left(\frac{Nm_2}{q}\right)+O((qT)^{-100}).
 \end{align*}   
 Noticing that $\hat{h}_t(\xi)=\overline{\hat{h}_{-t}(-\xi)}$, we rewrite \begin{equation} \label{S2clean}
     S_2 \ll\sum_{\substack{(t_1,\chi_1),\\(t_2,\chi_2)\in W \\ (t_1,\chi_1)\neq (t_2,\chi_2)}}
@@ -290,9 +289,9 @@ Noticing that $\hat{h}_t(\xi)=\overline{\hat{h}_{-t}(-\xi)}$, we rewrite \begin{
     \hat{h}_{t_1-t_2}\left(\frac{Nm}{q}\right)\right|^2.
 \end{equation}
 \begin{lemma}[Approximate Functional Equation]
-    Let $|t|\leq T_0$, and $\chi$ be a Dirichlet character mod $q$. Further assume that if $\chi$ is principal then $|t|\geq T^{\epsilon}$. Then we have \[
+    Let $|t|\leq T_0$, and $\chi$ be a Dirichlet character mod $q$. Further assume that if $\chi$ is principal then $|t|\geq (qT)^{\epsilon}$. Then we have \[
         \left|\sum_{m \in \mathbb{Z}}\hat{\bar{\chi}}(m)
-        \hat{h}_{t_1-t_2}\left(\frac{Nm}{q}\right)\right|\lesssim qN^{1/2}\int_{|u|\lesssim 1}\Big|\sum_{n\lesssim \frac{qT_0}{N}}n^{-1/2-i(t+u)}\bar{\chi}(n)\Big| du + O(((qT)^{-100})).
+        \hat{h}_{t_1-t_2}\left(\frac{Nm}{q}\right)\right|\lesssim qN^{1/2}\int_{|u|\lesssim 1}\Big|\sum_{n\lesssim \frac{qT_0}{N}}n^{-1/2-i(t+u)}\bar{\chi}(n)\Big| du + O((qT)^{-100}).
     \]
 \end{lemma}
 The proof to this approximate functional equation is due to Vishal Gupta, who had been collaborating with me on this problem. The proof relies on the reflection method for $L$-functions akin to Theorem 9.15 in \cite{iwaniec}. 

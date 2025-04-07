@@ -1,5 +1,5 @@
 \section{Summations over affine transformations result}
-The basic bound for $S_3$ in the previous section is slightly too loose for improving on the current bound. To further improve on the bound, we need to introduce a result that exploits equidistribution over the affine transformations. Morally, the two terms in the following proposition represents the average and the variance of the distribution of $f$ respectively.
+To bound $S_3$, we first introduce a result that exploits equidistribution over the affine transformations. Morally, the two terms in the following proposition represents the average and the variance of the distribution of $f$ respectively.
 
 \iffalse
 \begin{proposition}[Refinement of $S_3$]
@@ -28,7 +28,7 @@ In principle, the condition $y_1m_1+y_2m_2+m_3\equiv 0$ fixes the residue class 
 
 \begin{lemma}[Iterative bound for $J(f)$] \label{iterative}
     There exists a bump function $\phi(x)$ supported on $|x|\lesssim 1$, such that for \[
-    \tilde{f}(u,y) \defeq \int T \phi(T(u'-u)) f(u',y) du'
+    \tilde{f}(u,y) \defeq \int (qT)^2 \phi((qT)^2(u'-u)) f(u',y) du'
     \]
     we have \[
     J(f)\lesssim \frac{M^6}{d}\|f\|_{L_1}^2 + M^2 \|f\|_{L_2} J(\tilde{f}).
@@ -78,17 +78,17 @@ Let $\eta>0$. We break \[
 \sum_{x\mod d} \int |\hat{g}(\xi,x)|^2 d\xi
 \]
 into five pieces. \begin{enumerate}
-    \item [Ai] $\int_{|\xi|<\frac{M_1}{M_3}T^\eta} |\hat{g}(\xi,0)|^2 d\xi$
-    \item [Aii]$\sum_{x\neq 0 \mod d}\int_{|\xi|<\frac{M_1}{M_3}T^\eta} |\hat{g}(\xi,x)|^2 d\xi$
-    \item [Bi] $\int_{\frac{M_1}{M_3}\leq|\xi|<(qT)^4} |\hat{g}(\xi,0)|^2 d\xi$
-    \item [Bii]$\sum_{x\neq 0 \mod d}\int_{\frac{M_1}{M_3}\leq|\xi|<(qT)^4} |\hat{g}(\xi,x)|^2 d\xi$
+    \item [Ai] $\int_{|\xi|<\frac{M_1}{M_3}(qT)^\eta} |\hat{g}(\xi,0)|^2 d\xi$
+    \item [Aii]$\sum_{x\neq 0 \mod d}\int_{|\xi|<\frac{M_1}{M_3}(qT)^\eta} |\hat{g}(\xi,x)|^2 d\xi$
+    \item [Bi] $\int_{\frac{M_1}{M_3}(qT)^\eta \leq|\xi|<(qT)^4} |\hat{g}(\xi,0)|^2 d\xi$
+    \item [Bii]$\sum_{x\neq 0 \mod d}\int_{\frac{M_1}{M_3}(qT)^\eta\leq|\xi|<(qT)^4} |\hat{g}(\xi,x)|^2 d\xi$
     \item [C]  $\sum_{x \mod d}\int_{|\xi|\geq (qT)^4} |\hat{g}(\xi,x)|^2 d\xi$
 \end{enumerate}
 By the decay in $\hat{f}$ and $T>d^{1+\epsilon}, M^{1+\epsilon}$, C is negligible. 
 
 \begin{lemma}[Ai bound]\label{affinemainterm}
     We have \[
-    \rm{Ai} \lesssim T^{3\eta}M^6\left(\sum_y \int f(u,y) du\right)^2
+    \rm{Ai} \lesssim (qT)^{3\eta}M^6\left(\sum_y \int f(u,y) du\right)^2
     \]
 \end{lemma}
 \begin{proof}
@@ -98,40 +98,40 @@ By the decay in $\hat{f}$ and $T>d^{1+\epsilon}, M^{1+\epsilon}$, C is negligibl
         \sum_{\substack{m_1\sim M_1\\(m_1,d)=1}} 
         \sum_{l : m_1l- \xi \lesssim \frac{M_1}{M_3} }M_3\Bigg|
         \sum_{\substack{m_2\sim M_2\\(m_2,d)=1}} \frac{m_2}{m_1}\hat{f}\left(\frac{m_2}{m_1}\xi, 0\right) 
-        \Bigg|+ O(T^{-100}),
+        \Bigg|+ O((qT)^{-100}),
     \]
-    so the possible non-zero contributions of $l$ satisfy $l\lesssim T^\eta/M_3$. Therefore, for $\xi\leq T^\eta M_1/M_3$\begin{align*}
-    |\hat{g}(\xi,0)|^2 \lesssim& \Bigg|\Big(M_3+T^\eta\Big)\sum_{\substack{m_1\sim M_1\\(m_1,d)=1}} 
+    so the possible non-zero contributions of $l$ satisfy $l\lesssim (qT)^\eta/M_3$. Therefore, for $\xi\leq (qT)^\eta M_1/M_3$\begin{align*}
+    |\hat{g}(\xi,0)|^2 \lesssim& \Bigg|\Big(M_3+(qT)^\eta\Big)\sum_{\substack{m_1\sim M_1\\(m_1,d)=1}} 
     \Big|
         \sum_{\substack{m_2\sim M_2\\(m_2,d)=1}} \frac{m_2}{m_1}\hat{f}\left(\frac{m_2}{m_1}\xi, 0\right) 
         \Big| \Bigg|^2\\
-        \stackon{CS}{\ll}& M_3^2T^{2\eta} M_1\sum_{\substack{m_1\sim M_1\\(m_1,d)=1}} 
+        \stackon{CS}{\ll}& M_3^2(qT)^{2\eta} M_1\sum_{\substack{m_1\sim M_1\\(m_1,d)=1}} 
         \Big|\sum_{\substack{m_2\sim M_2\\(m_2,d)=1}} \frac{m_2}{m_1}\hat{f}\left(\frac{m_2}{m_1}\xi, 0\right) \Big|^2\\
-        \lesssim & T^{2\eta}M_3^2M_2^4 |\sup_{\xi'} \hat{f}(\xi',0)|^2.
+        \lesssim & (qT)^{2\eta}M_3^2M_2^4 |\sup_{\xi'} \hat{f}(\xi',0)|^2.
     \end{align*}
     We have $|\hat{f}(\xi',0)|\leq \sum_{y\mod d}\int |f(\xi,y)|$,
-    so integrating over the range $\xi\leq M_1/M_3 T^\eta$ and taking $M_1,M_2,M_3\leq M$ gives the result.
+    so integrating over the range $\xi\leq M_1/M_3 (qT)^\eta$ and taking $M_1,M_2,M_3\leq M$ gives the result.
 \end{proof}
 
 
 \begin{lemma}[Aii, Bi, Bii bound]\label{affineweirdterm}
     We have
     \[
-    \rm{Aii}+\rm{Bi}+\rm{Bii}\lesssim dT^{2\eta}\left(M^4 \sum_{y\mod d}\int f(u,y)^2 du\right)^{1/2} (J(f))^{1/2}
+    \rm{Aii}+\rm{Bi}+\rm{Bii}\lesssim dT^{2\eta}\left(M^4 \sum_{y\mod d}\int f(u,y)^2 du\right)^{1/2} (J(\tilde{f}))^{1/2}
     \]
 \end{lemma}
 \begin{proof}
     As in Ai bound, the non-zero contribution from $l$ occurs only if \[
         \Bigg|m_1\left(l-\frac{[m_1^{-1}x]}{d}\right)- \xi \lesssim \frac{M_1}{M_3} \Bigg|\implies
-        \Bigg|m_1\left(dl-[m_1^{-1}]x\right) -d\xi\Bigg|\lesssim\frac{dM_1T^\eta}{M_3}
+        \Bigg|m_1\left(dl-[m_1^{-1}]x\right) -d\xi\Bigg|\lesssim\frac{dM_1}{M_3}
     \]
-    Let $s=m_1\left(dl-[m_1^{-1}]x\right) $, so that $s$ must be an integer within $\lesssim{dM_1T^\eta}/{M_3}$ of $d\xi$. Moreover, $s\equiv -x \mod d$, so there are $\lesssim (1+M_1T^\eta/M_3)$ candidates of $s$. Since $\xi\geq T^\eta M_1/M_3$ or $x\neq 0$, we also have $s\neq 0$. Thus noticing the choice of $m_1$ and $s$ fixes the value of $l$ we have by the divisor bound \[
+    Let $s=m_1\left(dl-[m_1^{-1}]x\right) $, so that $s$ must be an integer within $\lesssim{dM_1}/{M_3}$ of $d\xi$. Moreover, $s\equiv -x \mod d$, so there are $\lesssim (1+M_1/M_3)$ candidates of $s$. Since $\xi\geq T^\eta M_1/M_3$ or $x\neq 0$, we also have $s\neq 0$. Thus noticing the choice of $m_1$ and $s$ fixes the value of $l$ we have by the divisor bound \[
     \lesssim 1+\frac{M_1}{M_3}
     \]
     pairs of $(m_1,l)$ that satisfy these conditions. So in this range 
     \begin{align*}
         &|\hat{g}(\xi,x)|^2 \\
-        \stackon{CS}{\ll}&T^\eta(M_1M_3+M_3^2)
+        \stackon{CS}{\ll}&(M_1M_3+M_3^2)
         \sum_{\substack{m_1\sim M_1\\(m_1,d)=1}}  \sum_{l : m_1\left(l-\frac{[m_1^{-1}x]}{d}\right)- \xi \lesssim \frac{M_1}{M_3} } 
         \Big|
             \sum_{\substack{m_2\sim M_2\\(m_2,d)=1}} \frac{m_2}{m_1}\hat{f}\left(\frac{m_2}{m_1}\xi, m_2m_1^{-1}x\right) 
@@ -140,12 +140,12 @@ By the decay in $\hat{f}$ and $T>d^{1+\epsilon}, M^{1+\epsilon}$, C is negligibl
     giving 
     \begin{align*}
         \rm{Aii}+{Bi}+{Bii}\leq&\sum_{x \mod d}\int_{|\xi|\leq (qT)^4} (1-\mathbb{I}_{x=0}*\mathbb{I}_{\xi\leq M_1T^{\eta}/M_3})|\hat{g}(\xi,x)|^2 d\xi\\
-        {\lesssim}&T^\eta(M_1M_3+M_3^2)
+        {\lesssim}&(M_1M_3+M_3^2)
         \sum_{\substack{m_1\sim M_1\\(m_1,d)=1}} \sum_{x \mod d} \int_{|\xi|<(qT)^4}\sum_{l : m_1\left(l-\frac{[m_1^{-1}x]}{d}\right)- \xi \lesssim \frac{M_1}{M_3} } 
         \Big|
             \sum_{\substack{m_2\sim M_2\\(m_2,d)=1}} \frac{m_2}{m_1}\hat{f}\left(\frac{m_2}{m_1}\xi, m_2m_1^{-1}x\right) 
             \Big|^2d\xi\\
-            \leq&T^\eta(M_1M_3+M_3^2)
+            \leq&(M_1M_3+M_3^2)
             \sum_{\substack{m_1\sim M_1\\(m_1,d)=1}} \sum_{x \mod d} \sum_{l} 
             \int\displaylimits_{\Big|m_1\left(l-\frac{[m_1^{-1}x]}{d}\right)- \xi \Big|\lesssim \frac{M_1}{M_3}}
             \Big|
@@ -162,13 +162,13 @@ By the decay in $\hat{f}$ and $T>d^{1+\epsilon}, M^{1+\epsilon}$, C is negligibl
     Combined we get
     \begin{align*}
         \rm{Aii}+{Bi}+{Bii} \lesssim &
-        \frac{M_1}{M_3}(M_3^2+M_3M_1)T^{\eta}
+        \frac{M_1}{M_3}(M_3^2+M_3M_1)
         \sum_{\substack{m_1\sim M_1\\(m_1,d)=1}}\sum_{\tilde{x} \mod d} \sum_{l  } 
         \int_{|\tau|\lesssim 1}
         \Big|
             \sum_{\substack{m_2\sim M_2\\(m_2,d)=1}} \frac{m_2}{m_1}\hat{f}\left(m_2\Big(l-\frac{\tilde{x}}{d}\Big)+\frac{m_2}{M_3}\tau, m_2\tilde{x}\right) 
             \Big|^2 d\tau\\
-            \lesssim (M_1+M_3)T^{\eta} \Sigma_1,
+            \lesssim (M_1+M_3) \Sigma_1,
     \end{align*}
     where\[
     \Sigma_1 \defeq \sum_{\tilde{x} \mod d} \sum_{l  } 
@@ -177,15 +177,15 @@ By the decay in $\hat{f}$ and $T>d^{1+\epsilon}, M^{1+\epsilon}$, C is negligibl
         \sum_{\substack{m_2\sim M_2\\(m_2,d)=1}} {m_2}\hat{f}\left(m_2\Big(l-\frac{\tilde{x}}{d}\Big)+\frac{m_2}{M_3}\tau, m_2\tilde{x}\right) 
         \Big|^2d\tau.
     \]
-    Since $\hat{f}(\xi,x)$ is negligble unless $|\xi|\lesssim T$, we can introduce a bump function $\psi_2(x)$ supported on $|x|\lesssim 1$ to get \[
-        \Sigma_1 = \sum_{\tilde{x} \mod d} \sum_{l  } \psi_2\left(\frac{M_2(l-\tilde{x}/d)}{T}\right)
+    Since $\hat{f}(\xi,x)$ is negligible unless $|\xi|\lesssim (qT)^2$, we can introduce a bump function $\psi_2(x)$ supported on $|x|\lesssim 1$ to get \[
+        \Sigma_1 = \sum_{\tilde{x} \mod d} \sum_{l  } \psi_2\left(\frac{M_2(l-\tilde{x}/d)}{(qT)^2}\right)
         \int_{|\tau|\lesssim 1}
         \Big|
             \sum_{\substack{m_2\sim M_2\\(m_2,d)=1}} {m_2}\hat{f}\left(m_2\Big(l-\frac{\tilde{x}}{d}\Big)+\frac{m_2}{M_3}\tau, m_2\tilde{x}\right) 
-            \Big|^2d\tau+O(T^{-100}).
+            \Big|^2d\tau+O((qT)^{-100}).
     \]
     Expanding the square, we have \begin{align*}
-        \Sigma_1= & \sum_{\tilde{x} \mod d} \sum_{l  }  \psi_2\left(\frac{M_2(l-\tilde{x}/d)}{T}\right)
+        \Sigma_1= & \sum_{\tilde{x} \mod d} \sum_{l  }  \psi_2\left(\frac{M_2(l-\tilde{x}/d)}{(qT)^2}\right)
         \int_{|\tau|\lesssim 1}
         \int\int \sum_{\substack{m_2,m_2'\sim M_2\\(m_2,d)=(m_2',d)=1}} \sum_{y,y'\mod d}
          {m_2} m_2' f(u,y)f(u',y')  \\ & \quad \quad \times e\left(\frac{\tilde{x}(m_2'y'-m_2y)}{d}\right) 
@@ -197,12 +197,12 @@ By the decay in $\hat{f}$ and $T>d^{1+\epsilon}, M^{1+\epsilon}$, C is negligibl
     \end{align*}
     where \begin{align*}
         \Sigma_2\defeq &\int_{|\tau|\lesssim 1}  e\left((m_2'u'-m_2u)\Big(\frac{\tau}{M_3}\Big)\right)  d\tau\\
-        \Sigma_3\defeq &\sum_{l}  \psi_2\left(\frac{M_2(l-\tilde{x}/d)}{T}\right)e\left((m_2'u'-m_2u)l\right)e\left((m_2u-m_2'u')\Big(\frac{\tilde{x}}{d}\Big)\right)
+        \Sigma_3\defeq &\sum_{l}  \psi_2\left(\frac{M_2(l-\tilde{x}/d)}{(qT)^2}\right)e\left((m_2'u'-m_2u)l\right)e\left((m_2u-m_2'u')\Big(\frac{\tilde{x}}{d}\Big)\right)
     \end{align*}
    On $\Sigma_3$, we apply Poisson summation to get \begin{align*}
-        \Sigma_3 \quad \stackon{Poisson}{=}& \quad  \frac{T}{M_2}\sum_k \hat{\psi}_2 \left(\frac{k+m_2-m_2'u'}{M_2/T}\right) e\left(-\frac{k\tilde{x}}{d}\right)\\
-        =& \frac{T}{M_2}\sum_{\substack{k\\
-        |k+m_2u-m_2'u'|\lesssim M_2/T}} \hat{\psi}_2 \left(\frac{k+m_2u-m_2'u'}{M_2/T}\right)+O(T^{-100}),
+        \Sigma_3 \quad \stackon{Poisson}{=}& \quad  \frac{(qT)^2}{M_2}\sum_k \hat{\psi}_2 \left(\frac{k+m_2-m_2'u'}{M_2/(qT)^2}\right) e\left(-\frac{k\tilde{x}}{d}\right)\\
+        =& \frac{(qT)^2}{M_2}\sum_{\substack{k\\
+        |k+m_2u-m_2'u'|\lesssim M_2/(qT)^2}} \hat{\psi}_2 \left(\frac{k+m_2u-m_2'u'}{M_2/T}\right)+O(T^{-100}),
     \end{align*}
     where we truncated in the last step by the rapid decay of $\hat\psi_2$.
     We can directly compute the remaining dependecies on $\tilde{x}$ \[
@@ -213,13 +213,13 @@ By the decay in $\hat{f}$ and $T>d^{1+\epsilon}, M^{1+\epsilon}$, C is negligibl
      \]
      This gives us\begin{align*}
         \Sigma_1\lesssim
-        d \int  {M_2}T \sum_{y\mod d}\sum_{\substack{m_2,m_2'\sim M_2\\(m_2,d)=(m_2',d)=1
+        d \int  {M_2}(qT)^2 \sum_{y\mod d}\sum_{\substack{m_2,m_2'\sim M_2\\(m_2,d)=(m_2',d)=1
         }} \sum_{\substack{k}}  f(u,y)\sum_{\substack{y'\mod d\\d|(m_2'y'-m_2y-k)}} \int_{\substack{
-        |k+m_2u-m_2'u'|\lesssim M_2/T}} f(u',y')  du' du.
+        |k+m_2u-m_2'u'|\lesssim M_2/(qT)^2}} f(u',y')  du' du.
      \end{align*}
     The condition $d|(m_2'y'-m_2y-k)$ forces $y'= (m_2y+k)m_2'^{-1}$.
-    For the second condition, we notice that $u'$ is in a $\lesssim 1/T$ neighborhood of $(m_2u+k)/m_2'$, so let $\phi(x)$ be a bump function supported on $|x|\lesssim 1$ \[
-    \tilde{f}(u,y) \defeq \int T \phi(T(u'-u)) f(u',y) du'
+    For the second condition, we notice that $u'$ is in a $\lesssim 1/(qT)^2$ neighborhood of $(m_2u+k)/m_2'$, so let $\phi(x)$ be a bump function supported on $|x|\lesssim 1,$ and  \[
+    \tilde{f}(u,y) \defeq \int (qT)^2 \phi((qT)^2(u'-u)) f(u',y) du'
     \]
     if needed, we extend the support of $\phi$ by a constant such that 
     \begin{align*}
@@ -229,15 +229,15 @@ By the decay in $\hat{f}$ and $T>d^{1+\epsilon}, M^{1+\epsilon}$, C is negligibl
      \end{align*}
      Thus putting this bound for $\Sigma_1$ we obtain
      \begin{align*}
-        \rm{Aii}+{Bi}+{Bii}\lesssim& (M_1+M_3)T^{\eta} d \int  {M_2} \sum_{y\mod d}\sum_{\substack{m_2,m_2'\sim M_2\\(m_2,d)=(m_2',d)=1
+        \rm{Aii}+{Bi}+{Bii}\lesssim& (M_1+M_3) d \int  {M_2} \sum_{y\mod d}\sum_{\substack{m_2,m_2'\sim M_2\\(m_2,d)=(m_2',d)=1
         }} \sum_{\substack{k}}  f(u,y) \tilde{f}\left(\frac{m_2y+k}{m_2'},(m_2y+k)m_2'^{-1}\right)  du\\
-        \stackon{CS}{\ll}& M^2T^{\eta}d \Bigg(\sum_{y\mod d}\int f(u,y)^2 du \Bigg) ^{1/2}
+        \stackon{CS}{\ll}& M^2d \Bigg(\sum_{y\mod d}\int f(u,y)^2 du \Bigg) ^{1/2}
         \Bigg(\sum_{y\mod d} \int \Big(\sum_{\substack{m_2,m_2'\sim M_2\\(m_2,d)=(m_2',d)=1
         }} \sum_{\substack{k}} \tilde{f}\left(\frac{m_2u+k}{m_2'},(m_2y+k)m_2'^{-1}\right)\Big)^2 du\Bigg) ^{1/2}
     \end{align*}
     Finally, noticing that $\tilde{f}$ has support on $y\asymp 1$ we can restrict the summation in $k$ to be $|k|\ll M_2$, so that 
     \begin{align*}
-        \rm{Aii}+{Bi}+{Bii}\lesssim M^2T^{\eta}d \Bigg(\sum_{y\mod d}\int f(u,y)^2 du \Bigg) ^{1/2}
+        \rm{Aii}+{Bi}+{Bii}\lesssim M^2d \Bigg(\sum_{y\mod d}\int f(u,y)^2 du \Bigg) ^{1/2}
         \Bigg(J(\tilde{f})\Bigg) ^{1/2}.
     \end{align*}
 \end{proof}
@@ -246,7 +246,7 @@ By the decay in $\hat{f}$ and $T>d^{1+\epsilon}, M^{1+\epsilon}$, C is negligibl
 J(f)\leq \frac{1}{d}\sum_{x\mod d} \int |\hat{g}(\xi,x)|^2 d\xi.
 \]
 By the decay in $\hat{f}$, the range $|\xi|\geq T^2$ is negligble. The remaining parts are bounded by lemmas \ref{affinemainterm} and \ref{affineweirdterm} to get \[
-J(f)\lesssim \frac{1}{d}T^{3\eta}M^6\left(\sum_y \int f(u,y) du\right)^2+ M^2T^{\eta} \Bigg(\sum_{y\mod d}\int f(u,y)^2 du \Bigg) ^{1/2}
+J(f)\lesssim \frac{1}{d}T^{3\eta}M^6\left(\sum_y \int f(u,y) du\right)^2+ M^2 \Bigg(\sum_{y\mod d}\int f(u,y)^2 du \Bigg) ^{1/2}
 \Bigg(J(\tilde{f})\Bigg) ^{1/2}.
 \]
 Letting $\eta \to 0$ sufficiently slowly gives the result.
@@ -265,5 +265,5 @@ Letting $\eta \to 0$ sufficiently slowly gives the result.
     By the same argument as above, we keep track of the $M_2$'s to get 
     \[
         J_{{M}}(f) \lesssim \frac{M^4\tilde{M}^2}{d} \Big(\sum_{y \mod d } \int f(u,y) du\Big)^2 + \Big(M^2\tilde{M}^2\sum_{y\mod d} \int f(u,y)^2 du\Big)^{1/2}(J_{M}(\tilde{f}))^{1/2},
-    \] where $J(\tilde{f})$ uses the bounds $m_1,m_2\sim M_2, m_3 \ll LM_2\leq \tilde{M}$.
+    \] where the summation in the iterative bound sums over $m_1,m_2\sim M_2, |m_3| \ll LM_2\leq \tilde{M}$. The bound on $m_3$ is due to the restriction that $f$ is now supported on length $\ll L$.
 \end{proof}

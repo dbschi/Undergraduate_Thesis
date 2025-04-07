@@ -4,7 +4,7 @@ Here we provide the generalization for the orthogonal energy bound for Guth and 
 \begin{proposition}\label{energybound}
     Let $(qT)^{3/4}\leq N\leq (qT)$. Then
     \begin{align*}
-E(\mathcal{S})\lesssim |\mathcal{S}|N^{4-4\sigma}+|\mathcal{S}|^{21/8}(qT)^{1/4}N^{1-2\sigma}+|\mathcal{S}|^3N^{1-\sigma}.
+E(W)\lesssim |W|N^{4-4\sigma}+|W|^{21/8}(qT)^{1/4}N^{1-2\sigma}+|W|^3N^{1-2\sigma}.
     \end{align*}
 \end{proposition}
 The idea for bounding energy is similar; if $\chi_1\chi_2=\chi_3\chi_4$ and $|t_1+t_2-t_3-t_4|$ is small, we should expect $|D_N(t_1+t_2-t_3,\chi_1\chi_2\bar{\chi}_3)|\approx |D_N(t_4,\chi_4)|>N^\sigma$.
@@ -19,23 +19,23 @@ The idea for bounding energy is similar; if $\chi_1\chi_2=\chi_3\chi_4$ and $|t_
     This is Lemma 11.3 is \cite{GM2024}, with the restriction $\lesssim 1$ in terms of $(qT)^{\epsilon}$ instead of just $T^{\epsilon}$.
 \end{proof}
 \begin{lemma} We have \[
-    E(\mathcal{S})\lesssim N^{-2\sigma}\sum_{n_1,n_2\sim N}\left|R\left(\frac{n_1}{n_2},n_1,n_2\right) \right|^3.
+    E(W)\lesssim N^{-2\sigma}\sum_{n_1,n_2\sim N}\left|R\left(\frac{n_1}{n_2},n_1,n_2\right) \right|^3.
     \]
     
 \end{lemma}
 \begin{proof}
     We have \begin{align*}    
-    E(\mathcal{S})=& \sum_{\substack{(t_1,\chi_1),(t_2,\chi_2),\\ (t_3,\chi_3),(t_4,\chi_4)\in \mathcal{S}\\|t_1+t_2-t_3-t_4|\leq 1\\ \chi_1\chi_2=\chi_3\chi_4}} 1 
-    \leq N^{-2\sigma}\sum_{\substack{(t_1,\chi_1),(t_2,\chi_2),\\ (t_3,\chi_3),(t_4,\chi_4)\in \mathcal{S}\\ |t_1+t_2-t_3-t_4|\leq 1\\ \chi_1\chi_2=\chi_3\chi_4}} |D_N(t_4,\chi_4)|^2.
+    E(W)=& \sum_{\substack{(t_1,\chi_1),(t_2,\chi_2),\\ (t_3,\chi_3),(t_4,\chi_4)\in W\\|t_1+t_2-t_3-t_4|\leq 1\\ \chi_1\chi_2=\chi_3\chi_4}} 1 
+    \leq N^{-2\sigma}\sum_{\substack{(t_1,\chi_1),(t_2,\chi_2),\\ (t_3,\chi_3),(t_4,\chi_4)\in W\\ |t_1+t_2-t_3-t_4|\leq 1\\ \chi_1\chi_2=\chi_3\chi_4}} |D_N(t_4,\chi_4)|^2.
     \end{align*}
     Now we apply the previous lemma and Cauchy-Schwarz to get \[
         |D_N(t_4,\chi_4)|^2\lesssim \int_{|u-t_4|\lesssim 1} |D_N(u,\chi_4)|^2du \lesssim  \int_{|u-t_1-t_2+t_3|\lesssim 1} |D_N(u,\chi_1\chi_2\bar{\chi}_3)|^2du,
     \]
    
     Since $\chi_1,\chi_2,\chi_3$ fixes $\chi_4$, and the $t$'s within the same character are $T^\epsilon$ separated, there is $O(1)$ possible pairs of $(t_4,\chi_4)$ for each choice of $(t_1,\chi_1),(t_2,\chi_2),(t_3,\chi_3)$, so \begin{align*}    
-        E(\mathcal{S})\lesssim& N^{-2\sigma}\sum_{\substack{(t_1,\chi_1),(t_2,\chi_2),\\ (t_3,\chi_3),(t_4,\chi_4)\in \mathcal{S}\\ |t_1+t_2-t_3-t_4|\leq 1\\ \chi_1\chi_2=\chi_3\chi_4}} \int_{|u-t_1-t_2+t_3|\lesssim 1} |D_N(u,\chi_1\chi_2\bar{\chi}_3)|^2du\\
-        \lesssim&  N^{-2\sigma}\sum_{\substack{(t_1,\chi_1),(t_2,\chi_2),\\ (t_3,\chi_3)\in \mathcal{S}}} \int_{|u-t_1-t_2+t_3|\lesssim 1} |D_N(u,\chi_1\chi_2\bar{\chi}_3)|^2du\\
-        =& N^{-2\sigma}\sum_{\substack{(t_1,\chi_1),(t_2,\chi_2),\\ (t_3,\chi_3)\in \mathcal{S}}} \int_{|u|\lesssim 1} |D_N(t_1+t_2-t_3 + u,\chi_1\chi_2\bar{\chi}_3)|^2du\\
+        E(W)\lesssim& N^{-2\sigma}\sum_{\substack{(t_1,\chi_1),(t_2,\chi_2),\\ (t_3,\chi_3),(t_4,\chi_4)\in W\\ |t_1+t_2-t_3-t_4|\leq 1\\ \chi_1\chi_2=\chi_3\chi_4}} \int_{|u-t_1-t_2+t_3|\lesssim 1} |D_N(u,\chi_1\chi_2\bar{\chi}_3)|^2du\\
+        \lesssim&  N^{-2\sigma}\sum_{\substack{(t_1,\chi_1),(t_2,\chi_2),\\ (t_3,\chi_3)\in W}} \int_{|u-t_1-t_2+t_3|\lesssim 1} |D_N(u,\chi_1\chi_2\bar{\chi}_3)|^2du\\
+        =& N^{-2\sigma}\sum_{\substack{(t_1,\chi_1),(t_2,\chi_2),\\ (t_3,\chi_3)\in W}} \int_{|u|\lesssim 1} |D_N(t_1+t_2-t_3 + u,\chi_1\chi_2\bar{\chi}_3)|^2du\\
         =&N^{-2\sigma}\sum_{n_1,n_2} b_{n_1}\bar{b}_{n_2} \omega\left(\frac{n_1}{N}\right)\omega\left(\frac{n_2}{N}\right)\int_{|u|\lesssim 1} \left(\frac{n_1}{n_1}\right)^{iu}R\left(\frac{n_1}{n_2},n_1,n_2\right)^2 R\left(\frac{n_2}{n_1},n_2,n_1\right)du\\
         \lesssim & N^{-2\sigma}\sum_{n_1,n_2\sim N}\left|R\left(\frac{n_1}{n_2},n_1,n_2\right)^2 R\left(\frac{n_2}{n_1},n_2,n_1\right)\right|\\
         \lesssim & N^{-2\sigma}\sum_{n_1,n_2\sim N}\left|R\left(\frac{n_1}{n_2},n_1,n_2\right) \right|^3.
@@ -45,25 +45,25 @@ The idea for bounding energy is similar; if $\chi_1\chi_2=\chi_3\chi_4$ and $|t_
 \begin{lemma}
     We have 
 \[
-        \sum_{n_1,n_2\sim N}\left|R\left(\frac{n_1}{n_2},n_1,n_2\right) \right|^2\lesssim |\mathcal{S}|N^2+ |\mathcal{S}|^2N + |\mathcal{S}|^{5/4}(qT)^{1/2}N.
+        \sum_{n_1,n_2\sim N}\left|R\left(\frac{n_1}{n_2},n_1,n_2\right) \right|^2\lesssim |W|N^2+ |W|^2N + |W|^{5/4}(qT)^{1/2}N.
     \]
 \end{lemma}
 \begin{proof}
     From the definition of $R$, \begin{align*}
-        \sum_{n_1,n_2\sim N}\left|R\left(\frac{n_1}{n_2},n_1,n_2\right) \right|^2=& \sum_{n_1,n_2\sim N}\sum_{\substack{(t_1,\chi_1),(t_2,\chi_2)\in \mathcal{S}}}
+        \sum_{n_1,n_2\sim N}\left|R\left(\frac{n_1}{n_2},n_1,n_2\right) \right|^2=& \sum_{n_1,n_2\sim N}\sum_{\substack{(t_1,\chi_1),(t_2,\chi_2)\in W}}
         \chi_1(n_1)\bar{\chi}_1(n_2)\left(\frac{n_1}{n_2}\right)^{it_1}\bar{\chi}_2(n_1){\chi}_2(n_2)\left(\frac{n_1}{n_2}\right)^{-it_2}
         \\
-        &=\sum_{\substack{(t_1,\chi_1),(t_2,\chi_2)\in \mathcal{S}}}\left|\sum_{n\sim N}
+        &=\sum_{\substack{(t_1,\chi_1),(t_2,\chi_2)\in W}}\left|\sum_{n\sim N}
         \chi_1(n_1)\bar{\chi}_2(n_1)n^{i(t_1-t_2)}\right|.
     \end{align*}
     A direct application of Heath Brown's Theorem \ref{heathbrown} gives \[
-        \sum_{n_1,n_2\sim N}\left|R\left(\frac{n_1}{n_2},n_1,n_2\right) \right|^2\lesssim |\mathcal{S}|N^2+ |\mathcal{S}|^2N + |\mathcal{S}|^{5/4}(qT)^{1/2}N.
+        \sum_{n_1,n_2\sim N}\left|R\left(\frac{n_1}{n_2},n_1,n_2\right) \right|^2\lesssim |W|N^2+ |W|^2N + |W|^{5/4}(qT)^{1/2}N.
     \]
 \end{proof}
-The trivial bound for $R\leq |\mathcal{S}|$ gives \begin{align*}
-    E(\mathcal{S})\lesssim& N^{-2\sigma}\sum_{n_1,n_2\sim N}\left|R\left(\frac{n_1}{n_2},n_1,n_2\right) \right|^3\\
-    \lesssim &|\mathcal{S}|N^{-2\sigma}\sum_{n_1,n_2\sim N}\left|R\left(\frac{n_1}{n_2},n_1,n_2\right) \right|^2\\
-    \lesssim& |\mathcal{S}|^2N^{2-2\sigma}+ |\mathcal{S}|^3N^{1-2\sigma} + |\mathcal{S}|^{9/4}(qT)^{1/2}N^{{1-2\sigma}}.
+The trivial bound for $R\leq |W|$ gives \begin{align*}
+    E(W)\lesssim& N^{-2\sigma}\sum_{n_1,n_2\sim N}\left|R\left(\frac{n_1}{n_2},n_1,n_2\right) \right|^3\\
+    \lesssim &|W|N^{-2\sigma}\sum_{n_1,n_2\sim N}\left|R\left(\frac{n_1}{n_2},n_1,n_2\right) \right|^2\\
+    \lesssim& |W|^2N^{2-2\sigma}+ |W|^3N^{1-2\sigma} + |W|^{9/4}(qT)^{1/2}N^{{1-2\sigma}}.
 \end{align*}
 The arguments beyond will be adaptations from GM. These involve the refinement of the energy bound through the use of Cauchy-Schwarz\[
     \sum_{n_1,n_2\sim N}\left|R\left(\frac{n_1}{n_2},n_1,n_2\right) \right|^3\leq  \Big(\sum_{n_1,n_2\sim N}\left|R\left(\frac{n_1}{n_2},n_1,n_2\right) \right|^2\Big)^{1/2} \Big(\sum_{n_1,n_2\sim N}\left|R\left(\frac{n_1}{n_2},n_1,n_2\right) \right|^4 \Big)^{1/2}.
@@ -71,42 +71,42 @@ The arguments beyond will be adaptations from GM. These involve the refinement o
 
 \begin{lemma}
     We have \begin{align*}
-        \sum_{n_1,n_2\sim N}  \left|R\left(\frac{n_1}{n_2} ,n_1,n_2\right) \right|^4 \lesssim E(\mathcal{S})N^2+ |\mathcal{S}|^4N +  E(\mathcal{S})^{3/4}|\mathcal{S}|(qT)^{1/2}N.
+        \sum_{n_1,n_2\sim N}  \left|R\left(\frac{n_1}{n_2} ,n_1,n_2\right) \right|^4 \lesssim E(W)N^2+ |W|^4N +  E(W)^{3/4}|W|(qT)^{1/2}N.
     \end{align*}
 \end{lemma}
 \begin{proof}
     Let \[
-    U_B=\left\{(u,\chi) \ : u\in \mathbb{Z},\chi \textrm{ character modulus $q$}, \ \#\{((t_1,\chi_1),(t_2,\chi_2))\in \mathcal{S} \ : \ \lfloor {t_1-t_2}\rfloor = u, \chi_1\bar\chi_2=\chi\} \sim B \right\}.
+    U_B=\left\{(u,\chi) \ : u\in \mathbb{Z},\chi \textrm{ character modulus $q$}, \ \#\{((t_1,\chi_1),(t_2,\chi_2))\in W \ : \ \lfloor {t_1-t_2}\rfloor = u, \chi_1\bar\chi_2=\chi\} \sim B \right\}.
     \]
     We split the sum in $R$ as \begin{align*}
         \left|R\left(\frac{n_1}{n_2} ,n_1,n_2\right) \right|^4 =&
         \Bigg|
-        \sum_{(t_1,\chi_1),(t_2,\chi_2)\in \mathcal{S}}
+        \sum_{(t_1,\chi_1),(t_2,\chi_2)\in W}
         \chi_1\bar{\chi}_2(n_1)\bar\chi_1{\chi}_2(n_2) \left(\frac{n_1}{n_2}\right)^{i(t_1-t_2)}\Bigg|^2 \\
         =& \Bigg|
-        \sum_{j=0}^{ \lfloor \log_2 |\mathcal{S}|\rfloor} \sum_{(u,\chi)\in U_{2^j}}\sum_{\substack{(t_1,\chi_1),(t_2,\chi_2)\in \mathcal{S}\\ \lfloor t_1-t_2 \rfloor = u,\\ \chi_1\bar\chi_2=\chi}} 
+        \sum_{j=0}^{ \lfloor \log_2 |W|\rfloor} \sum_{(u,\chi)\in U_{2^j}}\sum_{\substack{(t_1,\chi_1),(t_2,\chi_2)\in W\\ \lfloor t_1-t_2 \rfloor = u,\\ \chi_1\bar\chi_2=\chi}} 
         \chi_1\bar{\chi}_2(n_1)\bar\chi_1{\chi}_2(n_2)  \left(\frac{n_1}{n_2}\right)^{i(t_1-t_2)}\Bigg|^2\\
-        \stackon{CS}{\lesssim}& \sum_{j=0}^{ \lfloor \log_2 |\mathcal{S}|\rfloor} \Bigg|
-         \sum_{(u,\chi)\in U_{2^j}}\sum_{\substack{(t_1,\chi_1),(t_2,\chi_2)\in \mathcal{S}\\ \lfloor t_1-t_2 \rfloor = u,\\ \chi_1\bar\chi_2=\chi}} 
+        \stackon{CS}{\lesssim}& \sum_{j=0}^{ \lfloor \log_2 |W|\rfloor} \Bigg|
+         \sum_{(u,\chi)\in U_{2^j}}\sum_{\substack{(t_1,\chi_1),(t_2,\chi_2)\in W\\ \lfloor t_1-t_2 \rfloor = u,\\ \chi_1\bar\chi_2=\chi}} 
          \chi(n_1)\bar\chi(n_2)  \left(\frac{n_1}{n_2}\right)^{i(t_1-t_2)}\Bigg|^2.
     \end{align*}
     Therefore, \begin{align*}
         \sum_{n_1,n_2\sim N}\left|R\left(\frac{n_1}{n_2},n_1,n_2\right) \right|^4 \lesssim & 
-        \sup_{j\leq \lfloor \log_2 |\mathcal{S}|\rfloor} \sum_{n_1,n_2\sim N} \Bigg|
-        \sum_{(u,\chi)\in U_{2^j}}\sum_{\substack{(t_1,\chi_1),(t_2,\chi_2)\in \mathcal{S}\\ \lfloor t_1-t_2 \rfloor = u,\\ \chi_1\bar\chi_2=\chi}} 
+        \sup_{j\leq \lfloor \log_2 |W|\rfloor} \sum_{n_1,n_2\sim N} \Bigg|
+        \sum_{(u,\chi)\in U_{2^j}}\sum_{\substack{(t_1,\chi_1),(t_2,\chi_2)\in W\\ \lfloor t_1-t_2 \rfloor = u,\\ \chi_1\bar\chi_2=\chi}} 
        \chi(n_1)\bar{\chi}(n_2) \left(\frac{n_1}{n_2}\right)^{i(t_1-t_2)}\Bigg|^2.\\
     \end{align*}
 For the value of $j$ that achieves supremum, \begin{align*}
     &\sum_{n_1,n_2\sim N} \Bigg|
-   \sum_{(u,\chi)\in U_{2^j}}\sum_{\substack{(t_1,\chi_1),(t_2,\chi_2)\in \mathcal{S}\\ \lfloor t_1-t_2 \rfloor = u,\\ \chi_1\bar\chi_2=\chi}} 
+   \sum_{(u,\chi)\in U_{2^j}}\sum_{\substack{(t_1,\chi_1),(t_2,\chi_2)\in W\\ \lfloor t_1-t_2 \rfloor = u,\\ \chi_1\bar\chi_2=\chi}} 
   \chi(n_1)\bar{\chi}(n_2) \left(\frac{n_1}{n_2}\right)^{i(t_1-t_2)}\Bigg|^2\\
   \leq &\sum_{n_1,n_2\sim N} 
-  \sum_{\substack{(u_{\alpha},\chi_{\alpha}),\\(u_{\beta},\chi_{\beta})\in U_{2^j}}}\sum_{\substack{(t_1,\chi_1),(t_2,\chi_2)\in \mathcal{S}\\ \lfloor t_1-t_2 \rfloor = u_{\alpha},\\ \chi_1\bar\chi_2=\chi_{\alpha}}} \sum_{\substack{(t_3,\chi_3),(t_4,\chi_4)\in \mathcal{S}\\ \lfloor t_3-t_4 \rfloor = u_{\beta},\\ \chi_3\bar\chi_4=\chi_{\beta}}} 
+  \sum_{\substack{(u_{\alpha},\chi_{\alpha}),\\(u_{\beta},\chi_{\beta})\in U_{2^j}}}\sum_{\substack{(t_1,\chi_1),(t_2,\chi_2)\in W\\ \lfloor t_1-t_2 \rfloor = u_{\alpha},\\ \chi_1\bar\chi_2=\chi_{\alpha}}} \sum_{\substack{(t_3,\chi_3),(t_4,\chi_4)\in W\\ \lfloor t_3-t_4 \rfloor = u_{\beta},\\ \chi_3\bar\chi_4=\chi_{\beta}}} 
  \chi_\alpha\bar\chi_\beta(n_1)\bar{\chi}_\alpha\chi_\beta(n_2) \left(\frac{n_1}{n_2}\right)^{i(t_1-t_2-t_3+t_4)}\\
- =&\sum_{\substack{(u_{\alpha},\chi_{\alpha}),\\(u_{\beta},\chi_{\beta})\in U_{2^j}}}\sum_{\substack{(t_1,\chi_1),(t_2,\chi_2)\in \mathcal{S}\\ \lfloor t_1-t_2 \rfloor = u_{\alpha},\\ \chi_1\bar\chi_2=\chi_{\alpha}}} \sum_{\substack{(t_3,\chi_3),(t_4,\chi_4)\in \mathcal{S}\\ \lfloor t_3-t_4 \rfloor = u_{\beta},\\ \chi_3\bar\chi_4=\chi_{\beta}}}\Big| \sum_{n\sim N}  \chi_\alpha\bar\chi_\beta(n){n}^{i(t_1-t_2-t_3+t_4)}\Big|^2\\
+ =&\sum_{\substack{(u_{\alpha},\chi_{\alpha}),\\(u_{\beta},\chi_{\beta})\in U_{2^j}}}\sum_{\substack{(t_1,\chi_1),(t_2,\chi_2)\in W\\ \lfloor t_1-t_2 \rfloor = u_{\alpha},\\ \chi_1\bar\chi_2=\chi_{\alpha}}} \sum_{\substack{(t_3,\chi_3),(t_4,\chi_4)\in W\\ \lfloor t_3-t_4 \rfloor = u_{\beta},\\ \chi_3\bar\chi_4=\chi_{\beta}}}\Big| \sum_{n\sim N}  \chi_\alpha\bar\chi_\beta(n){n}^{i(t_1-t_2-t_3+t_4)}\Big|^2\\
  \leq & \sum_{\substack{(u_{\alpha},\chi_{\alpha}),\\(u_{\beta},\chi_{\beta})\in U_{2^j}}}
- \Bigg(\sum_{\substack{(t_1,\chi_1),(t_2,\chi_2)\in \mathcal{S}\\ \lfloor t_1-t_2 \rfloor = u_{\alpha},\\ \chi_1\bar\chi_2=\chi_{\alpha}}} 1\Bigg)
- \Bigg(\sum_{\substack{(t_3,\chi_3),(t_4,\chi_4)\in \mathcal{S}\\ \lfloor t_3-t_4 \rfloor = u_{\beta},\\ \chi_3\bar\chi_4=\chi_{\beta}}} 1\Bigg)
+ \Bigg(\sum_{\substack{(t_1,\chi_1),(t_2,\chi_2)\in W\\ \lfloor t_1-t_2 \rfloor = u_{\alpha},\\ \chi_1\bar\chi_2=\chi_{\alpha}}} 1\Bigg)
+ \Bigg(\sum_{\substack{(t_3,\chi_3),(t_4,\chi_4)\in W\\ \lfloor t_3-t_4 \rfloor = u_{\beta},\\ \chi_3\bar\chi_4=\chi_{\beta}}} 1\Bigg)
  \sup_{|s|\ll 1}\Big| \sum_{n\sim N}  \chi_\alpha\bar\chi_\beta(n){n}^{i(u_\alpha - u_\beta + s)}\Big|^2\\
  \lesssim & 2^{2j} \sum_{\substack{(u_{\alpha},\chi_{\alpha}),\\(u_{\beta},\chi_{\beta})\in U_{2^j}}} \Bigg(\int_{|s|\lesssim 1}\Big|\sum_{n\sim N}  \chi_\alpha\bar\chi_\beta(n){n}^{i(u_\alpha - u_\beta + s)}\Big|ds \Bigg)^2\\
  \stackon{CS}{\lesssim}& 2^{2j} \sum_{\substack{(u_{\alpha},\chi_{\alpha}),\\(u_{\beta},\chi_{\beta})\in U_{2^j}}} \int_{|s|\lesssim 1}\Big|\sum_{n\sim N}  \chi_\alpha\bar\chi_\beta(n){n}^{i(u_\alpha - u_\beta + s)}\Big|^2ds
@@ -119,21 +119,21 @@ After swapping the order of summation and integration, for each fixed $s$, we ca
 Therefore, \begin{align*}
     \sum_{n_1,n_2\sim N} \left|R\left(\frac{n_1}{n_2} ,n_1,n_2\right) \right|^4 \lesssim 2^{2j}(|U_{2^j}|N^2+ |U_{2^j}|^2N + |U_{2^j}|^{5/4}(qT)^{1/2}N).
 \end{align*}
-Recall $U_B$ contains $(u,\chi)$ that have is representated $\sim B$ times in $(\lfloor t_1-t_2\rfloor, \chi_1\bar\chi_2)$ for $(t_1,\chi_1),(t_2,\chi_2)\in \mathcal{S}$.
+Recall $U_B$ contains $(u,\chi)$ that have is representated $\sim B$ times in $(\lfloor t_1-t_2\rfloor, \chi_1\bar\chi_2)$ for $(t_1,\chi_1),(t_2,\chi_2)\in W$.
 Therefore, \[
-B|U_B|\ll |\mathcal{S}|^2.
+B|U_B|\ll |W|^2.
 \] 
 Moreover, each tuple $((t_1,\chi_1),(t_2,\chi_2),(t_3,\chi_3),(t_4,\chi_4))$ satisfying $(\lfloor t_1-t_2\rfloor, \chi_1\bar\chi_2)=(\lfloor t_3-t_4\rfloor, \chi_3\bar\chi_4)$ also satisfies the condition for energy \[
     \chi_1\bar\chi_2=\chi_3\bar\chi_4, |t_1-t_2+t_3-t_4|\lesssim 1.
 \]
 Therefore, \[
-    B^2|U_B|\ll E(\mathcal{S}).
+    B^2|U_B|\ll E(W).
 \]
 For $B^2|U_B|^{5/4}$, we can bound this by \[
-B^2|U_B|^{5/4} = (B^{3/2}U_B^{3/4})(B^{1/2}U_B^{1/2})\ll E(\mathcal{S})^{3/4}|\mathcal{S}|.
+B^2|U_B|^{5/4} = (B^{3/2}U_B^{3/4})(B^{1/2}U_B^{1/2})\ll E(W)^{3/4}|W|.
 \]
 So we have \[
-    \sum_{n_1,n_2\sim N} \left|R\left(\frac{n_1}{n_2} ,n_1,n_2\right) \right|^4 \lesssim E(\mathcal{S})N^2+ |\mathcal{S}|^4N +  E(\mathcal{S})^{3/4}|\mathcal{S}|(qT)^{1/2}N.
+    \sum_{n_1,n_2\sim N} \left|R\left(\frac{n_1}{n_2} ,n_1,n_2\right) \right|^4 \lesssim E(W)N^2+ |W|^4N +  E(W)^{3/4}|W|(qT)^{1/2}N.
 \]
 
 \end{proof}
@@ -150,14 +150,14 @@ We first take care of the large GCD terms using CS. By our two bounds on the sec
     \sum_{\substack{n_1',n_2'\sim (N/d)\\(n_1',n_2')=1}}  \left|R\left(\frac{n_1'}{n_2'} ,n_1',n_2'\right) \right|^3\leq& 
     \sum_{n_1',n_2' \sim (N/d)}  \left|R\left(\frac{n_1'}{n_2'} ,n_1',n_2' \right)\right|^3 \\
     \lesssim&
-    \Bigg(|\mathcal{S}|\Bigg(\frac{N}{d}\Bigg)^2+ |\mathcal{S}|^2\frac{N}{d} + |\mathcal{S}|^{5/4}(qT)^{1/2}\frac{N}{d}\Bigg)^{1/2}\\ &\quad
-    \Bigg(E(\mathcal{S})\Bigg(\frac{N}{d}\Bigg)^2+ |\mathcal{S}|^4\frac{N}{d} +  E(\mathcal{S})^{3/4}|\mathcal{S}|(qT)^{1/2}\frac{N}{d}\Bigg)^{1/2}.
+    \Bigg(|W|\Bigg(\frac{N}{d}\Bigg)^2+ |W|^2\frac{N}{d} + |W|^{5/4}(qT)^{1/2}\frac{N}{d}\Bigg)^{1/2}\\ &\quad
+    \Bigg(E(W)\Bigg(\frac{N}{d}\Bigg)^2+ |W|^4\frac{N}{d} +  E(W)^{3/4}|W|(qT)^{1/2}\frac{N}{d}\Bigg)^{1/2}.
 \end{align*}
 Summing over $d>D$ (and using Cauchy-Schwarz to move the summation into the square root) gives the following result.
 \begin{proposition}
     We have \begin{align*}
-        \sum_{d> D}\sum_{\substack{n_1',n_2'\sim (N/d)\\(n_1',n_2')=1}}  \left|R\left(\frac{n_1'}{n_2'} ,n_1',n_2'\right) \right|^3 \lesssim & \Bigg(|\mathcal{S}|\frac{N^2}{D}+ |\mathcal{S}|^2N + |\mathcal{S}|^{5/4}(qT)^{1/2}N\Bigg)^{1/2}\\ &\quad
-        \Bigg(E(\mathcal{S})\frac{N^2}{D}+ |\mathcal{S}|^4N+  E(\mathcal{S})^{3/4}|\mathcal{S}|(qT)^{1/2}N\Bigg)^{1/2}.
+        \sum_{d> D}\sum_{\substack{n_1',n_2'\sim (N/d)\\(n_1',n_2')=1}}  \left|R\left(\frac{n_1'}{n_2'} ,n_1',n_2'\right) \right|^3 \lesssim & \Bigg(|W|\frac{N^2}{D}+ |W|^2N + |W|^{5/4}(qT)^{1/2}N\Bigg)^{1/2}\\ &\quad
+        \Bigg(E(W)\frac{N^2}{D}+ |W|^4N+  E(W)^{3/4}|W|(qT)^{1/2}N\Bigg)^{1/2}.
     \end{align*}
 \end{proposition}
 
@@ -210,9 +210,17 @@ Therefore, the sum is $O(1+{N^2}/({qd^2T}))$. So we have \begin{align*}
    \sum_{a \mod q} \sum_{d\leq D}\sum_{\substack{n_1',n_2'\sim (N/d)\\(n_1',n_2')=1\\n_1'/n_2'\cong a \mod q}}  \left|R\left(\frac{n_1'}{n_2'} ,n_1',n_2'\right) \right|^3\\
    \ll& T \sum_{d\leq D}\Big(1+\frac{N^2}{qd^2T}\Big) \sum_{a \mod q}\ \int\displaylimits_{s\asymp 1} \left|R\left(s,a\right) \right|^3 ds\\
    \stackon{CS}{\ll}&T \Big(D+\frac{N^2}{qT}\Big)\Bigg(\sum_{a \mod q}\ \int\displaylimits_{s\asymp 1} \left|R\left(s,a\right) \right|^2 ds\Bigg)^{1/2}\Bigg(\sum_{a \mod q}\ \int\displaylimits_{s\asymp 1} \left|R\left(s,a\right) \right|^4 ds\Bigg)^{1/2}\\
-   \lesssim& (qTD+N^2)|\mathcal{S}|^{1/2}E(\mathcal{S})^{1/2}.
+   \lesssim& (qTD+N^2)|W|^{1/2}E(W)^{1/2}.
 \end{align*}
-
-Picking the choice of $D=N^2/(qT)$, we have produced all analogs of the generalizations of Guth and Maynard's result in bounding energy. The remaining part is to reduce our bounds. The computations are exactly the same except replacing $T$ with $qT$. Thus we have \[
-E(\mathcal{S})\lesssim |\mathcal{S}|N^{4-4\sigma}+|\mathcal{S}|^{21/8}(qT)^{1/4}N^{1-2\sigma}+|\mathcal{S}|^3N^{1-\sigma}.
+\begin{proof}[Proof of Proposition \ref{energybound}]
+    We have 
+    \begin{align*}
+    E(W)\lesssim& N^{-2\sigma}\sum_{n_1,n_2\sim N}\left|R\left(\frac{n_1}{n_2},n_1,n_2\right) \right|^3 \\
+    {\lesssim}& (qTD+N^2)|W|^{1/2}E(W)^{1/2} + 
+    \Bigg(|W|\frac{N^2}{D}+ |W|^2N + |W|^{5/4}(qT)^{1/2}N\Bigg)^{1/2}\\ &\quad
+    \Bigg(E(W)\frac{N^2}{D}+ |W|^4N+  E(W)^{3/4}|W|(qT)^{1/2}N\Bigg)^{1/2}.
+    \end{align*}
+    Picking the choice of $D=N^2/(qT)$, this is the analog for Guth and Maynard's result in bounding energy. The remaining part is to reduce our bounds. The computations are exactly the same except replacing $T$ with $qT$. Following the same steps by considering cases when $|W|>T^{2/3}$ and $|W|<T^{2/3}$ (the explicit computation are in \cite{GM2024}, Proposition 11.1, Lemma 11.9). This reduces to\[
+E(W)\lesssim |W|N^{4-4\sigma}+|W|^{21/8}(qT)^{1/4}N^{1-2\sigma}+|W|^3N^{1-2\sigma}.
 \]
+\end{proof}

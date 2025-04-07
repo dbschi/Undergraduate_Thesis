@@ -26,7 +26,7 @@ This new theorem, when applied in Huxley's proof in the previous chapter, gives 
 The structure of the proof can be broken down as follows: We first notice that $|W|$ is bounded by the operator norm of a matrix $M$. This operator norm, using results from linear algebra, is bounded by the trace. Applying Poisson summation on the trace gives $4$ terms that are separately handled, which we will name $S_0$ to $S_3$. We will see that $S_0$ gives the `main term' that is consistent with the density hypothesis, $S_1$ is negligible, $S_2$ is bounded by a theorem by Heath-Brown, which we state below. 
 \begin{theorem}[Heath-Brown]
     \label{heathbrown}
-    Let $\mathcal{S}=\{(t_j,\chi_j)\}$ be one-separate, primitive characters of modulus $q$. Then 
+    Let $\mathcal{S}=\{(t_j,\chi_j)\}$, such that $t_j\in [0,T]$, $T\geq 1$, and each $\chi_j$ is a primitive character of modulus $q$. Further assume that the $t_j's$ are one separated for the same character. Then 
     \[
         \sum_{\substack{(t_1,\chi_1)\\(t_2,\chi_2)}}\left|\sum_{n=1}^{N} b_n n^{-1/2 -i(t_1-t_2)}\chi_1\bar{\chi}_2(n)\right|^2 \lesssim  (|\mathcal{S}|N+ |\mathcal{S}|^2 + |\mathcal{S}|^{5/4}(qT)^{1/2}) \max_{n\leq N} |b_n|.
     \]

@@ -57,19 +57,21 @@ We want to find a bound on $|W|$.
 \end{quotation}
 \section{Statement of Main Theorem and its Reduction}
 \subsubsection*{Notation}
-From this point onward, we interpret Big O and little o asymptotic quantities as $qT\to \infty$. 
+From this point onward, we interpret Big O and little o asymptotic quantities as $qT\to \infty$. $T\geq 1$ is assumed in the statements of theorems and propositions.
 
 Our result is as follows: 
 \begin{theorem}[Generalization of Guth-Maynard Hal\'asz Inequality]\label{incompletehybrid}
 	Let $W=\{(t_j,\chi_j)\}$ be a set such that each $\chi_j$ is a primitive Dirichlet character of modulus $q$, and $|t_j-t_k|\geq 1$ if $j\neq k$ and $\chi_j=\chi_k$. (That is, the $t$'s are $1$-separated if the characters are the same.)Let $|b_n|\leq 1$ be a sequence of numbers indexed in $n$, and suppose also that \[
 	\Bigg|\sum_{n\sim N} b_n\chi_j(n)n^{it_j} \Bigg|>V.
 	\]
-Then we have  \[
+Then we have, for $N\geq q^{5/6}$, \[
 	|W|\leq (qT)^{o(1)}(N^2V^{-2}+ N^{18/5}V^{-4}+(qT)^{12/5}V^{-4} ).
 	\]
 \end{theorem}
 \begin{remark}
 This is a restatement of Guth-Maynard's inequality with all $T$'s changed to $qT$.
+
+This theorem is incomplete, the case $N<q^{5/6}$ is still in progress. The place where the proof breaks down is going from \ref{mainthm} to this statement. If $qT>N^{6/5}$, we subdivide $T$ into smaller intervals of $T'=N^{6/5}/q$, and apply the reduction on each of these intervals. This breaks down when $q$ is too large, as we would have $T'< 1$, which affects the application of Heath Brown's theorem.
 \end{remark}
 \begin{proposition}[Reduction of Main Theorem]\label{mainthm}
     Let $W=\{(t_j,\chi_j)\}$ be a set such that each $\chi_j$ is a primitive Dirichlet character of modulus $q$, and $t_j\in[0,T]$. Further assume that $|t_j-t_k|\geq (qT)^\epsilon$ if $j\neq k$ and $\chi_j=\chi_k$. Let $|b_n|\leq 1$ be a sequence of numbers indexed in $n$, $\omega$ be a smooth bump function that equals $1$ on $[6/5,9/5]$ and has support in $[1,2]$ (thus $\omega^{(A)}\ll_A 1$ for all $A$). Let $V=N^{\sigma}$, where $[7/10,8/10]$, and $N=(qT)^{5/6}$. Suppose also that \[

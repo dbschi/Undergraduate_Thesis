@@ -36,7 +36,7 @@ The idea for bounding energy is similar; if $\chi_1\chi_2=\chi_3\chi_4$ and $|t_
         E(W)\lesssim& N^{-2\sigma}\sum_{\substack{(t_1,\chi_1),(t_2,\chi_2),\\ (t_3,\chi_3),(t_4,\chi_4)\in W\\ |t_1+t_2-t_3-t_4|\leq 1\\ \chi_1\chi_2=\chi_3\chi_4}} \int_{|u-t_1-t_2+t_3|\lesssim 1} |D_N(u,\chi_1\chi_2\bar{\chi}_3)|^2du\\
         \lesssim&  N^{-2\sigma}\sum_{\substack{(t_1,\chi_1),(t_2,\chi_2),\\ (t_3,\chi_3)\in W}} \int_{|u-t_1-t_2+t_3|\lesssim 1} |D_N(u,\chi_1\chi_2\bar{\chi}_3)|^2du\\
         =& N^{-2\sigma}\sum_{\substack{(t_1,\chi_1),(t_2,\chi_2),\\ (t_3,\chi_3)\in W}} \int_{|u|\lesssim 1} |D_N(t_1+t_2-t_3 + u,\chi_1\chi_2\bar{\chi}_3)|^2du\\
-        =&N^{-2\sigma}\sum_{n_1,n_2} b_{n_1}\bar{b}_{n_2} \omega\left(\frac{n_1}{N}\right)\omega\left(\frac{n_2}{N}\right)\int_{|u|\lesssim 1} \left(\frac{n_1}{n_1}\right)^{iu}R\left(\frac{n_1}{n_2},n_1,n_2\right)^2 R\left(\frac{n_2}{n_1},n_2,n_1\right)du\\
+        =&N^{-2\sigma}\sum_{n_1,n_2} b_{n_1}\bar{b}_{n_2} \omega\left(\frac{n_1}{N}\right)\omega\left(\frac{n_2}{N}\right)\int_{|u|\lesssim 1} \left(\frac{n_1}{n_2}\right)^{iu}R\left(\frac{n_1}{n_2},n_1,n_2\right)^2 R\left(\frac{n_2}{n_1},n_2,n_1\right)du\\
         \lesssim & N^{-2\sigma}\sum_{n_1,n_2\sim N}\left|R\left(\frac{n_1}{n_2},n_1,n_2\right)^2 R\left(\frac{n_2}{n_1},n_2,n_1\right)\right|\\
         \lesssim & N^{-2\sigma}\sum_{n_1,n_2\sim N}\left|R\left(\frac{n_1}{n_2},n_1,n_2\right) \right|^3.
         \end{align*}
@@ -139,7 +139,7 @@ So we have \[
 \end{proof}
 
 
-We split the sum in $\sum_{n_1,n_2\sim N}  \left|R\left(\frac{n_1}{n_2} ,n_1,n_2\right) \right|^3$ according to the GCD of $n_1$ and $n_2$. Let $d$ be this GCD, and noticing that when $q|d$,  we have $R\left(n_1/n_2 ,n_1,n_2\right)=0$,\[
+We split the sum in $\sum_{n_1,n_2\sim N}  \left|R\left(\frac{n_1}{n_2} ,n_1,n_2\right) \right|^3$ according to the GCD of $n_1$ and $n_2$. Let $d$ be this GCD, and noticing that when $(q,d)>1$,  we have $R\left(n_1/n_2 ,n_1,n_2\right)=0$,\[
     \sum_{n_1,n_2\sim N}  \left|R\left(\frac{n_1}{n_2} ,n_1,n_2\right) \right|^3\leq \sum_{d\leq D}\sum_{\substack{n_1',n_2'\sim (N/d)\\(n_1',n_2')=1}}  \left|R\left(\frac{n_1'}{n_2'} ,n_1',n_2'\right) \right|^3+\sum_{d> D}\sum_{\substack{n_1',n_2'\sim (N/d)\\(n_1',n_2')=1}}  \left|R\left(\frac{n_1'}{n_2'} ,n_1',n_2'\right) \right|^3,
 \]
 where $D$ is a parameter to be decided.
@@ -192,7 +192,7 @@ When $d$ is small, we expect fractions $n_1/n_2$ for $n_1,n_2\sim N/d$ to be wel
     \log s= \log v + \frac{2\pi\xi}{T},
     \]
     so this gives a Jacobian factor of $T$, and \[
-        |f(v)|\ll T \int_{|s-v|\lesssim 1/T}\left| \sum_j c_j  e\left(\frac{t_js}{2\pi}\right)\right|ds +O((qT)^{-100})\]
+        |f(v)|\ll T \int_{|\log s-\log v|\lesssim 1/T}\left| \sum_j c_j  e\left(\frac{t_j\log s}{2\pi}\right)\right|ds +O((qT)^{-100})\]
         which gives the bound in the lemma upon making a second change of variables $v'=s-v$.
 \end{proof}
 

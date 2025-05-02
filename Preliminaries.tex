@@ -43,12 +43,12 @@ Here we provide some supplementary definitions and statements of theorems. These
 \begin{example}
 	On $\Re(s)>1$, let $M_N(s) = \sum_{n\leq N} \mu(n)n^{-s}$.
 	Then setting $f(n)=1$ for all $n$, $g(1)=1$, $g(n)=0$ for $n\geq 2$, we multiply $M_N$ by $\zeta$ in Dirichlet series to get\[
-		\zeta(s)M_N(s) = \sum_{n} \frac{a_n}{n^{-s}},
+		\zeta(s)M_N(s) = \sum_{n} \frac{a_n}{n^{s}},
 	\]
 	where $a_n=g(n)$ for all $n\leq N$.
 	Similarly, letting $M_N(s) = \sum_{n\leq N} \chi(n) \mu(n) n^{-s}$ for some Dirichlet character $\chi$,
 	we get \[
-		L(s,\chi)M_N(s) = \sum_{n} \frac{a_n\chi(n)}{n^{-s}}
+		L(s,\chi)M_N(s) = \sum_{n} \frac{a_n\chi(n)}{n^{s}}
 	\]
 	with the same $a_n$ as in the previous equation.
 \end{example}

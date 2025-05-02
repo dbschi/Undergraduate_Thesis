@@ -270,7 +270,7 @@ This bound relies on Heath-Brown's theorem. We recall its statement here.
 	%\label{heathbrown}
 	Let $\mathcal{S}=\{(t_j,\chi_j)\}$ be one-separate, primitive characters of modulus $q$. Then 
 	\[
-	\sum_{\substack{(t_1,\chi_1)\\(t_2,\chi_2)}}\left|\sum_{n=1}^{N} b_n n^{-1/2 -i(t_1-t_2)}\chi_1\bar{\chi}_2(n)\right|^2 \lesssim  (|\mathcal{S}|N+ |\mathcal{S}|^2 + |\mathcal{S}|^{5/4}(qT)^{1/2}) \max_{n\leq N} |b_n|.
+	\sum_{\substack{(t_1,\chi_1)\\(t_2,\chi_2)}}\left|\sum_{n=1}^{N} b_n n^{-1/2 -i(t_1-t_2)}\chi_1\bar{\chi}_2(n)\right|^2 \lesssim  (|\mathcal{S}|N+ |\mathcal{S}|^2 + |\mathcal{S}|^{5/4}(qT)^{1/2}) \max_{n\leq N} |b_n|^2.
 	\]
 \end{theorem*}
 
@@ -292,7 +292,7 @@ Noticing that $\hat{h}_t(\xi)=\overline{\hat{h}_{-t}(-\xi)}$, we rewrite \begin{
 \end{equation}
 \begin{lemma}[Approximate Functional Equation]
     Let $|t|\leq T_0$, and $\chi$ be a Dirichlet character mod $q$. Further assume that if $\chi$ is principal then $|t|\geq (qT)^{\epsilon}$. Then we have \[
-        \left|\sum_{m \in \mathbb{Z}}\hat{\bar{\chi}}(m)
+        \left|\sum_{m \in \mathbb{Z}}\hat{{\chi}}(m)
         \hat{h}_{t_1-t_2}\left(\frac{Nm}{q}\right)\right|\lesssim qN^{1/2}\int_{|u|\lesssim 1}\Big|\sum_{n\lesssim \frac{qT_0}{N}}n^{-1/2-i(t+u)}\bar{\chi}(n)\Big| du + O((qT)^{-100}).
     \]
 \end{lemma}

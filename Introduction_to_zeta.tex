@@ -44,8 +44,8 @@ We will prove Proposition \ref{analyticcontinuation} in two steps. First, we wil
 	We apply integration by parts on Dirichlet series when $\sigma>1$ \begin{align*}
 		\zeta(s)&=\int_{1/2}^{\infty} x^{-s} d \lfloor x \rfloor \\
 				&= s \int_{1/2}^{\infty} \lfloor x \rfloor x^{-s-1} d x\\
-				&=  s \int_{1}^{\infty}  x^{-s} - \frac{\{x\}}{x^{-s-1}} d x\\
-				&= \frac{s}{s-1} - s \int_{1}^{\infty} \frac{\{x\}}{x^{-s-1}} dx\\
+				&=  s \int_{1}^{\infty}  x^{-s} - \frac{\{x\}}{x^{+s+1}} d x\\
+				&= \frac{s}{s-1} - s \int_{1}^{\infty} \frac{\{x\}}{x^{s+1}} dx\\
 	\end{align*}
 	where in the last expression, the integral converges when $\sigma>0$, and the pole at $s=1$ arises from the first term.
 \end{proof}
